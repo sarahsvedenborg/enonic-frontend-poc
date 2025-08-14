@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import { Buttons as Button } from 'rk-designsystem'
+import { Buttons as Button, Buttons } from 'rk-designsystem'
 import styles from './DonationForm.module.css'
 
 interface DonationFormProps {
@@ -39,21 +39,24 @@ const DonationForm: React.FC<DonationFormProps> = ({
       {/* Frequency Selection */}
       <div className={styles.section}>
         <label className={styles.label}>Hvor ofte vil du gi?</label>
+        
         <div className={styles.buttonGroup}>
-          <button
-            className={`${styles.frequencyButton} ${frequency === 'monthly' ? styles.selected : ''}`}
+          <Buttons
+          variant="secondary"
+            className={` ${frequency === 'monthly' ? styles.selected : ''}`}
             onClick={() => setFrequency('monthly')}
             type="button"
           >
             Gi månedlig
-          </button>
-          <button
-            className={`${styles.frequencyButton} ${frequency === 'one-time' ? styles.selected : ''}`}
+          </Buttons>
+          <Buttons
+          variant="primary"
+            className={` ${frequency === 'one-time' ? styles.selected : ''}`}
             onClick={() => setFrequency('one-time')}
             type="button"
           >
             Engangsgave
-          </button>
+          </Buttons>
         </div>
       </div>
 
