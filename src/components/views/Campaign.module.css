@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: var(--ds-size-8);
+  z-index: 0;
 }
 
 .heroOverlay {
@@ -59,4 +60,25 @@
 
 .buttonContainer {
   margin-top: var(--ds-size-6);
+}
+
+.donationSection {
+  position: relative;
+  margin: -6rem auto 0;
+  max-width: 1200px;
+  padding: 0 var(--ds-size-6);
+  z-index: 10;
+}
+
+/* Responsive adjustments for the overlap */
+@media (max-width: 768px) {
+  .donationSection {
+    margin: -4rem auto 0;
+    padding: 0 var(--ds-size-4);
+  }
+  
+  .heroSection {
+    height: 50vh;
+    min-height: 300px;
+  }
 }
