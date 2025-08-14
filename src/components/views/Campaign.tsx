@@ -3,6 +3,7 @@ import React from 'react'
 import {FetchContentResult, getUrl, I18n} from '@enonic/nextjs-adapter';
 import Link from 'next/link';
 import { Buttons as Button } from 'rk-designsystem'
+import styles from './Campaign.module.css'
 
 const Campaign = (props: FetchContentResult) => {
      const {displayName, data, parent} = props.data?.get as any;
@@ -12,13 +13,25 @@ const Campaign = (props: FetchContentResult) => {
 
     return (
         <>
-            <div>
-       
-                 <h2>{displayName}</h2>
-                  <p>{teaser}</p> 
-                  <Button variant="primary">
-  Lagre
-</Button>
+            {/* Hero Section */}
+            <div className={styles.heroSection}>
+                {/* Overlay for better text readability */}
+                <div className={styles.heroOverlay}></div>
+                
+                {/* Centered H1 Title */}
+                <h1 className={styles.heroTitle}>
+                    {displayName}
+                </h1>
+            </div>
+
+            <div className={styles.contentSection}>
+           {/*      <h2 className={styles.contentTitle}>{displayName}</h2> */}
+                <p className={styles.contentText}>{teaser}</p> 
+                <div className={styles.buttonContainer}>
+                    <Button variant="primary">
+                        Lagre
+                    </Button>
+                </div>
              {/*    {
                     photos.map((photo: any, i: number) => (
                         <img key={i}

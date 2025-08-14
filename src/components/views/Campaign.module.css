@@ -1,0 +1,62 @@
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 400px;
+  background-image: url("https://www.rodekors.no/globalassets/_landene-vi-jobber-i/_midtosten-og-nord-afrika/palestina/250707_gaza_feltsykehus_1600.jpg?width=1600&quality=90");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--ds-size-8);
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.heroTitle {
+  color: white;
+  font-size: var(--ds-font-size-10);
+  font-weight: var(--ds-heading-2xl-font-weight);
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  z-index: 2;
+  position: relative;
+  margin: 0;
+  padding: 0 var(--ds-size-8);
+  line-height: var(--ds-heading-2xl-line-height);
+  letter-spacing: var(--ds-heading-2xl-letter-spacing);
+}
+
+.contentSection {
+  margin-bottom: var(--ds-size-6);
+}
+
+.contentTitle {
+  font-size: var(--ds-font-size-8);
+  font-weight: var(--ds-heading-lg-font-weight);
+  line-height: var(--ds-heading-lg-line-height);
+  letter-spacing: var(--ds-heading-lg-letter-spacing);
+  margin-bottom: var(--ds-size-4);
+}
+
+.contentText {
+  font-size: var(--ds-font-size-4);
+  font-weight: var(--ds-body-md-font-weight);
+  line-height: var(--ds-body-md-line-height);
+  letter-spacing: var(--ds-body-md-letter-spacing);
+  margin-bottom: var(--ds-size-6);
+}
+
+.buttonContainer {
+  margin-top: var(--ds-size-6);
+}
