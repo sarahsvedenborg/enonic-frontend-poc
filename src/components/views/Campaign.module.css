@@ -70,10 +70,29 @@
   z-index: 10;
 }
 
+.bannerSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--ds-size-6);
+  z-index: 5;
+}
+
+.directDonationSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--ds-size-6);
+  z-index: 5;
+}
+
 /* Responsive adjustments for the overlap */
 @media (max-width: 768px) {
   .donationSection {
     margin: -4rem auto 0;
+    padding: 0 var(--ds-size-4);
+  }
+  
+  .bannerSection,
+  .directDonationSection {
     padding: 0 var(--ds-size-4);
   }
   

@@ -6,6 +6,8 @@ import "@enonic/nextjs-adapter/baseMappings";
 import {APP_NAME} from '@enonic/nextjs-adapter';
 import getCampaign from './queries/getCampaign';
 import Campaign from './views/Campaign';
+import getDonatePage from './queries/getDonatePage';
+import DonatePage from './views/DonatePage';
 // You can set common query for all views here
 ComponentRegistry.setCommonQuery([commonQuery, commonVariables]);
 
@@ -13,6 +15,11 @@ ComponentRegistry.setCommonQuery([commonQuery, commonVariables]);
 ComponentRegistry.addContentType(`${APP_NAME}:campaign`, {
   query: getCampaign,
     view: Campaign
+}); 
+
+ComponentRegistry.addContentType(`${APP_NAME}:donate`, {
+  query: getDonatePage,
+    view: DonatePage
 }); 
 
 

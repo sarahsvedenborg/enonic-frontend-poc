@@ -1,18 +1,19 @@
 'use client'
 import React from 'react'
 import {FetchContentResult, getUrl, I18n} from '@enonic/nextjs-adapter';
+import RichTextView from '@enonic/nextjs-adapter/views/RichTextView';
 import Link from 'next/link';
-import { Buttons as Button } from 'rk-designsystem'
+import { Buttons as Button, Link as Link2, Card } from 'rk-designsystem'
 import styles from './Campaign.module.css'
 import DonationForm from './DonationForm'
 import DonationBanner from './DonationBanner'
 import DirectDonation from './DirectDonation'
 
-const Campaign = (props: FetchContentResult) => {
+const DonatePage = (props: FetchContentResult) => {
      const {displayName, data, parent} = props.data?.get as any;
-      const {teaser, bio} = data;
-     console.log("data", data)
-/*     const meta = props.meta;  */ 
+      const {teaser, bio, info, otherWays} = data;
+     console.log("data donate", data)
+     const meta = props.meta;   
 
     const handleDonate = (amount: number, frequency: 'monthly' | 'one-time') => {
       console.log(`Donating ${amount} kr ${frequency}`)
@@ -58,6 +59,81 @@ const Campaign = (props: FetchContentResult) => {
                 />
             </div>
 
+            {/* Info Section with Links */}
+            <div className={styles.infoSection}>
+                <h2 className={styles.infoTitle}>Les mer om hva det vil si å være</h2>
+                
+                {info && Array.isArray(info) && info.length > 0 && (
+                    <div className={styles.infoLinks}>
+                        <ul className={styles.linksList}>
+                            {info.map((link: any, index: number) => (
+                                <li key={index} className={styles.linkItem}>
+                                    <Link2
+  data-color="neutral"
+  data-size="lg"
+  href={getUrl(link.url || link._path, meta)} 
+>
+{link.displayName || link.title || `Link ${index + 1}`}
+</Link2>
+                                  
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+                
+                {(!info || !Array.isArray(info) || info.length === 0) && (
+                    <p className={styles.noLinks}>Ingen lenker tilgjengelig for øyeblikket.</p>
+                )}
+            </div>
+
+                <div className={styles.otherWaysSection}>
+                <h2 className={styles.otherWaysTitle}>Andre måter å bidra på</h2>
+
+                   
+            {otherWays && Array.isArray(otherWays) && otherWays.length > 0 && (
+                    <div className={styles.infoLinks}>
+                        <ul className={styles.linksList}>
+                            {otherWays.map((link: any, index: number) => (
+                                <li key={index} className={styles.linkItem}>
+                                    <Card
+  data-color="neutral"
+  variant="tinted"
+>
+  <Card.Block>
+    <h3>
+      Composed Card
+    </h3>
+    <p>
+      This card contains other components.
+    </p>
+    <div
+      style={{
+        marginTop: 'var(--ds-spacing-4, 16px)'
+      }}
+    >
+      <Button
+        data-size="sm"
+        variant="primary"
+      >
+        Action
+      </Button>
+    </div>
+  </Card.Block>
+  <Card.Block>
+    <small>
+      Footer with more info
+    </small>
+  </Card.Block>
+</Card>
+                                  
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+            </div>
+
             <div className={styles.contentSection}>
             {/*      <h2 className={styles.contentTitle}>{displayName}</h2> */}
                   <p className={styles.contentText}>{teaser}</p> 
@@ -77,6 +153,7 @@ const Campaign = (props: FetchContentResult) => {
                     ))
                 }  */}
             </div>
+            <RichTextView className={styles.bio} data={bio} meta={meta}></RichTextView>
 
            
 
@@ -85,7 +162,7 @@ const Campaign = (props: FetchContentResult) => {
     )
 }
 
-export default Campaign;
+export default DonatePage;
 
 /* function getTitle(photo: any, displayName: string) {
     return (photo.attachments || [])[0].name || displayName;
