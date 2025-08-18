@@ -1,3 +1,28 @@
+/* Container classes with increasing max-widths */
+.containerSmall {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 var(--ds-size-6);
+}
+
+.containerMedium {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--ds-size-6);
+}
+
+.containerLarge {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 var(--ds-size-6);
+}
+
+.containerExtraLarge {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--ds-size-6);
+}
+
 .heroSection {
   position: relative;
   width: 100%;
@@ -65,39 +90,122 @@
 .donationSection {
   position: relative;
   margin: -6rem auto 0;
-  max-width: 1200px;
-  padding: 0 var(--ds-size-6);
   z-index: 10;
 }
 
 .bannerSection {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--ds-size-6);
   z-index: 5;
 }
 
 .directDonationSection {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--ds-size-6);
   z-index: 5;
+}
+
+.infoSection {
+  margin: var(--ds-size-12) auto;
+}
+
+.infoTitle {
+  font-size: var(--ds-font-size-6);
+  font-weight: var(--ds-heading-md-font-weight);
+  color: #000;
+  text-align: center;
+  margin-bottom: var(--ds-size-8);
+}
+
+.infoLinks {
+  margin-top: var(--ds-size-6);
+}
+
+.linksList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ds-size-6);
+  justify-content: center;
+}
+
+.linkItem {
+  margin: 0;
+  padding: 0;
+  flex: 1 1 300px;
+  max-width: 300px;
+  min-width: 250px;
+}
+
+/* When there's only one item in the last row, make it span full width */
+.linksList:has(> li:last-child:nth-child(odd)) > li:last-child {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+/* Specific styling for the third item when there are exactly 3 items */
+.linksList:has(> li:nth-child(3):last-child) > li:nth-child(3) {
+  flex: 1 1 100%;
+  max-width: 100%;
+  margin-top: var(--ds-size-6);
+}
+
+/* Alternative approach for better browser support */
+.linksList > li:nth-child(3):last-child {
+  flex: 1 1 100%;
+  max-width: 100%;
+  margin-top: var(--ds-size-6);
+}
+
+/* For any single item in the last row (5th, 7th, etc.) */
+.linksList > li:nth-child(odd):last-child {
+  flex: 1 1 100%;
+  max-width: 100%;
+  margin-top: var(--ds-size-6);
+}
+
+.otherWaysSection {
+  margin: var(--ds-size-12) auto;
+}
+
+.otherWaysTitle {
+  font-size: var(--ds-font-size-6);
+  font-weight: var(--ds-heading-md-font-weight);
+  color: #000;
+  text-align: center;
+  margin-bottom: var(--ds-size-8);
+}
+
+.moneyArrivesSection {
+  margin: var(--ds-size-12) auto;
+  background-color: #ffffff;
+  border-top: 2px solid #f0f0f0;
+  border-bottom: 2px solid #f0f0f0;
 }
 
 /* Responsive adjustments for the overlap */
 @media (max-width: 768px) {
-  .donationSection {
-    margin: -4rem auto 0;
+  .containerSmall,
+  .containerMedium,
+  .containerLarge,
+  .containerExtraLarge {
     padding: 0 var(--ds-size-4);
   }
   
-  .bannerSection,
-  .directDonationSection {
-    padding: 0 var(--ds-size-4);
+  .donationSection {
+    margin: -4rem auto 0;
   }
   
   .heroSection {
     height: 50vh;
     min-height: 300px;
+  }
+  
+  .linksList {
+    gap: var(--ds-size-4);
+  }
+  
+  .linkItem {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 100%;
   }
 }

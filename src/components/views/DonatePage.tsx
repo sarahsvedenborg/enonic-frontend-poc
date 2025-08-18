@@ -34,7 +34,7 @@ const DonatePage = (props: FetchContentResult) => {
             </div>
 
             {/* Donation Form */}
-            <div className={styles.donationSection}>
+            <div className={`${styles.donationSection} ${styles.containerLarge}`}>
                 <DonationForm 
                     title="Du kan hjelpe"
                     description="Bidra til å hjelpe de mest sårbare i land rammet av kriser, krig og konflikt."
@@ -43,7 +43,7 @@ const DonatePage = (props: FetchContentResult) => {
             </div>
 
             {/* Donation Efficiency Banner */}
-            <div className={styles.bannerSection}>
+            <div className={`${styles.bannerSection} ${styles.containerMedium}`}>
                 <DonationBanner 
                     percentage={90}
                     text="av alle bidrag går til formålet"
@@ -51,7 +51,7 @@ const DonatePage = (props: FetchContentResult) => {
             </div>
 
             {/* Direct Donation Information */}
-            <div className={styles.directDonationSection}>
+            <div className={`${styles.directDonationSection} ${styles.containerMedium}`}>
                 <DirectDonation 
                     title="Du kan også gi direkte"
                     vippsNumber="2272"
@@ -59,8 +59,9 @@ const DonatePage = (props: FetchContentResult) => {
                 />
             </div>
 
+    
             {/* Info Section with Links */}
-            <div className={styles.infoSection}>
+            <div className={`${styles.infoSection} ${styles.containerLarge}`}>
                 <h2 className={styles.infoTitle}>Les mer om hva det vil si å være</h2>
                 
                 {info && Array.isArray(info) && info.length > 0 && (
@@ -75,7 +76,7 @@ const DonatePage = (props: FetchContentResult) => {
 >
 {link.displayName || link.title || `Link ${index + 1}`}
 </Link2>
-                                  
+                                    
                                 </li>
                             ))}
                         </ul>
@@ -87,7 +88,7 @@ const DonatePage = (props: FetchContentResult) => {
                 )}
             </div>
 
-                <div className={styles.otherWaysSection}>
+                <div className={`${styles.otherWaysSection} ${styles.containerLarge}`}>
                 <h2 className={styles.otherWaysTitle}>Andre måter å bidra på</h2>
 
                    
@@ -96,37 +97,25 @@ const DonatePage = (props: FetchContentResult) => {
                         <ul className={styles.linksList}>
                             {otherWays.map((link: any, index: number) => (
                                 <li key={index} className={styles.linkItem}>
-                                    <Card
-  data-color="neutral"
+                               
+<Card
+  asChild
+  data-color="brand1"
+  style={{
+    maxWidth: '300px'
+  }}
   variant="tinted"
 >
-  <Card.Block>
+  <a href={getUrl(link.url || link._path, meta)}>
     <h3>
-      Composed Card
+      {link.displayName || link.title || `Link ${index + 1}`}
     </h3>
     <p>
-      This card contains other components.
+      {link.description || link.teaser || 'Klikk for å lese mer'}
     </p>
-    <div
-      style={{
-        marginTop: 'var(--ds-spacing-4, 16px)'
-      }}
-    >
-      <Button
-        data-size="sm"
-        variant="primary"
-      >
-        Action
-      </Button>
-    </div>
-  </Card.Block>
-  <Card.Block>
-    <small>
-      Footer with more info
-    </small>
-  </Card.Block>
+  </a>
 </Card>
-                                  
+                                     
                                 </li>
                             ))}
                         </ul>
@@ -134,7 +123,7 @@ const DonatePage = (props: FetchContentResult) => {
                 )}
             </div>
 
-            <div className={styles.contentSection}>
+            <div className={`${styles.contentSection} ${styles.containerSmall}`}>
             {/*      <h2 className={styles.contentTitle}>{displayName}</h2> */}
                   <p className={styles.contentText}>{teaser}</p> 
                   <div className={styles.buttonContainer}>
