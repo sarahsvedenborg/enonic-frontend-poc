@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { Buttons as Button, Buttons } from 'rk-designsystem'
 import styles from './DonationForm.module.css'
+import { FiChevronDown, FiHeart } from 'react-icons/fi'
 
 interface DonationFormProps {
   title?: string
@@ -31,6 +32,9 @@ const DonationForm: React.FC<DonationFormProps> = ({
   return (
     <div className={styles.donationForm}>
       {/* Header Section */}
+      <div style={{maxWidth: 'var(--section-xs)', margin: '0 auto', paddingTop: '0 var(--ds-size-8)'}}>
+
+     
       <div className={styles.header}>
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.description}>{description}</p>
@@ -92,6 +96,7 @@ const DonationForm: React.FC<DonationFormProps> = ({
           type="button"
         >
           Velg eget beløp
+          <FiChevronDown />
         </button>
         {customAmount !== '' && (
           <div className={styles.customAmountInput}>
@@ -109,7 +114,7 @@ const DonationForm: React.FC<DonationFormProps> = ({
 
       {/* Impact Statement */}
       <div className={styles.impactSection}>
-        <div className={styles.impactIcon}>🏕️</div>
+        <div className={styles.impactIcon}><FiHeart /></div>
         <p className={styles.impactText}>
           Din gave gjør en forskjell. For {customAmount || amount} kroner kan to personer få hvert sitt teppe og mat og vann i en måned.
         </p>
@@ -128,9 +133,11 @@ const DonationForm: React.FC<DonationFormProps> = ({
         
         <button className={styles.otherPaymentLink} type="button">
           Andre betalingsmåter
-          <span className={styles.dropdownIcon}>▼</span>
+          <FiChevronDown />
+        
         </button>
       </div>
+    </div>
     </div>
   )
 }

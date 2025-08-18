@@ -7,12 +7,15 @@ import styles from './Campaign.module.css'
 import DonationForm from './DonationForm'
 import DonationBanner from './DonationBanner'
 import DirectDonation from './DirectDonation'
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import RichTextView from '@enonic/nextjs-adapter/views/RichTextView';
+import MoneyArrives from '../../ui/Complex/MoneyArrives/MoneyArrives';
 
 const Campaign = (props: FetchContentResult) => {
      const {displayName, data, parent} = props.data?.get as any;
       const {teaser, bio} = data;
      console.log("data", data)
-/*     const meta = props.meta;  */ 
+    const meta = props.meta;  
 
     const handleDonate = (amount: number, frequency: 'monthly' | 'one-time') => {
       console.log(`Donating ${amount} kr ${frequency}`)
@@ -21,15 +24,14 @@ const Campaign = (props: FetchContentResult) => {
 
     return (
         <>
-            {/* Hero Section */}
+          
             <div className={styles.heroSection}>
-                {/* Overlay for better text readability */}
+          
                 <div className={styles.heroOverlay}></div>
                 
-                {/* Centered H1 Title */}
-                <h1 className={styles.heroTitle}>
-                    {displayName}
-                </h1>
+         
+                <Heading data-size="xl" className={styles.heroTitle}>{displayName}</Heading>
+              
             </div>
 
             {/* Donation Form */}
@@ -57,29 +59,23 @@ const Campaign = (props: FetchContentResult) => {
                     accountNumber="8200 06 10190"
                 />
             </div>
-
-            <div className={styles.contentSection}>
-            {/*      <h2 className={styles.contentTitle}>{displayName}</h2> */}
-                  <p className={styles.contentText}>{teaser}</p> 
-                  <div className={styles.buttonContainer}>
-                      <Button variant="primary">
-                          Lagre
-                      </Button>
-                  </div>
-             {/*    {
-                    photos.map((photo: any, i: number) => (
-                        <img key={i}
-                             src={getUrl(photo.imageUrl, meta)}
-                             title={getTitle(photo, displayName)}
-                             alt={getTitle(photo, displayName)}
-                             width="500"
-                        />
-                    ))
-                }  */}
+            <div className={styles.richTextSection}>        
+                <div className={styles.richTextSectionInner}>
+<Paragraph variant="long" data-size='md'>{teaser}</Paragraph>
+         {/*    <RichTextView className={styles.bio} data={teaser} meta={meta}></RichTextView> */}
+               
             </div>
+         
+            </div>
+            <MoneyArrives />
 
-           
-
+<div style={{width:'fit-content', maxWidth: 'var(--section-md)', margin: '0 auto', textAlign: 'center'}}>
+         
+            <Button variant="primary" data-size='lg'>
+                Gi nå
+            </Button>
+        
+</div>
             {/* <p><Link href={getUrl(`/${parent._path}`, meta)}>{I18n.localize('back')}</Link></p> */}
         </>
     )

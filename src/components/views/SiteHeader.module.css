@@ -1,12 +1,10 @@
 .header {
   background-color: #ffffff;
   border-top: 2px solid #fef7f4;
-  border-bottom: 2px solid #e5e5e5;
-  padding: var(--ds-size-4) 0;
 }
 
 .headerInner {
-  max-width: 1200px;
+  max-width: var(--section-xl);
   margin: 0 auto;
   padding: 0 var(--ds-size-6);
   display: flex;

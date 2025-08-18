@@ -8,6 +8,8 @@ import styles from './Campaign.module.css'
 import DonationForm from './DonationForm'
 import DonationBanner from './DonationBanner'
 import DirectDonation from './DirectDonation'
+import { FaAngleRight, FaArrowRightLong } from 'react-icons/fa6';
+import MoneyArrives from '../../ui/Complex/MoneyArrives/MoneyArrives';
 
 const DonatePage = (props: FetchContentResult) => {
      const {displayName, data, parent} = props.data?.get as any;
@@ -74,7 +76,7 @@ const DonatePage = (props: FetchContentResult) => {
   data-size="lg"
   href={getUrl(link.url || link._path, meta)} 
 >
-{link.displayName || link.title || `Link ${index + 1}`}
+{link._name || link.title || `Link ${index + 1}`}<FaAngleRight />
 </Link2>
                                     
                                 </li>
@@ -89,7 +91,7 @@ const DonatePage = (props: FetchContentResult) => {
             </div>
 
                 <div className={`${styles.otherWaysSection} ${styles.containerLarge}`}>
-                <h2 className={styles.otherWaysTitle}>Andre måter å bidra på</h2>
+                <h2 className={styles.otherWaysTitle}>Andre måter å støtte oss på</h2>
 
                    
             {otherWays && Array.isArray(otherWays) && otherWays.length > 0 && (
@@ -101,18 +103,35 @@ const DonatePage = (props: FetchContentResult) => {
 <Card
   asChild
   data-color="brand1"
-  style={{
+ /*  style={{
     maxWidth: '300px'
-  }}
+  }} */
   variant="tinted"
 >
   <a href={getUrl(link.url || link._path, meta)}>
     <h3>
-      {link.displayName || link.title || `Link ${index + 1}`}
+      {link._name || link.title || `Link ${index + 1}`} <FaArrowRightLong />
     </h3>
-    <p>
-      {link.description || link.teaser || 'Klikk for å lese mer'}
-    </p>
+    <div className={styles.cardContent}>
+      {/* <p>
+        {link.description || link.teaser || 'Klikk for å lese mer'}
+      </p> */}
+     {/*  <svg 
+        className={styles.arrowIcon} 
+        width="20" 
+        height="20" 
+        viewBox="0 0 24 24" 
+        fill="none"
+      >
+        <path 
+          d="M5 12h14M12 5l7 7-7 7" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+        />
+      </svg> */}
+    </div>
   </a>
 </Card>
                                      
@@ -126,11 +145,11 @@ const DonatePage = (props: FetchContentResult) => {
             <div className={`${styles.contentSection} ${styles.containerSmall}`}>
             {/*      <h2 className={styles.contentTitle}>{displayName}</h2> */}
                   <p className={styles.contentText}>{teaser}</p> 
-                  <div className={styles.buttonContainer}>
+                {/*   <div className={styles.buttonContainer}>
                       <Button variant="primary">
                           Lagre
                       </Button>
-                  </div>
+                  </div> */}
              {/*    {
                     photos.map((photo: any, i: number) => (
                         <img key={i}
@@ -142,7 +161,15 @@ const DonatePage = (props: FetchContentResult) => {
                     ))
                 }  */}
             </div>
+            <div className={styles.richTextSection}>        
+                <div className={styles.richTextSectionInner}>
+
             <RichTextView className={styles.bio} data={bio} meta={meta}></RichTextView>
+               
+            </div>
+         
+            </div>
+            <MoneyArrives />
 
            
 

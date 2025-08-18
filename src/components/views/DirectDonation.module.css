@@ -1,15 +1,13 @@
 .container {
-  background-color: #ffffff;
+
   padding: var(--ds-size-8);
   margin: var(--ds-size-8) auto;
   max-width: 600px;
-  border-radius: var(--ds-border-radius-lg);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border: 2px solid #f0f0f0;
+
 }
 
 .title {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+
   font-size: var(--ds-font-size-6);
   font-weight: bold;
   color: #000;
@@ -29,10 +27,7 @@
   flex: 1;
   text-align: center;
   padding: var(--ds-size-4);
-  background-color: #fafafa;
-  border-radius: var(--ds-border-radius-md);
-  border: 2px solid #e5e5e5;
-  transition: all 0.2s ease;
+
 }
 
 .paymentColumn:hover {
@@ -43,26 +38,22 @@
 }
 
 .paymentLabel {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+
   font-size: var(--ds-font-size-3);
   font-weight: 500;
   color: #000;
-  margin-bottom: var(--ds-size-3);
+
   display: block;
 }
 
 .paymentValue {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+
   font-size: var(--ds-font-size-5);
   font-weight: bold;
   color: #d52b1e;
   letter-spacing: 1px;
   display: block;
-  padding: var(--ds-size-2) var(--ds-size-4);
-  background-color: #ffffff;
-  border-radius: var(--ds-border-radius-sm);
-  border: 1px solid #e0e0e0;
-  margin-top: var(--ds-size-2);
+
 }
 
 /* Responsive design */

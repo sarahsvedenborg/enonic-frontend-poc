@@ -3,6 +3,8 @@ import React from 'react'
 import Link from 'next/link'
 import styles from './SiteHeader.module.css'
 import { Buttons } from 'rk-designsystem'
+import { FiLogIn, FiMenu, FiSearch } from "react-icons/fi";
+
 
 export const SiteHeader: React.FC = () => {
   return (
@@ -12,19 +14,17 @@ export const SiteHeader: React.FC = () => {
         <div className={styles.leftSection}>
           <button className={styles.menuButton} aria-label="Meny">
             <div className={styles.hamburgerIcon}>
-              <span></span>
-              <span></span>
-              <span></span>
+              <FiMenu size={25} />
+
             </div>
             <span className={styles.menuText}>Meny</span>
           </button>
           
           <button className={styles.searchButton} aria-label="Søk">
             <div className={styles.searchIcon}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="2" fill="none"/>
-                <path d="m10 10 4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-              </svg>
+             
+              <FiSearch size={25} />
+
             </div>
             <span className={styles.searchText}>Søk</span>
           </button>
@@ -52,10 +52,7 @@ export const SiteHeader: React.FC = () => {
           
           <button className={styles.myPageButton} aria-label="Min side">
             <div className={styles.myPageIcon}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <rect x="2" y="4" width="12" height="8" rx="1" stroke="currentColor" strokeWidth="2" fill="none"/>
-                <path d="m6 8 2 2 2-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+              <FiLogIn size={25} />
             </div>
             <span className={styles.myPageText}>Min side</span>
           </button>

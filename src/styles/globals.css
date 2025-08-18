@@ -1,6 +1,15 @@
 @import url('@digdir/designsystemet-css');
  @import url('./rk-designsystem.css');
 
+
+ :root {
+  --section-xs: 400px;
+  --section-sm: 600px;
+  --section-md: 900px;
+  --section-xl: 1200px;
+  --section-2xl: 1400px;
+ }
+
 html, body {
   padding: 0;
   margin: 0;
@@ -10,8 +19,6 @@ html, body {
 
 main {
   margin: 0 auto;
-  max-width: 960px;
-  padding: 0 1rem;
 }
 
 * {

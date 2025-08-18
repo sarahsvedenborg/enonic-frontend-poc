@@ -1,0 +1,64 @@
+/* Color variants */
+.colorDefault {
+  color: var(--ds-color-neutral-text-default) !important;
+}
+
+.colorSubtle {
+  color: var(--ds-color-neutral-text-subtle) !important;
+}
+
+.colorStrong {
+  color: var(--ds-color-neutral-text-strong) !important;
+}
+
+.colorBrand {
+  color: var(--ds-color-primary-brand-text-default) !important;
+}
+
+/* Weight variants */
+.weightRegular {
+  font-weight: var(--ds-font-weight-regular) !important;
+}
+
+.weightMedium {
+  font-weight: var(--ds-font-weight-medium) !important;
+}
+
+.weightSemibold {
+  font-weight: var(--ds-font-weight-semibold) !important;
+}
+
+/* Alignment variants */
+.alignLeft {
+  text-align: left !important;
+}
+
+.alignCenter {
+  text-align: center !important;
+}
+
+.alignRight {
+  text-align: right !important;
+}
+
+/* Custom typography overrides */
+.textCustom {
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+}
+
+.textSerif {
+  font-family: var(--ds-font-family) !important;
+}
+
+/* Responsive text sizing */
+@media (max-width: 768px) {
+  .responsiveText {
+    font-size: calc(var(--ds-font-size-3) * 0.9) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .responsiveText {
+    font-size: calc(var(--ds-font-size-3) * 0.8) !important;
+  }
+}

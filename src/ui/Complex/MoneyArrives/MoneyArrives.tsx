@@ -1,49 +1,54 @@
 'use client'
 import React from 'react'
-import { Heading, Typography, Link as Link2 } from 'rk-designsystem'
+
+import { Heading, Link as Link2  } from '@digdir/designsystemet-react';
 import styles from './MoneyArrives.module.css'
+import Text from '../../Basic/Text/Text'
 
 interface MoneyArrivesProps {
   title?: string
   description?: string
   percentage?: number
   learnMoreText?: string
-  learnMoreUrl?: string
+  learnMoreUrl?: string;
+  causeAmount?: number;
 }
 
 const MoneyArrives: React.FC<MoneyArrivesProps> = ({
   title = "Pengene kommer frem",
   description = "Av donasjoner fra faddere, medlemmer, givere og næringslivspartnere går 90 prosent til å gjennomføre hjelpearbeidet som det gis til. Seks prosent går til å skaffe nye midler og fire prosent går til administrasjon.",
-  percentage = 90,
+  causeAmount = 90,
   learnMoreText = "Lær mer om hvordan vi bruker pengene",
   learnMoreUrl = "#"
 }) => {
+    const percentage = causeAmount || 90;
   const remainingPercentage = 100 - percentage
 
+
+
+
   return (
+    <div className={styles.moneyArrivesSection}>
     <div className={styles.container}>
       <div className={styles.content}>
         {/* Title */}
         <div className={styles.titleSection}>
           <Heading 
             level={2} 
-            size="lg"
+     
             className={styles.title}
           >
             {title}
           </Heading>
         </div>
 
-        {/* Main Content - Two Column Layout */}
+      
         <div className={styles.mainContent}>
-          {/* Left Column - Text */}
+        
           <div className={styles.textColumn}>
-            <Typography 
-              variant="body-long-lg"
-              className={styles.description}
-            >
-              {description}
-            </Typography>
+        
+            <Text variant="long">{description}</Text>
+  
           </div>
 
           {/* Right Column - Donut Chart */}
@@ -83,12 +88,8 @@ const MoneyArrives: React.FC<MoneyArrivesProps> = ({
               
               {/* Percentage Label */}
               <div className={styles.percentageLabel}>
-                <Typography 
-                  variant="body-short-lg"
-                  className={styles.percentageText}
-                >
-                  {percentage} % går til formålet
-                </Typography>
+         
+                <Text variant='short' size='sm'>{percentage} % går til formålet</Text>
               </div>
             </div>
           </div>
@@ -100,12 +101,14 @@ const MoneyArrives: React.FC<MoneyArrivesProps> = ({
             href={learnMoreUrl}
             data-color="neutral"
             data-size="lg"
-            className={styles.learnMoreLink}
+        
           >
-            {learnMoreText}
+            <p>{learnMoreText}</p>
+           {/*   <Text variant="body-short-lg">{learnMoreText}</Text> */}
           </Link2>
         </div>
       </div>
+    </div>
     </div>
   )
 }

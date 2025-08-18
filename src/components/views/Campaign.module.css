@@ -37,6 +37,8 @@
   justify-content: center;
   margin-bottom: var(--ds-size-8);
   z-index: 0;
+  max-width: var(--section-2xl);
+  margin: 0 auto;
 }
 
 .heroOverlay {
@@ -61,6 +63,7 @@
   padding: 0 var(--ds-size-8);
   line-height: var(--ds-heading-2xl-line-height);
   letter-spacing: var(--ds-heading-2xl-letter-spacing);
+  max-width: var(--section-md);
 }
 
 .contentSection {
@@ -124,16 +127,25 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--ds-size-6);
-  justify-content: center;
+  justify-content: space-between;
+  max-width: var(--section-md);
+  margin: 0 auto;
 }
 
 .linkItem {
   margin: 0;
   padding: 0;
   flex: 1 1 300px;
-  max-width: 300px;
+/*   max-width: 300px; */
   min-width: 250px;
+ 
 }
+
+.linkItem svg{
+
+/*    transform: translateY(3px) ; */
+   margin-left: 10px;
+  }
 
 /* When there's only one item in the last row, make it span full width */
 .linksList:has(> li:last-child:nth-child(odd)) > li:last-child {
@@ -145,21 +157,40 @@
 .linksList:has(> li:nth-child(3):last-child) > li:nth-child(3) {
   flex: 1 1 100%;
   max-width: 100%;
-  margin-top: var(--ds-size-6);
+ 
 }
 
 /* Alternative approach for better browser support */
 .linksList > li:nth-child(3):last-child {
   flex: 1 1 100%;
   max-width: 100%;
-  margin-top: var(--ds-size-6);
+
 }
 
 /* For any single item in the last row (5th, 7th, etc.) */
 .linksList > li:nth-child(odd):last-child {
   flex: 1 1 100%;
   max-width: 100%;
-  margin-top: var(--ds-size-6);
+
+}
+
+.cardContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ds-size-3);
+  margin-top: var(--ds-size-3);
+}
+
+.arrowIcon {
+  flex-shrink: 0;
+  color: var(--ds-color-primary-brand-text-default);
+  transition: transform 0.2s ease;
+}
+
+/* Hover effect for the arrow */
+.linksList .linkItem:hover .arrowIcon {
+  transform: translateX(4px);
 }
 
 .otherWaysSection {
@@ -180,6 +211,19 @@
   border-top: 2px solid #f0f0f0;
   border-bottom: 2px solid #f0f0f0;
 }
+
+.richTextSection {
+  margin: var(--ds-size-12) auto;
+  max-width: var(--section-2xl);
+  background-color: var(--ds-color-neutral-background-tinted);
+}
+
+.richTextSectionInner {
+    margin: var(--ds-size-12) auto;
+    max-width: var(--section-sm);
+    padding: var(--ds-size-8) 0;
+   
+  }
 
 /* Responsive adjustments for the overlap */
 @media (max-width: 768px) {
