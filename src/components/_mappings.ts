@@ -12,15 +12,17 @@ import DonatePage from './views/DonatePage';
 import MainPage from './pages/Main';
 import Heading from './parts/Heading';
 import MoneyArrives from './parts/MoneyArrives';
+import TwoColumnLayout from './layouts/TwoColumnLayout';
+import MovieDetails, { getMovie } from './parts/MovieDetails';
 // You can set common query for all views here
 ComponentRegistry.setCommonQuery([commonQuery, commonVariables]);
 
 // Content type mappings
-ComponentRegistry.addContentType(`${APP_NAME}:campaign`, {
+ ComponentRegistry.addContentType(`${APP_NAME}:campaign`, {
   query: getCampaign,
     view: Campaign
 }); 
-
+ 
 ComponentRegistry.addContentType(`${APP_NAME}:donate`, {
   query: getDonatePage,
     view: DonatePage
@@ -36,6 +38,9 @@ ComponentRegistry.addPage(`${APP_NAME}:main`, {
 
 
 // Layout mappings
+ComponentRegistry.addLayout(`${APP_NAME}:2-column`, {
+  view: TwoColumnLayout
+});
 
 
 
@@ -52,6 +57,11 @@ ComponentRegistry.addPart(`${APP_NAME}:heading`, {
 
 ComponentRegistry.addPart(`${APP_NAME}:money-arrives`, {
   view: MoneyArrives
+});
+
+ComponentRegistry.addPart(`${APP_NAME}:movie-details`, {
+  query: getMovie,
+  view: MovieDetails
 });
 
 

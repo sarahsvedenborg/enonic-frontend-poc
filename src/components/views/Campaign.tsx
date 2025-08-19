@@ -61,8 +61,8 @@ const Campaign = (props: FetchContentResult) => {
             </div>
             <div className={styles.richTextSection}>        
                 <div className={styles.richTextSectionInner}>
-<Paragraph variant="long" data-size='md'>{teaser}</Paragraph>
-         {/*    <RichTextView className={styles.bio} data={teaser} meta={meta}></RichTextView> */}
+{/* <Paragraph variant="long" data-size='md'>{teaser}</Paragraph> */}
+            <RichTextView className={styles.bio} data={bio} meta={meta}/> 
                
             </div>
          
