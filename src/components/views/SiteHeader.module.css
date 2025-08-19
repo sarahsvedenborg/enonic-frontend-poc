@@ -216,4 +216,142 @@
   }
 }
 
+/* Menu Panel Styles */
+.menuPanel {
+  position: fixed;
+  top: 0;
+  left: -400px;
+  width: 400px;
+  height: 100vh;
+  background-color: #ffffff;
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  transition: left 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuPanelOpen {
+  left: 0;
+}
+
+.menuPanelContent {
+  flex: 1;
+  padding: var(--ds-size-8);
+  overflow-y: auto;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: var(--ds-size-4);
+  right: var(--ds-size-4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--ds-size-2);
+  border-radius: var(--ds-border-radius-md);
+  color: var(--ds-color-neutral-text-default);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  background-color: var(--ds-color-neutral-surface-hover);
+  color: var(--ds-color-neutral-text-strong);
+}
+
+.menuNav {
+  margin-top: var(--ds-size-12);
+}
+
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-4);
+}
+
+.menuItem {
+  margin: 0;
+  padding: 0;
+}
+
+.menuCard {
+  width: 100%;
+  transition: all 0.2s ease;
+}
+
+.menuCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.menuCardContent {
+  padding: var(--ds-size-4);
+}
+
+.menuCardTitle {
+  font-size: var(--ds-font-size-5);
+  font-weight: var(--ds-font-weight-semibold);
+  color: var(--ds-color-primary-brand-text-default);
+  margin: 0 0 var(--ds-size-2) 0;
+  line-height: 1.3;
+}
+
+.menuCardDescription {
+  font-size: var(--ds-font-size-3);
+  color: var(--ds-color-neutral-text-default);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.menuBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+.menuPanelOpen ~ .menuBackdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .menuPanel {
+    width: 100vw;
+    left: -100vw;
+  }
+  
+  .menuPanelContent {
+    padding: var(--ds-size-6);
+  }
+  
+  .menuCardContent {
+    padding: var(--ds-size-3);
+  }
+  
+  .menuCardTitle {
+    font-size: var(--ds-font-size-4);
+  }
+  
+  .menuCardDescription {
+    font-size: var(--ds-font-size-2);
+  }
+}
+
 

@@ -14,6 +14,8 @@ import Heading from './parts/Heading';
 import MoneyArrives from './parts/MoneyArrives';
 import TwoColumnLayout from './layouts/TwoColumnLayout';
 import MovieDetails, { getMovie } from './parts/MovieDetails';
+
+import { DonationView } from './views/DonationView';
 // You can set common query for all views here
 ComponentRegistry.setCommonQuery([commonQuery, commonVariables]);
 
@@ -58,6 +60,11 @@ ComponentRegistry.addPart(`${APP_NAME}:heading`, {
 ComponentRegistry.addPart(`${APP_NAME}:money-arrives`, {
   view: MoneyArrives
 });
+
+ComponentRegistry.addPart(`${APP_NAME}:donation-form`, {
+  view: DonationView
+});
+
 
 ComponentRegistry.addPart(`${APP_NAME}:movie-details`, {
   query: getMovie,

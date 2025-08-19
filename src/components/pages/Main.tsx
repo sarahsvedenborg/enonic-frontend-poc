@@ -1,6 +1,8 @@
 import type {PageProps} from '@enonic/nextjs-adapter';
 import React from 'react'
 import RegionsView from '@enonic/nextjs-adapter/views/Region';
+import { Card } from 'rk-designsystem';
+import { HomePageLinks } from '../../ui/HomePageLinks/HomePageLinks';
 
 const MainPage = (props: PageProps) => {
     const page = props.page;
@@ -15,6 +17,7 @@ const MainPage = (props: PageProps) => {
     return (
         <>
             <RegionsView {...props} name="main"/>
+<HomePageLinks />
         </>
     );
 };
