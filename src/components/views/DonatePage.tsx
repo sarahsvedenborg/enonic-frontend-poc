@@ -163,11 +163,10 @@ const DonatePage = (props: FetchContentResult) => {
             </div>
             <div className={styles.richTextSection}>        
                 <div className={styles.richTextSectionInner}>
-
-            <RichTextView className={styles.bio} data={bio} meta={meta}></RichTextView>
-               
-            </div>
-         
+                    {bio && (
+                        <RichTextView className={styles.bio} data={bio} meta={meta}></RichTextView>
+                    )}
+                </div>
             </div>
             <MoneyArrives />
 

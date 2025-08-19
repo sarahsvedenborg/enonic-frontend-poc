@@ -22,7 +22,6 @@ interface HeadingProps {
   color?: 'default' | 'subtle' | 'strong' | 'brand'
   weight?: 'regular' | 'medium' | 'semibold'
   align?: 'left' | 'center' | 'right'
-  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 }
 
 const Heading: React.FC<HeadingProps> = ({
@@ -32,8 +31,7 @@ const Heading: React.FC<HeadingProps> = ({
   className = '',
   color = 'default',
   weight = 'regular',
-  align = 'left',
-  as
+  align = 'left'
 }) => {
   const getHeadingSize = (): HeadingSize => {
     if (size) {
@@ -97,8 +95,7 @@ const Heading: React.FC<HeadingProps> = ({
   return (
     <DSHeading
       level={level}
-      size={getHeadingSize()}
-      as={as}
+      data-size={getHeadingSize()}
       className={`${getColorClass()} ${getWeightClass()} ${getAlignClass()} ${className}`}
     >
       {children}

@@ -44,6 +44,11 @@
   dependencies:
     tslib "^2.4.0"
 
+"@enonic-types/core@^7.15.3":
+  version "7.15.3"
+  resolved "https://registry.yarnpkg.com/@enonic-types/core/-/core-7.15.3.tgz#5c971692225eafee4912928052789e975f694f46"
+  integrity sha512-c7fxoK6mp5tluTBlddxWIyFVR6BpJ191zyE32GrsfZb9b8+ikudWjU+h6+F+2QeIk4zKGdNnXV6M/Q5m4tX+mw==
+
 "@enonic/nextjs-adapter@^3.2.1":
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/@enonic/nextjs-adapter/-/nextjs-adapter-3.2.2.tgz#80797a9f51e16545a8eaab0e2514adf9d9679e11"
