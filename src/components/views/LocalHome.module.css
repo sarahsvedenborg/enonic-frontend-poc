@@ -1,0 +1,131 @@
+.container {
+    max-width: var(--section-sm);
+    margin: 0 auto;
+    padding: var(--ds-size-8) var(--ds-size-6);
+}
+
+.contentSection {
+    margin-bottom: var(--ds-size-8);
+    text-align: center;
+}
+
+.title {
+    width: 100%;
+    color: var(--ds-color-neutral-text-default);
+    margin-bottom: var(--ds-size-4);
+    text-align: left;
+}
+
+.description {
+    color: var(--ds-color-neutral-text-default);
+    max-width: 600px;
+    text-align: left;
+
+}
+
+.richTextSection {
+    margin: 0 auto;
+    max-width: var(--section-sm);
+}
+
+.richTextSectionInner {
+    max-width: 100%;
+}
+
+.bio {
+    color: var(--ds-color-neutral-text-default);
+    line-height: 1.6;
+}
+
+.contactSection {
+    margin: var(--ds-size-8) 0;
+    max-width: ;
+
+}
+
+.contactCard {
+    padding: var(--ds-size-6);
+    border-radius: var(--ds-border-radius-lg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contactContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-size-4);
+}
+
+.contactTitle {
+    color: var(--ds-color-primary-brand-text-default);
+    margin-bottom: var(--ds-size-4);
+    text-align: center;
+}
+
+.contactList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-size-3);
+}
+
+.contactItem {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--ds-size-3);
+    padding: var(--ds-size-2) 0;
+    border-bottom: 1px solid var(--ds-color-neutral-border-subtle);
+}
+
+.contactItem:last-child {
+    border-bottom: none;
+}
+
+.contactLabel {
+    font-weight: var(--ds-font-weight-semibold);
+    color: var(--ds-color-neutral-text-strong);
+    min-width: 80px;
+    flex-shrink: 0;
+}
+
+.contactValue {
+    color: var(--ds-color-neutral-text-default);
+    flex: 1;
+}
+
+.contactLink {
+    color: var(--ds-color-primary-brand-text-default);
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.contactLink:hover {
+    color: var(--ds-color-primary-brand-text-strong);
+}
+
+.ctaSection {
+    text-align: center;
+    margin-top: var(--ds-size-8);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--ds-size-6) var(--ds-size-4);
+    }
+
+    .contactSection {
+        max-width: 100%;
+    }
+
+    .contactCard {
+        padding: var(--ds-size-4);
+    }
+
+    .contactItem {
+        flex-direction: column;
+        gap: var(--ds-size-1);
+    }
+
+    .contactLabel {
+        min-width: auto;
+    }
+}

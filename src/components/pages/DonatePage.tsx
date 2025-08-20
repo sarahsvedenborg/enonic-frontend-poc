@@ -1,4 +1,4 @@
-import type {PageProps} from '@enonic/nextjs-adapter';
+import type { PageProps } from '@enonic/nextjs-adapter';
 import React from 'react'
 import RegionsView from '@enonic/nextjs-adapter/views/Region';
 
@@ -14,7 +14,8 @@ const DonatePage = (props: PageProps) => {
     }
     return (
         <>
-            <RegionsView {...props} name="main"/>
+            <h1>Donate Page</h1>
+            <RegionsView {...props} name="main" />
         </>
     );
 };
