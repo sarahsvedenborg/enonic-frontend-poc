@@ -1,10 +1,11 @@
-import {FetchContentResult, validateData} from "@enonic/nextjs-adapter";
-import {fetchContent, fetchContentPathsForAllLocales} from "@enonic/nextjs-adapter/server";
+import { FetchContentResult, validateData } from "@enonic/nextjs-adapter";
+import { fetchContent, fetchContentPathsForAllLocales } from "@enonic/nextjs-adapter/server";
+import { useFeatureFlagEnabled } from 'posthog-js/react'
 import MainView from '@enonic/nextjs-adapter/views/MainView';
 
 import "../../../components/_mappings";
-import {Metadata} from 'next';
-import {draftMode} from 'next/headers';
+import { Metadata } from 'next';
+import { draftMode } from 'next/headers';
 import React from 'react';
 
 // NB. Using this option with default value bails out static generation !!!
@@ -19,8 +20,8 @@ export type PageProps = {
     contentPath: string[],
 }
 
-export default async function Page({params}: { params: PageProps }) {
-    const {isEnabled: draft} = draftMode();
+export default async function Page({ params }: { params: PageProps }) {
+    const { isEnabled: draft } = draftMode();
     console.info(`Accessing page${draft ? ' (draft)' : ''}`, params);
 
     const start = Date.now();
@@ -31,13 +32,14 @@ export default async function Page({params}: { params: PageProps }) {
 
     validateData(data);
 
+
     return (
-        <MainView {...data}/>
+        <MainView {...data} />
     )
 };
 
-export async function generateMetadata({params}: { params: PageProps }): Promise<Metadata> {
-    const {common} = await fetchContent(params);
+export async function generateMetadata({ params }: { params: PageProps }): Promise<Metadata> {
+    const { common } = await fetchContent(params);
     return {
         title: common?.get?.displayName || 'Not found',
     };
