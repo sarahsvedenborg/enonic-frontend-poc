@@ -63,7 +63,7 @@ const DonationForm: React.FC<DonationFormProps> = ({
 
 
           <div className={styles.header}>
-            <h1 className={styles.title}>{title}</h1>
+            <h1 className={styles.title}>{flagEnabled ? 'Gi penger Nå' : title}</h1>
             <p className={styles.description}>{description}</p>
           </div>
 
