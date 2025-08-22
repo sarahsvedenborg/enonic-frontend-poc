@@ -23,48 +23,6 @@ const ChildList = (props: PartProps) => {
             maxWidth: 960,
             padding: `0 1.0875rem`,
         }}>
-            {
-                children &&
-                /*         <div>
-                            {children.map((child: any, i: number) => (
-                                <Card
-                                    data-color="neutral"
-                                    style={{
-                                        maxWidth: '300px'
-                                    }}
-                                >
-                                    <Card.Block>
-                                        <img
-                                            alt="Random placeholder image"
-                                            src="https://picsum.photos/seed/storybook/300/200"
-                                            style={{
-                                                aspectRatio: '3 / 2',
-                                                display: 'block',
-                                                objectFit: 'cover',
-                                                width: '100%'
-                                            }}
-                                        />
-                                    </Card.Block>
-                                    <Card.Block>
-                                        <h3>
-                                            {child.displayName}
-                                        </h3>
-                                        <p>
-                                            The image uses an online placeholder.
-                                        </p>
-                                    </Card.Block>
-                                </Card>
-                            ))}
-                        </div> */
-                <ul>{
-                    children.map((child: any, i: number) => (
-                        <li key={i}>
-                            <Link href={prefix + child._path}>{child.displayName}</Link>
-                        </li>
-                    ))
-                }</ul>
-
-            }
             {children && <ChildLinkList links={children} />}
         </main>
     );
