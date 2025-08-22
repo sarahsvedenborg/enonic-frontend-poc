@@ -49,7 +49,9 @@ export const SiteHeader: React.FC = () => {
           <div className={styles.centerSection}>
             <div className={styles.brand}>
               <div className={styles.logoContainer}>
-                <img src="https://www.rodekors.no/UI/logo_main.svg" alt="Røde Kors" width="200" height="100" />
+                <Link href="/">
+                  <img src="https://www.rodekors.no/UI/logo_main.svg" alt="Røde Kors" width="200" height="100" />
+                </Link>
               </div>
               {/*  <div className={styles.brandText}>
                 <span className={styles.separator}>|</span>
@@ -115,7 +117,7 @@ export const SiteHeader: React.FC = () => {
                   variant="tinted"
                   className={styles.menuCard}
                 >
-                  <Link href="/no/na-kjemper-barn-og-voksne-for-livet-i-libanon" onClick={closeMenu}>
+                  <Link href="/kampanjer" onClick={closeMenu}>
                     <div className={styles.menuCardContent}>
                       <h3 className={styles.menuCardTitle}>Kampanjer</h3>
                       <p className={styles.menuCardDescription}>
