@@ -41,6 +41,7 @@ const DonatePage = (props: FetchContentResult) => {
                     title="Du kan hjelpe"
                     description="Bidra til å hjelpe de mest sårbare i land rammet av kriser, krig og konflikt."
                     onDonate={handleDonate}
+                    isDefault={true}
                 />
             </div>
 

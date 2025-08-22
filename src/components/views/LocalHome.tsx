@@ -2,7 +2,6 @@
 import React from 'react'
 import { FetchContentResult, getUrl, I18n } from '@enonic/nextjs-adapter';
 import Link from 'next/link';
-import { Buttons as Button, } from 'rk-designsystem'
 import { Heading, Paragraph } from '@digdir/designsystemet-react'
 import styles from './LocalHome.module.css'
 
@@ -63,13 +62,6 @@ const LocalHome = (props: FetchContentResult) => {
                             <RichTextView className={styles.bio} data={bio} meta={meta} />
                         )}
                     </div>
-                </div>
-
-
-                <div className={styles.ctaSection}>
-                    <Button variant="primary" data-size='lg'>
-                        Gi nå
-                    </Button>
                 </div>
             </div>
         </>

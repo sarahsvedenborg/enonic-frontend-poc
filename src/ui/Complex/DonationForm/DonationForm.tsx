@@ -1,11 +1,14 @@
 'use client'
 import React, { useState } from 'react'
-import { Buttons as Button, Buttons } from 'rk-designsystem'
+import { Buttons as Button, Buttons, Input } from 'rk-designsystem'
 import styles from './DonationForm.module.css'
 import { FiChevronDown, FiHeart } from 'react-icons/fi'
+import DonationBanner from '../../../components/views/DonationBanner'
+import DirectDonation from '../../../components/views/DirectDonation'
 
 interface DonationFormProps {
   title?: string
+  isDefault?: boolean,
   description?: string,
   amounts?: number[],
   vippsNumber?: string,
@@ -23,6 +26,7 @@ const handleDonate = (amount: number, frequency: 'monthly' | 'one-time') => {
 
 const DonationForm: React.FC<DonationFormProps> = ({
   title = "Du kan hjelpe",
+  isDefault = false,
   description = "Bidra til å hjelpe de mest sårbare i land rammet av kriser, krig og konflikt.",
   amounts = [100, 300, 500],
   vippsNumber = "2272",
@@ -59,9 +63,26 @@ const DonationForm: React.FC<DonationFormProps> = ({
 
           {/* Frequency Selection */}
           <div className={styles.section}>
-            <label className={styles.label}>Hvor ofte vil du gi?</label>
+            <label className={styles.label}>{isDefault ? "Velg formål" : "Hvor ofte vil du gi?"}</label>
 
-            <div className={styles.buttonGroup}>
+            {isDefault && <>
+              {/*    <React.forwardRef
+                htmlFor="input-default"
+                id="input-default-label"
+              >
+                Input Label
+              </React.forwardRef> */}
+              <Input
+                aria-labelledby="input-default-label"
+                data-size="md"
+                id="input-default"
+                name="default-input"
+                placeholder="Type something..."
+                type="text"
+              />
+            </>}
+
+            {!isDefault && <div className={styles.buttonGroup}>
               <Buttons
                 variant="secondary"
                 className={` ${frequency === 'monthly' ? styles.selected : ''}`}
@@ -78,7 +99,7 @@ const DonationForm: React.FC<DonationFormProps> = ({
               >
                 Engangsgave
               </Buttons>
-            </div>
+            </div>}
           </div>
 
           {/* Amount Selection */}
@@ -155,6 +176,22 @@ const DonationForm: React.FC<DonationFormProps> = ({
             </button>
           </div>
         </div>
+      </div>
+
+      <div className={styles.bannerSection}>
+        <DonationBanner
+          percentage={90}
+          text="av alle bidrag går til formålet"
+        />
+      </div>
+
+
+      <div className={styles.directDonationSection}>
+        <DirectDonation
+          title="Du kan også gi direkte"
+          vippsNumber="2272"
+          accountNumber="8200 06 10190"
+        />
       </div>
     </div>
   )

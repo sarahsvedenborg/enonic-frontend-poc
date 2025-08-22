@@ -8,6 +8,7 @@
   border: 2px solid rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
   font-family: var(--ds-font-family-body);
+  margin-top: -4em;
 }
 
 .header {
@@ -235,12 +236,12 @@
     padding: var(--ds-size-6);
     margin: 0 var(--ds-size-4);
   }
-  
+
   .buttonGroup {
     flex-direction: column;
     gap: var(--ds-size-2);
   }
-  
+
   .title {
     font-size: var(--ds-font-size-8);
   }

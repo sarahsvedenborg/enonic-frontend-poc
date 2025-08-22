@@ -19,14 +19,18 @@ import MovieDetails, { getMovie } from './parts/MovieDetails';
 import { DonationView } from './views/DonationView';
 import LocalHome from './views/LocalHome';
 import getLocalHome from './queries/getLocalHome';
+import getCampaignHeader from './queries/getCampaignHeader';
+import getCampaignBody from './queries/getCampaignBody';
+import CampaignBody from './views/CampaignBody';
+import CampaignHeader from './views/CampaignHeader';
 // You can set common query for all views here
 ComponentRegistry.setCommonQuery([commonQuery, commonVariables]);
 
 // Content type mappings
-ComponentRegistry.addContentType(`${APP_NAME}:campaign`, {
+/* ComponentRegistry.addContentType(`${APP_NAME}:campaign`, {
   query: getCampaign,
   view: Campaign
-});
+}); */
 
 ComponentRegistry.addContentType(`${APP_NAME}:donate`, {
   query: getDonatePage,
@@ -76,6 +80,16 @@ ComponentRegistry.addPart(`${APP_NAME}:money-arrives`, {
 
 ComponentRegistry.addPart(`${APP_NAME}:donation-form`, {
   view: DonationView
+});
+
+ComponentRegistry.addPart(`${APP_NAME}:campaignHeader`, {
+  query: getCampaignHeader,
+  view: CampaignHeader
+});
+
+ComponentRegistry.addPart(`${APP_NAME}:campaignBody`, {
+  query: getCampaignBody,
+  view: CampaignBody
 });
 
 
