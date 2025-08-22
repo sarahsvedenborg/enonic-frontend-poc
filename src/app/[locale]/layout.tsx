@@ -1,17 +1,17 @@
-import {I18n, PORTAL_COMPONENT_ATTRIBUTE} from '@enonic/nextjs-adapter';
-import {Metadata} from 'next';
-import {ReactNode} from 'react';
-
+import { I18n, PORTAL_COMPONENT_ATTRIBUTE } from '@enonic/nextjs-adapter';
+import { Metadata } from 'next';
+import { ReactNode } from 'react';
+import { PostHogProvider } from '../providers'
 import '../../styles/globals.css';
 
-import {PageProps} from './[[...contentPath]]/page';
+import { PageProps } from './[[...contentPath]]/page';
 
 type LayoutProps = {
     params: PageProps
     children: ReactNode
 }
 
-export default async function LocaleLayout({params, children}: LayoutProps) {
+export default async function LocaleLayout({ params, children }: LayoutProps) {
 
     // we only have locale in the params on the [locale] level
     await I18n.setLocale(params.locale);
@@ -23,9 +23,11 @@ export default async function LocaleLayout({params, children}: LayoutProps) {
 
     return (<html lang="en">
         <body {...bodyAttrs}>
-        {children}
+            <PostHogProvider>
+                {children}
+            </PostHogProvider>
         </body>
-        </html>
+    </html>
     );
 }
 
