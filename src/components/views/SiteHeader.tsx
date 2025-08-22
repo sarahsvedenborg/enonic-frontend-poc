@@ -21,8 +21,8 @@ export const SiteHeader: React.FC = () => {
         <div className={styles.headerInner}>
           {/* Left Section - Navigation/Search */}
           <div className={styles.leftSection}>
-            <button 
-              className={styles.menuButton} 
+            <button
+              className={styles.menuButton}
               aria-label="Meny"
               onClick={toggleMenu}
             >
@@ -33,12 +33,12 @@ export const SiteHeader: React.FC = () => {
               </div>
               <span className={styles.menuText}>Meny</span>
             </button>
-            
+
             <button className={styles.searchButton} aria-label="Søk">
               <div className={styles.searchIcon}>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="2" fill="none"/>
-                  <path d="m10 10 4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  <circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <path d="m10 10 4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                 </svg>
               </div>
               <span className={styles.searchText}>Søk</span>
@@ -64,12 +64,12 @@ export const SiteHeader: React.FC = () => {
             <Buttons variant="primary" className={styles.donateButton}>
               Gi nå
             </Buttons>
-            
+
             <button className={styles.myPageButton} aria-label="Min side">
               <div className={styles.myPageIcon}>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <rect x="2" y="4" width="12" height="8" rx="1" stroke="currentColor" strokeWidth="2" fill="none"/>
-                  <path d="m6 8 2 2 2-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <rect x="2" y="4" width="12" height="8" rx="1" stroke="currentColor" strokeWidth="2" fill="none" />
+                  <path d="m6 8 2 2 2-2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
               <span className={styles.myPageText}>Min side</span>
@@ -84,7 +84,7 @@ export const SiteHeader: React.FC = () => {
           {/* Close Button */}
           <button className={styles.closeButton} onClick={closeMenu} aria-label="Lukk meny">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-              <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
 
@@ -100,15 +100,51 @@ export const SiteHeader: React.FC = () => {
                 >
                   <Link href="/no/gi-penger-og-redd-liv" onClick={closeMenu}>
                     <div className={styles.menuCardContent}>
-                      <h3 className={styles.menuCardTitle}>Gi støtte</h3>
+                      <h3 className={styles.menuCardTitle}>Gi støtte - Fast giverside</h3>
                       <p className={styles.menuCardDescription}>
-                        Bidra til å hjelpe de som trenger det mest
+                        (Innhold i enonic, hardkodet design i frontend)
+                      </p>
+                    </div>
+                  </Link>
+                </Card>
+              </li>
+              <li className={styles.menuItem}>
+                <Card
+                  asChild
+                  data-color="brand1"
+                  variant="tinted"
+                  className={styles.menuCard}
+                >
+                  <Link href="/no/na-kjemper-barn-og-voksne-for-livet-i-libanon" onClick={closeMenu}>
+                    <div className={styles.menuCardContent}>
+                      <h3 className={styles.menuCardTitle}>Kampanjer</h3>
+                      <p className={styles.menuCardDescription}>
+                        (Innhold i enonic og mulighet for redaktører å tilpasse siden med andre elementer)
                       </p>
                     </div>
                   </Link>
                 </Card>
               </li>
 
+
+              <li className={styles.menuItem}>
+                <Card
+                  asChild
+                  data-color="brand1"
+                  variant="tinted"
+                  className={styles.menuCard}
+                >
+                  <Link href="/lokallag/rode-kors-ullensaker" onClick={closeMenu}>
+                    <div className={styles.menuCardContent}>
+                      <h3 className={styles.menuCardTitle}>Lokalforenring</h3>
+                      <p className={styles.menuCardDescription}>
+                        (work in progress)
+                      </p>
+                    </div>
+                  </Link>
+                </Card>
+              </li>
+              {/* 
               <li className={styles.menuItem}>
                 <Card
                   asChild
@@ -125,25 +161,9 @@ export const SiteHeader: React.FC = () => {
                     </div>
                   </Link>
                 </Card>
-              </li>
+              </li> */}
 
-              <li className={styles.menuItem}>
-                <Card
-                  asChild
-                  data-color="brand1"
-                  variant="tinted"
-                  className={styles.menuCard}
-                >
-                  <Link href="/no/na-kjemper-barn-og-voksne-for-livet-i-libanon" onClick={closeMenu}>
-                    <div className={styles.menuCardContent}>
-                      <h3 className={styles.menuCardTitle}>Kampanjer</h3>
-                      <p className={styles.menuCardDescription}>
-                        Se våre aktuelle kampanjer og initiativ
-                      </p>
-                    </div>
-                  </Link>
-                </Card>
-              </li>
+
             </ul>
           </nav>
         </div>
