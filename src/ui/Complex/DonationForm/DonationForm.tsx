@@ -5,7 +5,7 @@ import styles from './DonationForm.module.css'
 import { FiChevronDown, FiHeart } from 'react-icons/fi'
 import DonationBanner from '../../../components/views/DonationBanner'
 import DirectDonation from '../../../components/views/DirectDonation'
-import { useFeatureFlagEnabled } from 'posthog-js/react'
+import { useFeatureFlagEnabled, getFeatureFlag } from 'posthog-js/react'
 
 interface DonationFormProps {
   title?: string
@@ -50,7 +50,7 @@ const DonationForm: React.FC<DonationFormProps> = ({
     setCustomAmount('')
   }
 
-  const flagEnabled = useFeatureFlagEnabled('my-flag')
+  const flagEnabled = getFeatureFlag('my-flag') === 'override';
   if (flagEnabled) {
     console.log('flagEnabled')
   }
