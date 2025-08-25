@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const path = require('path');
 
-function getEnonicWebpackConfig(config, {buildId, dev, isServer, defaultLoaders, nextRuntime, webpack}) {
+function getEnonicWebpackConfig(config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) {
     config.resolve.fallback = {
         ...config.resolve.fallback,
         // client-side resolution for node modules
@@ -22,7 +22,7 @@ async function getEnonicHeaders() {
             headers: [
                 {
                     key: 'Content-Security-Policy',
-                    value: `script-src 'self' 'unsafe-eval' 'unsafe-inline';`
+                    value: `script-src 'self' 'unsafe-eval' 'unsafe-inline' 'https://eu.posthog.com';`
                 }
             ],
         },
