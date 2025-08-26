@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from 'react'
 
 import './Popup.css'
@@ -80,6 +82,8 @@ export function Popup() {
     const [activeFlag, setActiveFlag] = useState(null)
     const posthog = usePostHog()
     const activeFlags = useActiveFeatureFlags()
+
+    console.log('got here', activeFlags)
 
     useEffect(() => {
         if (!activeFlags) {
