@@ -10,7 +10,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body>
                 <PostHogProvider>
                     {children}
-                    {/*    <Popup /> */}
+                    <Popup />
                 </PostHogProvider>
             </body>
         </html>
