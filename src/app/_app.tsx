@@ -2,6 +2,7 @@
 
 import './globals.css'
 import { PostHogProvider } from './providers'
+import { Popup } from '../posthogPopup/Popup'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -9,6 +10,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body>
                 <PostHogProvider>
                     {children}
+                    {/*    <Popup /> */}
                 </PostHogProvider>
             </body>
         </html>
