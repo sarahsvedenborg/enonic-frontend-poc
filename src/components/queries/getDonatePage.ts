@@ -7,6 +7,14 @@ query($path:ID!){
       displayName
       ... on ${APP_NAME_UNDERSCORED}_Donate {
         data {
+        photos {
+           ... on media_Image {
+              imageUrl: imageUrl(type: absolute, scale: "width(2000)")
+              attachments {
+                name
+              }
+            }
+          }
           ${richTextQuery('bio')}
           info{
           _name

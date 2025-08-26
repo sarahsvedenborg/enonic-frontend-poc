@@ -13,9 +13,11 @@ import MoneyArrives from '../../ui/Complex/MoneyArrives/MoneyArrives';
 
 const DonatePage = (props: FetchContentResult) => {
     const { displayName, data, parent } = props.data?.get as any;
-    const { teaser, bio, info, otherWays } = data;
-    console.log("data donate", data)
+    const { bio, info, otherWays, photos } = data;
+
     const meta = props.meta;
+
+    const headerPhotoUrl = photos?.imageUrl
 
     const handleDonate = (amount: number, frequency: 'monthly' | 'one-time') => {
         console.log(`Donating ${amount} kr ${frequency}`)
@@ -25,7 +27,7 @@ const DonatePage = (props: FetchContentResult) => {
     return (
         <>
             {/* Hero Section */}
-            <div className={styles.heroSection}>
+            <div className={styles.heroSection} style={headerPhotoUrl ? { backgroundImage: `url(${headerPhotoUrl})` } : {}}>
                 {/* Overlay for better text readability */}
                 <div className={styles.heroOverlay}></div>
 

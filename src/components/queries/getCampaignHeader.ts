@@ -7,7 +7,7 @@ query($path:ID!){
       displayName
         ... on ${APP_NAME_UNDERSCORED}_Campaign {
         data {
-  photos {
+          photos {
            ... on media_Image {
               imageUrl: imageUrl(type: absolute, scale: "width(2000)")
               attachments {
