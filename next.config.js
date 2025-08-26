@@ -22,7 +22,7 @@ async function getEnonicHeaders() {
             headers: [
                 {
                     key: 'Content-Security-Policy',
-                    value: `script-src 'self' 'unsafe-eval' 'unsafe-inline'; script-src-elem 'self' 'unsafe-inline' 'https://eu-assets.i.posthog.com' 'https://cp-assets.i.posthog.com' 'https://static.posthog.com' 'https://eu.i.posthog.com';`
+                    value: `script-src 'self' 'unsafe-eval' 'unsafe-inline'; script-src-elem 'self' 'unsafe-inline' https://*.posthog.com;`
                 }
             ],
         },
