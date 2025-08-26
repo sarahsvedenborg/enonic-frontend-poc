@@ -1,4 +1,4 @@
-import {APP_NAME_UNDERSCORED, richTextQuery} from '@enonic/nextjs-adapter';
+import { APP_NAME_UNDERSCORED, richTextQuery } from '@enonic/nextjs-adapter';
 
 const getCampaign = () => `
 query($path:ID!){
@@ -7,7 +7,6 @@ query($path:ID!){
       displayName
       ... on ${APP_NAME_UNDERSCORED}_Donate {
         data {
-        teaser
           ${richTextQuery('bio')}
           info{
           _name

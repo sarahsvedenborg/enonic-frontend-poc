@@ -1,6 +1,6 @@
 
 
-import { Context, PartProps, VariablesGetterResult } from '@enonic/nextjs-adapter';
+import { APP_NAME_UNDERSCORED, Context, PartProps, VariablesGetterResult } from '@enonic/nextjs-adapter';
 import Link from 'next/link';
 import React from 'react'
 import { Card } from 'rk-designsystem';
@@ -11,6 +11,7 @@ const FORBIDDEN_TYPES_REGEXP = "^media:.*|portal:fragment|portal:template-folder
 const ChildList = (props: PartProps) => {
     const { data, meta } = props;
     const children = data.get.children;
+
     if (!children || children.length === 0) {
         return null;
     }

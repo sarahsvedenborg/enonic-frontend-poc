@@ -147,7 +147,7 @@ const DonatePage = (props: FetchContentResult) => {
 
             <div className={`${styles.contentSection} ${styles.containerSmall}`}>
                 {/*      <h2 className={styles.contentTitle}>{displayName}</h2> */}
-                <p className={styles.contentText}>{teaser}</p>
+                {/*    <p className={styles.contentText}>{teaser}</p> */}
                 {/*   <div className={styles.buttonContainer}>
                       <Button variant="primary">
                           Lagre
