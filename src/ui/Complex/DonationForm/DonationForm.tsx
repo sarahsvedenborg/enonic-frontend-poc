@@ -31,7 +31,7 @@ const DonationForm: React.FC<DonationFormProps> = ({
   amounts = [100, 300, 500],
   vippsNumber = "2272",
   accountNumber = "8200 06 10190",
-  factBox = "Din gave gjør en forskjell. For {customAmount || amount} kroner kan to personer få hvert sitt teppe og mat og vann i en måned.",
+  factBox = "Din gave gjør en forskjell. For 300 kroner kan to personer få hvert sitt teppe og mat og vann i en måned.",
   onDonate = (amount: number, frequency: 'monthly' | 'one-time') => { console.log(`Donating ${amount} kr ${frequency}`) },
   ...props
 }) => {
