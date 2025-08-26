@@ -31,8 +31,10 @@ const DonatePage = (props: FetchContentResult) => {
 
                 {/* Centered H1 Title */}
                 <h1 className={styles.heroTitle}>
-                    {displayName}
+                    {displayName}<br />
+                    <span style={{ fontSize: '0.5em', textTransform: 'uppercase' }}>(Fast giverside)</span>
                 </h1>
+
             </div>
 
             {/* Donation Form */}

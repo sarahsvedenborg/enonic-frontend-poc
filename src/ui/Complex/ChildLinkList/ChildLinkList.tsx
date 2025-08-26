@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Card } from "rk-designsystem";
+import styles from '../../../components/views/SiteHeader.module.css'
 
 export const ChildLinkList = ({ links }: { links: any[] }) => {
     return (
@@ -13,8 +14,8 @@ export const ChildLinkList = ({ links }: { links: any[] }) => {
             padding: '1rem 0'
         }}>
             {links.map((link, index) => (
-                <Link href={link._path} key={index}>
-                    <Card
+                <Link href={link._path} key={index} style={{ textDecoration: 'none' }}>
+                    {/* <Card
                         key={index}
                         data-color="neutral"
                         style={{
@@ -23,7 +24,7 @@ export const ChildLinkList = ({ links }: { links: any[] }) => {
                         }}
                     >
                         <Card.Block>
-                            <img
+                               <img
                                 alt="Random placeholder image"
                                 src="https://www.rodekors.no/globalassets/_landene-vi-jobber-i/_midtosten-og-nord-afrika/palestina/250707_gaza_feltsykehus_1600.jpg?width=1600&quality=90"
                                 style={{
@@ -32,16 +33,29 @@ export const ChildLinkList = ({ links }: { links: any[] }) => {
                                     objectFit: 'cover',
                                     width: '100%'
                                 }}
-                            />
+                            /> 
                         </Card.Block>
                         <Card.Block>
                             <h3>
                                 {link.displayName}
                             </h3>
-                            {/* <p>
-                            The image uses an online placeholder.
-                        </p> */}
+                           
                         </Card.Block>
+                    </Card> */}
+                    <Card
+                        asChild
+                        data-color="brand1"
+                        variant="tinted"
+
+                    >
+
+                        <div >
+                            <h3 >{link.displayName}</h3>
+                            {/*  <p className={styles.menuCardDescription}>
+                                    (Innhold i enonic, hardkodet design i frontend)
+                                </p> */}
+                        </div>
+
                     </Card>
                 </Link>
             ))}

@@ -13,10 +13,15 @@ import MoneyArrives from '../../ui/Complex/MoneyArrives/MoneyArrives';
 
 const Campaign = (props: FetchContentResult) => {
     const { displayName, data, parent } = props.data?.get as any;
+
     if (!displayName) {
         <h1>{`<Kampanje overskrift>`}</h1>
     }
+    const headerPhotoUrl = data?.photos?.imageUrl
 
+    /*  const headerPhoto = (data.photos || [])[0] || {};
+     console.log("photos", data.photos)
+     console.log("headerPhoto", headerPhoto) */
 
     const meta = props.meta;
 
@@ -25,9 +30,18 @@ const Campaign = (props: FetchContentResult) => {
            // Here you would integrate with your payment system
        } */
 
+
+    // const imageUrl = getUrl(headerPhoto.imageUrl, meta)
+    /*  {
+      personPhoto.imageUrl &&
+      <img src={getUrl(personPhoto.imageUrl, meta)}
+           title={`${displayName} as ${character}`}
+           alt={`${displayName} as ${character}`}/>
+  } */
+
     return (
         <>
-            <div className={styles.heroSection}>
+            <div className={styles.heroSection} style={headerPhotoUrl ? { backgroundImage: `url(${headerPhotoUrl})` } : {}}>
                 <div className={styles.heroOverlay}></div>
 
 
