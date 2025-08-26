@@ -85,6 +85,7 @@ export function Popup() {
         if (!activeFlags) {
             return
         }
+        console.log('activeFlags', activeFlags)
         for (const flag of activeFlags) {
             if (flag.startsWith('popup-') && posthog?.isFeatureEnabled(flag)) {
                 const payload = posthog?.getFeatureFlagPayload(flag)
