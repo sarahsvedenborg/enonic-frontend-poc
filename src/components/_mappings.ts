@@ -23,6 +23,8 @@ import getCampaignHeader from './queries/getCampaignHeader';
 import getCampaignBody from './queries/getCampaignBody';
 import CampaignBody from './views/CampaignBody';
 import CampaignHeader from './views/CampaignHeader';
+import getArticle from './queries/getArticle';
+import Article from './views/Article';
 // You can set common query for all views here
 ComponentRegistry.setCommonQuery([commonQuery, commonVariables]);
 
@@ -42,7 +44,10 @@ ComponentRegistry.addContentType(`${APP_NAME}:localHome`, {
   view: LocalHome
 });
 
-
+ComponentRegistry.addContentType(`${APP_NAME}:customArticle`, {
+  query: getArticle,
+  view: Article
+});
 
 // Page mappings
 ComponentRegistry.addPage(`${APP_NAME}:main`, {
