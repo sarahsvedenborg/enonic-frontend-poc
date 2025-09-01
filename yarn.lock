@@ -2739,7 +2739,7 @@
   dependencies:
     "@sanity/diff-match-patch" "^3.2.0"
 
-"@sanity/eslint-config-studio@^3.23.0":
+"@sanity/eslint-config-studio@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@sanity/eslint-config-studio/-/eslint-config-studio-5.0.2.tgz#c128e64df936ae8da1644383b84aaecdf45d8564"
   integrity sha512-uxa0gA+h/OwafzItTcK/XY7xnVbJTXZLPAsDHbdz1PU1LHek571r36d1A3pREl7H4fSgDnkjFV0xaB1tc9onWA==
