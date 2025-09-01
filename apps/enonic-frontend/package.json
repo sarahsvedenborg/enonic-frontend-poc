@@ -1,0 +1,40 @@
+{
+    "name": "enonic-frontend",
+    "version": "3.2.0",
+    "license": "Apache-2.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "prod": "npm run build && npm run start",
+        "start": "next start -p 4242",
+        "build": "next build",
+        "lint": "next lint"
+    },
+    "dependencies": {
+        "@digdir/designsystemet-css": "^1.1.10",
+        "@digdir/designsystemet-react": "^1.1.10",
+        "@enonic-types/core": "^7.15.3",
+        "@enonic/nextjs-adapter": "^3.2.1",
+        "cross-env": "^7.0.3",
+        "date-fns": "^4.1.0",
+        "html-react-parser": "^5.1.18",
+        "next": "^14.2.30",
+        "posthog-js": "^1.260.2",
+        "posthog-node": "^5.7.0",
+        "react": "18.3.1",
+        "react-dom": "18.3.1",
+        "react-icons": "^5.5.0",
+        "rk-designsystem": "^1.0.0",
+        "unescape": "^1.0.1"
+    },
+    "devDependencies": {
+        "@types/node": "^22.7.5",
+        "@types/react": "18.3.11",
+        "@types/react-dom": "^18.3.1",
+        "@typescript-eslint/parser": "^8.9.0",
+        "eslint": "^9.29.0",
+        "eslint-config-next": "^15.3.3",
+        "prettier": "^3.3.3",
+        "typescript": "5.6.3"
+    }
+}
