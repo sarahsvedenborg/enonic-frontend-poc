@@ -5,15 +5,18 @@
   "private": true,
   "workspaces": [
     "apps/enonic-frontend",
-    "apps/sanity-cms"
+    "apps/sanity-cms",
+    "apps/sanity-frontend"
   ],
   "scripts": {
     "dev": "concurrently \"yarn workspace enonic-frontend dev\" \"yarn workspace sanity-cms dev\"",
     "dev:enonic": "yarn workspace enonic-frontend dev",
+    "dev:sf": "yarn workspace sanity-frontend dev",
     "dev:sanity": "yarn workspace sanity-cms dev",
     "build": "yarn workspace enonic-frontend build && yarn workspace sanity-cms build",
     "build:enonic": "yarn workspace enonic-frontend build",
     "build:sanity": "yarn workspace sanity-cms build",
+    "build:sf": "yarn workspace sanity-frontend build",
     "lint": "yarn workspace enonic-frontend lint && yarn workspace sanity-cms lint",
     "lint:enonic": "yarn workspace enonic-frontend lint",
     "lint:sanity": "yarn workspace sanity-cms lint",

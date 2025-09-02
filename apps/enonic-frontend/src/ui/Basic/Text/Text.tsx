@@ -1,11 +1,11 @@
 'use client'
 import React from 'react'
- import { Paragraph } from '@digdir/designsystemet-react'
+import { Paragraph } from '@digdir/designsystemet-react'
 import styles from './Text.module.css'
 
-type TextVariant = 
+type TextVariant =
   | 'long'
-  | 'short' 
+  | 'short'
   | 'default'
 
 
@@ -14,7 +14,7 @@ type TextSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 interface TextProps {
   variant?: TextVariant
   size?: TextSize
-  children: React.ReactNode
+  children: any;
   className?: string
   as?: 'p' | 'span' | 'div'
   color?: 'default' | 'subtle' | 'strong' | 'brand'

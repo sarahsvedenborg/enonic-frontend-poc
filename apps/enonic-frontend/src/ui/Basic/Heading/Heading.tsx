@@ -5,7 +5,7 @@ import styles from './Heading.module.css'
 
 type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6
 
-type HeadingSize = 
+type HeadingSize =
   | '2xs'
   | 'xs'
   | 'sm'
@@ -17,7 +17,7 @@ type HeadingSize =
 interface HeadingProps {
   level: HeadingLevel
   size?: HeadingSize
-  children: React.ReactNode
+  children: any;
   className?: string
   color?: 'default' | 'subtle' | 'strong' | 'brand'
   weight?: 'regular' | 'medium' | 'semibold'
@@ -37,7 +37,7 @@ const Heading: React.FC<HeadingProps> = ({
     if (size) {
       return size
     }
-    
+
     // Default size mapping based on level
     switch (level) {
       case 1:
