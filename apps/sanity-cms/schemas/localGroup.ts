@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import TranslateInput from '../components/TranslateInput'
 
 export default defineType({
     name: 'localGroup',
@@ -18,6 +19,21 @@ export default defineType({
             options: {
                 source: 'title',
                 maxLength: 96,
+            },
+            validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+            name: 'language',
+            title: 'Language',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'English', value: 'en' },
+                    { title: 'Norwegian', value: 'no' },
+                    { title: 'Swedish', value: 'sv' },
+                    { title: 'Danish', value: 'da' },
+                ],
+                layout: 'dropdown',
             },
             validation: (Rule) => Rule.required(),
         }),
@@ -50,18 +66,36 @@ export default defineType({
             title: 'Published at',
             type: 'datetime',
         }),
+        defineField({
+            name: 'translate',
+            title: 'AI Translation',
+            type: 'string',
+            components: {
+                input: TranslateInput,
+            },
+            readOnly: true,
+        }),
     ],
     preview: {
         select: {
             title: 'title',
+            language: 'language',
             media: 'mainImage',
             isPublished: 'isPublished',
         },
         prepare(selection) {
-            const { isPublished } = selection
+            const { language, isPublished } = selection
+            const languageLabels: Record<string, string> = {
+                en: '🇺🇸 EN',
+                no: '🇳🇴 NO',
+                sv: '🇸🇪 SV',
+                da: '🇩🇰 DA',
+            }
+            const languageLabel = languageLabels[language] || language
+
             return {
                 ...selection,
-                subtitle: isPublished ? 'Published' : 'Draft',
+                subtitle: `${languageLabel} - ${isPublished ? 'Published' : 'Draft'}`,
             }
         },
     },

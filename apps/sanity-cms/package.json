@@ -13,6 +13,7 @@
         "type-check": "tsc --noEmit"
     },
     "dependencies": {
+        "@sanity/assist": "4.4.8",
         "@sanity/vision": "^3.23.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
