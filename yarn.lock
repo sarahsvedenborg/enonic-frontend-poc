@@ -2627,6 +2627,21 @@
   resolved "https://registry.yarnpkg.com/@sanity/asset-utils/-/asset-utils-2.2.1.tgz#aab6b03464a55d7e23f4578bd2b38a934941fe1c"
   integrity sha512-dBsZWH5X6ANcvclFRnQT9Y+NNvoWTJZIMKR5HT6hzoRpRb48p7+vWn+wi1V1wPvqgZg2ScsOQQcGXWXskbPbQQ==
 
+"@sanity/assist@4.4.8":
+  version "4.4.8"
+  resolved "https://registry.yarnpkg.com/@sanity/assist/-/assist-4.4.8.tgz#79db6f356ef17fa52491a2f84a6d6cedc7de9ffe"
+  integrity sha512-PbW2Jr/aCCRsB72JvMq5Zdnv3Z94WyqEsz3K2t5slQ7WmFWqiOAFvF2yJR0byDMbl4wrauOF0SpIU1PexGFVPA==
+  dependencies:
+    "@sanity/icons" "^3.5.2"
+    "@sanity/incompatible-plugin" "^1.0.4"
+    "@sanity/ui" "^2.15.18"
+    date-fns "^3.6.0"
+    lodash "^4.17.21"
+    lodash-es "^4.17.21"
+    react-fast-compare "^3.2.2"
+    rxjs "^7.8.1"
+    rxjs-exhaustmap-with-trailing "^2.1.1"
+
 "@sanity/bifur-client@^0.4.1":
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/@sanity/bifur-client/-/bifur-client-0.4.1.tgz#f05f3659f67233d572c98c99f887d25b408bc2c4"
@@ -2783,7 +2798,7 @@
   resolved "https://registry.yarnpkg.com/@sanity/generate-help-url/-/generate-help-url-3.0.0.tgz#60e9cba61b82103ea3761730a53cd9310b98892d"
   integrity sha512-wtMYcV5GIDIhVyF/jjmdwq1GdlK07dRL40XMns73VbrFI7FteRltxv48bhYVZPcLkRXb0SHjpDS/icj9/yzbVA==
 
-"@sanity/icons@^3.7.4":
+"@sanity/icons@^3.5.2", "@sanity/icons@^3.7.4":
   version "3.7.4"
   resolved "https://registry.yarnpkg.com/@sanity/icons/-/icons-3.7.4.tgz#e992bc250d99b1b50c756a5f4751641021a646c1"
   integrity sha512-O9MnckiDsphFwlRS8Q3kj3n+JYUZ0UzKRujnSikMZOKI0dayucRe4U2XvxikRhJnFhcEJXW2RkWJoBaCoup9Sw==
@@ -2828,6 +2843,11 @@
     split2 "^4.2.0"
     tar-fs "^2.1.3"
     tinyglobby "^0.2.9"
+
+"@sanity/incompatible-plugin@^1.0.4":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@sanity/incompatible-plugin/-/incompatible-plugin-1.0.5.tgz#cdf50c88a0938906a15ac2eb6cc21cafea898b76"
+  integrity sha512-9JGAacbElUPy9Chghd+sllIiM3jAcraZdD65bWYWUVKkghOsf1L/+jFLz1rcAuvrA9o2s7Y+T75BNcXuLwRcvw==
 
 "@sanity/insert-menu@^1.1.12":
   version "1.1.13"
@@ -3004,7 +3024,7 @@
     "@sanity/client" "^7.6.0"
     "@sanity/media-library-types" "^1.0.0"
 
-"@sanity/ui@^2.16.4", "@sanity/ui@^2.16.7":
+"@sanity/ui@^2.15.18", "@sanity/ui@^2.16.4", "@sanity/ui@^2.16.7":
   version "2.16.13"
   resolved "https://registry.yarnpkg.com/@sanity/ui/-/ui-2.16.13.tgz#69802b216bf39a5b1945915d72a2000ce156bd67"
   integrity sha512-eHG64m1vKfsXzxbW/mDR+7UVqeRJx3R0lU89cxnTkQmLaemDbnrp3dHVgAtAkO65PzzdRiLveUx3umxGq6lxTQ==
@@ -4768,6 +4788,11 @@ date-fns@^2.26.1, date-fns@^2.30.0:
   integrity sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==
   dependencies:
     "@babel/runtime" "^7.21.0"
+
+date-fns@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-3.6.0.tgz#f20ca4fe94f8b754951b24240676e8618c0206bf"
+  integrity sha512-fRHTG8g/Gif+kSh50gaGEdToemgfj74aRX3swtiouboip5JDLAyDE9F11nHMIcvOaXeOC6D7SpNhi7uFyB7Uww==
 
 date-fns@^4.1.0:
   version "4.1.0"

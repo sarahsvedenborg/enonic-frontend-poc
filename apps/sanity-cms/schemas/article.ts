@@ -28,12 +28,11 @@ export default defineType({
             type: 'string',
             options: {
                 list: [
+                    { title: 'Norsk', value: 'no' },
                     { title: 'English', value: 'en' },
-                    { title: 'Norwegian', value: 'no' },
-                    { title: 'Swedish', value: 'sv' },
-                    { title: 'Danish', value: 'da' },
                 ],
-                layout: 'dropdown',
+                layout: 'radio',
+                initialValue: 'no',
             },
             validation: (Rule) => Rule.required(),
         }),

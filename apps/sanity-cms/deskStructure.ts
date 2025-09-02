@@ -1,164 +1,114 @@
 import { StructureBuilder } from 'sanity/desk'
+import { FiFileText, FiGift, FiGlobe, FiMapPin } from 'react-icons/fi'
 
 export const deskStructure = (S: StructureBuilder) =>
     S.list()
-        .title('Content')
+        .title('Innhold')
         .items([
-            // English Content
+            // Norwegian content
             S.listItem()
-                .title('English Content')
+                .title('Norsk')
+                .icon(FiGlobe)
                 .child(
                     S.list()
-                        .title('English Content')
+                        .title('Norsk')
                         .items([
                             S.listItem()
-                                .title('English Articles')
+                                .title('Artikler')
+                                .icon(FiFileText)
                                 .child(
                                     S.documentList()
-                                        .title('English Articles')
-                                        .filter('_type == "article" && language == "en"')
-                                ),
-                            S.listItem()
-                                .title('English Campaigns')
-                                .child(
-                                    S.documentList()
-                                        .title('English Campaigns')
-                                        .filter('_type == "campaign" && language == "en"')
-                                ),
-                            S.listItem()
-                                .title('English Local Groups')
-                                .child(
-                                    S.documentList()
-                                        .title('English Local Groups')
-                                        .filter('_type == "localGroup" && language == "en"')
-                                ),
-                        ])
-                ),
+                                        .title('Artikler')
 
-            // Norwegian Content
-            S.listItem()
-                .title('Norwegian Content')
-                .child(
-                    S.list()
-                        .title('Norwegian Content')
-                        .items([
-                            S.listItem()
-                                .title('Norwegian Articles')
-                                .child(
-                                    S.documentList()
-                                        .title('Norwegian Articles')
                                         .filter('_type == "article" && language == "no"')
                                 ),
                             S.listItem()
-                                .title('Norwegian Campaigns')
+                                .title('Kampanjer')
+                                .icon(FiGift)
                                 .child(
                                     S.documentList()
-                                        .title('Norwegian Campaigns')
+                                        .title('Kampanjer')
                                         .filter('_type == "campaign" && language == "no"')
                                 ),
                             S.listItem()
-                                .title('Norwegian Local Groups')
+                                .title('Lokalforeninger')
+                                .icon(FiMapPin)
                                 .child(
                                     S.documentList()
-                                        .title('Norwegian Local Groups')
+                                        .title('Lokalforeninger')
                                         .filter('_type == "localGroup" && language == "no"')
                                 ),
                         ])
                 ),
 
-            // Swedish Content
+            // English Content
             S.listItem()
-                .title('Swedish Content')
+                .title('Engelsk')
+                .icon(FiGlobe)
                 .child(
                     S.list()
-                        .title('Swedish Content')
+                        .title('Engelsk')
                         .items([
                             S.listItem()
-                                .title('Swedish Articles')
+                                .title('Articles')
+                                .icon(FiFileText)
                                 .child(
                                     S.documentList()
-                                        .title('Swedish Articles')
-                                        .filter('_type == "article" && language == "sv"')
+                                        .title('Articles')
+                                        .filter('_type == "article" && language == "en"')
                                 ),
                             S.listItem()
-                                .title('Swedish Campaigns')
+                                .title('Campaigns')
+                                .icon(FiGift)
                                 .child(
                                     S.documentList()
-                                        .title('Swedish Campaigns')
-                                        .filter('_type == "campaign" && language == "sv"')
+                                        .title('Campaigns')
+                                        .filter('_type == "campaign" && language == "en"')
                                 ),
                             S.listItem()
-                                .title('Swedish Local Groups')
+                                .title('Branches')
+                                .icon(FiMapPin)
                                 .child(
                                     S.documentList()
-                                        .title('Swedish Local Groups')
-                                        .filter('_type == "localGroup" && language == "sv"')
+                                        .title('Branches')
+                                        .filter('_type == "localGroup" && language == "en"')
                                 ),
                         ])
                 ),
 
-            // Danish Content
-            S.listItem()
-                .title('Danish Content')
-                .child(
-                    S.list()
-                        .title('Danish Content')
-                        .items([
-                            S.listItem()
-                                .title('Danish Articles')
-                                .child(
-                                    S.documentList()
-                                        .title('Danish Articles')
-                                        .filter('_type == "article" && language == "da"')
-                                ),
-                            S.listItem()
-                                .title('Danish Campaigns')
-                                .child(
-                                    S.documentList()
-                                        .title('Danish Campaigns')
-                                        .filter('_type == "campaign" && language == "da"')
-                                ),
-                            S.listItem()
-                                .title('Danish Local Groups')
-                                .child(
-                                    S.documentList()
-                                        .title('Danish Local Groups')
-                                        .filter('_type == "localGroup" && language == "da"')
-                                ),
-                        ])
-                ),
 
-            // All Content (for overview)
-            S.listItem()
-                .title('All Content')
-                .child(
-                    S.list()
-                        .title('All Content')
-                        .items([
-                            S.listItem()
-                                .title('All Articles')
-                                .child(
-                                    S.documentList()
-                                        .title('All Articles')
-                                        .filter('_type == "article"')
-                                ),
-                            S.listItem()
-                                .title('All Campaigns')
-                                .child(
-                                    S.documentList()
-                                        .title('All Campaigns')
-                                        .filter('_type == "campaign"')
-                                ),
-                            S.listItem()
-                                .title('All Local Groups')
-                                .child(
-                                    S.documentList()
-                                        .title('All Local Groups')
-                                        .filter('_type == "localGroup"')
-                                ),
-                        ])
-                ),
 
+            /*    // All Content (for overview)
+               S.listItem()
+                   .title('All Content')
+                   .child(
+                       S.list()
+                           .title('All Content')
+                           .items([
+                               S.listItem()
+                                   .title('All Articles')
+                                   .child(
+                                       S.documentList()
+                                           .title('All Articles')
+                                           .filter('_type == "article"')
+                                   ),
+                               S.listItem()
+                                   .title('All Campaigns')
+                                   .child(
+                                       S.documentList()
+                                           .title('All Campaigns')
+                                           .filter('_type == "campaign"')
+                                   ),
+                               S.listItem()
+                                   .title('All Local Groups')
+                                   .child(
+                                       S.documentList()
+                                           .title('All Local Groups')
+                                           .filter('_type == "localGroup"')
+                                   ),
+                           ])
+                   ),
+    */
             // All other document types
             ...S.documentTypeListItems().filter(
                 (listItem) => !['article', 'campaign', 'localGroup'].includes(listItem.getId() as string)
