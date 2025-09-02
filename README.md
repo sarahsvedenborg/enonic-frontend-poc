@@ -1,179 +1,96 @@
-# Enonic + Sanity Monorepo
+# Sanity Frontend
 
-This monorepo contains two main projects:
-- **Enonic Frontend**: A Next.js application built with Enonic XP
-- **Sanity CMS**: A headless CMS for content management
+A simple Next.js frontend application ready to be connected to your Sanity CMS.
+
+## Features
+
+- **Next.js 14**: Latest version with App Router
+- **React 18**: Modern React with hooks and concurrent features
+- **TypeScript**: Full type safety
+- **PostCSS**: Custom CSS with PostCSS processing
+- **Responsive Design**: Mobile-first approach
+- **Simple Layout**: Clean, modern design
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. **Install dependencies**:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+2. **Run development server**:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+3. **Open your browser**:
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
 ## Project Structure
 
 ```
-enonic2/
-├── apps/
-│   ├── enonic-frontend/     # Next.js + Enonic XP frontend
-│   └── sanity-cms/          # Sanity Studio CMS
-├── package.json             # Root workspace configuration
-└── README.md               # This file
+src/
+├── app/                    # Next.js app directory
+│   ├── about/            # About page
+│   ├── contact/          # Contact page
+│   ├── globals.css       # Global styles with PostCSS
+│   ├── layout.tsx        # Root layout
+│   └── page.tsx          # Home page
+├── components/            # React components (if any)
+└── lib/                  # Utility functions (if any)
 ```
 
-## Prerequisites
+## Pages
 
-- Node.js 18+ 
-- Yarn package manager
-- Enonic XP development environment (for the frontend)
-- Sanity account (for the CMS)
+- **Home** (`/`) - Landing page with feature highlights
+- **About** (`/about`) - Information about the application
+- **Contact** (`/contact`) - Contact form and information
 
-## Getting Started
+## Customization
 
-### 1. Install Dependencies
+This is a starter template that you can customize:
 
-```bash
-# Install root dependencies
-yarn install
+1. **Update content** in the page components
+2. **Modify styling** using custom CSS classes
+3. **Add new pages** in the `src/app` directory
+4. **Integrate with Sanity** by adding the Sanity client
 
-# Install dependencies for both projects
-yarn workspace enonic-frontend install
-yarn workspace sanity-cms install
-```
+## Next Steps
 
-### 2. Configure Sanity CMS
+To connect this frontend with Sanity CMS:
 
-1. Navigate to the Sanity project:
-   ```bash
-   cd apps/sanity-cms
-   ```
+1. Install Sanity client: `npm install @sanity/client`
+2. Configure Sanity connection in `src/lib/sanity.ts`
+3. Create content schemas in your Sanity Studio
+4. Fetch and display content from Sanity
 
-2. Initialize Sanity (if not already done):
-   ```bash
-   yarn sanity init
-   ```
+## Deployment
 
-3. Update the `sanity.config.ts` file with your actual project ID:
-   ```typescript
-   projectId: 'your-actual-project-id', // Replace with your Sanity project ID
-   ```
+This application can be deployed to:
 
-### 3. Configure Enonic Frontend
-
-1. Ensure your Enonic XP development environment is set up
-2. Update any environment variables or configuration as needed
-
-## Available Scripts
-
-### Root Level (Monorepo)
-
-```bash
-# Run both projects in development mode
-yarn dev
-
-# Run only Enonic frontend
-yarn dev:enonic
-
-# Run only Sanity CMS
-yarn dev:sanity
-
-# Build both projects
-yarn build
-
-# Build only Enonic frontend
-yarn build:enonic
-
-# Build only Sanity CMS
-yarn build:sanity
-
-# Lint both projects
-yarn lint
-
-# Clean all node_modules and build artifacts
-yarn clean
-```
-
-### Enonic Frontend
-
-```bash
-cd apps/enonic-frontend
-
-# Development server
-yarn dev
-
-# Production build
-yarn build
-
-# Start production server
-yarn start
-
-# Lint code
-yarn lint
-```
-
-### Sanity CMS
-
-```bash
-cd apps/sanity-cms
-
-# Development server
-yarn dev
-
-# Build for production
-yarn build
-
-# Deploy to Sanity
-yarn deploy
-
-# Deploy GraphQL API
-yarn deploy-graphql
-
-# Lint code
-yarn lint
-```
-
-## Development Workflow
-
-1. **Start both services**: `yarn dev`
-   - Enonic frontend will run on `http://localhost:3000`
-   - Sanity Studio will run on `http://localhost:3333`
-
-2. **Content Management**: Use Sanity Studio to create and manage content
-
-3. **Frontend Development**: Work on the Enonic frontend to consume and display content
-
-## Integration
-
-To integrate Sanity content with your Enonic frontend:
-
-1. Install Sanity client in the Enonic frontend:
-   ```bash
-   cd apps/enonic-frontend
-   yarn add @sanity/client
-   ```
-
-2. Create a Sanity client configuration
-3. Fetch content from Sanity in your Enonic components
-4. Use the content in your Enonic XP content types
-
-## Environment Variables
-
-### Sanity CMS
-Create a `.env` file in `apps/sanity-cms/`:
-```
-SANITY_STUDIO_PROJECT_ID=your-project-id
-SANITY_STUDIO_DATASET=production
-```
-
-### Enonic Frontend
-Create a `.env.local` file in `apps/enonic-frontend/`:
-```
-NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
-NEXT_PUBLIC_SANITY_DATASET=production
-SANITY_API_TOKEN=your-api-token
-```
-
-## Contributing
-
-1. Create a feature branch
-2. Make your changes
-3. Test both projects
-4. Submit a pull request
+- **Vercel** (recommended for Next.js)
+- **Netlify**
+- **AWS Amplify**
+- Any platform that supports Node.js
 
 ## License
 
-Apache-2.0
+This project is open source and available under the [MIT License](LICENSE).
