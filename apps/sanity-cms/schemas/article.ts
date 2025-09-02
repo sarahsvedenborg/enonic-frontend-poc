@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import TranslateInput from '../components/TranslateInput'
 
 export default defineType({
     name: 'article',
@@ -21,6 +22,20 @@ export default defineType({
             },
             validation: (Rule) => Rule.required(),
         }),
+        defineField({
+            name: 'language',
+            title: 'Language',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'Norsk', value: 'no' },
+                    { title: 'English', value: 'en' },
+                ],
+                layout: 'radio',
+                initialValue: 'no',
+            },
+            validation: (Rule) => Rule.required(),
+        }),
         /*  defineField({
              name: 'author',
              title: 'Author',
@@ -36,11 +51,11 @@ export default defineType({
             },
         }),
         /*   defineField({
-              name: 'categories',
-              title: 'Categories',
-              type: 'array',
-              of: [{ type: 'reference', to: { type: 'category' } }],
-          }), */
+               name: 'categories',
+               title: 'Categories',
+               type: 'array',
+               of: [{ type: 'reference', to: { type: 'category' } }],
+           }), */
         defineField({
             name: 'publishedAt',
             title: 'Published at',
@@ -51,16 +66,37 @@ export default defineType({
             title: 'Body',
             type: 'blockContent',
         }),
+        /*   defineField({
+              name: 'translate',
+              title: 'AI Translation',
+              type: 'string',
+              components: {
+                  input: TranslateInput,
+              },
+              readOnly: true,
+          }), */
     ],
     preview: {
         select: {
             title: 'title',
+            language: 'language',
             author: 'author.name',
             media: 'mainImage',
         },
         prepare(selection) {
-            const { author } = selection
-            return { ...selection, subtitle: author && `by ${author}` }
+            const { language, author } = selection
+            const languageLabels: Record<string, string> = {
+                en: '🇺🇸 EN',
+                no: '🇳🇴 NO',
+                sv: '🇸🇪 SV',
+                da: '🇩🇰 DA',
+            }
+            const languageLabel = languageLabels[language] || language
+
+            return {
+                ...selection,
+                subtitle: `${languageLabel}${author ? ` - by ${author}` : ''}`
+            }
         },
     },
 })
