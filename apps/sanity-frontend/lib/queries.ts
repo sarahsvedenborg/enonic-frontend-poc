@@ -22,6 +22,7 @@ export const getCampaignBySlugQuery = `
     body,
     publishedAt,
     language,
+    mainImage,
     // Add other fields you want to fetch
   }
 `

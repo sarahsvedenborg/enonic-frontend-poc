@@ -22,8 +22,9 @@ export interface Campaign {
         current: string
     }
     description?: string
-    content?: any[]
+    body?: any[]
     publishedAt?: string
     language?: string
+    mainImage?: any
     // Add other fields as needed based on your Sanity schema
 }

@@ -1,0 +1,151 @@
+/* Campaign Hero Section */
+.campaign-hero {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.campaign-hero-content {
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    color: white;
+    padding: 0 1rem;
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+.campaign-hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+.campaign-hero-description {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+.campaign-hero-date {
+    font-size: 1rem;
+    color: #e5e7eb;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Call to Action Box */
+.campaign-cta-box {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(50%);
+    z-index: 30;
+}
+
+.campaign-cta-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 2rem;
+    max-width: 28rem;
+    margin: 0 1rem;
+}
+
+.campaign-cta-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.campaign-cta-description {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.campaign-cta-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.campaign-cta-button {
+    flex: 1;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.campaign-cta-button-primary {
+    background-color: #dc2626;
+    color: white;
+}
+
+.campaign-cta-button-primary:hover {
+    background-color: #b91c1c;
+}
+
+.campaign-cta-button-secondary {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+.campaign-cta-button-secondary:hover {
+    background-color: #d1d5db;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .campaign-hero {
+        height: 60vh;
+        min-height: 400px;
+    }
+
+    .campaign-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .campaign-hero-description {
+        font-size: 1.125rem;
+    }
+
+    .campaign-cta-card {
+        padding: 1.5rem;
+        margin: 0 0.5rem;
+    }
+
+    .campaign-cta-buttons {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .campaign-hero-title {
+        font-size: 2rem;
+    }
+
+    .campaign-hero-description {
+        font-size: 1rem;
+    }
+
+    .campaign-cta-card {
+        padding: 1rem;
+    }
+}

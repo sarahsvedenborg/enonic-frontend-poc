@@ -1,8 +1,10 @@
-import { Heading, Section } from 'ui-lib';
+import { Heading, Section, DonationForm } from 'ui-lib';
 import { client } from '../../../../lib/sanity';
 import { getCampaignBySlugQuery } from '../../../../lib/queries';
 import { notFound } from 'next/navigation';
 import PortableText from '../../../../components/PortableText';
+import CampaignHero from '../../../../components/CampaignHero';
+
 
 interface CampaignPageProps {
     params: Promise<{ slug: string }>;
@@ -19,40 +21,32 @@ export default async function CampaignPage({ params }: CampaignPageProps) {
 
     const campaign = await getData(slug);
 
+
     if (!campaign) {
         notFound();
     }
 
     return (
         <>
-            <Section width="md" padding="lg">
+            <CampaignHero
+                title={campaign.title}
+                description={campaign.description}
+                image={campaign.mainImage}
+                publishedAt={campaign.publishedAt}
+            />
+            <DonationForm
+                title={campaign.title}
+                description={campaign.description}
+            /*  image={campaign.mainImage} */
 
-                <header className="mb-8">
-                    <Heading level={1} size="xl">
-                        {campaign.title}
-                    </Heading>
+            />
 
-                    {campaign.description && (
-                        <p className="text-lg text-gray-600 mb-4">
-                            {campaign.description}
-                        </p>
-                    )}
-
-                    {campaign.publishedAt && (
-                        <time className="text-sm text-gray-500">
-                            Publisert: {new Date(campaign.publishedAt).toLocaleDateString('no-NO')}
-                        </time>
-                    )}
-                </header>
-            </Section>
             <Section width="xl" background="tinted">
                 {campaign.body && (
-                    <Section width="md" >
+                    <Section width="md" padding="lg">
                         <PortableText content={campaign.body} />
                     </Section>
                 )}
-
-
             </Section>
         </>
     )
