@@ -26,13 +26,14 @@ export default defineType({
             name: 'language',
             title: 'Language',
             type: 'string',
+            initialValue: 'no',
             options: {
                 list: [
                     { title: 'Norsk', value: 'no' },
                     { title: 'English', value: 'en' },
                 ],
                 layout: 'radio',
-                initialValue: 'no',
+
             },
             validation: (Rule) => Rule.required(),
         }),

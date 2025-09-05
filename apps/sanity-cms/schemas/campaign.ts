@@ -26,22 +26,24 @@ export default defineType({
             name: 'language',
             title: 'Language',
             type: 'string',
+            initialValue: 'no',
             options: {
                 list: [
-                    { title: 'English', value: 'en' },
-                    { title: 'Norwegian', value: 'no' },
-                    { title: 'Swedish', value: 'sv' },
-                    { title: 'Danish', value: 'da' },
+                    { title: 'Norsk', value: 'no' },
+                    { title: 'Engelsk', value: 'en' },
                 ],
-                layout: 'dropdown',
+
+                layout: 'radio',
+
             },
             validation: (Rule) => Rule.required(),
         }),
-        defineField({
-            name: 'description',
-            title: 'Description',
-            type: 'text',
-        }),
+        /*  defineField({
+             name: 'description',
+             title: 'Description',
+             type: 'text',
+             rows: 5
+         }), */
         defineField({
             name: 'mainImage',
             title: 'Main image',
@@ -50,46 +52,30 @@ export default defineType({
                 hotspot: true,
             },
         }),
+        /*   defineField({
+              name: 'startDate',
+              title: 'Start Date',
+              type: 'datetime',
+          }),
+          defineField({
+              name: 'endDate',
+              title: 'End Date',
+              type: 'datetime',
+          }), */
+
         defineField({
-            name: 'startDate',
-            title: 'Start Date',
-            type: 'datetime',
+            name: 'donation',
+            title: 'Giverskjema',
+            type: 'reference',
+            to: [{ type: 'donationForm' }]
         }),
-        defineField({
-            name: 'endDate',
-            title: 'End Date',
-            type: 'datetime',
-        }),
-        defineField({
-            name: 'goal',
-            title: 'Fundraising Goal',
-            type: 'number',
-        }),
-        defineField({
-            name: 'raised',
-            title: 'Amount Raised',
-            type: 'number',
-        }),
+
         defineField({
             name: 'body',
             title: 'Campaign Body',
             type: 'blockContent',
         }),
-        defineField({
-            name: 'isActive',
-            title: 'Active Campaign',
-            type: 'boolean',
-            initialValue: true,
-        }),
-        defineField({
-            name: 'translate',
-            title: 'AI Translation',
-            type: 'string',
-            components: {
-                input: TranslateInput,
-            },
-            readOnly: true,
-        }),
+
     ],
     preview: {
         select: {
