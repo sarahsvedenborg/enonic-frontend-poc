@@ -6,7 +6,8 @@
   "workspaces": [
     "apps/enonic-frontend",
     "apps/sanity-cms",
-    "apps/sanity-frontend"
+    "apps/sanity-frontend",
+    "apps/ui-lib"
   ],
   "scripts": {
     "dev": "concurrently \"yarn workspace enonic-frontend dev\" \"yarn workspace sanity-cms dev\"",

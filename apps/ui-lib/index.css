@@ -1,0 +1,5 @@
+@import url('@digdir/designsystemet-css');
+@import url('./rk-designsystem.css');
+@import url('./components/Heading/Heading.css');
+@import url('./components/Header/Header.css');
+@import url('./components/Banner/Banner.css');

@@ -1,13 +1,8 @@
-import type { Metadata } from 'next'
+import { Header, Banner } from 'ui-lib'
 /* import { Inter } from 'next/font/google' */
-import './globals.css'
+import '../../globals.css'
 
 /* const inter = Inter({ subsets: ['latin'] }) */
-
-export const metadata: Metadata = {
-    title: 'Sanity Frontend',
-    description: 'A simple frontend for Sanity CMS',
-}
 
 export default function RootLayout({
     children,
@@ -18,9 +13,8 @@ export default function RootLayout({
         <html lang="en">
             <body >
                 <div >
-                    <header >
-                        header
-                    </header>
+                    <Banner site="Sanity CMS" login="https://sanity.io/manage" />
+                    <Header />
                     <main >
                         {children}
                     </main>
