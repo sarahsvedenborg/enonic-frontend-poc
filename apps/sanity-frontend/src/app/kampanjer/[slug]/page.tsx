@@ -2,6 +2,7 @@ import { Heading, Section } from 'ui-lib';
 import { client } from '../../../../lib/sanity';
 import { getCampaignBySlugQuery } from '../../../../lib/queries';
 import { notFound } from 'next/navigation';
+import PortableText from '../../../../components/PortableText';
 
 interface CampaignPageProps {
     params: Promise<{ slug: string }>;
@@ -23,8 +24,9 @@ export default async function CampaignPage({ params }: CampaignPageProps) {
     }
 
     return (
-        <Section width="md" padding="lg">
-            <article>
+        <>
+            <Section width="md" padding="lg">
+
                 <header className="mb-8">
                     <Heading level={1} size="xl">
                         {campaign.title}
@@ -36,10 +38,23 @@ export default async function CampaignPage({ params }: CampaignPageProps) {
                         </p>
                     )}
 
+                    {campaign.publishedAt && (
+                        <time className="text-sm text-gray-500">
+                            Publisert: {new Date(campaign.publishedAt).toLocaleDateString('no-NO')}
+                        </time>
+                    )}
                 </header>
+            </Section>
+            <Section width="xl" background="tinted">
+                {campaign.body && (
+                    <Section width="md" >
+                        <PortableText content={campaign.body} />
+                    </Section>
+                )}
 
-            </article>
-        </Section>
+
+            </Section>
+        </>
     )
 }
 
@@ -50,13 +65,12 @@ export default async function CampaignPage({ params }: CampaignPageProps) {
 
 // Generate static params for all campaign slugs
 export async function generateStaticParams() {
-    const campaign = await client.fetch(getCampaignBySlugQuery, { slug: 'test' });
     try {
         const slugs = await client.fetch(`
-                    *[_type == "campaign" && defined(slug.current)][] {
-                        "slug": slug.current
+            *[_type == "campaign" && defined(slug.current)][] {
+                "slug": slug.current
             }
-                    `);
+            `);
 
         return slugs.map((item: { slug: string }) => ({
             slug: item.slug,

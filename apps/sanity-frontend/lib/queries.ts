@@ -19,7 +19,7 @@ export const getCampaignBySlugQuery = `
     title,
     slug,
     description,
-    content,
+    body,
     publishedAt,
     language,
     // Add other fields you want to fetch

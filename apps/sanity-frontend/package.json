@@ -14,7 +14,9 @@
         "react-dom": "^18",
         "ui-lib": "*",
         "next-sanity": "^7.0.0",
-        "@sanity/client": "^6.10.0"
+        "@sanity/client": "^6.10.0",
+        "@portabletext/react": "^3.0.0",
+        "@sanity/image-url": "^1.0.2"
     },
     "devDependencies": {
         "typescript": "^5",
