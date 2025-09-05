@@ -1,0 +1,78 @@
+/* Color variants */
+.heading-colorDefault {
+  color: var(--ds-color-neutral-text-default);
+  color: green
+}
+
+.heading-colorSubtle {
+  color: var(--ds-color-neutral-text-subtle);
+}
+
+.heading-colorStrong {
+  color: var(--ds-color-neutral-text-strong);
+}
+
+.heading-colorBrand {
+  color: var(--ds-color-primary-brand-text-default);
+}
+
+/* Weight variants */
+.heading-weightRegular {
+  font-weight: var(--ds-font-weight-regular);
+}
+
+.heading-weightMedium {
+  font-weight: var(--ds-font-weight-medium);
+}
+
+.heading-weightSemibold {
+  font-weight: var(--ds-font-weight-semibold);
+}
+
+/* Alignment variants */
+.heading-alignLeft {
+  text-align: left;
+}
+
+.heading-alignCenter {
+  text-align: center;
+}
+
+.heading-alignRight {
+  text-align: right;
+}
+
+/* Custom heading styles */
+.heading-Custom {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.heading-Serif {
+  font-family: var(--ds-font-family);
+}
+
+/* Responsive heading sizing */
+@media (max-width: 768px) {
+  .heading-responsiveHeading {
+    font-size: calc(var(--ds-font-size-6) * 0.9) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading-responsiveHeading {
+    font-size: calc(var(--ds-font-size-6) * 0.8) !important;
+  }
+}
+
+/* Custom heading variants */
+.heading-Playful {
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.2 !important;
+}
+
+.heading-Formal {
+  font-family: var(--ds-font-family) !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.3 !important;
+}

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
+import { Header } from 'ui-lib'
 /* import { Inter } from 'next/font/google' */
-import './globals.css'
+import '../../globals.css'
 
 /* const inter = Inter({ subsets: ['latin'] }) */
 
@@ -18,9 +19,7 @@ export default function RootLayout({
         <html lang="en">
             <body >
                 <div >
-                    <header >
-                        header
-                    </header>
+                    <Header />
                     <main >
                         {children}
                     </main>

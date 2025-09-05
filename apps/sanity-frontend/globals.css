@@ -1,0 +1,5 @@
+ @import url('ui-lib/index.css');
+
+ body {
+   font-family: var(--ds-font-family);
+ }

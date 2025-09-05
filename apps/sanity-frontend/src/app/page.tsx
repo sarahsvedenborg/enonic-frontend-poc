@@ -1,5 +1,9 @@
+import { Heading } from 'ui-lib';
+
 export default function HomePage() {
     return (
-        <h1>Sanity frontend</h1>
+        <div>
+            <Heading level={1}>Forside fra sanity</Heading>
+        </div>
     )
 }
