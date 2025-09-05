@@ -1,5 +1,6 @@
 @import url('@digdir/designsystemet-css');
 @import url('./rk-designsystem.css');
+@import url('ui-lib/index.css');
 
 
 :root {
