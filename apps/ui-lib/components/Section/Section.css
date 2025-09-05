@@ -1,0 +1,121 @@
+/* Section base styles */
+.section {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Width variants based on Enonic frontend */
+.section-width-xs {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.section-width-sm {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.section-width-md {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.section-width-xl {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-width-2xl {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.section-width-full {
+    max-width: 100%;
+    margin: 0;
+}
+
+/* Padding variants */
+.section-padding-none {
+    padding: 0;
+}
+
+.section-padding-sm {
+    padding: var(--ds-size-4, 1rem);
+}
+
+.section-padding-md {
+    padding: var(--ds-size-6, 1.5rem);
+}
+
+.section-padding-lg {
+    padding: var(--ds-size-8, 2rem);
+}
+
+.section-padding-xl {
+    padding: var(--ds-size-12, 3rem);
+}
+
+/* Background variants */
+.section-background-none {
+    background: transparent;
+}
+
+.section-background-white {
+    background-color: #ffffff;
+}
+
+.section-background-gray {
+    background-color: #f8f9fa;
+}
+
+.section-background-tinted {
+    background-color: var(--ds-color-neutral-background-tinted, #f8f9fa);
+}
+
+/* Margin variants */
+.section-margin-none {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.section-margin-sm {
+    margin-top: var(--ds-size-4, 1rem);
+    margin-bottom: var(--ds-size-4, 1rem);
+}
+
+.section-margin-md {
+    margin-top: var(--ds-size-6, 1.5rem);
+    margin-bottom: var(--ds-size-6, 1.5rem);
+}
+
+.section-margin-lg {
+    margin-top: var(--ds-size-8, 2rem);
+    margin-bottom: var(--ds-size-8, 2rem);
+}
+
+.section-margin-xl {
+    margin-top: var(--ds-size-12, 3rem);
+    margin-bottom: var(--ds-size-12, 3rem);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+    .section-padding-sm,
+    .section-padding-md,
+    .section-padding-lg,
+    .section-padding-xl {
+        padding-left: var(--ds-size-4, 1rem);
+        padding-right: var(--ds-size-4, 1rem);
+    }
+
+    .section-width-xs,
+    .section-width-sm,
+    .section-width-md,
+    .section-width-xl,
+    .section-width-2xl {
+        margin-left: var(--ds-size-4, 1rem);
+        margin-right: var(--ds-size-4, 1rem);
+    }
+}

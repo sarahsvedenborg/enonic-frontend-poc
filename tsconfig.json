@@ -25,15 +25,16 @@
         "baseUrl": ".",
         "paths": {
             "@/*": [
-                "./src/*"
+                "apps/sanity-frontend/src/*"
             ]
         }
     },
     "include": [
-        "next-env.d.ts",
+        "apps/sanity-frontend/next-env.d.ts",
         "**/*.ts",
         "**/*.tsx",
-        ".next/types/**/*.ts"
+        ".next/types/**/*.ts",
+        "apps/sanity-frontend/src/app/kampanjer/[slug]"
     ],
     "exclude": [
         "node_modules"

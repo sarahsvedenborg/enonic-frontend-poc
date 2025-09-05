@@ -1,7 +1,13 @@
+.rk-heading {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 /* Color variants */
+
+
 .heading-colorDefault {
   color: var(--ds-color-neutral-text-default);
-  color: green
+
 }
 
 .heading-colorSubtle {
