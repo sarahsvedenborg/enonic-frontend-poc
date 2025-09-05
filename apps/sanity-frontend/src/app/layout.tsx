@@ -13,7 +13,7 @@ export default function RootLayout({
         <html lang="en">
             <body >
                 <div >
-                    <Banner site="Sanity CMS" login="https://sanity.io/manage" />
+                    <Banner site="Sanity CMS" login="https://rk-poc.sanity.studio/studio/structure" />
                     <Header />
                     <main >
                         {children}

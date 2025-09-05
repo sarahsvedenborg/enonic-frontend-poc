@@ -96,7 +96,7 @@ export const Heading: React.FC<HeadingProps> = ({
     <DSHeading
       level={level}
       data-size={getHeadingSize()}
-      className={`${getColorClass()} ${getWeightClass()} ${getAlignClass()} ${className}`}
+      className={`rk-heading ${getColorClass()} ${getWeightClass()} ${getAlignClass()} ${className}`}
     >
       {children}
     </DSHeading>
