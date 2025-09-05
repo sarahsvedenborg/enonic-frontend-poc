@@ -30,7 +30,7 @@ export default defineType({
             options: {
                 list: [
                     { title: 'Norsk', value: 'no' },
-                    { title: 'English', value: 'en' },
+                    { title: 'Engelsk', value: 'en' },
                 ],
                 layout: 'radio',
 
