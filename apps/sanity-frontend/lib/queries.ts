@@ -33,3 +33,23 @@ export const getAllCampaignSlugsQuery = `
     "slug": slug.current
   }
 `
+
+// Get permanent campaign by language
+export const getPermanentCampaignQuery = `
+  *[_type == "permanentCampaign" && language == $language][0] {
+    _id,
+    title,
+    slug,
+    description,
+    body,
+    publishedAt,
+    language,
+    mainImage,
+    showCommerce,
+    otherActivities,
+    organizationsAndIndustry,
+    otherSuppert,
+    support,
+    donation
+  }
+`
