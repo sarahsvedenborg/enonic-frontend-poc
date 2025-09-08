@@ -10,17 +10,27 @@ export const deskStructure = (S: StructureBuilder) =>
                 .title('Norsk')
                 .icon(FiGlobe)
                 .child(
+
                     S.list()
                         .title('Norsk')
                         .items([
+                            S.divider({ title: "Sider" }),
                             S.listItem()
-                                .title('Artikler')
+                                .title('Informasjonssider')
                                 .icon(FiFileText)
                                 .child(
                                     S.documentList()
                                         .title('Artikler')
 
                                         .filter('_type == "article" && language == "no"')
+                                ),
+                            S.listItem()
+                                .title('Nyhetsartikler')
+                                .icon(FiFileText)
+                                .child(
+                                    S.documentList()
+                                        .title('Nyhetsartikler')
+                                        .filter('_type == "newsArticle" && language == "no"')
                                 ),
                             S.listItem()
                                 .title('Kampanjer')
@@ -30,6 +40,7 @@ export const deskStructure = (S: StructureBuilder) =>
                                         .title('Kampanjer')
                                         .filter('_type == "campaign" && language == "no"')
                                 ),
+
                             S.listItem()
                                 .title('Lokalforeninger')
                                 .icon(FiMapPin)
@@ -37,6 +48,25 @@ export const deskStructure = (S: StructureBuilder) =>
                                     S.documentList()
                                         .title('Lokalforeninger')
                                         .filter('_type == "localGroup" && language == "no"')
+                                ),
+                            S.divider({ title: "Faste sider" }),
+                            S.listItem()
+                                .title('Permanent Kampanje')
+                                .icon(FiGift)
+                                .child(
+                                    S.document()
+                                        .title('Permanent Kampanje')
+                                        .documentId('permanent-campaign-no')
+                                        .schemaType('permanentCampaign')
+                                ),
+                            S.divider({ title: "Annet innhold" }),
+                            S.listItem()
+                                .title('Giverskjema')
+                                .icon(FiGift)
+                                .child(
+                                    S.documentList()
+                                        .title('Giverskjema')
+                                        .filter('_type == "donationForm" && language == "no"')
                                 ),
                         ])
                 ),
@@ -58,12 +88,29 @@ export const deskStructure = (S: StructureBuilder) =>
                                         .filter('_type == "article" && language == "en"')
                                 ),
                             S.listItem()
+                                .title('News Articles')
+                                .icon(FiFileText)
+                                .child(
+                                    S.documentList()
+                                        .title('News Articles')
+                                        .filter('_type == "newsArticle" && language == "en"')
+                                ),
+                            S.listItem()
                                 .title('Campaigns')
                                 .icon(FiGift)
                                 .child(
                                     S.documentList()
                                         .title('Campaigns')
                                         .filter('_type == "campaign" && language == "en"')
+                                ),
+                            S.listItem()
+                                .title('Permanent Campaign')
+                                .icon(FiGift)
+                                .child(
+                                    S.document()
+                                        .title('Permanent Campaign')
+                                        .documentId('permanent-campaign-en')
+                                        .schemaType('permanentCampaign')
                                 ),
                             S.listItem()
                                 .title('Branches')
@@ -111,6 +158,6 @@ export const deskStructure = (S: StructureBuilder) =>
     */
             // All other document types
             ...S.documentTypeListItems().filter(
-                (listItem) => !['article', 'campaign', 'localGroup'].includes(listItem.getId() as string)
+                (listItem) => !['article', 'newsArticle', 'campaign', 'permanentCampaign', 'localGroup', 'donationForm'].includes(listItem.getId() as string)
             ),
         ])
