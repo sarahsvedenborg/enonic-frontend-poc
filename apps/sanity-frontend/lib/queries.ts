@@ -33,3 +33,87 @@ export const getAllCampaignSlugsQuery = `
     "slug": slug.current
   }
 `
+
+// Get permanent campaign by language
+export const getPermanentCampaignQuery = `
+  *[_type == "permanentCampaign" && language == $language][0] {
+    _id,
+    title,
+    slug,
+    description,
+    body,
+    publishedAt,
+    language,
+    mainImage,
+    showCommerce,
+    otherActivities,
+    organizationsAndIndustry,
+    otherSuppert,
+    support,
+    "donationForm": donation->
+  }
+`
+
+// Get article by slug
+export const getArticleBySlugQuery = `
+  *[_type in ["article"] && slug.current == $slug][0] {
+    _id,
+    _type,
+    title,
+    slug,
+    excerpt,
+    body,
+    publishedAt,
+    language,
+    mainImage
+  }
+`
+
+// Get newsarticle by slug
+export const getNewsArticleBySlugQuery = `
+  *[_type in ["newsArticle"] && slug.current == $slug][0] {
+    _id,
+    _type,
+    title,
+    slug,
+    excerpt,
+    body,
+    publishedAt,
+    language,
+    mainImage
+  }
+`
+
+// Get all article slugs for static generation
+export const getAllArticleSlugsQuery = `
+  *[_type in ["article"] && defined(slug.current)][] {
+    "slug": slug.current
+  }
+`
+
+// Get donation form by language
+export const getDonationFormQuery = `
+  *[_type == "donationForm" && language == $language][0] {
+    _id,
+    title,
+    language,
+    donationFormType,
+    heading,
+    description,
+    amounts,
+    fact
+  }
+`
+
+// Get all news articles by language
+export const getAllNewsArticlesQuery = `
+  *[_type == "newsArticle" && language == $language] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    excerpt,
+    publishedAt,
+    language,
+    mainImage
+  }
+`

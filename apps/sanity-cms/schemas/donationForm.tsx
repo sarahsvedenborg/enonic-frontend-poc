@@ -11,6 +11,21 @@ export default defineField({
             type: 'string',
         }),
         defineField({
+            name: 'language',
+            title: 'Language',
+            type: 'string',
+            initialValue: 'no',
+            options: {
+                list: [
+                    { title: 'Norsk', value: 'no' },
+                    { title: 'Engelsk', value: 'en' },
+                ],
+                layout: 'radio',
+
+            },
+            validation: (Rule) => Rule.required(),
+        }),
+        defineField({
             name: 'donationFormType',
             title: 'Kompakt eller stort skjema',
             type: 'string',

@@ -28,3 +28,52 @@ export interface Campaign {
     mainImage?: any
     // Add other fields as needed based on your Sanity schema
 }
+
+// Types for permanent campaign documents
+export interface PermanentCampaign {
+    _id: string
+    _type: 'permanentCampaign'
+    title: string
+    slug: {
+        current: string
+    }
+    description?: string
+    body?: any[]
+    publishedAt?: string
+    language?: string
+    mainImage?: any
+    showCommerce?: boolean
+    otherActivities?: any[]
+    organizationsAndIndustry?: any[]
+    otherSuppert?: any[]
+    support?: any[]
+    donation?: any
+}
+
+// Types for article documents
+export interface Article {
+    _id: string
+    _type: 'article' | 'newsArticle'
+    title: string
+    slug: {
+        current: string
+    }
+    excerpt?: string
+    body?: any[]
+    publishedAt?: string
+    language?: string
+    mainImage?: any
+}
+
+// Types for donation form documents
+export interface DonationForm {
+    _id: string
+    _type: 'donationForm'
+    title?: string
+    language?: string
+    donationFormType?: 'compact' | 'extended'
+    heading?: string
+    description?: string
+    amounts?: number[]
+    fact?: string
+}

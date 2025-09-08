@@ -18,6 +18,7 @@ interface DonationFormProps {
   factBox?: string,
   includeDirectDonation?: boolean,
   onDonate?: (amount: number, frequency: 'monthly' | 'one-time') => void
+  negativeMargin?: boolean
 }
 
 
@@ -37,6 +38,7 @@ export const DonationForm: React.FC<DonationFormProps> = ({
   factBox = "Din gave gjør en forskjell. For 300 kroner kan to personer få hvert sitt teppe og mat og vann i en måned.",
   onDonate = (amount: number, frequency: 'monthly' | 'one-time') => { console.log(`Donating ${amount} kr ${frequency}`) },
   includeDirectDonation = false,
+  negativeMargin = false,
   ...props
 }) => {
 
@@ -64,7 +66,7 @@ export const DonationForm: React.FC<DonationFormProps> = ({
   }
 
   return (
-    <Section width="sm" background="tinted">
+    <Section width="sm" background="white" negativeMargin={negativeMargin}>
       <div className={styles.donationSection}>
         <div className={styles.donationForm}>
           {/* Header Section */}

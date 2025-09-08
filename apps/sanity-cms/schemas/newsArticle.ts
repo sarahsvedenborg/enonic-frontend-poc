@@ -2,8 +2,8 @@ import { defineField, defineType } from 'sanity'
 import TranslateInput from '../components/TranslateInput'
 
 export default defineType({
-    name: 'article',
-    title: 'Article',
+    name: 'newsArticle',
+    title: 'News Article',
     type: 'document',
     fields: [
         defineField({
@@ -37,6 +37,31 @@ export default defineType({
             },
             validation: (Rule) => Rule.required(),
         }),
+        /*  defineField({
+             name: 'author',
+             title: 'Author',
+             type: 'reference',
+             to: [{ type: 'author' }],
+         }), */
+        defineField({
+            name: 'mainImage',
+            title: 'Main image',
+            type: 'image',
+            options: {
+                hotspot: true,
+            },
+        }),
+        /*   defineField({
+               name: 'categories',
+               title: 'Categories',
+               type: 'array',
+               of: [{ type: 'reference', to: { type: 'category' } }],
+           }), */
+        defineField({
+            name: 'publishedAt',
+            title: 'Published at',
+            type: 'datetime',
+        }),
         defineField({
             name: 'excerpt',
             title: 'Ingress',
@@ -48,13 +73,15 @@ export default defineType({
             title: 'Body',
             type: 'blockContent',
         }),
-        defineField({
-            name: 'relatedContent',
-            title: 'Relatert innhold',
-            type: 'array',
-            of: [{ type: 'reference', to: { type: 'article' } }],
-        }),
-
+        /*   defineField({
+              name: 'translate',
+              title: 'AI Translation',
+              type: 'string',
+              components: {
+                  input: TranslateInput,
+              },
+              readOnly: true,
+          }), */
     ],
     preview: {
         select: {

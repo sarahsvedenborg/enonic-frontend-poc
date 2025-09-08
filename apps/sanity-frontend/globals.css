@@ -1,8 +1,12 @@
 @import url('ui-lib/index.css');
+@import url('components/ArticlePage/articlePage.css');
+@import url('components/PortableText.css');
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  color: #374151;
 }
 
 /* Text shadow utilities for hero sections */
@@ -16,4 +20,114 @@ body {
 
 .text-shadow-lg {
   text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* Røde Kors color scheme */
+:root {
+  --rk-red: #dc2626;
+  --rk-red-light: #fef2f2;
+  --rk-red-dark: #b91c1c;
+  --rk-gray: #6b7280;
+  --rk-gray-light: #f9fafb;
+  --rk-gray-dark: #374151;
+}
+
+/* Typography improvements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #111827;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Button styles matching Røde Kors */
+.btn-primary {
+  background-color: var(--rk-red);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--rk-red-dark);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--rk-red);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  border: 2px solid var(--rk-red);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--rk-red-light);
+}
+
+/* Card styles */
+.card {
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Grid layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }

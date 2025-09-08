@@ -1,6 +1,8 @@
 'use client'
+import { Paragraph } from '@digdir/designsystemet-react'
 import { PortableText as PortableTextReact } from '@portabletext/react'
 import { urlFor } from '../lib/sanity'
+import { Section } from 'ui-lib'
 
 // Custom components for rendering different block types
 const components = {
@@ -26,32 +28,40 @@ const components = {
     },
     block: {
         h1: ({ children }: any) => (
-            <h1 className="text-3xl font-bold mb-4 mt-6">{children}</h1>
+            <Section width="sm">
+                <h1 className="text-3xl font-bold mb-4 mt-6">{children}</h1></Section>
         ),
         h2: ({ children }: any) => (
-            <h2 className="text-2xl font-bold mb-3 mt-5">{children}</h2>
+            <Section width="sm">
+                <h2 className="text-2xl font-bold mb-3 mt-5">{children}</h2></Section>
         ),
         h3: ({ children }: any) => (
-            <h3 className="text-xl font-semibold mb-2 mt-4">{children}</h3>
+            <Section width="sm">
+                <h3 className="text-xl font-semibold mb-2 mt-4">{children}</h3></Section>
         ),
         h4: ({ children }: any) => (
-            <h4 className="text-lg font-semibold mb-2 mt-3">{children}</h4>
+            <Section width="sm">
+                <h4 className="text-lg font-semibold mb-2 mt-3">{children}</h4></Section>
         ),
         normal: ({ children }: any) => (
-            <p className="mb-4 leading-relaxed">{children}</p>
+            <Section width="sm">
+                <Paragraph data-size="md" className="mb-4 leading-relaxed">{children}</Paragraph></Section>
         ),
         blockquote: ({ children }: any) => (
-            <blockquote className="border-l-4 border-blue-500 pl-4 my-4 italic text-gray-700">
-                {children}
-            </blockquote>
+            <Section width="sm">
+                <blockquote className="blockquote">
+                    {children}
+                </blockquote></Section>
         ),
     },
     list: {
         bullet: ({ children }: any) => (
-            <ul className="list-disc list-inside mb-4 space-y-1">{children}</ul>
+            <Section width="sm">
+                <ul className="list-disc list-inside mb-4 space-y-1">{children}</ul></Section>
         ),
         number: ({ children }: any) => (
-            <ol className="list-decimal list-inside mb-4 space-y-1">{children}</ol>
+            <Section width="sm">
+                <ol className="list-decimal list-inside mb-4 space-y-1">{children}</ol></Section>
         ),
     },
     listItem: {

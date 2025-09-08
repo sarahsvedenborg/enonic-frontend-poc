@@ -1,0 +1,109 @@
+/* Support Work Page Styling */
+.support-options {
+    margin: 2rem 0;
+}
+
+.support-option {
+    border-left: 4px solid var(--rk-red);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.support-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.support-option h3 {
+    color: var(--rk-red);
+    margin-bottom: 1rem;
+}
+
+.support-option p {
+    margin: 0;
+}
+
+.gift-options {
+    margin: 2rem 0;
+}
+
+.gift-option {
+    text-align: center;
+    border: 2px solid #f3f4f6;
+    transition: all 0.2s ease;
+}
+
+.gift-option:hover {
+    border-color: var(--rk-red);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.gift-option h3 {
+    color: var(--rk-red);
+    margin-bottom: 0.75rem;
+}
+
+.gift-option p {
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+/* Lists styling */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+li:before {
+    content: "•";
+    color: var(--rk-red);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .support-options {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .support-option {
+        padding: 1.5rem;
+    }
+
+    .gift-options {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .gift-option {
+        padding: 1rem;
+    }
+}
+
+/* Typography improvements - using global styles */
+
+/* Section spacing */
+section {
+    margin-bottom: 3rem;
+}
+
+/* Background sections */
+.background-tinted {
+    background-color: var(--rk-gray-light);
+}
