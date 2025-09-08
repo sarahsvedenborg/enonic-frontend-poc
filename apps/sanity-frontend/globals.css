@@ -1,4 +1,6 @@
 @import url('ui-lib/index.css');
+@import url('components/ArticlePage/articlePage.css');
+@import url('components/PortableText.css');
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,

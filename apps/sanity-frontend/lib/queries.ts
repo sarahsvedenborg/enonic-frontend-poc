@@ -53,3 +53,25 @@ export const getPermanentCampaignQuery = `
     donation
   }
 `
+
+// Get article by slug
+export const getArticleBySlugQuery = `
+  *[_type in ["article", "newsArticle"] && slug.current == $slug][0] {
+    _id,
+    _type,
+    title,
+    slug,
+    excerpt,
+    body,
+    publishedAt,
+    language,
+    mainImage
+  }
+`
+
+// Get all article slugs for static generation
+export const getAllArticleSlugsQuery = `
+  *[_type in ["article", "newsArticle"] && defined(slug.current)][] {
+    "slug": slug.current
+  }
+`

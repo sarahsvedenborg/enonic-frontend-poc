@@ -5,7 +5,7 @@ import { FiLogIn } from "react-icons/fi";
 
 import { Buttons, Link as Link2, Card } from 'rk-designsystem'
 
-export const Header: React.FC = () => {
+export const Header: React.FC = ({ menuItems }: { menuItems: any[] }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const toggleMenu = () => {
@@ -90,79 +90,23 @@ export const Header: React.FC = () => {
                     {/* Menu Items */}
                     <nav className="rk-header-menu-nav">
                         <ul className="rk-header-menu-list">
-                            <li className="rk-header-menu-item">
+                            {menuItems && menuItems.map(item => <li>
                                 <Card
                                     asChild
                                     data-color="brand1"
                                     variant="tinted"
                                     className="rk-header-menu-card"
                                 >
-                                    <Link href="/no/gi-penger-og-redd-liv" onClick={closeMenu}>
+                                    <Link href={item.href} onClick={closeMenu}>
                                         <div className="rk-header-menu-card-content">
-                                            <h3 className="rk-header-menu-card-title">Gi støtte - Fast giverside</h3>
+                                            <h3 className="rk-header-menu-card-title">{item.title}</h3>
                                             <p className="rk-header-menu-card-description">
-                                                (Innhold i enonic, hardkodet design i frontend)
+                                                {item.description}
                                             </p>
                                         </div>
                                     </Link>
                                 </Card>
-                            </li>
-                            <li className="rk-header-menu-item">
-                                <Card
-                                    asChild
-                                    data-color="brand1"
-                                    variant="tinted"
-                                    className="rk-header-menu-card"
-                                >
-                                    <Link href="/kampanjer" onClick={closeMenu}>
-                                        <div className="rk-header-menu-card-content">
-                                            <h3 className="rk-header-menu-card-title">Kampanjer</h3>
-                                            <p className="rk-header-menu-card-description">
-                                                (Innhold i enonic og mulighet for redaktører å tilpasse siden med andre elementer)
-                                            </p>
-                                        </div>
-                                    </Link>
-                                </Card>
-                            </li>
-
-
-                            <li className="rk-header-menu-item">
-                                <Card
-                                    asChild
-                                    data-color="brand1"
-                                    variant="tinted"
-                                    className="rk-header-menu-card"
-                                >
-                                    <Link href="/lokallag/rode-kors-ullensaker" onClick={closeMenu}>
-                                        <div className="rk-header-menu-card-content">
-                                            <h3 className="rk-header-menu-card-title">Lokalforenring</h3>
-                                            <p className="rk-header-menu-card-description">
-                                                (work in progress)
-                                            </p>
-                                        </div>
-                                    </Link>
-                                </Card>
-                            </li>
-                            {/* 
-                <li className="rk-header-menu-item">
-                <Card
-                  asChild
-                  data-color="brand1"
-                  variant="tinted"
-                        className="rk-header-menu-card"
-                >
-                  <Link href="/bli-frivillig" onClick={closeMenu}>
-                    <div className="rk-header-menu-card-content">
-                      <h3 className="rk-header-menu-card-title">Bli frivillig</h3>
-                      <p className="rk-header-menu-card-description">
-                        Bli del av vårt frivillige nettverk
-                      </p>
-                    </div>
-                  </Link>
-                </Card>
-              </li> */}
-
-
+                            </li>)}
                         </ul>
                     </nav>
                 </div>

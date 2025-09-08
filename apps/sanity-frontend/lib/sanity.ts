@@ -49,3 +49,18 @@ export interface PermanentCampaign {
     support?: any[]
     donation?: any
 }
+
+// Types for article documents
+export interface Article {
+    _id: string
+    _type: 'article' | 'newsArticle'
+    title: string
+    slug: {
+        current: string
+    }
+    excerpt?: string
+    body?: any[]
+    publishedAt?: string
+    language?: string
+    mainImage?: any
+}

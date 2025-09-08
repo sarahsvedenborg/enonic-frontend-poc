@@ -14,9 +14,9 @@ const Section: React.FC<SectionProps> = ({
     children,
     width = 'md',
     className = '',
-    padding = 'md',
+    padding = 'sm',
     background = 'none',
-    margin = 'md'
+    margin = 'none'
 }) => {
     const widthClass = `section-width-${width}`
     const paddingClass = `section-padding-${padding}`

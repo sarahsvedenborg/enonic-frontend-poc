@@ -37,21 +37,24 @@ export default defineType({
             },
             validation: (Rule) => Rule.required(),
         }),
-
+        defineField({
+            name: 'excerpt',
+            title: 'Ingress',
+            type: 'text',
+            validation: (Rule) => Rule.required(),
+        }),
         defineField({
             name: 'body',
             title: 'Body',
             type: 'blockContent',
         }),
-        /*   defineField({
-              name: 'translate',
-              title: 'AI Translation',
-              type: 'string',
-              components: {
-                  input: TranslateInput,
-              },
-              readOnly: true,
-          }), */
+        defineField({
+            name: 'relatedContent',
+            title: 'Relatert innhold',
+            type: 'array',
+            of: [{ type: 'reference', to: { type: 'article' } }],
+        }),
+
     ],
     preview: {
         select: {
