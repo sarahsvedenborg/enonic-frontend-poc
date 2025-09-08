@@ -63,6 +63,12 @@ export default defineType({
             type: 'datetime',
         }),
         defineField({
+            name: 'excerpt',
+            title: 'Ingress',
+            type: 'text',
+            validation: (Rule) => Rule.required(),
+        }),
+        defineField({
             name: 'body',
             title: 'Body',
             type: 'blockContent',

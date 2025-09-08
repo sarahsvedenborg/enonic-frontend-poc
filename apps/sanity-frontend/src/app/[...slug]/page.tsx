@@ -2,8 +2,8 @@ import { Heading, Section } from 'ui-lib';
 import { client } from '../../../lib/sanity';
 import { getArticleBySlugQuery } from '../../../lib/queries';
 import { notFound } from 'next/navigation';
-import PortableText from '../../components/PortableText';
-import CampaignHero from '../../components/CampaignHero';
+
+
 import { ArticlePage } from '../../../components/ArticlePage/ArticlePage';
 // import NewsArticleView from '../../components/NewsArticleView';
 
@@ -32,8 +32,8 @@ export default async function DynamicPage({ params }: DynamicPageProps) {
     switch (article._type) {
         case 'article':
             return <ArticlePage article={article} />;
-        case 'newsArticle':
-            return <NewsArticleView article={article} />;
+        /*     case 'newsArticle':
+                return <NewsArticleView article={article} />; */
         default:
             return <ArticlePage article={article} />;
     }

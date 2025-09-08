@@ -56,7 +56,22 @@ export const getPermanentCampaignQuery = `
 
 // Get article by slug
 export const getArticleBySlugQuery = `
-  *[_type in ["article", "newsArticle"] && slug.current == $slug][0] {
+  *[_type in ["article"] && slug.current == $slug][0] {
+    _id,
+    _type,
+    title,
+    slug,
+    excerpt,
+    body,
+    publishedAt,
+    language,
+    mainImage
+  }
+`
+
+// Get newsarticle by slug
+export const getNewsArticleBySlugQuery = `
+  *[_type in ["newsArticle"] && slug.current == $slug][0] {
     _id,
     _type,
     title,
@@ -71,7 +86,7 @@ export const getArticleBySlugQuery = `
 
 // Get all article slugs for static generation
 export const getAllArticleSlugsQuery = `
-  *[_type in ["article", "newsArticle"] && defined(slug.current)][] {
+  *[_type in ["article"] && defined(slug.current)][] {
     "slug": slug.current
   }
 `
@@ -87,5 +102,18 @@ export const getDonationFormQuery = `
     description,
     amounts,
     fact
+  }
+`
+
+// Get all news articles by language
+export const getAllNewsArticlesQuery = `
+  *[_type == "newsArticle" && language == $language] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    excerpt,
+    publishedAt,
+    language,
+    mainImage
   }
 `
