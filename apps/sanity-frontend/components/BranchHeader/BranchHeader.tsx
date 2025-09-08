@@ -141,9 +141,9 @@ export const BranchHeader = ({
             </div>
 
             {/* Bottom section - Opening hours */}
-            <div className="opening-hours">
+            {/*   <div className="opening-hours">
                 <Paragraph className="opening-hours-text">Åpningstider Røde Kors huset</Paragraph>
-            </div>
+            </div> */}
         </div>
     )
 }
