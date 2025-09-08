@@ -13,7 +13,6 @@ const getData = async () => {
 export default async function AktueltPage() {
     const newsArticles = await getData();
 
-    console.log("News Articles", newsArticles);
 
     return (
         <>
@@ -39,7 +38,7 @@ export default async function AktueltPage() {
 
                                 return (
                                     <article key={article._id} className="news-article-card">
-                                        <Link href={`/${article.slug.current}`} className="news-article-link">
+                                        <Link href={`/aktuelt/${article.slug.current}`} className="news-article-link">
                                             {imageUrl && (
                                                 <div className="news-article-image">
                                                     <img

@@ -1,5 +1,6 @@
+import { Paragraph } from '@digdir/designsystemet-react';
 import { Heading, Section } from 'ui-lib';
-import { client } from '../../../../lib/sanity';
+import { client, urlFor } from '../../../../lib/sanity';
 import { getNewsArticleBySlugQuery } from '../../../../lib/queries';
 import { notFound } from 'next/navigation';
 import PortableText from '../../../../components/PortableText';
@@ -26,30 +27,33 @@ export default async function NewsPage({ params }: NewsArticlePageProps) {
     }
     return (
         <>
-            {/* News Hero Section - smaller than regular articles */}
-            <section
-                className="news-hero"
-                style={{
-                    backgroundImage: article?.mainImage ? `url(${article.mainImage})` : 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)'
-                }}
-            >
-                <div className="news-hero-content">
-                    <div className="news-hero-text">
-                        <Heading level={1} className="news-title">
-                            {article.title}
-                        </Heading>
 
-                        {article.publishedAt && (
-                            <time className="news-date">
-                                {new Date(article.publishedAt).toLocaleDateString('no-NO')}
-                            </time>
-                        )}
-                    </div>
-                </div>
-            </section>
+            <img src={urlFor(article.mainImage).width(1400).height(400).fit('crop').url()} alt={article.title} />
+
+            <Section width="sm">
+                <Heading level={1} >
+                    {article.title}
+                </Heading>
+            </Section>
+            <Section width="sm">
+                <Paragraph data-size='xl'>
+                    {article.excerpt}
+                </Paragraph>
+            </Section>
+            <Section width="sm">
+                {article.publishedAt && (
+                    <span><span style={{ backgroundColor: 'var(--rk-red)', color: 'var(--rk-red)', height: '10px', width: '10px' }}>{'fff'}</span> <time >
+                        {new Date(article.publishedAt).toLocaleDateString('no-NO')}
+                    </time> - Skrevet av Røde Kors</span>
+                )}
+                <hr />
+            </Section>
+
+
+
 
             {/* Main Content */}
-            <Section width="xl" padding="lg">
+            < Section width="xl" padding="lg" >
                 <Section width="md" padding="lg">
                     {article.body && (
                         <div className="news-content">
@@ -57,10 +61,10 @@ export default async function NewsPage({ params }: NewsArticlePageProps) {
                         </div>
                     )}
                 </Section>
-            </Section>
+            </Section >
 
             {/* News-specific sections */}
-            <Section width="xl" background="tinted" padding="lg">
+            < Section width="xl" background="tinted" padding="lg" >
                 <Section width="md" padding="lg">
                     <Heading level={2}>Relaterte nyheter</Heading>
 
@@ -71,10 +75,10 @@ export default async function NewsPage({ params }: NewsArticlePageProps) {
                         </div>
                     </div>
                 </Section>
-            </Section>
+            </Section >
 
             {/* Newsletter signup */}
-            <Section width="xl" padding="lg">
+            < Section width="xl" padding="lg" >
                 <Section width="md" padding="lg">
                     <div className="newsletter-section">
                         <Heading level={2}>Få nyheter på e-post</Heading>
@@ -85,7 +89,7 @@ export default async function NewsPage({ params }: NewsArticlePageProps) {
                         </div>
                     </div>
                 </Section>
-            </Section>
+            </Section >
         </>
     );
 

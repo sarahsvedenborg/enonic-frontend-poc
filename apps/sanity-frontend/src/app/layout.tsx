@@ -22,7 +22,7 @@ export default function RootLayout({
         },
         {
             title: 'Aktuelt',
-            href: '/aktulelt',
+            href: '/aktuelt',
             description: '(Listeside for alle aktueltsaker)'
         },
         {
