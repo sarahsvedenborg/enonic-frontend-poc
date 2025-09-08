@@ -5,7 +5,7 @@ import { FiLogIn } from "react-icons/fi";
 
 import { Buttons, Link as Link2, Card } from 'rk-designsystem'
 
-export const Header: React.FC = ({ menuItems }: { menuItems: any[] }) => {
+export const Header: React.FC<{ menuItems: any[] }> = ({ menuItems }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     const toggleMenu = () => {

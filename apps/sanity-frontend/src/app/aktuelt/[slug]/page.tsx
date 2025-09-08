@@ -1,9 +1,8 @@
-import { Heading, Section, DonationForm } from 'ui-lib';
+import { Heading, Section } from 'ui-lib';
 import { client } from '../../../../lib/sanity';
 import { getNewsArticleBySlugQuery } from '../../../../lib/queries';
 import { notFound } from 'next/navigation';
 import PortableText from '../../../../components/PortableText';
-import CampaignHero from '../../../../components/CampaignHero';
 
 
 interface NewsArticlePageProps {
@@ -31,7 +30,7 @@ export default async function NewsPage({ params }: NewsArticlePageProps) {
             <section
                 className="news-hero"
                 style={{
-                    backgroundImage: article?.backgroundImage ? `url(${backgroundImage})` : 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)'
+                    backgroundImage: article?.mainImage ? `url(${article.mainImage})` : 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)'
                 }}
             >
                 <div className="news-hero-content">
@@ -96,7 +95,7 @@ export default async function NewsPage({ params }: NewsArticlePageProps) {
 
 
     // Generate static params for all newsArticle slugs
-    export async function generateStaticParams() {
+    async function generateStaticParams() {
         try {
             const slugs = await client.fetch(`
             *[_type == "newsArticle" && defined(slug.current)][] {
@@ -112,3 +111,4 @@ export default async function NewsPage({ params }: NewsArticlePageProps) {
             return [];
         }
     }
+}
