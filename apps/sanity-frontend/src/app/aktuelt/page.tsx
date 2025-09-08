@@ -6,18 +6,18 @@ import Link from 'next/link';
 import './page.css';
 
 const getData = async () => {
-    const newsArticles = await client.fetch(getAllNewsArticlesQuery, { language: 'no' });
+    const newsArticles = await client.fetch(getAllNewsArticlesQuery, { lang: 'no' });
     return newsArticles;
 }
 
 export default async function AktueltPage() {
     const newsArticles = await getData();
-
+    console.log("News Articles", newsArticles.length);
 
     return (
         <>
             {/* Page Header */}
-            <Section width="xl" padding="lg">
+            <Section width="xl">
                 <Section width="md" padding="lg">
                     <Heading level={1}>Aktuelt</Heading>
                     <p className="page-description">
@@ -27,8 +27,8 @@ export default async function AktueltPage() {
             </Section>
 
             {/* News Articles List */}
-            <Section width="xl" padding="lg">
-                <Section width="md" padding="lg">
+            <Section width="xl" >
+                <Section width="md" >
                     {newsArticles && newsArticles.length > 0 ? (
                         <div className="news-articles-grid">
                             {newsArticles.map((article: any) => {

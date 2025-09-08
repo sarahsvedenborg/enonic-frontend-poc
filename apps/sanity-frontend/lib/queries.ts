@@ -94,7 +94,8 @@ export const getAllArticleSlugsQuery = `
 // Get donation form by language
 export const getDonationFormQuery = `
   *[_type == "donationForm" && language == $language][0] {
-    _id,
+    _id, 
+    _type,
     title,
     language,
     donationFormType,
@@ -107,7 +108,7 @@ export const getDonationFormQuery = `
 
 // Get all news articles by language
 export const getAllNewsArticlesQuery = `
-  *[_type == "newsArticle" && language == $language] | order(publishedAt desc) {
+  *[_type == "newsArticle" && language == $lang] | order(publishedAt desc) {
     _id,
     title,
     slug,
