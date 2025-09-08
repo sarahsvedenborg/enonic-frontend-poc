@@ -64,3 +64,16 @@ export interface Article {
     language?: string
     mainImage?: any
 }
+
+// Types for donation form documents
+export interface DonationForm {
+    _id: string
+    _type: 'donationForm'
+    title?: string
+    language?: string
+    donationFormType?: 'compact' | 'extended'
+    heading?: string
+    description?: string
+    amounts?: number[]
+    fact?: string
+}

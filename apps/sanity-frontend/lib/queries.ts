@@ -50,7 +50,7 @@ export const getPermanentCampaignQuery = `
     organizationsAndIndustry,
     otherSuppert,
     support,
-    donation
+    "donationForm": donation->
   }
 `
 
@@ -73,5 +73,19 @@ export const getArticleBySlugQuery = `
 export const getAllArticleSlugsQuery = `
   *[_type in ["article", "newsArticle"] && defined(slug.current)][] {
     "slug": slug.current
+  }
+`
+
+// Get donation form by language
+export const getDonationFormQuery = `
+  *[_type == "donationForm" && language == $language][0] {
+    _id,
+    title,
+    language,
+    donationFormType,
+    heading,
+    description,
+    amounts,
+    fact
   }
 `

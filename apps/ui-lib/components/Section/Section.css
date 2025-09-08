@@ -99,6 +99,10 @@
     margin-bottom: var(--ds-size-12, 3rem);
 }
 
+.section-negative-margin-true {
+    margin-top: -8em;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
 

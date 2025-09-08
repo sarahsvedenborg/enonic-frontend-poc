@@ -1,22 +1,27 @@
-import { Heading, Section } from 'ui-lib';
+import { Heading, Section, DonationForm } from 'ui-lib';
 import { client } from '../../../lib/sanity';
-import { getPermanentCampaignQuery } from '../../../lib/queries';
+import { getPermanentCampaignQuery, getDonationFormQuery } from '../../../lib/queries';
 import { notFound } from 'next/navigation';
 import PortableText from '../../../components/PortableText';
 import CampaignHero from '../../../components/CampaignHero';
 import './page.css';
 
 const getData = async () => {
-    const campaign = await client.fetch(getPermanentCampaignQuery, { language: 'no' });
-    return campaign;
+    const [campaign] = await Promise.all([
+        client.fetch(getPermanentCampaignQuery, { language: 'no' }),
+
+    ]);
+    return { campaign };
 }
 
 export default async function SupportWorkPage() {
-    const campaign = await getData();
+    const { campaign } = await getData();
 
     if (!campaign) {
         notFound();
     }
+
+    const { donationForm } = campaign;
 
     return (
         <>
@@ -26,6 +31,24 @@ export default async function SupportWorkPage() {
                 image={campaign.mainImage}
                 publishedAt={campaign.publishedAt}
             />
+
+            {/* Donation Form Section */}
+            {donationForm && (
+
+                <Section width="xl" padding="lg">
+                    <DonationForm
+                        title={donationForm.heading || "Du kan hjelpe"}
+                        description={donationForm.description || "Bidra til å hjelpe de mest sårbare i land rammet av kriser, krig og konflikt."}
+                        amounts={donationForm.amounts || [100, 300, 500]}
+                        factBox={donationForm.fact || "Din gave gjør en forskjell. For 300 kroner kan to personer få hvert sitt teppe og mat og vann i en måned."}
+                        isDefault={donationForm.donationFormType === 'compact'}
+                        includeDirectDonation={true}
+                        negativeMargin={true}
+
+                    />
+                </Section>
+
+            )}
 
             <Section width="xl" background="tinted">
                 {campaign.body && (

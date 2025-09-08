@@ -8,6 +8,7 @@ interface SectionProps {
     padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
     background?: 'none' | 'white' | 'gray' | 'tinted'
     margin?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
+    negativeMargin?: boolean
 }
 
 const Section: React.FC<SectionProps> = ({
@@ -16,19 +17,21 @@ const Section: React.FC<SectionProps> = ({
     className = '',
     padding = 'sm',
     background = 'none',
-    margin = 'none'
+    margin = 'none',
+    negativeMargin = false
 }) => {
     const widthClass = `section-width-${width}`
     const paddingClass = `section-padding-${padding}`
     const backgroundClass = `section-background-${background}`
     const marginClass = `section-margin-${margin}`
-
+    const negativeMarginClass = `section-negative-margin-${negativeMargin}`
     const combinedClassName = [
         'section',
         widthClass,
         paddingClass,
         backgroundClass,
         marginClass,
+        negativeMarginClass,
         className
     ].filter(Boolean).join(' ')
 
