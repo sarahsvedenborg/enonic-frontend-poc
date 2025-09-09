@@ -46,10 +46,10 @@ export const getPermanentCampaignQuery = `
     language,
     mainImage,
     showCommerce,
-    otherActivities,
-    organizationsAndIndustry,
-    otherSuppert,
-    support,
+    otherActivities[]->,
+    organizationsAndIndustry[]->,
+    otherSuppert[]->,
+    support[]->,
     "donationForm": donation->
   }
 `

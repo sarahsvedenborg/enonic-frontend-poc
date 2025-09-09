@@ -51,11 +51,11 @@ export const deskStructure = (S: StructureBuilder) =>
                                 ),
                             S.divider({ title: "Faste sider" }),
                             S.listItem()
-                                .title('Permanent Kampanje')
+                                .title('Permanent giverside')
                                 .icon(FiGift)
                                 .child(
                                     S.document()
-                                        .title('Permanent Kampanje')
+                                        .title('Permanent giverside')
                                         .documentId('permanent-campaign-no')
                                         .schemaType('permanentCampaign')
                                 ),
