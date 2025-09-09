@@ -118,3 +118,26 @@ export const getAllNewsArticlesQuery = `
     mainImage
   }
 `
+
+// Get branch by slug
+export const getBranchBySlugQuery = `
+  *[_type == "localGroup" && slug.current == $slug][0] {
+    _id,
+    _type,
+    title,
+    slug,
+    excerpt,
+    body,
+    publishedAt,
+    language,
+    mainImage,
+    branchId,
+    branchName,
+    branchType,
+    branchParent,
+    branchLocation,
+    communicationChannels,
+    branchContacts,
+    branchActivities
+  }
+`
