@@ -7,6 +7,7 @@ import { getBranchBySlugQuery } from '../../../../../lib/queries';
 import { notFound } from 'next/navigation';
 import PortableText from '../../../../../components/PortableText';
 import BranchHeader from '../../../../../components/BranchHeader';
+import ArticleCard from '../../../../../components/ArticleCard';
 import { getBranchActivities, ApiBranch } from '../../../../../lib/api-cache';
 import './page.css';
 
@@ -17,10 +18,8 @@ interface BranchPageProps {
 export const revalidate = 60;
 
 const getData = async (slug: string) => {
-    const [branchData, apiActivities] = await Promise.all([
+    const [branchData] = await Promise.all([
         client.fetch(getBranchBySlugQuery, { slug }),
-        // We'll get the branchId from the Sanity data and then fetch API activities
-        Promise.resolve([]) // Placeholder for now
     ]);
 
     // If we have branch data with branchId, fetch the API activities
@@ -42,6 +41,8 @@ const getData = async (slug: string) => {
         branchData,
         apiActivities: activities
     };
+
+
 }
 
 export default async function BranchPage({ params }: BranchPageProps) {
@@ -53,9 +54,11 @@ export default async function BranchPage({ params }: BranchPageProps) {
         notFound();
     }
 
+    console.log("branchData", branchData)
+
     return (
         <>
-            {/* Branch Header */}
+
             <BranchHeader
                 branchName={branchData.branchName || branchData.title}
                 branchParent={branchData.branchParent}
@@ -64,17 +67,25 @@ export default async function BranchPage({ params }: BranchPageProps) {
                 branchContacts={branchData.branchContacts}
                 image={branchData.mainImage}
             />
-            <hr />
-            Her kommer meny
-            <hr />
-            {/* Main Content */}
+
+            <Section width="xl">
+                <nav className="branch-navigation">
+                    <a href="#aktiviteter" className="nav-item">Våre aktiviteter og tilbud</a>
+                    <a href="#tjenester" className="nav-item">Våre tjenester</a>
+                    <a href="#aktiviteter" className="nav-item">Hva skjer?</a>
+                    <a href="#nyheter" className="nav-item">Aktuelt</a>
+                    <a href="#om-oss" className="nav-item">Om oss</a>
+                </nav>
+            </Section>
+
             < Section width="sm" >
                 <Heading level={2}>
                     Velkommen til {branchData.branchName || branchData.title}!
                 </Heading>
+                <Paragraph data-size='xl' >{branchData.description}</Paragraph>
             </Section >
 
-            {/* Action Buttons */}
+
             < Section width="sm" >
                 <div className="action-buttons">
                     <button className="action-button action-button-primary">
@@ -88,11 +99,15 @@ export default async function BranchPage({ params }: BranchPageProps) {
                     </button>
                 </div>
             </Section >
-            <Section width="sm">
-                <Paragraph data-size='xl'>
-                    Her kommer fremhevet artikkel
-                </Paragraph>
-            </Section>
+
+
+            {
+                branchData.topArticle && (
+                    <Section width="xl">
+                        <ArticleCard topArticle={branchData.topArticle} />
+                    </Section>
+                )
+            }
             <Section width="sm">
                 <Paragraph data-size='xl'>
                     {branchData.excerpt}
@@ -103,7 +118,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 
 
 
-            {/* Main Content */}
+
             < Section width="xl" padding="lg" >
                 <Section width="md" padding="lg">
                     {branchData.body && (
@@ -114,7 +129,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
                 </Section>
             </Section >
 
-            {/* Branch Activities from API */}
+
             {
                 apiActivities && apiActivities.length > 0 && (
                     <Section width="xl" background="tinted" padding="lg">
@@ -142,7 +157,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
                 )
             }
 
-            {/* Fallback: Branch Activities from Sanity */}
+
             {
                 (!apiActivities || apiActivities.length === 0) && branchData.branchActivities && branchData.branchActivities.length > 0 && (
                     <Section width="xl" background="tinted" padding="lg">
@@ -169,30 +184,17 @@ export default async function BranchPage({ params }: BranchPageProps) {
                     </Section>
                 )
             }
+            <Section width="md" background="tinted" margin="lg" padding="lg">
 
-            {/* Contact Information */}
-            <Section width="xl" padding="lg">
-                <Section width="md" padding="lg">
-                    <Heading level={2}>Kontaktinformasjon</Heading>
-                    <div className="contact-info">
-                        {branchData.communicationChannels?.phone && (
-                            <div className="contact-item">
-                                <strong>Telefon:</strong> {branchData.communicationChannels.phone}
-                            </div>
-                        )}
-                        {branchData.communicationChannels?.email && (
-                            <div className="contact-item">
-                                <strong>E-post:</strong> {branchData.communicationChannels.email}
-                            </div>
-                        )}
-                        {branchData.communicationChannels?.web && (
-                            <div className="contact-item">
-                                <strong>Nettside:</strong> <a href={branchData.communicationChannels.web} target="_blank" rel="noopener noreferrer">{branchData.communicationChannels.web}</a>
-                            </div>
-                        )}
-                    </div>
-                </Section>
+                <Heading level={2}>Aktuelt</Heading>
+                <Paragraph data-size='md'>Her kan man enten:
+                    <ul>
+                        <li>La redaktører manuelt søke opp nyheter (enten knyttet til lokalforening eller ikke)</li>
+                        <li>Automatisk utlisting av nyheter knyttet til lokalforening</li>
+                    </ul>
+                </Paragraph>
             </Section>
+
         </>
     );
 

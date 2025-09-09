@@ -38,6 +38,19 @@ export default defineType({
             validation: (Rule) => Rule.required(),
         }),
         defineField({
+            name: 'branchRelated',
+            title: 'Tilhører lokalforening',
+            type: 'boolean',
+            initialValue: false,
+        }),
+        defineField({
+            name: 'branchId',
+            title: 'Tilhørende lokalforening',
+            type: 'reference',
+            to: [{ type: 'localGroup' }],
+            hidden: ({ parent }) => parent?.branchRelated === false,
+        }),
+        defineField({
             name: 'excerpt',
             title: 'Ingress',
             type: 'text',

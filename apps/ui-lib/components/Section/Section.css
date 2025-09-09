@@ -20,6 +20,12 @@
     margin: 0 auto;
 }
 
+
+.section-width-lg {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
 .section-width-xl {
     max-width: 1200px;
     margin: 0 auto;
