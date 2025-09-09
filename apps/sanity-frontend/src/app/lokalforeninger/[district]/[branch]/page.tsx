@@ -1,7 +1,7 @@
 
 import { Paragraph } from '@digdir/designsystemet-react';
 import { Buttons } from 'rk-designsystem';
-import { Heading, Section } from 'ui-lib';
+import { Heading, Section, DeveloperNote } from 'ui-lib';
 import { client, urlFor } from '../../../../../lib/sanity';
 import { getBranchBySlugQuery } from '../../../../../lib/queries';
 import { notFound } from 'next/navigation';
@@ -184,15 +184,15 @@ export default async function BranchPage({ params }: BranchPageProps) {
                     </Section>
                 )
             }
-            <Section width="md" background="tinted" margin="lg" padding="lg">
-
+            <Section width="md" background="under-development" margin="lg" padding="lg">
                 <Heading level={2}>Aktuelt</Heading>
-                <Paragraph data-size='md'>Her kan man enten:
+                <DeveloperNote>
+                    <p>Her kan man enten:</p>
                     <ul>
                         <li>La redaktører manuelt søke opp nyheter (enten knyttet til lokalforening eller ikke)</li>
                         <li>Automatisk utlisting av nyheter knyttet til lokalforening</li>
                     </ul>
-                </Paragraph>
+                </DeveloperNote>
             </Section>
 
         </>

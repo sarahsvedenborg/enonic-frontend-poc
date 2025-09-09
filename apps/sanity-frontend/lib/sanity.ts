@@ -62,7 +62,8 @@ export interface Article {
     body?: any[]
     publishedAt?: string
     language?: string
-    mainImage?: any
+    mainImage?: any,
+    relatedContent?: any[]
 }
 
 // Types for donation form documents

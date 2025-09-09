@@ -6,7 +6,7 @@ interface SectionProps {
     width?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full'
     className?: string
     padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
-    background?: 'none' | 'white' | 'gray' | 'tinted'
+    background?: 'none' | 'white' | 'gray' | 'tinted' | 'under-development'
     margin?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
     negativeMargin?: boolean
 }

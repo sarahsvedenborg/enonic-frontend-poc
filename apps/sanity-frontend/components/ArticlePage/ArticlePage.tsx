@@ -46,7 +46,7 @@ export const ArticlePage = ({ article }: ArticlePageProps) => {
 
                     <div className="related-articles">
                         {article?.relatedContent?.map((relatedContent) => (
-                            <div className="related-article">
+                            <div className="related-article" key={relatedContent._id}>
                                 <Heading level={3}>{relatedContent.title}</Heading>
                                 <p>{relatedContent.excerpt}</p>
                             </div>
