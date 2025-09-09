@@ -120,6 +120,40 @@ export const getAllNewsArticlesQuery = `
   }
 `
 
+// Get all arguments by language
+export const getAllArgumentsQuery = `
+  *[_type == "arguments" && language == $language] | order(publishedAt desc) {
+    _id,
+    title,
+    excerpt,
+    image,
+    "article": article->{
+      _id,
+      title,
+      slug
+    },
+    publishedAt,
+    language
+  }
+`
+
+// Get arguments by language with limit
+export const getArgumentsQuery = `
+  *[_type == "arguments" && language == $language] | order(publishedAt desc)[0...$limit] {
+    _id,
+    title,
+    excerpt,
+    image,
+    "article": article->{
+      _id,
+      title,
+      slug
+    },
+    publishedAt,
+    language
+  }
+`
+
 
 // Get branch by slug
 export const getBranchBySlugQuery = `

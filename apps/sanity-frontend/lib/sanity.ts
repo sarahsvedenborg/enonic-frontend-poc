@@ -78,3 +78,21 @@ export interface DonationForm {
     amounts?: number[]
     fact?: string
 }
+
+// Types for arguments documents
+export interface Arguments {
+    _id: string
+    _type: 'arguments'
+    title: string
+    excerpt: string
+    image?: any
+    article?: {
+        _id: string
+        title: string
+        slug: {
+            current: string
+        }
+    }
+    language?: string
+    publishedAt?: string
+}

@@ -33,6 +33,14 @@ export const deskStructure = (S: StructureBuilder) =>
                                         .filter('_type == "newsArticle" && language == "no"')
                                 ),
                             S.listItem()
+                                .title('Argumenter')
+                                .icon(FiFileText)
+                                .child(
+                                    S.documentList()
+                                        .title('Argumenter')
+                                        .filter('_type == "arguments" && language == "no"')
+                                ),
+                            S.listItem()
                                 .title('Kampanjer')
                                 .icon(FiGift)
                                 .child(
@@ -94,6 +102,14 @@ export const deskStructure = (S: StructureBuilder) =>
                                     S.documentList()
                                         .title('News Articles')
                                         .filter('_type == "newsArticle" && language == "en"')
+                                ),
+                            S.listItem()
+                                .title('Arguments')
+                                .icon(FiFileText)
+                                .child(
+                                    S.documentList()
+                                        .title('Arguments')
+                                        .filter('_type == "arguments" && language == "en"')
                                 ),
                             S.listItem()
                                 .title('Campaigns')
@@ -158,6 +174,6 @@ export const deskStructure = (S: StructureBuilder) =>
     */
             // All other document types
             ...S.documentTypeListItems().filter(
-                (listItem) => !['article', 'newsArticle', 'campaign', 'permanentCampaign', 'localGroup', 'donationForm'].includes(listItem.getId() as string)
+                (listItem) => !['article', 'newsArticle', 'campaign', 'permanentCampaign', 'localGroup', 'donationForm', 'argument'].includes(listItem.getId() as string)
             ),
         ])

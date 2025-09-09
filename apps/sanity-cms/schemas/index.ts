@@ -6,6 +6,7 @@ import campaign from './campaign'
 import permanentCampaign from './permanentCampaign'
 import localGroup from './localGroup'
 import donationForm from './donationForm'
+import argument from './argument'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
     article,
@@ -14,6 +15,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
     campaign,
     permanentCampaign,
     localGroup,
+    argument,
 
     // objects
     donationForm,
