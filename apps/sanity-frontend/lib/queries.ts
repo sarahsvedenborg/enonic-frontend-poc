@@ -65,7 +65,8 @@ export const getArticleBySlugQuery = `
     body,
     publishedAt,
     language,
-    mainImage
+    mainImage,
+    relatedContent[]->
   }
 `
 
@@ -119,6 +120,7 @@ export const getAllNewsArticlesQuery = `
   }
 `
 
+
 // Get branch by slug
 export const getBranchBySlugQuery = `
   *[_type == "localGroup" && slug.current == $slug][0] {
@@ -126,7 +128,8 @@ export const getBranchBySlugQuery = `
     _type,
     title,
     slug,
-    excerpt,
+    description,
+    "topArticle": topArticle2{..., "article": article->},
     body,
     publishedAt,
     language,

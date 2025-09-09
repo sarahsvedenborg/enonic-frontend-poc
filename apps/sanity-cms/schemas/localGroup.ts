@@ -36,11 +36,7 @@ export default defineType({
             },
             validation: (Rule) => Rule.required(),
         }),
-        defineField({
-            name: 'description',
-            title: 'Description',
-            type: 'text',
-        }),
+
         defineField({
             name: 'mainImage',
             title: 'Main image',
@@ -48,6 +44,20 @@ export default defineType({
             options: {
                 hotspot: true,
             },
+        }),
+        defineField({
+            name: 'description',
+            title: 'Description',
+            type: 'text',
+        }),
+        defineField({
+            name: 'topArticle2',
+            title: 'Fremhevet artikkel',
+            type: 'object',
+            fields: [
+                { name: 'image', type: 'image', title: 'Image' },
+                { name: 'article', type: 'reference', to: [{ type: 'article' }] },
+            ],
         }),
         defineField({
             name: 'body',

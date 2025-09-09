@@ -30,6 +30,14 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    overflow: hidden;
+}
+
+.branch-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .branch-image-placeholder::after {
@@ -39,6 +47,8 @@
     height: 80px;
     background: #d1d5db;
     border-radius: 50%;
+    z-index: -1;
+    /* Place behind the image */
 }
 
 /* Right side - Content */
@@ -90,7 +100,8 @@
 /* Contact Section */
 .contact-section {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 0.75rem;
 }
 
@@ -174,7 +185,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    margin-left: 1rem;
+
 }
 
 .address-text {

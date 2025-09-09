@@ -13,10 +13,11 @@
 }
 
 /* Left Section */
-.rk-header-leftSection {
+.rk-header-left-section {
     display: flex;
     align-items: center;
     gap: var(--ds-size-6);
+
 }
 
 .rk-header-menu-button,
