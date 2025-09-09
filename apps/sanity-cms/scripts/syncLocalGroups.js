@@ -13,7 +13,7 @@ import fetch from 'node-fetch'
 const client = createClient({
     projectId: process.env.SANITY_PROJECT_ID || 'mtewzn7e',
     dataset: process.env.SANITY_DATASET || 'production',
-    token: "skLx20vqFGn6V121uyBgUQ83BAl0lA56OZUGQPH8c4bnBLWm6S53SPh5o2iJ4S54p6IphaBAXX7KcGp7irD6fTDUYjfwH0whOpLsjq34Ucq3hCY53WCVsRI5oCRRfnnpK3MTXs7hZYe1wg4mbbXCsWs0tDee7CQpjOufnPNK1xhZGGQKkmTI",
+    token: "process.env.SANITY_WRITE_TOKEN",
     useCdn: false,
     apiVersion: '2023-05-03',
 })
