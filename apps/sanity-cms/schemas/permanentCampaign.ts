@@ -105,6 +105,12 @@ export default defineType({
             type: 'array',
             of: [{ type: 'reference', to: { type: 'article' } }],
         }),
+        defineField({
+            name: 'arguments',
+            title: 'Argumenter',
+            type: 'array',
+            of: [{ type: 'reference', to: { type: 'argument' } }],
+        }),
 
     ],
     preview: {

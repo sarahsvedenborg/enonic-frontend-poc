@@ -3,6 +3,16 @@
     margin: 2rem 0;
 }
 
+.support-options a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .support-option {
     border-left: 4px solid var(--rk-red);
     transition: transform 0.2s ease, box-shadow 0.2s ease;

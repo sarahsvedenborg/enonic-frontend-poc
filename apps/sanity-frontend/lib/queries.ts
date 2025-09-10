@@ -37,6 +37,7 @@ export const getAllCampaignSlugsQuery = `
 // Get permanent campaign by language
 export const getPermanentCampaignQuery = `
   *[_type == "permanentCampaign" && language == $language][0] {
+  ...,
     _id,
     title,
     slug,
@@ -46,11 +47,12 @@ export const getPermanentCampaignQuery = `
     language,
     mainImage,
     showCommerce,
-    otherActivities,
-    organizationsAndIndustry,
-    otherSuppert,
-    support,
-    "donationForm": donation->
+    otherActivities[]->,
+    organizationsAndIndustry[]->,
+    otherSuppert[]->,
+    support[]->,
+    "donationForm": donation->,
+    arguments[]->,
   }
 `
 
@@ -117,6 +119,40 @@ export const getAllNewsArticlesQuery = `
     publishedAt,
     language,
     mainImage
+  }
+`
+
+// Get all arguments by language
+export const getAllArgumentsQuery = `
+  *[_type == "arguments" && language == $language] | order(publishedAt desc) {
+    _id,
+    title,
+    excerpt,
+    image,
+    "article": article->{
+      _id,
+      title,
+      slug
+    },
+    publishedAt,
+    language
+  }
+`
+
+// Get arguments by language with limit
+export const getArgumentsQuery = `
+  *[_type == "arguments" && language == $language] | order(publishedAt desc)[0...$limit] {
+    _id,
+    title,
+    excerpt,
+    image,
+    "article": article->{
+      _id,
+      title,
+      slug
+    },
+    publishedAt,
+    language
   }
 `
 

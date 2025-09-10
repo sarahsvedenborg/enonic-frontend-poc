@@ -1,5 +1,5 @@
 import { StructureBuilder } from 'sanity/desk'
-import { FiFileText, FiGift, FiGlobe, FiMapPin } from 'react-icons/fi'
+import { FiFileText, FiGift, FiGlobe, FiMapPin, FiSmile } from 'react-icons/fi'
 
 export const deskStructure = (S: StructureBuilder) =>
     S.list()
@@ -51,11 +51,11 @@ export const deskStructure = (S: StructureBuilder) =>
                                 ),
                             S.divider({ title: "Faste sider" }),
                             S.listItem()
-                                .title('Permanent Kampanje')
+                                .title('Permanent giverside')
                                 .icon(FiGift)
                                 .child(
                                     S.document()
-                                        .title('Permanent Kampanje')
+                                        .title('Permanent giverside')
                                         .documentId('permanent-campaign-no')
                                         .schemaType('permanentCampaign')
                                 ),
@@ -67,6 +67,14 @@ export const deskStructure = (S: StructureBuilder) =>
                                     S.documentList()
                                         .title('Giverskjema')
                                         .filter('_type == "donationForm" && language == "no"')
+                                ),
+                            S.listItem()
+                                .title('Argumenter')
+                                .icon(FiSmile)
+                                .child(
+                                    S.documentList()
+                                        .title('Argumenter')
+                                        .filter('_type == "argument" && language == "no"')
                                 ),
                         ])
                 ),
@@ -94,6 +102,14 @@ export const deskStructure = (S: StructureBuilder) =>
                                     S.documentList()
                                         .title('News Articles')
                                         .filter('_type == "newsArticle" && language == "en"')
+                                ),
+                            S.listItem()
+                                .title('Arguments')
+                                .icon(FiFileText)
+                                .child(
+                                    S.documentList()
+                                        .title('Arguments')
+                                        .filter('_type == "arguments" && language == "en"')
                                 ),
                             S.listItem()
                                 .title('Campaigns')
@@ -158,6 +174,6 @@ export const deskStructure = (S: StructureBuilder) =>
     */
             // All other document types
             ...S.documentTypeListItems().filter(
-                (listItem) => !['article', 'newsArticle', 'campaign', 'permanentCampaign', 'localGroup', 'donationForm'].includes(listItem.getId() as string)
+                (listItem) => !['article', 'newsArticle', 'campaign', 'permanentCampaign', 'localGroup', 'donationForm', 'argument'].includes(listItem.getId() as string)
             ),
         ])

@@ -1,0 +1,154 @@
+/* Argument Card Styling */
+.argument-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.argument-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    min-height: 300px;
+    padding: 2rem;
+}
+
+/* Left Column - Text Content */
+.argument-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.argument-title {
+    color: #dc2626;
+    /* Red color for the title */
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.argument-excerpt {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #374151;
+    margin: 0;
+}
+
+.argument-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #1f2937;
+    text-decoration: underline;
+    font-weight: 500;
+    margin-top: 0.5rem;
+    transition: color 0.2s ease;
+}
+
+.argument-link:hover {
+    color: #dc2626;
+}
+
+.argument-link-icon {
+    color: #dc2626;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Right Column - Image */
+.argument-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.argument-image-content {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Placeholder for when no image is provided */
+.argument-image-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+}
+
+.placeholder-circle {
+    width: 200px;
+    height: 200px;
+    background: #dc2626;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.placeholder-inner-circle {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .argument-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.5rem;
+        text-align: center;
+    }
+
+    .argument-title {
+        font-size: 1.5rem;
+    }
+
+    .argument-excerpt {
+        font-size: 1rem;
+    }
+
+    .argument-image-content,
+    .argument-image-placeholder {
+        width: 150px;
+        height: 150px;
+    }
+
+    .placeholder-circle {
+        width: 150px;
+        height: 150px;
+    }
+
+    .placeholder-inner-circle {
+        width: 60px;
+        height: 60px;
+        top: 15px;
+        left: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .argument-content {
+        padding: 1rem;
+    }
+
+    .argument-title {
+        font-size: 1.25rem;
+    }
+
+    .argument-excerpt {
+        font-size: 0.9rem;
+    }
+}
