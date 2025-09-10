@@ -1,5 +1,31 @@
 // GROQ queries for fetching campaign data
 
+const bodyQuery = `
+  body[]{
+    ...,
+    _type == "donationForm" => {
+      ...,
+      "donationForm": @->
+    },
+    _type == "argument" => {
+      ...,
+      "argument": @->{
+        _id,
+        title,
+        excerpt,
+        image,
+        "article": article->{
+          _id,
+          title,
+          slug
+        },
+        publishedAt,
+        language
+      }
+    }
+  }
+`
+
 // Get all campaigns
 export const getAllCampaignsQuery = `
   *[_type == "campaign" && language == "no"] | order(publishedAt desc) {
@@ -19,7 +45,7 @@ export const getCampaignBySlugQuery = `
     title,
     slug,
     description,
-    body,
+    ${bodyQuery},
     publishedAt,
     language,
     mainImage,
@@ -34,6 +60,8 @@ export const getAllCampaignSlugsQuery = `
   }
 `
 
+
+
 // Get permanent campaign by language
 export const getPermanentCampaignQuery = `
   *[_type == "permanentCampaign" && language == $language][0] {
@@ -42,29 +70,7 @@ export const getPermanentCampaignQuery = `
     title,
     slug,
     description,
-    body[]{
-      ...,
-      _type == "donationForm" => {
-        ...,
-        "donationForm": @->
-      },
-      _type == "argument" => {
-        ...,
-        "argument": @->{
-          _id,
-          title,
-          excerpt,
-          image,
-          "article": article->{
-            _id,
-            title,
-            slug
-          },
-          publishedAt,
-          language
-        }
-      }
-    },
+   ${bodyQuery},
     publishedAt,
     language,
     mainImage,
