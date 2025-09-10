@@ -37,6 +37,13 @@ export default defineType({
             },
             validation: (Rule) => Rule.required(),
         }),
+        defineField({
+            name: 'branchId',
+            title: 'Tilhørende lokalforening',
+            type: 'reference',
+            to: [{ type: 'localGroup' }],
+            hidden: ({ parent }) => parent?.branchRelated === false,
+        }),
         /*  defineField({
              name: 'author',
              title: 'Author',

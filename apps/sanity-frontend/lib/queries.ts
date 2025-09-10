@@ -147,7 +147,22 @@ export const getAllNewsArticlesQuery = `
     excerpt,
     publishedAt,
     language,
-    mainImage
+    mainImage,
+    hideNewsletterSignUp
+  }
+`
+
+// Get all news articles by language
+export const getAllNewsPerBranchQuery = `
+  *[_type == "newsArticle" && language == $lang && branchId->branchId == $id] | order(publishedAt desc) {
+    _id,
+    title,
+    slug,
+    excerpt,
+    publishedAt,
+    language,
+    mainImage,
+    hideNewsletterSignUp
   }
 `
 

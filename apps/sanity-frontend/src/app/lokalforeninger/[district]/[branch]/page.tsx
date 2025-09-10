@@ -75,7 +75,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
                     <a href="#aktiviteter" className="nav-item">Våre aktiviteter og tilbud</a>
                     <a href="#tjenester" className="nav-item">Våre tjenester</a>
                     <a href="#aktiviteter" className="nav-item">Hva skjer?</a>
-                    <a href="#nyheter" className="nav-item">Aktuelt</a>
+                    <a href={`/lokalforeninger/${district}/${branch}/news`} className="nav-item">Nyheter</a>
                     <a href="#om-oss" className="nav-item">Om oss</a>
                 </nav>
             </Section>
