@@ -1,0 +1,132 @@
+/* Lokalforeninger Page Styling */
+
+.page-description {
+    margin-top: var(--ds-size-4);
+    color: #6b7280;
+    max-width: 600px;
+}
+
+/* County Section */
+.county-section {
+    margin-bottom: var(--ds-size-8);
+}
+
+.county-title {
+    color: #d52b1e;
+    margin-bottom: var(--ds-size-6);
+    padding-bottom: var(--ds-size-2);
+    border-bottom: 2px solid #f3f4f6;
+}
+
+/* Local Groups Grid */
+.local-groups-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--ds-size-4);
+    margin-bottom: var(--ds-size-6);
+}
+
+/* Local Group Card */
+.local-group-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--ds-size-2);
+    overflow: hidden;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.local-group-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: #d52b1e;
+}
+
+.local-group-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
+.local-group-content {
+    padding: var(--ds-size-5);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-size-2);
+}
+
+.group-name {
+    color: #1f2937;
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.group-location {
+    color: #6b7280;
+    margin: 0;
+    font-weight: 500;
+}
+
+.group-contact {
+    color: #374151;
+    margin: 0;
+    font-size: var(--ds-font-size-3);
+    display: flex;
+    align-items: center;
+    gap: var(--ds-size-2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .local-groups-grid {
+        grid-template-columns: 1fr;
+        gap: var(--ds-size-3);
+    }
+
+    .local-group-content {
+        padding: var(--ds-size-4);
+    }
+
+    .county-section {
+        margin-bottom: var(--ds-size-6);
+    }
+
+    .county-title {
+        margin-bottom: var(--ds-size-4);
+    }
+}
+
+@media (max-width: 480px) {
+    .local-group-content {
+        padding: var(--ds-size-3);
+    }
+
+    .group-name {
+        font-size: var(--ds-font-size-4);
+    }
+
+    .group-location,
+    .group-contact {
+        font-size: var(--ds-font-size-2);
+    }
+}
+
+/* Loading and Empty States */
+.no-groups {
+    text-align: center;
+    padding: var(--ds-size-8);
+    color: #6b7280;
+}
+
+.no-groups h3 {
+    margin-bottom: var(--ds-size-4);
+    color: #374151;
+}
+
+/* County with no groups */
+.county-section:empty {
+    display: none;
+}

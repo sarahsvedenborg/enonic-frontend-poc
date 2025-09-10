@@ -188,7 +188,7 @@ export const getArgumentsQuery = `
 
 // Get branch by slug
 export const getBranchBySlugQuery = `
-  *[_type == "localGroup" && slug.current == $slug][0] {
+  *[_type == "localGroup" && branchId == $id][0] {
     _id,
     _type,
     title,
@@ -207,5 +207,24 @@ export const getBranchBySlugQuery = `
     communicationChannels,
     branchContacts,
     branchActivities
+  }
+`
+
+// Get all local groups by language
+export const getAllLocalGroupsQuery = `
+  *[_type == "localGroup" && language == $language] | order(branchLocation.county asc, branchName asc) {
+    _id,
+    title,
+    slug,
+    branchName,
+    branchId,
+    branchLocation {
+      county,
+      municipality
+    },
+    communicationChannels {
+      email,
+      phone
+    }
   }
 `

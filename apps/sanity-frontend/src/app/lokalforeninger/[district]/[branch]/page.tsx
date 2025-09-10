@@ -18,8 +18,10 @@ interface BranchPageProps {
 export const revalidate = 60;
 
 const getData = async (slug: string) => {
+    const id = slug.split('-').pop();
+    console.log("id", id)
     const [branchData] = await Promise.all([
-        client.fetch(getBranchBySlugQuery, { slug }),
+        client.fetch(getBranchBySlugQuery, { id }),
     ]);
 
     // If we have branch data with branchId, fetch the API activities
