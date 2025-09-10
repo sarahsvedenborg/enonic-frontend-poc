@@ -10,6 +10,7 @@ import { useFeatureFlagEnabled, useFeatureFlagVariantKey } from 'posthog-js/reac
 
 interface DonationFormProps {
   title?: string
+  donationFormType?: 'compact' | 'extended'
   isDefault?: boolean,
   description?: string,
   amounts?: number[],
@@ -30,6 +31,7 @@ const handleDonate = (amount: number, frequency: 'monthly' | 'one-time') => {
 
 export const DonationForm: React.FC<DonationFormProps> = ({
   title = "Du kan hjelpe",
+  donationFormType = 'compact',
   isDefault = false,
   description = "Bidra til å hjelpe de mest sårbare i land rammet av kriser, krig og konflikt.",
   amounts = [100, 300, 500],
@@ -63,6 +65,9 @@ export const DonationForm: React.FC<DonationFormProps> = ({
   const flagEnabled = useFeatureFlagVariantKey('my-flag') === 'override';
   if (flagEnabled) {
     console.log('flagEnabled')
+  }
+  if (donationFormType === 'compact') {
+    <p>Compact</p>
   }
 
   return (

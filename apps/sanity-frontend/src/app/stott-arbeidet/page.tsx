@@ -23,7 +23,6 @@ export const revalidate = 60;
 export default async function SupportWorkPage() {
     const { campaign } = await getData();
 
-    console.log("campaign", campaign)
 
     if (!campaign) {
         notFound();
@@ -45,6 +44,7 @@ export default async function SupportWorkPage() {
 
                 <Section width="xl" padding="lg">
                     <DonationForm
+                        donationFormType={donationForm.donationFormType}
                         title={donationForm.heading || "Du kan hjelpe"}
                         description={donationForm.description || "Bidra til å hjelpe de mest sårbare i land rammet av kriser, krig og konflikt."}
                         amounts={donationForm.amounts || [100, 300, 500]}
