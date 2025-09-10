@@ -124,6 +124,8 @@
 
 .section-negative-margin-true {
     margin-top: -8em;
+    position: relative;
+    z-index: 4;
 }
 
 /* Responsive adjustments */

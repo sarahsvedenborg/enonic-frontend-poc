@@ -42,7 +42,29 @@ export const getPermanentCampaignQuery = `
     title,
     slug,
     description,
-    body,
+    body[]{
+      ...,
+      _type == "donationForm" => {
+        ...,
+        "donationForm": @->
+      },
+      _type == "argument" => {
+        ...,
+        "argument": @->{
+          _id,
+          title,
+          excerpt,
+          image,
+          "article": article->{
+            _id,
+            title,
+            slug
+          },
+          publishedAt,
+          language
+        }
+      }
+    },
     publishedAt,
     language,
     mainImage,

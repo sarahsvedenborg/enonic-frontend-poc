@@ -4,12 +4,9 @@
   padding: var(--ds-size-8);
   background-color: #fef7f4;
   border-radius: var(--ds-border-radius-lg);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
   font-family: var(--ds-font-family-body);
-  margin-top: -4em;
 }
+
 
 .header {
   text-align: center;
@@ -230,6 +227,48 @@
   transform: translateY(2px);
 }
 
+/* Direct Donation Section */
+.directDonationSection {
+  margin-top: var(--ds-size-8);
+  padding: var(--ds-size-6);
+
+
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.paymentInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--ds-size-6);
+  margin-top: var(--ds-size-4);
+}
+
+.paymentColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-size-1);
+}
+
+.paymentLabel {
+  font-size: var(--ds-font-size-3);
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: var(--ds-size-1);
+}
+
+.paymentValue {
+  font-size: var(--ds-font-size-5);
+  font-weight: 600;
+}
+
+
+
+
+
 /* Responsive design */
 @media (max-width: 768px) {
   .donationForm {
@@ -244,5 +283,19 @@
 
   .title {
     font-size: var(--ds-font-size-8);
+  }
+
+  .paymentInfo {
+    grid-template-columns: 1fr;
+    gap: var(--ds-size-4);
+  }
+
+  .paymentValue {
+    font-size: var(--ds-font-size-4);
+  }
+
+  .directDonationSection {
+    margin-top: var(--ds-size-6);
+    padding: var(--ds-size-4);
   }
 }
