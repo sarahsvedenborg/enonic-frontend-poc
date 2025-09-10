@@ -44,6 +44,8 @@ export const DonationForm: React.FC<DonationFormProps> = ({
   ...props
 }) => {
 
+  console.log("donationFormType", donationFormType)
+
   const directDonationTitle = "Du kan også gi direkte"
   const directDonationVippsNumber = "2272"
   const directDonationAccountNumber = "8200 06 10190"
@@ -66,8 +68,132 @@ export const DonationForm: React.FC<DonationFormProps> = ({
   if (flagEnabled) {
     console.log('flagEnabled')
   }
+  const DonationSelection = () => {
+    return (
+
+      <> < div className={styles.section} >
+        <label className={styles.label}>{isDefault ? "Velg formål" : "Hvor ofte vil du gi?"}</label>
+
+        {
+          isDefault && <>
+            {/*    <React.forwardRef
+                  htmlFor="input-default"
+                  id="input-default-label"
+                >
+                  Input Label
+                </React.forwardRef> */}
+            <Input
+              aria-labelledby="input-default-label"
+              data-size="md"
+              id="input-default"
+              name="default-input"
+              placeholder="Type something..."
+              type="text"
+            />
+          </>
+        }
+
+        {
+          !isDefault && <div className={styles.buttonGroup}>
+            <Buttons
+              variant="secondary"
+              className={` ${frequency === 'monthly' ? styles.selected : ''}`}
+              onClick={() => setFrequency('monthly')}
+              type="button"
+            >
+              Gi månedlig
+            </Buttons>
+            <Buttons
+              variant="primary"
+              className={` ${frequency === 'one-time' ? styles.selected : ''}`}
+              onClick={() => setFrequency('one-time')}
+              type="button"
+            >
+              Engangsgave
+            </Buttons>
+          </div>
+        }
+      </div >
+        {/* Amount Selection */}
+        <div className={styles.section}>
+          <label className={styles.label}>Velg beløp</label>
+          <div className={styles.buttonGroup}>
+            <button
+              className={`${styles.amountButton} ${amount === 100 && !customAmount ? styles.selected : ''}`}
+              onClick={() => handleAmountSelect(amounts[0])}
+              type="button"
+            >
+              {amounts[0]}
+            </button>
+            <button
+              className={`${styles.amountButton} ${amount === 300 && !customAmount ? styles.selected : ''}`}
+              onClick={() => handleAmountSelect(amounts[1])}
+              type="button"
+            >
+              {amounts[1]}
+            </button>
+            <button
+              className={`${styles.amountButton} ${amount === 500 && !customAmount ? styles.selected : ''}`}
+              onClick={() => handleAmountSelect(amounts[2])}
+              type="button"
+            >
+              {amounts[2]}
+            </button>
+          </div>
+          <button
+            className={styles.customAmountLink}
+            onClick={() => setCustomAmount('')}
+            type="button"
+          >
+            Velg eget beløp
+            <FiChevronDown />
+          </button>
+          {customAmount !== '' && (
+            <div className={styles.customAmountInput}>
+              <input
+                type="number"
+                value={customAmount}
+                onChange={(e) => setCustomAmount(e.target.value)}
+                placeholder="Skriv beløp"
+                className={styles.input}
+              />
+              <span className={styles.currency}>kr</span>
+            </div>
+          )}
+        </div> </>
+    )
+  }
+
+  const DonationButton = () => {
+    return (
+      <div className={styles.ctaSection}>
+        <Button
+          variant="primary"
+          size="large"
+          onClick={handleDonate}
+          className={styles.donateButton}
+        >
+          Gi med VIPPS
+        </Button>
+
+        <button className={styles.otherPaymentLink} type="button">
+          Andre betalingsmåter
+          <FiChevronDown />
+
+        </button>
+      </div>
+    )
+  }
   if (donationFormType === 'compact') {
-    <p>Compact</p>
+    return (<Section width="sm" background="white" negativeMargin={negativeMargin}>
+      <div className={styles.donationSection}>
+        <div className={styles.donationForm}>
+          <DonationSelection />
+          <DonationButton />
+        </div>
+      </div>
+    </Section>
+    )
   }
 
   return (
@@ -83,94 +209,9 @@ export const DonationForm: React.FC<DonationFormProps> = ({
               <p className={styles.description}>{description}</p>
             </div>
 
-            {/* Frequency Selection */}
-            <div className={styles.section}>
-              <label className={styles.label}>{isDefault ? "Velg formål" : "Hvor ofte vil du gi?"}</label>
 
-              {isDefault && <>
-                {/*    <React.forwardRef
-                htmlFor="input-default"
-                id="input-default-label"
-              >
-                Input Label
-              </React.forwardRef> */}
-                <Input
-                  aria-labelledby="input-default-label"
-                  data-size="md"
-                  id="input-default"
-                  name="default-input"
-                  placeholder="Type something..."
-                  type="text"
-                />
-              </>}
+            <DonationSelection />
 
-              {!isDefault && <div className={styles.buttonGroup}>
-                <Buttons
-                  variant="secondary"
-                  className={` ${frequency === 'monthly' ? styles.selected : ''}`}
-                  onClick={() => setFrequency('monthly')}
-                  type="button"
-                >
-                  Gi månedlig
-                </Buttons>
-                <Buttons
-                  variant="primary"
-                  className={` ${frequency === 'one-time' ? styles.selected : ''}`}
-                  onClick={() => setFrequency('one-time')}
-                  type="button"
-                >
-                  Engangsgave
-                </Buttons>
-              </div>}
-            </div>
-
-            {/* Amount Selection */}
-            <div className={styles.section}>
-              <label className={styles.label}>Velg beløp</label>
-              <div className={styles.buttonGroup}>
-                <button
-                  className={`${styles.amountButton} ${amount === 100 && !customAmount ? styles.selected : ''}`}
-                  onClick={() => handleAmountSelect(amounts[0])}
-                  type="button"
-                >
-                  {amounts[0]}
-                </button>
-                <button
-                  className={`${styles.amountButton} ${amount === 300 && !customAmount ? styles.selected : ''}`}
-                  onClick={() => handleAmountSelect(amounts[1])}
-                  type="button"
-                >
-                  {amounts[1]}
-                </button>
-                <button
-                  className={`${styles.amountButton} ${amount === 500 && !customAmount ? styles.selected : ''}`}
-                  onClick={() => handleAmountSelect(amounts[2])}
-                  type="button"
-                >
-                  {amounts[2]}
-                </button>
-              </div>
-              <button
-                className={styles.customAmountLink}
-                onClick={() => setCustomAmount('')}
-                type="button"
-              >
-                Velg eget beløp
-                <FiChevronDown />
-              </button>
-              {customAmount !== '' && (
-                <div className={styles.customAmountInput}>
-                  <input
-                    type="number"
-                    value={customAmount}
-                    onChange={(e) => setCustomAmount(e.target.value)}
-                    placeholder="Skriv beløp"
-                    className={styles.input}
-                  />
-                  <span className={styles.currency}>kr</span>
-                </div>
-              )}
-            </div>
 
             {/* Impact Statement */}
             <div className={styles.impactSection}>
@@ -180,23 +221,8 @@ export const DonationForm: React.FC<DonationFormProps> = ({
               </p>
             </div>
 
-            {/* Call to Action */}
-            <div className={styles.ctaSection}>
-              <Button
-                variant="primary"
-                size="large"
-                onClick={handleDonate}
-                className={styles.donateButton}
-              >
-                Gi med VIPPS
-              </Button>
+            <DonationButton />
 
-              <button className={styles.otherPaymentLink} type="button">
-                Andre betalingsmåter
-                <FiChevronDown />
-
-              </button>
-            </div>
           </div>
         </div>
 
