@@ -1,6 +1,6 @@
 import { Heading, Section } from 'ui-lib'
 import { Paragraph } from '@digdir/designsystemet-react'
-import { Link } from 'next/link'
+import Link from 'next/link'
 import { client } from '../../../lib/sanity'
 import { getAllLocalGroupsQuery } from '../../../lib/queries'
 import './page.css'
@@ -69,7 +69,7 @@ export default async function LokalforeningerPage() {
                             <div className="local-groups-grid">
                                 {groupedByCounty[county].map((group) => (
                                     <div key={group._id} className="local-group-card">
-                                        <a
+                                        <Link
                                             href={`/lokalforeninger/${group.branchLocation?.county?.toLowerCase().replace(/\s+/g, '-')}/${group.branchName?.split(' ').slice(0, -2).join('-')?.toLowerCase().replace(/\s+/g, ' - ').concat(`-${group.branchId}`)}` || './ '}
 
                                             className="local-group-link"
@@ -95,7 +95,7 @@ export default async function LokalforeningerPage() {
                                                     </Paragraph>
                                                 )}
                                             </div>
-                                        </a >
+                                        </Link >
                                     </div>
                                 ))}
                             </div>
