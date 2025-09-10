@@ -1,5 +1,5 @@
 import { StructureBuilder } from 'sanity/desk'
-import { FiFileText, FiGift, FiGlobe, FiMapPin } from 'react-icons/fi'
+import { FiFileText, FiGift, FiGlobe, FiMapPin, FiSmile } from 'react-icons/fi'
 
 export const deskStructure = (S: StructureBuilder) =>
     S.list()
@@ -31,14 +31,6 @@ export const deskStructure = (S: StructureBuilder) =>
                                     S.documentList()
                                         .title('Nyhetsartikler')
                                         .filter('_type == "newsArticle" && language == "no"')
-                                ),
-                            S.listItem()
-                                .title('Argumenter')
-                                .icon(FiFileText)
-                                .child(
-                                    S.documentList()
-                                        .title('Argumenter')
-                                        .filter('_type == "arguments" && language == "no"')
                                 ),
                             S.listItem()
                                 .title('Kampanjer')
@@ -75,6 +67,14 @@ export const deskStructure = (S: StructureBuilder) =>
                                     S.documentList()
                                         .title('Giverskjema')
                                         .filter('_type == "donationForm" && language == "no"')
+                                ),
+                            S.listItem()
+                                .title('Argumenter')
+                                .icon(FiSmile)
+                                .child(
+                                    S.documentList()
+                                        .title('Argumenter')
+                                        .filter('_type == "argument" && language == "no"')
                                 ),
                         ])
                 ),

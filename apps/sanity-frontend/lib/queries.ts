@@ -37,6 +37,7 @@ export const getAllCampaignSlugsQuery = `
 // Get permanent campaign by language
 export const getPermanentCampaignQuery = `
   *[_type == "permanentCampaign" && language == $language][0] {
+  ...,
     _id,
     title,
     slug,
@@ -50,7 +51,8 @@ export const getPermanentCampaignQuery = `
     organizationsAndIndustry[]->,
     otherSuppert[]->,
     support[]->,
-    "donationForm": donation->
+    "donationForm": donation->,
+    arguments[]->,
   }
 `
 

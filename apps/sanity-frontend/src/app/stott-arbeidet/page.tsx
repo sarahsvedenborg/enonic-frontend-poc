@@ -7,6 +7,8 @@ import PortableText from '../../../components/PortableText';
 import CampaignHero from '../../../components/CampaignHero';
 import './page.css';
 import Link from 'next/link';
+import ArgumentCard from '../../../components/ArgumentCard';
+import ArticleCard from '../../../components/ArticleCard';
 
 const getData = async () => {
     const [campaign] = await Promise.all([
@@ -72,7 +74,7 @@ export default async function SupportWorkPage() {
                         <div className="support-options grid-2">
                             {campaign.otherActivities.map((activity) => (
                                 <div className="support-option card">
-                                    <Link href={activity.slug.current || '/'}>
+                                    <Link href={activity.slug.current || '/'} key={activity._id}>
                                         <Heading level={3}>{activity.title}</Heading>
                                         <Paragraph>{activity.excerpt}</Paragraph>
                                     </Link>
@@ -115,7 +117,7 @@ export default async function SupportWorkPage() {
                     <Heading level={2}>For bedrifter og næringsliv</Heading>
                     <ul>
                         {campaign.organizationsAndIndustry && campaign.organizationsAndIndustry.length > 0 && campaign.organizationsAndIndustry.map((industry) => (
-                            <li><Link href={industry.slug.current}>{industry.title}</Link></li>
+                            <li><Link key={industry._id} href={industry.slug.current}>{industry.title}  <span className="article-link-icon">→</span></Link></li>
                         ))}
                     </ul>
                 </Section>
@@ -126,9 +128,20 @@ export default async function SupportWorkPage() {
                     <Heading level={2}>Andre måter du kan støtte på</Heading>
                     <ul>
                         {campaign.otherSuppert && campaign.otherSuppert.length > 0 && campaign.otherSuppert.map((support) => (
-                            <li><Link href={support.slug.current}>{support.title}</Link></li>
+                            <li><Link key={support._id} href={support.slug.current}>{support.title}   <span className="article-link-icon">→</span></Link></li>
                         ))}
                     </ul>
+                </Section>
+            </Section>
+
+            <Section width="xl" padding="lg">
+                <Section width="md" padding="lg">
+                    {/*   {campaign.arguments && campaign.arguments.length > 0 && campaign.arguments.map((argument) => (
+                        <ArgumentCard argument={argument} key={argument._id} />
+                    ))} */}
+                    {campaign.arguments && campaign.arguments.length > 0 && campaign.arguments.map((argument) => (
+                        <ArticleCard topArticle={{ image: argument.image, article: argument }} key={argument._id} />
+                    ))}
                 </Section>
             </Section>
 

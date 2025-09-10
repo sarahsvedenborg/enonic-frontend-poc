@@ -33,7 +33,7 @@ export default function ArticleCard({ topArticle }: ArticleCardProps) {
 
     return (
         <Section width="md">
-            <div className="article-card">
+            <div className={`article-card ${topArticle?.image ? '' : 'article-card-background'}`}>
                 <div className="article-card-content">
                     <div className="article-card-text">
                         <Heading level={2} className="article-card-title">
@@ -41,7 +41,7 @@ export default function ArticleCard({ topArticle }: ArticleCardProps) {
                         </Heading>
 
                         {topArticle?.article?.excerpt && (
-                            <Paragraph className="article-card-excerpt">
+                            <Paragraph data-size={imageUrl ? 'md' : 'lg'} >
                                 {topArticle?.article?.excerpt}
                             </Paragraph>
                         )}
@@ -49,26 +49,18 @@ export default function ArticleCard({ topArticle }: ArticleCardProps) {
 
 
                         <Link href={`/${topArticle?.article?.slug?.current}`} className="article-card-link">
-                            Les mer om oss
+                            {topArticle?.article?.linkLabel || "Les mer"}
+                            <span className="article-link-icon">→</span>
                         </Link>
                     </div>
 
-                    <div className="article-card-image">
-                        {imageUrl ? (
-                            <img
-                                src={imageUrl}
-                                alt={topArticle?.article?.title}
-                                className="article-image"
-                            />
-                        ) : (
-                            <div className="article-image-placeholder">
-                                <div className="placeholder-content">
-                                    <div className="placeholder-icon">📱</div>
-                                    <Paragraph className="placeholder-text">Hjertestartere er enkle å bruke</Paragraph>
-                                </div>
-                            </div>
-                        )}
-                    </div>
+                    {imageUrl && <div className="article-card-image">
+                        <img
+                            src={imageUrl}
+                            alt={topArticle?.article?.title}
+                            className="article-image"
+                        />
+                    </div>}
                 </div>
             </div>
         </Section>
