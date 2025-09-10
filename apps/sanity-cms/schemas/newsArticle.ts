@@ -68,10 +68,17 @@ export default defineType({
             type: 'text',
             validation: (Rule) => Rule.required(),
         }),
+
         defineField({
             name: 'body',
             title: 'Body',
             type: 'blockContent',
+        }),
+        defineField({
+            name: 'hideNewsletterSignup',
+            title: 'Hide Newsletter Signup',
+            type: 'boolean',
+            initialValue: false,
         }),
         /*   defineField({
               name: 'translate',

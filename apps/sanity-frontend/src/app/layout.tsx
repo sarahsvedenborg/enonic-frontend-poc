@@ -13,12 +13,12 @@ export default function RootLayout({
         {
             title: 'Gi støtte - Fast giverside',
             href: '/stott-arbeidet',
-            description: '(Innhold i sanity, hardkodet design i frontend)'
+            description: '(Innhold i sanity, noen elementer hardkodet i frontend, noe kan styres av redaktører)'
         },
         {
             title: 'Kampanjer',
             href: '/kampanjer',
-            description: '(Innhold i enonic og mulighet for redaktører å tilpasse siden med andre elementer)'
+            description: '(Innhold i sanity og mulighet for redaktører å tilpasse siden med andre elementer)'
         },
         {
             title: 'Aktuelt',
@@ -27,8 +27,8 @@ export default function RootLayout({
         },
         {
             title: 'Lokalforenring',
-            href: '/lokallag/rode-kors-ullensaker',
-            description: '(work in progress)'
+            href: '/lokalforeninger',
+            description: '(Listeside for lokalforeninger)'
         }
     ]
     return (

@@ -1,5 +1,5 @@
 import { Paragraph } from '@digdir/designsystemet-react';
-import { Heading, Section } from 'ui-lib';
+import { DeveloperNote, Heading, NewsletterSignUp, Section } from 'ui-lib';
 import { client, urlFor } from '../../../../lib/sanity';
 import { getNewsArticleBySlugQuery } from '../../../../lib/queries';
 import { notFound } from 'next/navigation';
@@ -14,6 +14,7 @@ const getData = async (slug: string) => {
     const news = await client.fetch(getNewsArticleBySlugQuery, { slug });
     return news;
 }
+export const revalidate = 60;
 
 export default async function NewsPage({ params }: NewsArticlePageProps) {
     const { slug } = await params;
@@ -27,9 +28,9 @@ export default async function NewsPage({ params }: NewsArticlePageProps) {
     }
     return (
         <>
-
-            <img src={urlFor(article.mainImage).width(1400).height(400).fit('crop').url()} alt={article.title} />
-
+            <Section width="xl" padding="none">
+                <img src={urlFor(article.mainImage).width(1200).height(400).fit('crop').url()} alt={article.title} />
+            </Section>
             <Section width="sm">
                 <Heading level={1} >
                     {article.title}
@@ -64,7 +65,7 @@ export default async function NewsPage({ params }: NewsArticlePageProps) {
             </Section >
 
             {/* News-specific sections */}
-            < Section width="xl" background="tinted" padding="lg" >
+            < Section width="xl" background="under-development" padding="lg" >
                 <Section width="md" padding="lg">
                     <Heading level={2}>Relaterte nyheter</Heading>
 
@@ -74,22 +75,19 @@ export default async function NewsPage({ params }: NewsArticlePageProps) {
                             <p>Hold deg oppdatert på vårt arbeid og de siste nyhetene fra Røde Kors.</p>
                         </div>
                     </div>
+                    <DeveloperNote>
+                        <Paragraph>Her kan man enten:</Paragraph>
+                        <ul>
+                            <li>La redaktører manuelt lege til relaterte nyheter i sanity</li>
+                            <li>Automatisk liste ut andre nyheter i frontend </li>
+                        </ul>
+                    </DeveloperNote>
                 </Section>
-            </Section >
 
-            {/* Newsletter signup */}
-            < Section width="xl" padding="lg" >
-                <Section width="md" padding="lg">
-                    <div className="newsletter-section">
-                        <Heading level={2}>Få nyheter på e-post</Heading>
-                        <p>Abonner på vårt nyhetsbrev og få de siste nyhetene direkte i innboksen din.</p>
-                        <div className="newsletter-form">
-                            <input type="email" placeholder="Din e-postadresse" className="newsletter-input" />
-                            <button className="btn-primary">Abonner</button>
-                        </div>
-                    </div>
-                </Section>
             </Section >
+            <p>article.hideNewsletterSignUp: {article.hideNewsletterSignUp}</p>
+            {/* Newsletter signup */}
+            {!article.hideNewsletterSignUp && <NewsletterSignUp title="Få nyheter på e-post" description="Abonner på vårt nyhetsbrev og få de siste nyhetene direkte i innboksen din." />}
         </>
     );
 

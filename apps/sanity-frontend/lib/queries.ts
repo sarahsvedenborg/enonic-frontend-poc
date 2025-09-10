@@ -111,7 +111,8 @@ export const getNewsArticleBySlugQuery = `
     body,
     publishedAt,
     language,
-    mainImage
+    mainImage,
+    hideNewsletterSignUp
   }
 `
 
