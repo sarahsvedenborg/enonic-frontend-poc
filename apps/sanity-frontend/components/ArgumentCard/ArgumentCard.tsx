@@ -4,11 +4,11 @@ import { Heading, Section } from 'ui-lib'
 import { Paragraph } from '@digdir/designsystemet-react'
 import { Link } from 'rk-designsystem'
 import { urlFor } from '../../lib/sanity'
-import { Argument } from '../../lib/sanity'
+
 import './ArgumentCard.css'
 
 interface ArgumentCardProps {
-    argument: Argument
+    argument: any
 }
 
 export default function ArgumentCard({ argument }: ArgumentCardProps) {

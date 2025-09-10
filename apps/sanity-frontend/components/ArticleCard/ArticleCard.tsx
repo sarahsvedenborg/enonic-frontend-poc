@@ -19,7 +19,7 @@ interface ArticleCardProps {
             body?: any[]
             publishedAt?: string
             language?: string
-
+            linkLabel?: string
         }
     }
 }
