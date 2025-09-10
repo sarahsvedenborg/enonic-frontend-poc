@@ -197,7 +197,7 @@ export const DonationForm: React.FC<DonationFormProps> = ({
   }
 
   return (
-    <Section width="sm" background="white" negativeMargin={negativeMargin}>
+    <Section width="sm" negativeMargin={negativeMargin}>
       <div className={styles.donationSection}>
         <div className={styles.donationForm}>
           {/* Header Section */}

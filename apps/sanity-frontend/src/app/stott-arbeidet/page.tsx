@@ -58,7 +58,7 @@ export default async function SupportWorkPage() {
 
             )}
 
-            <Section width="xl" background="tinted">
+            <Section width="xl" >
                 {campaign.body && (
                     <Section width="md" padding="lg">
                         <PortableText content={campaign.body} />

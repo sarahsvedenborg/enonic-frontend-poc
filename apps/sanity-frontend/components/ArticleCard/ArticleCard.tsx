@@ -26,7 +26,7 @@ interface ArticleCardProps {
 
 export default function ArticleCard({ topArticle }: ArticleCardProps) {
     /*   console.log("topArticle", topArticle) */
-
+    console.log("topArticle", topArticle)
     const imageUrl = topArticle?.image
         ? urlFor(topArticle.image).width(400).height(300).fit('crop').url()
         : null

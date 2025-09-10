@@ -3,6 +3,9 @@ import { Paragraph } from '@digdir/designsystemet-react'
 import { PortableText as PortableTextReact } from '@portabletext/react'
 import { urlFor } from '../lib/sanity'
 import { Section } from 'ui-lib'
+import ArgumentCard from './ArgumentCard'
+import { DonationForm } from 'ui-lib'
+import ArticleCard from './ArticleCard'
 
 // Custom components for rendering different block types
 const components = {
@@ -23,6 +26,36 @@ const components = {
                         </p>
                     )}
                 </div>
+            )
+        },
+        argument: ({ value }: any) => {
+            if (!value) return null
+
+            return (
+                <div className="my-8">
+                    <ArticleCard topArticle={{ image: value.argument.image, article: value.argument }} />
+                </div>
+            )
+        },
+        donationForm: ({ value }: any) => {
+            if (!value) return null
+            const { donationForm } = value
+
+            return (
+
+                <Section width="xl">
+                    <DonationForm
+                        donationFormType={donationForm.donationFormType}
+                        title={donationForm.heading}
+                        description={donationForm.description}
+                        amounts={donationForm.amounts}
+                        factBox={donationForm.fact}
+                        isDefault={donationForm.donationFormType}
+                        includeDirectDonation={true}
+
+                    />
+                </Section>
+
             )
         },
     },
@@ -99,7 +132,7 @@ interface PortableTextProps {
 
 export default function PortableText({ content, className = '' }: PortableTextProps) {
     if (!content) return null
-
+    console.log("content", content)
     return (
         <div className={`prose prose-lg max-w-none ${className}`}>
             <PortableTextReact value={content} components={components} />

@@ -4,12 +4,9 @@
   padding: var(--ds-size-8);
   background-color: #fef7f4;
   border-radius: var(--ds-border-radius-lg);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
   font-family: var(--ds-font-family-body);
-  margin-top: -4em;
 }
+
 
 .header {
   text-align: center;

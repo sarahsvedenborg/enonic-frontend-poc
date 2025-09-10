@@ -58,11 +58,25 @@ export default defineType({
                 },
             ],
         }),
+        /*  defineArrayMember({
+             name: 'reuseableBlock',
+             type: 'reference',
+             title: 'Gjenbrukbart innhold',
+             to: [{ type: 'donationForm' }, { type: 'argument' }],
+         }), */
         defineArrayMember({
-            name: 'reuseableBlock',
+            name: 'donationForm',
             type: 'reference',
-            title: 'Gjenbrukbart innhold',
-            to: [{ type: 'donationForm' }, { type: 'argument' }],
+            title: 'Giverskjema',
+            to: [{ type: 'donationForm' }],
         }),
+        defineArrayMember({
+            name: 'argument',
+            type: 'reference',
+            title: 'Argument/god grunn',
+            to: [{ type: 'argument' }],
+        }),
+
+
     ],
 })
