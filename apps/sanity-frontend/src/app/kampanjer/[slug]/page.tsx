@@ -41,7 +41,7 @@ export default async function CampaignPage({ params }: CampaignPageProps) {
 
             />
 
-            <Section width="xl" background="tinted">
+            <Section width="xl">
                 {campaign.body && (
                     <Section width="md" padding="lg">
                         <PortableText content={campaign.body} />

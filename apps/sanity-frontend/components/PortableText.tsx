@@ -33,12 +33,12 @@ const components = {
 
             return (
                 <div className="my-8">
-                    <ArticleCard topArticle={{ image: value.argument.image, article: value.argument }} />
+                    <ArticleCard topArticle={{ image: value.argument?.image, article: value.argument }} />
                 </div>
             )
         },
         donationForm: ({ value }: any) => {
-            if (!value) return null
+            if (!value || !value.donationForm) return null
             const { donationForm } = value
 
             return (
