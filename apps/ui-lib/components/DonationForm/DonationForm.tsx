@@ -1,5 +1,6 @@
 'use client'
 import React, { useState } from 'react'
+import { Heading } from '@digdir/designsystemet-react'
 import { Section } from 'ui-lib'
 import { Buttons as Button, Buttons, Input } from 'rk-designsystem'
 import styles from './DonationForm.module.css'
@@ -49,6 +50,16 @@ export const DonationForm: React.FC<DonationFormProps> = ({
   const directDonationTitle = "Du kan også gi direkte"
   const directDonationVippsNumber = "2272"
   const directDonationAccountNumber = "8200 06 10190"
+
+  const copyToClipboard = async (text: string, type: string) => {
+    try {
+      await navigator.clipboard.writeText(text)
+      // You could add a toast notification here
+      console.log(`${type} copied to clipboard: ${text}`)
+    } catch (err) {
+      console.error('Failed to copy: ', err)
+    }
+  }
 
   const [frequency, setFrequency] = useState<'monthly' | 'one-time'>('one-time')
   const [amount, setAmount] = useState<number>(300)
@@ -234,25 +245,37 @@ export const DonationForm: React.FC<DonationFormProps> = ({
       </div> */}
 
         {includeDirectDonation && (
-          <div className={styles.directDonationSection}>
+          <Section width="sm" margin="md">
 
             <div className={styles.container}>
-              <h2 className={styles.title}>{directDonationTitle}</h2>
+              <Heading level={2} data-size="xl" >{directDonationTitle}</Heading>
 
               <div className={styles.paymentInfo}>
                 <div className={styles.paymentColumn}>
                   <div className={styles.paymentLabel}>Vipps til</div>
-                  <div className={styles.paymentValue}>{directDonationVippsNumber}</div>
+                  <div
+                    className={styles.paymentValue}
+                    onClick={() => copyToClipboard(directDonationVippsNumber, 'Vipps number')}
+                    title="Klikk for å kopiere"
+                  >
+                    {directDonationVippsNumber}
+                  </div>
                 </div>
 
                 <div className={styles.paymentColumn}>
-                  <div className={styles.paymentLabel}>Kontonummer:</div>
-                  <div className={styles.paymentValue}>{directDonationAccountNumber}</div>
+                  <div className={styles.paymentLabel}>Kontonummer</div>
+                  <div
+                    className={styles.paymentValue}
+                    onClick={() => copyToClipboard(directDonationAccountNumber, 'Account number')}
+                    title="Klikk for å kopiere"
+                  >
+                    {directDonationAccountNumber}
+                  </div>
                 </div>
               </div>
             </div>
 
-          </div>
+          </Section>
         )
         }
       </div>
