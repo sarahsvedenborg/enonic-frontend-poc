@@ -1,4 +1,4 @@
-import { defineConfig } from 'sanity'
+import { defineConfig, createAuthStore } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
@@ -12,6 +12,20 @@ export default defineConfig({
 
     projectId: process.env.SANITY_PROJECT_ID || 'mtewzn7e', // Replace with your actual project ID
     dataset: 'production',
+    auth: createAuthStore({
+        projectId: process.env.SANITY_PROJECT_ID || 'mtewzn7e', // replace with your project id
+        dataset: "production", // replace with your dataset name
+        redirectOnSingle: false,
+        mode: 'append', // Use ‘replace’ if you only want this login provider
+        providers: [
+            {
+                name: 'saml',
+                title: 'saml',
+                url: 'https://api.sanity.io/v2021-10-01/auth/saml/login/88873362',
+            },
+        ],
+        loginMethod: 'dual',
+    }),
 
     plugins: [
         deskTool({
