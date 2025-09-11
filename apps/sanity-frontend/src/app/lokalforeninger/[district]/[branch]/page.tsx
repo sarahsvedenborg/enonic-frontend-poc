@@ -56,7 +56,6 @@ export default async function BranchPage({ params }: BranchPageProps) {
         notFound();
     }
 
-    console.log("branchData", branchData)
 
     return (
         <>

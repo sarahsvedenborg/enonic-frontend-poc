@@ -132,7 +132,6 @@ interface PortableTextProps {
 
 export default function PortableText({ content, className = '' }: PortableTextProps) {
     if (!content) return null
-    console.log("content", content)
     return (
         <div className={`prose prose-lg max-w-none ${className}`}>
             <PortableTextReact value={content} components={components} />

@@ -45,7 +45,6 @@ export const DonationForm: React.FC<DonationFormProps> = ({
   ...props
 }) => {
 
-  console.log("donationFormType", donationFormType)
 
   const directDonationTitle = "Du kan også gi direkte"
   const directDonationVippsNumber = "2272"
@@ -196,7 +195,7 @@ export const DonationForm: React.FC<DonationFormProps> = ({
     )
   }
   if (donationFormType === 'compact') {
-    return (<Section width="sm" background="white" negativeMargin={negativeMargin}>
+    return (<Section width="sm" negativeMargin={negativeMargin}>
       <div className={styles.donationSection}>
         <div className={styles.donationForm}>
           <DonationSelection />

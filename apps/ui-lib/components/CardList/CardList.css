@@ -1,0 +1,42 @@
+/* Support Work Page Styling */
+.support-options {
+    margin: 2rem 0;
+}
+
+.support-options a {
+    text-decoration: none;
+    color: inherit;
+    text-decoration: none;
+    color: inherit;
+}
+
+.support-option {
+    border-left: 4px solid var(--rk-red);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.support-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.support-option h3 {
+    color: var(--rk-red);
+    margin-bottom: 1rem;
+}
+
+.support-option p {
+    margin: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .support-options {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .support-option {
+        padding: 1.5rem;
+    }
+}
