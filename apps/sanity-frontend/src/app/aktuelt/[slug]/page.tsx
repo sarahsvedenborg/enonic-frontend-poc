@@ -85,7 +85,6 @@ export default async function NewsPage({ params }: NewsArticlePageProps) {
                 </Section>
 
             </Section >
-            <p>article.hideNewsletterSignUp: {article.hideNewsletterSignUp}</p>
             {/* Newsletter signup */}
             {!article.hideNewsletterSignUp && <NewsletterSignUp title="Få nyheter på e-post" description="Abonner på vårt nyhetsbrev og få de siste nyhetene direkte i innboksen din." />}
         </>

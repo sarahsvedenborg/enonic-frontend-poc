@@ -5,3 +5,42 @@
 @import url('./components/Banner/Banner.css');
 @import url('./components/Section/Section.css');
 @import url('./components/DeveloperNote/DeveloperNote.css');
+@import url('./components/CardList/CardList.css');
+@import url('./components/eCommerce/Ecommerce.css');
+
+/* Lists styling */
+.rk-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.rk-list-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.rk-list-item a {
+    text-decoration: none;
+    color: #374151;
+}
+
+.rk-list-item a:hover {
+
+    border-bottom: 1px solid var(--rk-red);
+}
+
+.rk-list-item:before {
+    content: "•";
+    color: var(--rk-red);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.rk-list-item:last-child {
+    border-bottom: none;
+}

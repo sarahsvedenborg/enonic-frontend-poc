@@ -1,5 +1,5 @@
 import { Paragraph } from '@digdir/designsystemet-react';
-import { Heading, Section, DonationForm, DeveloperNote } from 'ui-lib';
+import { Heading, Section, DonationForm, DeveloperNote, Ecommerce, CardList } from 'ui-lib';
 import { client } from '../../../lib/sanity';
 import { getPermanentCampaignQuery, getDonationFormQuery } from '../../../lib/queries';
 import { notFound } from 'next/navigation';
@@ -69,55 +69,22 @@ export default async function SupportWorkPage() {
             {/* Additional sections based on the Røde Kors support page structure */}
             <Section width="xl" padding="lg">
                 <Section width="md" padding="lg">
-                    <Heading level={2}>Du kan også</Heading>
-                    {campaign.otherActivities && campaign.otherActivities.length > 0 && (
-                        <div className="support-options grid-2">
-                            {campaign.otherActivities.map((activity) => (
-                                <div key={activity._id} className="support-option card">
-                                    <Link href={activity.slug.current || '/'} key={activity._id}>
-                                        <Heading level={3}>{activity.title}</Heading>
-                                        <Paragraph>{activity.excerpt}</Paragraph>
-                                    </Link>
-                                </div>
-                            ))}</div>
 
-                    )}
+                    <CardList title="Du kan også" titleLevel={2} items={campaign.otherActivities} />
+
                 </Section>
             </Section>
 
             {campaign.showCommerce && (
-                <Section width="xl" background="under-development" padding="lg">
-                    <Section width="md" padding="lg">
-                        <Heading level={2}>Kjøp gaver i nettbutikken</Heading>
-                        <p>Når du kjøper en gave i nettbutikken får du eller de du er glad i noe fint, samtidig som du støtter vårt humanitære arbeid.</p>
-
-                        <div className="gift-options grid-3">
-                            <div className="gift-option card">
-                                <Heading level={3}>Røverkaffe</Heading>
-                                <p>Kaffen er brent av innsatte og løslatte deltakere i regi av Nettverk etter soning.</p>
-                            </div>
-
-                            <div className="gift-option card">
-                                <Heading level={3}>Førstehjelpsskrin</Heading>
-                                <p>Førstehjelpsskrin er en viktig del av egenberedskapen, og noe alle bør ha hjemme.</p>
-                            </div>
-
-                            <div className="gift-option card">
-                                <Heading level={3}>Digitalt gavekort</Heading>
-                                <p>Med dette kortet bidrar du til helsehjelp til barn rammet av krig og konflikt.</p>
-                            </div>
-                        </div>
-                    </Section>
-                    <DeveloperNote><Paragraph>Kommer automatisk fra nettbutikk</Paragraph></DeveloperNote>
-                </Section>
+                <Ecommerce />
             )}
 
             <Section width="xl" padding="lg">
                 <Section width="md" padding="lg">
                     <Heading level={2}>For bedrifter og næringsliv</Heading>
-                    <ul>
+                    <ul className='rk-list'>
                         {campaign.organizationsAndIndustry && campaign.organizationsAndIndustry.length > 0 && campaign.organizationsAndIndustry.map((industry) => (
-                            <li key={industry._id}><Link href={industry.slug.current}>{industry.title}  <span className="article-link-icon">→</span></Link></li>
+                            <li className='rk-list-item' key={industry._id}><Link href={industry.slug.current}>{industry.title}  <span className="article-link-icon">→</span></Link></li>
                         ))}
                     </ul>
                 </Section>
@@ -126,9 +93,9 @@ export default async function SupportWorkPage() {
             <Section width="xl" background="tinted" padding="lg">
                 <Section width="md" padding="lg">
                     <Heading level={2}>Andre måter du kan støtte på</Heading>
-                    <ul>
+                    <ul className='rk-list'>
                         {campaign.otherSuppert && campaign.otherSuppert.length > 0 && campaign.otherSuppert.map((support) => (
-                            <li key={support._id}><Link href={support.slug.current}>{support.title}   <span className="article-link-icon">→</span></Link></li>
+                            <li className='rk-list-item' key={support._id}><Link href={support.slug.current}>{support.title}   <span className="article-link-icon">→</span></Link></li>
                         ))}
                     </ul>
                 </Section>

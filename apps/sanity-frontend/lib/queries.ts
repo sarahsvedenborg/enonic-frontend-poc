@@ -49,7 +49,9 @@ export const getCampaignBySlugQuery = `
     publishedAt,
     language,
     mainImage,
-    // Add other fields you want to fetch
+    otherActivities[]->,
+    otherSuppert[]->,
+
   }
 `
 

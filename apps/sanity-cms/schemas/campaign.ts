@@ -71,6 +71,19 @@ export default defineType({
         }),
 
         defineField({
+            name: 'otherActivities',
+            title: 'Andre aktive måter å støtte på',
+            type: 'array',
+            of: [{ type: 'reference', to: { type: 'article' } }],
+        }),
+        defineField({
+            name: 'otherSuppert',
+            title: 'Andre måter å støtte på',
+            type: 'array',
+            of: [{ type: 'reference', to: { type: 'article' } }],
+        }),
+
+        defineField({
             name: 'body',
             title: 'Campaign Body',
             type: 'blockContent',

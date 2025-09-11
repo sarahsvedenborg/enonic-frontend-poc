@@ -22,6 +22,7 @@ export default defineType({
                 slugify: (input, schemaType, context) => { console.log(context, 'slugify'); return context.parent.branchLocation.county.toLowerCase().replace(/\s+/g, '-') + '/' + input.split(' ')[0].toLowerCase().replace(/\s+/g, '-') },
             },
             validation: (Rule) => Rule.required(),
+            hidden: true,
         }),
         defineField({
             name: 'language',
@@ -70,20 +71,7 @@ export default defineType({
             type: 'boolean',
             initialValue: false,
         }),
-        defineField({
-            name: 'publishedAt',
-            title: 'Published at',
-            type: 'datetime',
-        }),
-        defineField({
-            name: 'translate',
-            title: 'AI Translation',
-            type: 'string',
-            components: {
-                input: TranslateInput,
-            },
-            readOnly: true,
-        }),
+
 
         // API Data Fields
         defineField({
@@ -121,6 +109,7 @@ export default defineType({
             title: 'Branch Status',
             type: 'object',
             readOnly: true,
+            hidden: true,
             fields: [
                 { name: 'isActive', type: 'boolean' },
                 { name: 'creationDate', type: 'string' },

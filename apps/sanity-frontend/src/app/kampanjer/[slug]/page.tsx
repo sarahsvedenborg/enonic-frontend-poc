@@ -1,14 +1,18 @@
-import { Heading, Section, DonationForm } from 'ui-lib';
+import { Heading, Paragraph, } from '@digdir/designsystemet-react';
+import { Section, DonationForm } from 'ui-lib';
 import { client } from '../../../../lib/sanity';
 import { getCampaignBySlugQuery } from '../../../../lib/queries';
 import { notFound } from 'next/navigation';
 import PortableText from '../../../../components/PortableText';
 import CampaignHero from '../../../../components/CampaignHero';
+import Link from 'next/link';
 
 
 interface CampaignPageProps {
     params: Promise<{ slug: string }>;
 }
+
+export const revalidate = 60;
 
 const getData = async (slug: string) => {
     const campaign = await client.fetch(getCampaignBySlugQuery, { slug });
@@ -37,9 +41,26 @@ export default async function CampaignPage({ params }: CampaignPageProps) {
             <DonationForm
                 title={campaign.title}
                 description={campaign.description}
-            /*  image={campaign.mainImage} */
+                negativeMargin={true}
 
             />
+            <Section width="xl" padding="lg">
+                <Section width="md" padding="lg">
+                    <Heading level={2}>Du kan også</Heading>
+                    {campaign.otherActivities && campaign.otherActivities.length > 0 && (
+                        <div className="support-options grid-2">
+                            {campaign.otherActivities.map((activity) => (
+                                <div key={activity._id} className="support-option card">
+                                    <Link href={activity.slug.current || '/'} key={activity._id} className='rk-link'>
+                                        <Heading level={3}>{activity.title}</Heading>
+                                        <Paragraph>{activity.excerpt}</Paragraph>
+                                    </Link>
+                                </div>
+                            ))}</div>
+
+                    )}
+                </Section>
+            </Section>
 
             <Section width="xl">
                 {campaign.body && (
@@ -48,6 +69,16 @@ export default async function CampaignPage({ params }: CampaignPageProps) {
                     </Section>
                 )}
             </Section>
+            {campaign.otherSuppert && <Section width="xl" background="tinted" padding="lg">
+                <Section width="md" padding="lg">
+                    <Heading level={2}>Andre måter du kan støtte på</Heading>
+                    <ul className='rk-list'>
+                        {campaign.otherSuppert && campaign.otherSuppert.length > 0 && campaign.otherSuppert.map((support) => (
+                            <li className='rk-list-item' key={support._id}><Link href={support.slug.current}>{support.title}   <span className="article-link-icon">→</span></Link></li>
+                        ))}
+                    </ul>
+                </Section>
+            </Section>}
         </>
     )
 }

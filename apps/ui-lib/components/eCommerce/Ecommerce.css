@@ -1,0 +1,40 @@
+.gift-options {
+    margin: 2rem 0;
+}
+
+.gift-option {
+    text-align: center;
+    border: 2px solid #f3f4f6;
+    transition: all 0.2s ease;
+}
+
+.gift-option:hover {
+    border-color: var(--rk-red);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.gift-option h3 {
+    color: var(--rk-red);
+    margin-bottom: 0.75rem;
+}
+
+.gift-option p {
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+
+
+    .gift-options {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .gift-option {
+        padding: 1rem;
+    }
+}
