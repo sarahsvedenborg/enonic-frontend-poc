@@ -245,3 +245,18 @@ export const getAllLocalGroupsQuery = `
     }
   }
 `
+
+// Get activity content by activity type
+export const getActivityByTypeQuery = `
+  *[_type == "activity" && language == $language && activityType == $activityType][0] {
+    _id,
+    title,
+    excerpt,
+    mainImage,
+    activityType,
+    body,
+    publishedAt,
+    language,
+    slug
+  }
+`

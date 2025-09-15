@@ -2,11 +2,14 @@ import { Heading, Section } from 'ui-lib'
 import { Paragraph } from '@digdir/designsystemet-react'
 import Link from 'next/link'
 import { client } from '../../../../../../../lib/sanity'
-import { getBranchBySlugQuery } from '../../../../../../../lib/queries'
+import { getBranchBySlugQuery, getActivityByTypeQuery } from '../../../../../../../lib/queries'
 import { notFound } from 'next/navigation'
 import BranchHeader from '../../../../../../../components/BranchHeader'
 import ActivityHero from '../../../../../../../components/ActivityHero'
 import { getBranchActivities, ApiBranch } from '../../../../../../../lib/api-cache'
+import { mapApiActivityTypeToSanity, getActivityTypeDisplayName } from '../../../../../../../lib/activity-mapping'
+import { Activity } from '../../../../../../../lib/sanity'
+import PortableText from '../../../../../../../components/PortableText'
 import './page.css'
 
 interface ActivityPageProps {
@@ -22,8 +25,6 @@ export const revalidate = 60
 const getData = async (slug: string, activitySlug: string) => {
     const id = slug.split('-').pop()
     console.log("Branch ID for activity:", id)
-    console.log("Activity slug:", activitySlug)
-
     console.log("Activity slug:", activitySlug)
 
     const [branchData] = await Promise.all([
@@ -50,12 +51,26 @@ const getData = async (slug: string, activitySlug: string) => {
         encodeURIComponent(act.localActivityName) === activitySlug
     )
 
-    return { branchData, activity, allActivities: activities }
+    // Fetch Sanity activity content based on activity type
+    let sanityActivity: Activity | null = null
+    if (activity?.globalActivityName) {
+        const sanityActivityType = mapApiActivityTypeToSanity(activity.globalActivityName)
+        try {
+            sanityActivity = await client.fetch(getActivityByTypeQuery, {
+                language: 'no',
+                activityType: sanityActivityType
+            })
+        } catch (error) {
+            console.error('Error fetching Sanity activity content:', error)
+        }
+    }
+
+    return { branchData, activity, allActivities: activities, sanityActivity }
 }
 
 export default async function ActivityPage({ params }: ActivityPageProps) {
     const { district, branch, activity: activitySlug } = await params
-    const { branchData, activity, allActivities } = await getData(branch, activitySlug)
+    const { branchData, activity, allActivities, sanityActivity } = await getData(branch, activitySlug)
 
     if (!branchData || !activity) {
         notFound()
@@ -65,12 +80,12 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
         <>
             {/* Activity Hero */}
             <ActivityHero
-                title={activity.localActivityName}
-                subtitle={activity.globalActivityName !== activity.localActivityName ?
+                title={sanityActivity?.title || activity.localActivityName}
+                subtitle={sanityActivity?.excerpt || (activity.globalActivityName !== activity.localActivityName ?
                     `Kategori: ${activity.globalActivityName}` :
-                    `En aktivitet fra ${branchData.branchName}`
+                    `En aktivitet fra ${branchData.branchName}`)
                 }
-                image={branchData.mainImage}
+                image={sanityActivity?.mainImage || branchData.mainImage}
                 branchName={branchData.branchName}
                 location={branchData.branchLocation?.municipality}
             />
@@ -107,21 +122,27 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
                 <Section width="lg" padding="lg">
                     <div className="activity-content">
                         <div className="activity-main">
-                            <Heading level={2} data-size="lg">
-                                Om aktiviteten
-                            </Heading>
-                            <Paragraph data-size="md" className="activity-description">
-                                {activity.localActivityName} er en viktig del av vårt humanitære arbeid i {branchData.branchLocation?.municipality}.
-                                Denne aktiviteten hjelper oss med å nå ut til de som trenger det mest i vårt lokalsamfunn.
-                            </Paragraph>
+                            {sanityActivity?.body ? (
+                                <PortableText content={sanityActivity.body} />
+                            ) : (
+                                <>
+                                    <Heading level={2} data-size="lg">
+                                        Om aktiviteten
+                                    </Heading>
+                                    <Paragraph data-size="md" className="activity-description">
+                                        {activity.localActivityName} er en viktig del av vårt humanitære arbeid i {branchData.branchLocation?.municipality}.
+                                        Denne aktiviteten hjelper oss med å nå ut til de som trenger det mest i vårt lokalsamfunn.
+                                    </Paragraph>
 
-                            <Heading level={2} data-size="lg">
-                                Hvordan kan du delta?
-                            </Heading>
-                            <Paragraph data-size="md">
-                                Vi setter stor pris på frivillige som vil bidra til denne aktiviteten.
-                                Kontakt oss for å få mer informasjon om hvordan du kan bli med.
-                            </Paragraph>
+                                    <Heading level={2} data-size="lg">
+                                        Hvordan kan du delta?
+                                    </Heading>
+                                    <Paragraph data-size="md">
+                                        Vi setter stor pris på frivillige som vil bidra til denne aktiviteten.
+                                        Kontakt oss for å få mer informasjon om hvordan du kan bli med.
+                                    </Paragraph>
+                                </>
+                            )}
 
                             <div className="contact-section">
                                 <Heading level={3} data-size="md">

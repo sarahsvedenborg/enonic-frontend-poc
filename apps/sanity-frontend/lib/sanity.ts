@@ -96,3 +96,19 @@ export interface Arguments {
     language?: string
     publishedAt?: string
 }
+
+// Types for activity documents
+export interface Activity {
+    _id: string
+    _type: 'activity'
+    title: string
+    excerpt: string
+    mainImage?: any
+    activityType: string
+    body?: any[]
+    publishedAt?: string
+    language?: string
+    slug: {
+        current: string
+    }
+}
