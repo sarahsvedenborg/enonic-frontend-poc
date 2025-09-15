@@ -20,7 +20,7 @@ export default defineConfig({
         providers: [
             {
                 name: 'saml',
-                title: 'saml',
+                title: 'OKTA',
                 url: 'https://api.sanity.io/v2021-10-01/auth/saml/login/88873362',
             },
         ],
