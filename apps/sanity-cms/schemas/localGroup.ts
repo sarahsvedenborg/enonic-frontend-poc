@@ -5,12 +5,24 @@ export default defineType({
     name: 'localGroup',
     title: 'Lokallag',
     type: 'document',
+    groups: [
+        {
+            name: 'localGroup',
+            title: 'Lokalforening',
+
+        },
+        {
+            name: 'activities',
+            title: 'Aktiviteter (lokal tilpasning)',
+        }
+    ],
     fields: [
         defineField({
             name: 'title',
             title: 'Title',
             type: 'string',
             validation: (Rule) => Rule.required(),
+            group: 'localGroup',
         }),
         defineField({
             name: 'slug',
@@ -19,7 +31,11 @@ export default defineType({
             options: {
                 source: 'title',
                 maxLength: 96,
-                slugify: (input, schemaType, context) => { console.log(context, 'slugify'); return context.parent.branchLocation.county.toLowerCase().replace(/\s+/g, '-') + '/' + input.split(' ')[0].toLowerCase().replace(/\s+/g, '-') },
+                slugify: (input, schemaType, context) => {
+                    console.log(context, 'slugify');
+                    const county = (context.parent as any)?.branchLocation?.county || 'unknown';
+                    return county.toLowerCase().replace(/\s+/g, '-') + '/' + input.split(' ')[0].toLowerCase().replace(/\s+/g, '-');
+                },
             },
             validation: (Rule) => Rule.required(),
             hidden: true,
@@ -72,6 +88,107 @@ export default defineType({
             initialValue: false,
         }),
 
+        // Local Activity Overrides
+        defineField({
+            name: 'aktiviteter',
+            title: 'Aktiviteter (lokal tilpasning)',
+            type: 'array',
+            description: 'Erstatt global aktivitetsbeskrivelse med lokal informasjon',
+            group: 'activities',
+            of: [{
+                type: 'object',
+                title: 'Aktivitet',
+                fields: [
+                    defineField({
+                        name: 'activityType',
+                        title: 'Aktivitetstype',
+                        type: 'string',
+                        options: {
+                            list: [
+                                { title: 'Vitnestøtte', value: 'vitnestotte' },
+                                { title: 'Besøkstjeneste', value: 'besokstjeneste' },
+                                { title: 'Møteplass', value: 'motepass' },
+                                { title: 'Førstehjelp', value: 'forstehjelp' },
+                                { title: 'Katastrofehjelp', value: 'katastrofehjelp' },
+                                { title: 'Sosialt arbeid', value: 'sosialt-arbeid' },
+                                { title: 'Ungdomsarbeid', value: 'ungdomsarbeid' },
+                                { title: 'Eldreomsorg', value: 'eldreomsorg' },
+                                { title: 'Flyktninghjelp', value: 'flyktninghjelp' },
+                                { title: 'Blodgivning', value: 'blodgivning' },
+                            ],
+                            layout: 'dropdown',
+                        },
+                        validation: (Rule) => Rule.required(),
+                    }),
+                    defineField({
+                        name: 'title',
+                        title: 'Tittel',
+                        type: 'string',
+                        description: 'Override the global activity title for this branch',
+                    }),
+                    defineField({
+                        name: 'excerpt',
+                        title: 'Ingress',
+                        type: 'text',
+                        rows: 3,
+                        description: 'Override the global activity excerpt for this branch',
+                    }),
+                    defineField({
+                        name: 'image',
+                        title: 'Bilde',
+                        type: 'image',
+                        options: {
+                            hotspot: true,
+                        },
+                        fields: [
+                            defineField({
+                                name: 'alt',
+                                type: 'string',
+                                title: 'Alternativ tekst',
+                                description: 'Beskrivelse av bildet for tilgjengelighet',
+                            }),
+                        ],
+                        description: 'Override the global activity image for this branch',
+                    }),
+                    defineField({
+                        name: 'body',
+                        title: 'Innhold',
+                        type: 'blockContent',
+                        description: 'Override the global activity content for this branch',
+                    }),
+                ],
+                preview: {
+                    select: {
+                        title: 'title',
+                        activityType: 'activityType',
+                        media: 'image',
+                    },
+                    prepare(selection) {
+                        const { title, activityType, media } = selection
+                        const activityTypeLabels: Record<string, string> = {
+                            vitnestotte: 'Vitnestøtte',
+                            besokstjeneste: 'Besøkstjeneste',
+                            motepass: 'Møteplass',
+                            forstehjelp: 'Førstehjelp',
+                            katastrofehjelp: 'Katastrofehjelp',
+                            'sosialt-arbeid': 'Sosialt arbeid',
+                            ungdomsarbeid: 'Ungdomsarbeid',
+                            eldreomsorg: 'Eldreomsorg',
+                            flyktninghjelp: 'Flyktninghjelp',
+                            blodgivning: 'Blodgivning',
+                            annet: 'Annet',
+                        }
+                        const activityTypeLabel = activityTypeLabels[activityType] || activityType
+
+                        return {
+                            title: title || activityTypeLabel,
+                            subtitle: `Lokal tilpasning: ${activityTypeLabel}`,
+                            media,
+                        }
+                    },
+                },
+            }],
+        }),
 
         // API Data Fields
         defineField({

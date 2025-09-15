@@ -112,3 +112,36 @@ export interface Activity {
         current: string
     }
 }
+
+// Types for local activity overrides
+export interface LocalActivityOverride {
+    activityType: string
+    title?: string
+    excerpt?: string
+    image?: any
+    body?: any[]
+}
+
+// Types for local group documents
+export interface LocalGroup {
+    _id: string
+    _type: 'localGroup'
+    title: string
+    slug: {
+        current: string
+    }
+    description?: string
+    mainImage?: any
+    body?: any[]
+    publishedAt?: string
+    language?: string
+    branchId?: string
+    branchName?: string
+    branchType?: string
+    branchParent?: any
+    branchLocation?: any
+    communicationChannels?: any
+    branchContacts?: any[]
+    branchActivities?: any[]
+    aktiviteter?: LocalActivityOverride[]
+}

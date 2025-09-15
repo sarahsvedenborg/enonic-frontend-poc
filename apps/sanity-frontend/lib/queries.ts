@@ -223,7 +223,14 @@ export const getBranchBySlugQuery = `
     branchLocation,
     communicationChannels,
     branchContacts,
-    branchActivities
+    branchActivities,
+    aktiviteter[]{
+      activityType,
+      title,
+      excerpt,
+      image,
+      body
+    }
   }
 `
 
