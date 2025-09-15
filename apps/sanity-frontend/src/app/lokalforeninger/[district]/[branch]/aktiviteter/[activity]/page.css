@@ -1,0 +1,236 @@
+/* Individual Activity Page Styling */
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-size-2);
+    margin-bottom: var(--ds-size-4);
+    font-size: var(--ds-font-size-3);
+    flex-wrap: wrap;
+}
+
+.breadcrumb-link {
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+    color: #d52b1e;
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.breadcrumb-current {
+    color: #374151;
+    font-weight: 500;
+}
+
+/* Activity Header - Removed, now using ActivityHero component */
+
+/* Activity Content Layout */
+.activity-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--ds-size-8);
+    align-items: start;
+}
+
+.activity-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-size-6);
+}
+
+.activity-description {
+    line-height: 1.7;
+    color: #374151;
+}
+
+/* Contact Section */
+.contact-section {
+    background: #f9fafb;
+    padding: var(--ds-size-6);
+    border-radius: var(--ds-size-2);
+    border: 1px solid #e5e7eb;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-size-3);
+    margin-top: var(--ds-size-4);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-size-3);
+}
+
+.contact-label {
+    font-weight: 600;
+    color: #374151;
+    min-width: 80px;
+}
+
+.contact-link {
+    color: #d52b1e;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.contact-link:hover {
+    color: #b91c1c;
+    text-decoration: underline;
+}
+
+/* Activity Sidebar */
+.activity-sidebar {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: var(--ds-size-2);
+    padding: var(--ds-size-5);
+    height: fit-content;
+    position: sticky;
+    top: var(--ds-size-6);
+}
+
+.other-activities {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-size-3);
+    margin: var(--ds-size-4) 0;
+}
+
+.other-activity-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.other-activity-card {
+    display: flex;
+    align-items: center;
+    gap: var(--ds-size-3);
+    padding: var(--ds-size-3);
+    border: 1px solid #e5e7eb;
+    border-radius: var(--ds-size-1);
+    transition: all 0.2s ease;
+}
+
+.other-activity-card:hover {
+    border-color: #d52b1e;
+    background: #fef2f2;
+    transform: translateX(2px);
+}
+
+.other-activity-icon {
+    flex-shrink: 0;
+    width: 35px;
+    height: 35px;
+    background: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.other-activity-icon .icon {
+    font-size: 0.9rem;
+}
+
+.other-activity-info {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.other-activity-title {
+    color: #1f2937;
+    margin: 0;
+    font-weight: 600;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.other-activity-category {
+    color: #6b7280;
+    margin: var(--ds-size-1) 0 0 0;
+    font-size: var(--ds-font-size-2);
+}
+
+.view-all-link {
+    display: inline-block;
+    color: #d52b1e;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: var(--ds-font-size-3);
+    transition: color 0.2s ease;
+    margin-top: var(--ds-size-4);
+}
+
+.view-all-link:hover {
+    color: #b91c1c;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .activity-content {
+        grid-template-columns: 1fr;
+        gap: var(--ds-size-6);
+    }
+
+    .activity-sidebar {
+        position: static;
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: var(--ds-size-4);
+    }
+
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--ds-size-1);
+    }
+
+    .contact-label {
+        min-width: auto;
+    }
+
+    .breadcrumb {
+        font-size: var(--ds-font-size-2);
+    }
+}
+
+@media (max-width: 480px) {
+    .activity-sidebar {
+        padding: var(--ds-size-4);
+    }
+
+    .other-activity-card {
+        padding: var(--ds-size-2);
+    }
+
+    .other-activity-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .other-activity-icon .icon {
+        font-size: 0.8rem;
+    }
+}

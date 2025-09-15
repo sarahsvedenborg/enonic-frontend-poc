@@ -10,6 +10,7 @@ import BranchHeader from '../../../../../components/BranchHeader';
 import ArticleCard from '../../../../../components/ArticleCard';
 import { getBranchActivities, ApiBranch } from '../../../../../lib/api-cache';
 import './page.css';
+import Link from 'next/link';
 
 
 interface BranchPageProps {
@@ -71,7 +72,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
 
             <Section width="xl">
                 <nav className="branch-navigation">
-                    <a href="#aktiviteter" className="nav-item">Våre aktiviteter og tilbud</a>
+                    <a href={`/lokalforeninger/${district}/${branch}/aktiviteter`} className="nav-item">Våre aktiviteter og tilbud</a>
                     <a href="#tjenester" className="nav-item">Våre tjenester</a>
                     <a href="#aktiviteter" className="nav-item">Hva skjer?</a>
                     <a href={`/lokalforeninger/${district}/${branch}/news`} className="nav-item">Nyheter</a>
@@ -139,12 +140,14 @@ export default async function BranchPage({ params }: BranchPageProps) {
                             <div className="activities-list">
                                 {apiActivities.map((activity, index) => (
                                     <div key={`${activity.localActivityName}-${index}`} className="activity-item">
-                                        <Heading level={3}>{activity.localActivityName}</Heading>
-                                        {activity.globalActivityName !== activity.localActivityName && (
-                                            <p className="activity-description">
-                                                <strong>Kategori:</strong> {activity.globalActivityName}
-                                            </p>
-                                        )}
+                                        <Link href={`/lokalforeninger/${district}/${branch}/aktiviteter/${encodeURIComponent(activity.localActivityName)}`}>
+                                            <Heading level={3}>{activity.localActivityName}</Heading>
+                                            {activity.globalActivityName !== activity.localActivityName && (
+                                                <p className="activity-description">
+                                                    <strong>Kategori:</strong> {activity.globalActivityName}
+                                                </p>
+                                            )}
+                                        </Link>
                                     </div>
                                 ))}
                             </div>
