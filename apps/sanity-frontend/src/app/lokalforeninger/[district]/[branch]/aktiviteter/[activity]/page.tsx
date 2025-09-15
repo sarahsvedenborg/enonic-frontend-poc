@@ -1,5 +1,6 @@
+
 import { Heading, Section } from 'ui-lib'
-import { Paragraph } from '@digdir/designsystemet-react'
+import { Paragraph, Button } from '@digdir/designsystemet-react'
 import Link from 'next/link'
 import { client } from '../../../../../../../lib/sanity'
 import { getBranchBySlugQuery, getActivityByTypeQuery } from '../../../../../../../lib/queries'
@@ -10,6 +11,8 @@ import { getBranchActivities, ApiBranch } from '../../../../../../../lib/api-cac
 import { mapApiActivityTypeToSanity, getActivityTypeDisplayName } from '../../../../../../../lib/activity-mapping'
 import { Activity, LocalGroup, LocalActivityOverride } from '../../../../../../../lib/sanity'
 import PortableText from '../../../../../../../components/PortableText'
+import ActivityCallToAction from '../../../../../../../components/ActivityCallToAction'
+import ActivitySignupForm from '../../../../../../../components/ActivitySignupForm'
 import './page.css'
 
 interface ActivityPageProps {
@@ -24,8 +27,7 @@ export const revalidate = 60
 
 const getData = async (slug: string, activitySlug: string) => {
     const id = slug.split('-').pop()
-    console.log("Branch ID for activity:", id)
-    console.log("Activity slug:", activitySlug)
+
 
     const [branchData] = await Promise.all([
         client.fetch(getBranchBySlugQuery, { id }),
@@ -89,6 +91,7 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
 
     // Helper function to get the best available content
     const getActivityContent = () => {
+
         if (localActivityOverride) {
             return {
                 title: localActivityOverride.title || activity.localActivityName,
@@ -96,7 +99,8 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
                     `Kategori: ${activity.globalActivityName}` :
                     `En aktivitet fra ${branchData.branchName}`),
                 image: localActivityOverride.image || branchData.mainImage,
-                body: localActivityOverride.body
+                body: localActivityOverride.body,
+                localCtaHeading: localActivityOverride?.localCtaHeading
             }
         } else if (sanityActivity) {
             return {
@@ -105,7 +109,8 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
                     `Kategori: ${activity.globalActivityName}` :
                     `En aktivitet fra ${branchData.branchName}`),
                 image: sanityActivity.mainImage || branchData.mainImage,
-                body: sanityActivity.body
+                body: sanityActivity.body,
+                localCtaHeading: sanityActivity.localCtaHeading
             }
         } else {
             return {
@@ -114,12 +119,14 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
                     `Kategori: ${activity.globalActivityName}` :
                     `En aktivitet fra ${branchData.branchName}`,
                 image: branchData.mainImage,
-                body: null
+                body: null,
+                localCtaHeading: null
             }
         }
     }
 
     const activityContent = getActivityContent()
+
 
     return (
         <>
@@ -186,6 +193,14 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
                                 </>
                             )}
 
+                            {/* Activity Signup Form */}
+                            <ActivitySignupForm
+                                title={`${activityContent.localCtaHeading || 'Bli med i aktiviteten'}`}
+                                description="Fyll ut skjemaet nedenfor for å melde din interesse for å delta i denne aktiviteten."
+                                branchName={branchData.branchName}
+                                activityType={activity.globalActivityName}
+                            />
+
                             <div className="contact-section">
                                 <Heading level={3} data-size="md">
                                     Kontakt oss
@@ -219,7 +234,7 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
                         </div>
 
                         {/* Other Activities Sidebar */}
-                        <div className="activity-sidebar">
+                        {/*   <div className="activity-sidebar">
                             <Heading level={3} data-size="md">
                                 Andre aktiviteter
                             </Heading>
@@ -258,7 +273,7 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
                             >
                                 Se alle aktiviteter →
                             </Link>
-                        </div>
+                        </div> */}
                     </div>
                 </Section>
             </Section>

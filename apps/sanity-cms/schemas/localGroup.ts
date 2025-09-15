@@ -121,6 +121,12 @@ export default defineType({
                         validation: (Rule) => Rule.required(),
                     }),
                     defineField({
+                        name: 'localCtaHeading',
+                        title: 'Lokal CTA heading',
+                        type: 'string',
+                        description: 'Override the global activity CTA heading for this branch',
+                    }),
+                    defineField({
                         name: 'title',
                         title: 'Tittel',
                         type: 'string',

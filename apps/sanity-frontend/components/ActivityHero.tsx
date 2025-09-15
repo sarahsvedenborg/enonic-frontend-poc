@@ -26,7 +26,7 @@ export default function ActivityHero({ title, subtitle, image, branchName, locat
             {/* Content */}
             <div className="activity-hero-content">
                 <div className="activity-hero-badge">
-                    <span className="activity-icon">🎯</span>
+
                     <span className="activity-label">Aktivitet</span>
                 </div>
 
@@ -40,11 +40,11 @@ export default function ActivityHero({ title, subtitle, image, branchName, locat
                     </p>
                 )}
 
-                {(branchName || location) && (
+                {/*    {(branchName || location) && (
                     <div className="activity-hero-meta">
                         {branchName && (
                             <span className="activity-meta-item">
-                                📍 {branchName}
+                                {branchName}
                             </span>
                         )}
                         {location && (
@@ -53,7 +53,7 @@ export default function ActivityHero({ title, subtitle, image, branchName, locat
                             </span>
                         )}
                     </div>
-                )}
+                )} */}
             </div>
         </section>
     )

@@ -103,6 +103,7 @@ export interface Activity {
     _type: 'activity'
     title: string
     excerpt: string
+    localCtaHeading?: string
     mainImage?: any
     activityType: string
     body?: any[]
@@ -118,6 +119,7 @@ export interface LocalActivityOverride {
     activityType: string
     title?: string
     excerpt?: string
+    localCtaHeading?: string
     image?: any
     body?: any[]
 }

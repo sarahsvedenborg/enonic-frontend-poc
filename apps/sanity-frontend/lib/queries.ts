@@ -228,6 +228,7 @@ export const getBranchBySlugQuery = `
       activityType,
       title,
       excerpt,
+      localCtaHeading,
       image,
       body
     }
@@ -259,6 +260,7 @@ export const getActivityByTypeQuery = `
     _id,
     title,
     excerpt,
+    localCtaHeading,
     mainImage,
     activityType,
     body,
