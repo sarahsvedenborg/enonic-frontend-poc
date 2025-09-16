@@ -10,7 +10,6 @@ export const deskStructure = (S: StructureBuilder) =>
                 .title('Norsk')
                 .icon(FiGlobe)
                 .child(
-
                     S.list()
                         .title('Norsk')
                         .items([
@@ -41,13 +40,99 @@ export const deskStructure = (S: StructureBuilder) =>
                                         .filter('_type == "campaign" && language == "no"')
                                 ),
 
+                            /*   S.listItem()
+                                  .title('Lokalforeninger')
+                                  .icon(FiMapPin)
+                                  .child(
+                                      S.documentList()
+                                          .title('Lokalforeninger')
+                                          .filter('_type == "localGroup" && language == "no"')
+                                          .child((id) =>
+                                              S.document()
+                                                  .documentId(id)
+                                                  .schemaType('localGroup')
+                                                  .child(
+                                                      S.list()
+                                                          .title('Lokalforening innhold')
+                                                          .items([
+                                                              S.listItem()
+                                                                  .title('Landingsside')
+                                                                  .icon(FiMapPin)
+                                                                  .child(
+                                                                      S.document()
+                                                                          .documentId(id)
+                                                                          .schemaType('localGroup')
+                                                                  ),
+                                                              S.listItem()
+                                                                  .title('Nyheter')
+                                                                  .icon(FiFileText)
+                                                                  .child(
+                                                                      S.documentList()
+                                                                          .title('Nyheter')
+                                                                          .filter(`_type == "newsArticle" && language == "no" && branchId->branchId == "${id}"`)
+                                                                  ),
+                                                              S.listItem()
+                                                                  .title('Arrangementer')
+                                                                  .icon(FiCalendar)
+                                                                  .child(
+                                                                      S.documentList()
+                                                                          .title('Arrangementer')
+                                                                          .filter(`_type == "event" && language == "no" && localBranch._ref == "${id}"`)
+                                                                  )
+                                                          ])
+                                                  )
+                                          )
+                                  ), */
+
                             S.listItem()
                                 .title('Lokalforeninger')
                                 .icon(FiMapPin)
                                 .child(
-                                    S.documentList()
+                                    S.documentTypeList('localGroup')
                                         .title('Lokalforeninger')
                                         .filter('_type == "localGroup" && language == "no"')
+                                        .child(branchId =>
+
+                                            S.list()
+                                                .title("Innhold per lokalforening")
+                                                .items([
+                                                    S.listItem()
+                                                        .title('Landingsside')
+                                                        .icon(FiMapPin)
+                                                        .child(
+                                                            S.document()
+                                                                .title(`eventer som tilhører ${branchId}`)
+                                                                .documentId(branchId)
+                                                                .schemaType('localGroup')
+
+                                                        ),
+                                                    S.divider(),
+                                                    S.listItem()
+                                                        .title('Arrangementer')
+                                                        .icon(FiCalendar)
+                                                        .child(
+                                                            S.documentList()
+                                                                .title(`eventer som tilhører ${branchId}`)
+                                                                .filter('_type == "event" && localBranch._ref == $branchId && language == "no"')
+                                                                .params({
+                                                                    branchId: branchId
+                                                                })
+                                                        ),
+                                                    S.listItem()
+                                                        .title('Nyhetsartikler')
+                                                        .icon(FiFileText)
+                                                        .child(
+                                                            S.documentList()
+                                                                .title(`nyheter som tilhører ${branchId}`)
+                                                                .filter('_type == "newsArticle" && branchId._ref == $branchId && language == "no"')
+                                                                .params({
+                                                                    branchId: branchId
+                                                                })
+                                                        )
+
+                                                ])
+                                        )
+
                                 ),
                             S.listItem()
                                 .title('Aktiviteter')
@@ -162,6 +247,41 @@ export const deskStructure = (S: StructureBuilder) =>
                                     S.documentList()
                                         .title('Branches')
                                         .filter('_type == "localGroup" && language == "en"')
+                                        .child((id) =>
+                                            S.document()
+                                                .documentId(id)
+                                                .schemaType('localGroup')
+                                                .child(
+                                                    S.list()
+                                                        .title('Branch Content')
+                                                        .items([
+                                                            S.listItem()
+                                                                .title('Landing Page')
+                                                                .icon(FiMapPin)
+                                                                .child(
+                                                                    S.document()
+                                                                        .documentId(id)
+                                                                        .schemaType('localGroup')
+                                                                ),
+                                                            S.listItem()
+                                                                .title('News')
+                                                                .icon(FiFileText)
+                                                                .child(
+                                                                    S.documentList()
+                                                                        .title('News')
+                                                                        .filter(`_type == "newsArticle" && language == "en" && branchId->branchId == "${id}"`)
+                                                                ),
+                                                            S.listItem()
+                                                                .title('Events')
+                                                                .icon(FiCalendar)
+                                                                .child(
+                                                                    S.documentList()
+                                                                        .title('Events')
+                                                                        .filter(`_type == "event" && language == "en" && localBranch._ref == "${id}"`)
+                                                                )
+                                                        ])
+                                                )
+                                        )
                                 ),
                             S.listItem()
                                 .title('Activities')
