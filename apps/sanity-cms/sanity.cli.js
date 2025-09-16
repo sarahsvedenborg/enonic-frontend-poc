@@ -9,6 +9,7 @@ export default defineCliConfig({
     project: {
         basePath: '/studio',
     },
+    studioHost: 'rk-poc'
     /*   mediaLibrary: {
       
         aspectsPath: 'aspects',
