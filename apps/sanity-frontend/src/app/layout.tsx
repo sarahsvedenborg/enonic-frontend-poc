@@ -1,4 +1,4 @@
-import { Header, Banner } from 'ui-lib'
+import { Header, Footer, Banner } from 'ui-lib'
 import { client } from '../../lib/sanity'
 import { getMainMenuQuery } from '../../lib/queries'
 import { MainMenu } from '../../lib/sanity'
@@ -20,22 +20,39 @@ async function getHeaderMenu(): Promise<MainMenu | null> {
     }
 }
 
+async function getFooterMenu(): Promise<MainMenu | null> {
+    try {
+        const menu = await client.fetch(getMainMenuQuery, {
+            location: 'footer',
+            language: 'no'
+        })
+        return menu
+    } catch (error) {
+        console.error('Error fetching footer menu:', error)
+        return null
+    }
+}
+
 export default async function RootLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
-    const headerMenu = await getHeaderMenu()
+    const [headerMenu, footerMenu] = await Promise.all([
+        getHeaderMenu(),
+        getFooterMenu()
+    ])
 
     return (
         <html lang="en">
-            <body >
-                <div >
+            <body>
+                <div className="layout-container">
                     <Banner site="Sanity CMS" login="https://rk-poc.sanity.studio/studio/structure" />
                     <Header menuData={headerMenu} />
-                    <main >
+                    <main className="main-content">
                         {children}
                     </main>
+                    <Footer menuData={footerMenu} />
                 </div>
             </body>
         </html>

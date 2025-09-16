@@ -318,7 +318,7 @@ export const getAllEventSlugsQuery = `
 
 // Get main menu by location and language
 export const getMainMenuQuery = `
-  *[_type == "mainMenu" && menuLocation == $location && language == $language && isActive == true][0] {
+  *[_type == "mainMenu" && menuLocation == $location && language == $language][0] {
     _id,
     title,
     menuItems[]{

@@ -250,12 +250,14 @@ export default defineType({
             title: 'Menyelementer - sekundær',
             type: 'array',
             of: menuElementFields,
+            hidden: ({ parent }) => parent?.menuLocation !== 'header',
         }),
         defineField({
             name: 'menuItemsTertiary',
             title: 'Menyelementer - tredje',
             type: 'array',
             of: menuElementFields,
+            hidden: ({ parent }) => parent?.menuLocation !== 'header',
         }),
 
 
