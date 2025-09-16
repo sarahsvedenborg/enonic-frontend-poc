@@ -1,0 +1,258 @@
+/* Event Detail Page Styles */
+.event-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.event-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.event-description {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+}
+
+.event-details-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.event-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.event-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.event-detail-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.event-detail-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1f2937;
+    line-height: 1.4;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.status-badge.today {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-badge.upcoming {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status-badge.past {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.contact-section {
+    background: #f9fafb;
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid #e5e7eb;
+}
+
+.contact-info {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.contact-label {
+    font-weight: 600;
+    color: #374151;
+    min-width: 80px;
+}
+
+.contact-link {
+    color: #dc2626;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.contact-link:hover {
+    color: #b91c1c;
+    text-decoration: underline;
+}
+
+.event-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    padding: 2rem 0;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 2rem;
+}
+
+/* Breadcrumb Styles */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    flex-wrap: wrap;
+}
+
+.breadcrumb-link {
+    color: #dc2626;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+    color: #b91c1c;
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    color: #9ca3af;
+}
+
+.breadcrumb-current {
+    color: #374151;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .event-details-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .event-content {
+        gap: 1.5rem;
+    }
+
+    .event-main {
+        gap: 1.5rem;
+    }
+
+    .event-description,
+    .event-details-card,
+    .contact-section {
+        padding: 1.5rem;
+    }
+
+    .event-details-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .contact-info {
+        gap: 0.75rem;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .contact-label {
+        min-width: auto;
+    }
+
+    .event-actions {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .breadcrumb {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .event-description,
+    .event-details-card,
+    .contact-section {
+        padding: 1rem;
+    }
+
+    .event-actions {
+        padding: 1.5rem 0;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+
+    .event-description,
+    .contact-section {
+        background: #1f2937;
+        border-color: #374151;
+    }
+
+    .event-details-card {
+        background: #1f2937;
+        border-color: #374151;
+    }
+
+    .event-detail-label {
+        color: #9ca3af;
+    }
+
+    .event-detail-value {
+        color: #f9fafb;
+    }
+
+    .contact-label {
+        color: #d1d5db;
+    }
+
+    .breadcrumb-current {
+        color: #d1d5db;
+    }
+
+    .event-actions {
+        border-color: #374151;
+    }
+}

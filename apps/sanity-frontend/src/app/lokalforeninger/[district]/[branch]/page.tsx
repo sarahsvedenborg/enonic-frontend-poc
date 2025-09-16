@@ -11,6 +11,7 @@ import ArticleCard from '../../../../../components/ArticleCard';
 import { getBranchActivities, ApiBranch } from '../../../../../lib/api-cache';
 import './page.css';
 import Link from 'next/link';
+import EventList from './EventList';
 
 
 interface BranchPageProps {
@@ -75,6 +76,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
                     <a href={`/lokalforeninger/${district}/${branch}/aktiviteter`} className="nav-item">Våre aktiviteter og tilbud</a>
                     <a href="#tjenester" className="nav-item">Våre tjenester</a>
                     <a href="#aktiviteter" className="nav-item">Hva skjer?</a>
+                    <a href={`/lokalforeninger/${district}/${branch}/arrangementer`} className="nav-item">Arrangementer</a>
                     <a href={`/lokalforeninger/${district}/${branch}/news`} className="nav-item">Nyheter</a>
                     <a href="#om-oss" className="nav-item">Om oss</a>
                 </nav>
@@ -132,11 +134,42 @@ export default async function BranchPage({ params }: BranchPageProps) {
             </Section >
 
 
+            <EventList title="Hva skjer?" district={district} branch={branch} />
+
             {
                 apiActivities && apiActivities.length > 0 && (
                     <Section width="xl" background="tinted" padding="lg">
                         <Section width="md" padding="lg">
-                            <Heading level={2}>Hva skjer?</Heading>
+                            <Heading level={2}>Hva skjer? (Arrangementer)</Heading>
+                            <div className="activities-list">
+                                {apiActivities.map((activity, index) => (
+                                    <div key={`${activity.localActivityName}-${index}`} className="activity-item">
+                                        <Link href={`/lokalforeninger/${district}/${branch}/aktiviteter/${encodeURIComponent(activity.localActivityName)}`}>
+                                            <Heading level={3}>{activity.localActivityName}</Heading>
+                                            {activity.globalActivityName !== activity.localActivityName && (
+                                                <p className="activity-description">
+                                                    <strong>Kategori:</strong> {activity.globalActivityName}
+                                                </p>
+                                            )}
+                                        </Link>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="activities-source">
+                                <Paragraph className="source-text">
+                                    Aktivitetsdata hentet fra Røde Kors API
+                                </Paragraph>
+                            </div>
+                        </Section>
+                    </Section>
+                )
+            }
+
+            {
+                apiActivities && apiActivities.length > 0 && (
+                    <Section width="xl" padding="lg">
+                        <Section width="md" padding="lg">
+                            <Heading level={2}>Våre aktiviteter og tilbud</Heading>
                             <div className="activities-list">
                                 {apiActivities.map((activity, index) => (
                                     <div key={`${activity.localActivityName}-${index}`} className="activity-item">
