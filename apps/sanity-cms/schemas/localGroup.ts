@@ -38,7 +38,7 @@ export default defineType({
                 },
             },
             validation: (Rule) => Rule.required(),
-            hidden: true,
+            /*      hidden: true, */
         }),
         defineField({
             name: 'language',
