@@ -8,6 +8,7 @@ import localGroup from './localGroup'
 import donationForm from './donationForm'
 import argument from './argument'
 import activity from './activity'
+import event from './event'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
     article,
@@ -18,6 +19,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
     localGroup,
     argument,
     activity,
+    event,
 
     // objects
     donationForm,

@@ -147,3 +147,23 @@ export interface LocalGroup {
     branchActivities?: any[]
     aktiviteter?: LocalActivityOverride[]
 }
+
+// Types for event documents
+export interface Event {
+    _id: string
+    _type: 'event'
+    title: string
+    body?: any[]
+    time: string
+    location: string
+    localBranch: {
+        _id: string
+        branchName?: string
+        branchId?: string
+    }
+    language?: string
+    publishedAt?: string
+    slug: {
+        current: string
+    }
+}
