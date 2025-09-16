@@ -96,3 +96,54 @@ export interface Arguments {
     language?: string
     publishedAt?: string
 }
+
+// Types for activity documents
+export interface Activity {
+    _id: string
+    _type: 'activity'
+    title: string
+    excerpt: string
+    localCtaHeading?: string
+    mainImage?: any
+    activityType: string
+    body?: any[]
+    publishedAt?: string
+    language?: string
+    slug: {
+        current: string
+    }
+}
+
+// Types for local activity overrides
+export interface LocalActivityOverride {
+    activityType: string
+    title?: string
+    excerpt?: string
+    localCtaHeading?: string
+    image?: any
+    body?: any[]
+}
+
+// Types for local group documents
+export interface LocalGroup {
+    _id: string
+    _type: 'localGroup'
+    title: string
+    slug: {
+        current: string
+    }
+    description?: string
+    mainImage?: any
+    body?: any[]
+    publishedAt?: string
+    language?: string
+    branchId?: string
+    branchName?: string
+    branchType?: string
+    branchParent?: any
+    branchLocation?: any
+    communicationChannels?: any
+    branchContacts?: any[]
+    branchActivities?: any[]
+    aktiviteter?: LocalActivityOverride[]
+}

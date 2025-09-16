@@ -1,5 +1,5 @@
 import { StructureBuilder } from 'sanity/desk'
-import { FiFileText, FiGift, FiGlobe, FiMapPin, FiSmile } from 'react-icons/fi'
+import { FiFileText, FiGift, FiGlobe, FiMapPin, FiSmile, FiTarget } from 'react-icons/fi'
 
 export const deskStructure = (S: StructureBuilder) =>
     S.list()
@@ -14,7 +14,7 @@ export const deskStructure = (S: StructureBuilder) =>
                     S.list()
                         .title('Norsk')
                         .items([
-                            S.divider({ title: "Sider" }),
+                            S.divider(),
                             S.listItem()
                                 .title('Informasjonssider')
                                 .icon(FiFileText)
@@ -49,7 +49,7 @@ export const deskStructure = (S: StructureBuilder) =>
                                         .title('Lokalforeninger')
                                         .filter('_type == "localGroup" && language == "no"')
                                 ),
-                            S.divider({ title: "Faste sider" }),
+                            S.divider(),
                             S.listItem()
                                 .title('Permanent giverside')
                                 .icon(FiGift)
@@ -59,7 +59,7 @@ export const deskStructure = (S: StructureBuilder) =>
                                         .documentId('permanent-campaign-no')
                                         .schemaType('permanentCampaign')
                                 ),
-                            S.divider({ title: "Annet innhold" }),
+                            S.divider(),
                             S.listItem()
                                 .title('Giverskjema')
                                 .icon(FiGift)
@@ -75,6 +75,14 @@ export const deskStructure = (S: StructureBuilder) =>
                                     S.documentList()
                                         .title('Argumenter')
                                         .filter('_type == "argument" && language == "no"')
+                                ),
+                            S.listItem()
+                                .title('Aktiviteter')
+                                .icon(FiTarget)
+                                .child(
+                                    S.documentList()
+                                        .title('Aktiviteter')
+                                        .filter('_type == "activity" && language == "no"')
                                 ),
                         ])
                 ),
@@ -136,6 +144,14 @@ export const deskStructure = (S: StructureBuilder) =>
                                         .title('Branches')
                                         .filter('_type == "localGroup" && language == "en"')
                                 ),
+                            S.listItem()
+                                .title('Activities')
+                                .icon(FiTarget)
+                                .child(
+                                    S.documentList()
+                                        .title('Activities')
+                                        .filter('_type == "activity" && language == "en"')
+                                ),
                         ])
                 ),
 
@@ -174,6 +190,6 @@ export const deskStructure = (S: StructureBuilder) =>
     */
             // All other document types
             ...S.documentTypeListItems().filter(
-                (listItem) => !['article', 'newsArticle', 'campaign', 'permanentCampaign', 'localGroup', 'donationForm', 'argument'].includes(listItem.getId() as string)
+                (listItem) => !['article', 'newsArticle', 'campaign', 'permanentCampaign', 'localGroup', 'donationForm', 'argument', 'activity'].includes(listItem.getId() as string)
             ),
         ])

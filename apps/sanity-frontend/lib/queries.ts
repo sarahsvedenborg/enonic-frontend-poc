@@ -223,7 +223,15 @@ export const getBranchBySlugQuery = `
     branchLocation,
     communicationChannels,
     branchContacts,
-    branchActivities
+    branchActivities,
+    aktiviteter[]{
+      activityType,
+      title,
+      excerpt,
+      localCtaHeading,
+      image,
+      body
+    }
   }
 `
 
@@ -243,5 +251,21 @@ export const getAllLocalGroupsQuery = `
       email,
       phone
     }
+  }
+`
+
+// Get activity content by activity type
+export const getActivityByTypeQuery = `
+  *[_type == "activity" && language == $language && activityType == $activityType][0] {
+    _id,
+    title,
+    excerpt,
+    localCtaHeading,
+    mainImage,
+    activityType,
+    body,
+    publishedAt,
+    language,
+    slug
   }
 `
