@@ -10,61 +10,65 @@
     padding: var(--ds-size-8) var(--ds-size-6);
 }
 
-/* Footer Navigation */
-.rk-footer-nav {
-    margin-bottom: var(--ds-size-6);
-}
-
-.rk-footer-nav:last-of-type {
+/* Footer Columns */
+.rk-footer-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--ds-size-8);
     margin-bottom: var(--ds-size-8);
 }
 
-.rk-footer-menu-list {
+.rk-footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.rk-footer-column-title {
+    margin: 0 0 var(--ds-size-3) 0;
+    font-size: var(--ds-font-size-4);
+    font-weight: 600;
+    color: #212529;
+    line-height: 1.3;
+}
+
+.rk-footer-column-link {
+    color: #212529;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.rk-footer-column-link:hover {
+    color: #d52b1e;
+    text-decoration: underline;
+}
+
+/* Footer Submenu */
+.rk-footer-submenu {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--ds-size-4) var(--ds-size-6);
+    flex-direction: column;
+    gap: var(--ds-size-2);
 }
 
-.rk-footer-menu-item {
+.rk-footer-submenu-item {
     margin: 0;
     padding: 0;
 }
 
-.rk-footer-menu-link {
+.rk-footer-submenu-link {
     color: #6c757d;
     text-decoration: none;
     font-size: var(--ds-font-size-3);
     font-weight: 400;
     transition: color 0.2s ease;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
-.rk-footer-menu-link:hover {
+.rk-footer-submenu-link:hover {
     color: #d52b1e;
     text-decoration: underline;
-}
-
-/* Secondary Footer Navigation */
-.rk-footer-nav-secondary .rk-footer-menu-link {
-    font-size: var(--ds-font-size-2);
-    color: #868e96;
-}
-
-.rk-footer-nav-secondary .rk-footer-menu-link:hover {
-    color: #d52b1e;
-}
-
-/* Tertiary Footer Navigation */
-.rk-footer-nav-tertiary .rk-footer-menu-link {
-    font-size: var(--ds-font-size-2);
-    color: #adb5bd;
-}
-
-.rk-footer-nav-tertiary .rk-footer-menu-link:hover {
-    color: #d52b1e;
 }
 
 /* Footer Bottom */
@@ -114,9 +118,23 @@
         padding: var(--ds-size-6) var(--ds-size-4);
     }
 
-    .rk-footer-menu-list {
-        flex-direction: column;
-        gap: var(--ds-size-3);
+    .rk-footer-columns {
+        grid-template-columns: 1fr;
+        gap: var(--ds-size-6);
+        margin-bottom: var(--ds-size-6);
+    }
+
+    .rk-footer-column-title {
+        font-size: var(--ds-font-size-3);
+        margin-bottom: var(--ds-size-2);
+    }
+
+    .rk-footer-submenu {
+        gap: var(--ds-size-1);
+    }
+
+    .rk-footer-submenu-link {
+        font-size: var(--ds-font-size-2);
     }
 
     .rk-footer-bottom {
@@ -141,12 +159,18 @@
         padding: var(--ds-size-4) var(--ds-size-3);
     }
 
-    .rk-footer-nav {
+    .rk-footer-columns {
+        gap: var(--ds-size-4);
         margin-bottom: var(--ds-size-4);
     }
 
-    .rk-footer-nav:last-of-type {
-        margin-bottom: var(--ds-size-6);
+    .rk-footer-column-title {
+        font-size: var(--ds-font-size-2);
+        margin-bottom: var(--ds-size-1);
+    }
+
+    .rk-footer-submenu-link {
+        font-size: var(--ds-font-size-1);
     }
 
     .rk-footer-bottom {
