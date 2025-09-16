@@ -170,6 +170,7 @@ export interface Event {
 
 // Types for menu documents
 export interface MenuItem {
+    subMenuType?: 'external' | 'internal' | 'campaign' | 'localGroup' | 'article' | 'newsArticle'
     _key: string
     label: string
     menuType: 'external' | 'internal' | 'dropdown' | 'campaign' | 'localGroup' | 'article' | 'newsArticle'
@@ -209,6 +210,7 @@ export interface MenuItem {
 }
 
 export interface SubMenuItem {
+    menuType?: 'external' | 'internal' | 'campaign' | 'localGroup' | 'article' | 'newsArticle'
     _key: string
     label: string
     subMenuType: 'external' | 'internal' | 'campaign' | 'localGroup' | 'article' | 'newsArticle'

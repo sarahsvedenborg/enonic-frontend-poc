@@ -1,7 +1,7 @@
 import { MenuItem, SubMenuItem } from './sanity'
 
 export function getMenuItemUrl(item: MenuItem | SubMenuItem): string {
-    switch (item.menuType || item.subMenuType) {
+    switch (item?.menuType || item?.subMenuType) {
         case 'external':
             return item.url || '#'
         case 'internal':
@@ -20,9 +20,9 @@ export function getMenuItemUrl(item: MenuItem | SubMenuItem): string {
 }
 
 export function shouldOpenInNewTab(item: MenuItem): boolean {
-    return item.menuType === 'external' && item.openInNewTab === true
+    return item?.menuType === 'external' && item.openInNewTab === true
 }
 
 export function isVisible(item: MenuItem): boolean {
-    return item.isVisible !== false
+    return item?.isVisible !== false
 }
