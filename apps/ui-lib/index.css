@@ -7,6 +7,9 @@
 @import url('./components/DeveloperNote/DeveloperNote.css');
 @import url('./components/CardList/CardList.css');
 @import url('./components/eCommerce/Ecommerce.css');
+@import url('./components/EventList/EventList.css');
+@import url('./components/EventList/EventCard.css');
+@import url('./components/EventHero/EventHero.css');
 
 /* Lists styling */
 .rk-list {

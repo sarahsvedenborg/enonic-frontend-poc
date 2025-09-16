@@ -6,6 +6,42 @@ export default defineType({
     type: 'document',
     fields: [
         defineField({
+            name: 'language',
+            title: 'Språk',
+            type: 'string',
+            initialValue: 'no',
+            options: {
+                list: [
+                    { title: 'Norsk', value: 'no' },
+                    { title: 'Engelsk', value: 'en' },
+                ],
+                layout: 'radio',
+            },
+            validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+            name: 'activityType',
+            title: 'Aktivitetstype',
+            type: 'string',
+            options: {
+                list: [
+                    { title: 'Vitnestøtte', value: 'vitnestotte' },
+                    { title: 'Besøkstjeneste', value: 'besokstjeneste' },
+                    { title: 'Møteplass', value: 'motepass' },
+                    { title: 'Førstehjelp', value: 'forstehjelp' },
+                    { title: 'Katastrofehjelp', value: 'katastrofehjelp' },
+                    { title: 'Sosialt arbeid', value: 'sosialt-arbeid' },
+                    { title: 'Ungdomsarbeid', value: 'ungdomsarbeid' },
+                    { title: 'Eldreomsorg', value: 'eldreomsorg' },
+                    { title: 'Flyktninghjelp', value: 'flyktninghjelp' },
+                    { title: 'Blodgivning', value: 'blodgivning' },
+                    { title: 'Annet', value: 'annet' },
+                ],
+                layout: 'dropdown',
+            },
+            validation: (Rule) => Rule.required(),
+        }),
+        defineField({
             name: 'title',
             title: 'Tittel',
             type: 'string',
@@ -34,64 +70,23 @@ export default defineType({
                 }),
             ],
         }),
-        defineField({
-            name: 'activityType',
-            title: 'Aktivitetstype',
-            type: 'string',
-            options: {
-                list: [
-                    { title: 'Vitnestøtte', value: 'vitnestotte' },
-                    { title: 'Besøkstjeneste', value: 'besokstjeneste' },
-                    { title: 'Møteplass', value: 'motepass' },
-                    { title: 'Førstehjelp', value: 'forstehjelp' },
-                    { title: 'Katastrofehjelp', value: 'katastrofehjelp' },
-                    { title: 'Sosialt arbeid', value: 'sosialt-arbeid' },
-                    { title: 'Ungdomsarbeid', value: 'ungdomsarbeid' },
-                    { title: 'Eldreomsorg', value: 'eldreomsorg' },
-                    { title: 'Flyktninghjelp', value: 'flyktninghjelp' },
-                    { title: 'Blodgivning', value: 'blodgivning' },
-                    { title: 'Annet', value: 'annet' },
-                ],
-                layout: 'dropdown',
-            },
-            validation: (Rule) => Rule.required(),
-        }),
+
         defineField({
             name: 'body',
             title: 'Innhold',
             type: 'blockContent',
         }),
-        defineField({
-            name: 'language',
-            title: 'Språk',
-            type: 'string',
-            initialValue: 'no',
-            options: {
-                list: [
-                    { title: 'Norsk', value: 'no' },
-                    { title: 'Engelsk', value: 'en' },
-                ],
-                layout: 'radio',
-            },
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-            name: 'publishedAt',
-            title: 'Publisert dato',
-            type: 'datetime',
-            initialValue: () => new Date().toISOString(),
-            validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-            name: 'slug',
-            title: 'Slug',
-            type: 'slug',
-            options: {
-                source: 'title',
-                maxLength: 96,
-            },
-            validation: (Rule) => Rule.required(),
-        }),
+
+        /*   defineField({
+              name: 'slug',
+              title: 'Slug',
+              type: 'slug',
+              options: {
+                  source: 'title',
+                  maxLength: 96,
+              },
+              validation: (Rule) => Rule.required(),
+          }), */
     ],
     preview: {
         select: {

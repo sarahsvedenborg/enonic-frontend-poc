@@ -269,3 +269,49 @@ export const getActivityByTypeQuery = `
     slug
   }
 `
+
+// Get events by branch
+export const getEventsByBranchQuery = `
+  *[_type == "event" && language == $language && localBranch->branchId == $branchId] | order(time asc) {
+    _id,
+    title,
+    time,
+    location,
+    body,
+    slug,
+    localBranch->{
+      _id,
+      branchName,
+      branchId
+    }
+  }
+`
+
+// Get single event by slug
+export const getEventBySlugQuery = `
+  *[_type == "event" && language == $language && slug.current == $slug][0] {
+    _id,
+    title,
+    time,
+    location,
+    body,
+    slug,
+    localBranch->{
+      _id,
+      branchName,
+      branchId,
+      branchLocation,
+      communicationChannels
+    }
+  }
+`
+
+// Get all event slugs for static generation
+export const getAllEventSlugsQuery = `
+  *[_type == "event" && defined(slug.current)][] {
+    "slug": slug.current,
+    localBranch->{
+      branchId
+    }
+  }
+`

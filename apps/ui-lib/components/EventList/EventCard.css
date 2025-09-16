@@ -1,0 +1,176 @@
+/* Event Card Styles - Hand-drawn Design */
+.event-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.event-card {
+    background: #fefefe;
+    border: 3px solid #000;
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.2s ease;
+    position: relative;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hand-drawn border effect */
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border: 3px solid #000;
+    border-radius: 16px;
+    background: transparent;
+    pointer-events: none;
+    animation: handDrawnBorder 0.1s ease-in-out;
+}
+
+@keyframes handDrawnBorder {
+    0% {
+        transform: scale(0.98) rotate(0deg);
+    }
+
+    25% {
+        transform: scale(1.02) rotate(0.5deg);
+    }
+
+    50% {
+        transform: scale(0.99) rotate(-0.3deg);
+    }
+
+    75% {
+        transform: scale(1.01) rotate(0.2deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.event-card:hover {
+    transform: translateY(-4px) rotate(1deg);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.event-title {
+    color: #000;
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.event-date {
+    color: #000;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.event-time {
+    color: #000;
+    font-weight: 400;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.event-location {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.location-icon {
+    color: #000;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.location-text {
+    color: #000;
+    font-weight: 400;
+    font-size: 1rem;
+    margin: 0;
+    text-decoration: underline;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .event-card {
+        padding: 1.5rem;
+    }
+
+    .event-title {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .event-card {
+        padding: 1.25rem;
+    }
+
+    .event-title {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .event-date,
+    .event-time,
+    .location-text {
+        font-size: 0.9rem;
+    }
+
+    .event-location {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .event-card {
+        padding: 1rem;
+    }
+
+    .event-title {
+        font-size: 0.95rem;
+    }
+
+    .event-date,
+    .event-time,
+    .location-text {
+        font-size: 0.85rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .event-card {
+        background: #fefefe;
+        border-color: #000;
+    }
+
+    .event-title,
+    .event-date,
+    .event-time,
+    .location-text {
+        color: #000;
+    }
+
+    .location-icon {
+        color: #000;
+    }
+}
