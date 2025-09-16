@@ -10,6 +10,7 @@ import BranchHeader from '../../../../../components/BranchHeader';
 import ArticleCard from '../../../../../components/ArticleCard';
 import { getBranchActivities, ApiBranch } from '../../../../../lib/api-cache';
 import './page.css';
+import '../../page.css'
 import Link from 'next/link';
 import EventList from './EventList';
 
@@ -73,14 +74,19 @@ export default async function BranchPage({ params }: BranchPageProps) {
 
             <Section width="xl">
                 <nav className="branch-navigation">
-                    <a href={`/lokalforeninger/${district}/${branch}/aktiviteter`} className="nav-item">Våre aktiviteter og tilbud</a>
-                    <a href="#tjenester" className="nav-item">Våre tjenester</a>
-                    <a href="#aktiviteter" className="nav-item">Hva skjer?</a>
-                    <a href={`/lokalforeninger/${district}/${branch}/arrangementer`} className="nav-item">Arrangementer</a>
+                    {/*                     <a href={`/lokalforeninger/${district}/${branch}/aktiviteter`} className="nav-item">Våre aktiviteter og tilbud</a> */}
+                    <a href='#aktiviteter' className="nav-item">Våre aktiviteter og tilbud</a>
+                    <a href="#tjenester" className="nav-item" style={{
+                        color: '#bbb'
+                    }}>Våre tjenester</a>
+                    < a href="#arrangementer" className="nav-item" > Hva skjer?</a>
+                    {/*                     <a href={`/lokalforeninger/${district}/${branch}/arrangementer`} className="nav-item">Arrangementer</a> */}
                     <a href={`/lokalforeninger/${district}/${branch}/news`} className="nav-item">Nyheter</a>
-                    <a href="#om-oss" className="nav-item">Om oss</a>
+                    <a href="#om-oss" className="nav-item" style={{
+                        color: '#bbb'
+                    }}>Om oss</a>
                 </nav>
-            </Section>
+            </Section >
 
             < Section width="sm" >
                 <Heading level={2}>
@@ -123,20 +129,22 @@ export default async function BranchPage({ params }: BranchPageProps) {
 
 
 
-            < Section width="xl" padding="lg" >
-                <Section width="md" padding="lg">
-                    {branchData.body && (
-                        <div className="news-content">
-                            <PortableText content={branchData.body} />
-                        </div>
-                    )}
-                </Section>
-            </Section >
-
-
-            <EventList title="Hva skjer?" district={district} branch={branch} />
-
             {
+                branchData.body && (< Section width="xl" padding="lg" >
+                    <Section width="md" padding="lg">
+                        {branchData.body && (
+                            <div className="news-content">
+                                <PortableText content={branchData.body} />
+                            </div>
+                        )}
+                    </Section>
+                </Section >
+                )
+            }
+
+            <EventList title="Hva skjer? (Arrangementer)" district={district} branch={branch} />
+
+            {/*  {
                 apiActivities && apiActivities.length > 0 && (
                     <Section width="xl" background="tinted" padding="lg">
                         <Section width="md" padding="lg">
@@ -163,34 +171,36 @@ export default async function BranchPage({ params }: BranchPageProps) {
                         </Section>
                     </Section>
                 )
-            }
+            } */}
 
             {
                 apiActivities && apiActivities.length > 0 && (
-                    <Section width="xl" padding="lg">
-                        <Section width="md" padding="lg">
-                            <Heading level={2}>Våre aktiviteter og tilbud</Heading>
-                            <div className="activities-list">
-                                {apiActivities.map((activity, index) => (
-                                    <div key={`${activity.localActivityName}-${index}`} className="activity-item">
-                                        <Link href={`/lokalforeninger/${district}/${branch}/aktiviteter/${encodeURIComponent(activity.localActivityName)}`}>
-                                            <Heading level={3}>{activity.localActivityName}</Heading>
-                                            {activity.globalActivityName !== activity.localActivityName && (
-                                                <p className="activity-description">
-                                                    <strong>Kategori:</strong> {activity.globalActivityName}
-                                                </p>
-                                            )}
-                                        </Link>
-                                    </div>
-                                ))}
-                            </div>
-                            <div className="activities-source">
-                                <Paragraph className="source-text">
-                                    Aktivitetsdata hentet fra Røde Kors API
-                                </Paragraph>
-                            </div>
+                    <div id="aktiviteter">
+                        <Section width="xl" padding="lg">
+                            <Section width="md" padding="lg">
+                                <Heading level={2}>Våre aktiviteter og tilbud</Heading>
+                                <div className="activities-list">
+                                    {apiActivities.map((activity, index) => (
+                                        <div key={`${activity.localActivityName}-${index}`} className="activity-item">
+                                            <Link href={`/lokalforeninger/${district}/${branch}/aktiviteter/${encodeURIComponent(activity.localActivityName)}`}>
+                                                <Heading level={3}>{activity.localActivityName}</Heading>
+                                                {activity.globalActivityName !== activity.localActivityName && (
+                                                    <p className="activity-description">
+                                                        <strong>Kategori:</strong> {activity.globalActivityName}
+                                                    </p>
+                                                )}
+                                            </Link>
+                                        </div>
+                                    ))}
+                                </div>
+                                <div className="activities-source">
+                                    <Paragraph className="source-text">
+                                        Aktivitetsdata hentet fra Røde Kors API
+                                    </Paragraph>
+                                </div>
+                            </Section>
                         </Section>
-                    </Section>
+                    </div>
                 )
             }
 

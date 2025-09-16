@@ -1,12 +1,11 @@
-import { Heading, Section } from 'ui-lib'
+import { Heading, Section, EventHero } from 'ui-lib'
 import { Paragraph, Button } from '@digdir/designsystemet-react'
 import Link from 'next/link'
-import { client } from '../../../../../lib/sanity'
-import { getEventBySlugQuery } from '../../../../../lib/queries'
+import { client } from '../../../../../../../lib/sanity'
+import { getEventBySlugQuery } from '../../../../../../../lib/queries'
 import { notFound } from 'next/navigation'
-import EventHero from '../../../../../components/EventHero'
-import PortableText from '../../../../../components/PortableText'
-import { Event } from '../../../../../lib/sanity'
+import PortableText from '../../../../../../../components/PortableText'
+
 import './page.css'
 
 interface EventPageProps {
@@ -42,7 +41,7 @@ export default async function EventPage({ params }: EventPageProps) {
 
     return (
         <>
-            <EventHero event={event} />
+
 
             {/* Navigation Breadcrumb */}
             <Section width="xl" padding="sm">
@@ -60,7 +59,7 @@ export default async function EventPage({ params }: EventPageProps) {
                         </Link>
                         <span className="breadcrumb-separator">›</span>
                         <Link
-                            href={`/lokalforeninger/${district}/${branch}/arrangementer`}
+                            href={`/lokalforeninger/${district}/${branch}#arrangementer`}
                             className="breadcrumb-link"
                         >
                             Arrangementer
@@ -70,6 +69,8 @@ export default async function EventPage({ params }: EventPageProps) {
                     </nav>
                 </Section>
             </Section>
+
+            <EventHero event={event} />
 
             {/* Event Content */}
             <Section width="xl" padding="lg">
@@ -90,48 +91,7 @@ export default async function EventPage({ params }: EventPageProps) {
                                 </div>
                             )}
 
-                            {/* Event Details Card */}
-                            <div className="event-details-card">
-                                <Heading level={3} data-size="md">
-                                    Arrangementsdetaljer
-                                </Heading>
 
-                                <div className="event-details-grid">
-                                    <div className="event-detail-item">
-                                        <div className="event-detail-label">Dato og tid</div>
-                                        <div className="event-detail-value">
-                                            {eventDate.toLocaleDateString('no-NO', {
-                                                weekday: 'long',
-                                                year: 'numeric',
-                                                month: 'long',
-                                                day: 'numeric'
-                                            })} kl. {eventDate.toLocaleTimeString('no-NO', {
-                                                hour: '2-digit',
-                                                minute: '2-digit'
-                                            })}
-                                        </div>
-                                    </div>
-
-                                    <div className="event-detail-item">
-                                        <div className="event-detail-label">Sted</div>
-                                        <div className="event-detail-value">{event.location}</div>
-                                    </div>
-
-                                    <div className="event-detail-item">
-                                        <div className="event-detail-label">Arrangør</div>
-                                        <div className="event-detail-value">{event.localBranch.branchName}</div>
-                                    </div>
-
-                                    <div className="event-detail-item">
-                                        <div className="event-detail-label">Status</div>
-                                        <div className="event-detail-value">
-                                            {isToday && <span className="status-badge today">I dag</span>}
-                                            {isUpcoming && !isToday && <span className="status-badge upcoming">Kommende</span>}
-                                            {!isUpcoming && <span className="status-badge past">Avsluttet</span>}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                             {/* Contact Information */}
                             {event.localBranch.communicationChannels && (
@@ -176,7 +136,7 @@ export default async function EventPage({ params }: EventPageProps) {
                         {/* Action Buttons */}
                         <div className="event-actions">
                             <Button variant="secondary" asChild>
-                                <Link href={`/lokalforeninger/${district}/${branch}/arrangementer`}>
+                                <Link href={`/lokalforeninger/${district}/${branch}#arrangementer`}>
                                     ← Tilbake til arrangementer
                                 </Link>
                             </Button>

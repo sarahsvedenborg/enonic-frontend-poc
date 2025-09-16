@@ -35,12 +35,13 @@ export default function ActivitySignupForm({
         { value: 'ungdomsarbeid', label: 'Ungdomsarbeid' },
         { value: 'eldreomsorg', label: 'Eldreomsorg' },
         { value: 'flyktninghjelp', label: 'Flyktninghjelp' },
+        { value: 'flyktningguide', label: 'Flyktningguide' },
         { value: 'blodgivning', label: 'Blodgivning' },
         { value: 'annet', label: 'Annet' }
     ]
 
 
-    const selectedActivityLabel = activityTypes.find(type => type.value === selectedActivityType)?.label || 'Velg aktivitetstype'
+    const selectedActivityLabel = activityTypes.find(type => type.value === selectedActivityType.toLowerCase())?.label || 'Velg aktivitetstype'
 
     const handleSubmit = () => {
         console.log('Handle Activity signup')

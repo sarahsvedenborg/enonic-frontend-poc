@@ -8,24 +8,6 @@
     overflow: hidden;
 }
 
-/* .event-hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-} */
-
-/* .event-hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-} */
-
 .event-hero-content {
     position: relative;
     z-index: 2;

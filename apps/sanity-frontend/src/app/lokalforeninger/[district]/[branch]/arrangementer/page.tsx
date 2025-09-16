@@ -21,8 +21,6 @@ export const revalidate = 60
 const getData = async (slug: string) => {
     const id = slug.split('-').pop()
 
-    console.log("id", id)
-
     const [branchData, events] = await Promise.all([
         client.fetch(getBranchBySlugQuery, { id }),
         client.fetch(getEventsByBranchQuery, {
@@ -42,7 +40,6 @@ export default async function EventsPage({ params }: EventsPageProps) {
         notFound()
     }
 
-    console.log("events", events)
 
     const upcomingEvents = events.filter((event: Event) => new Date(event.time) > new Date())
     const pastEvents = events.filter((event: Event) => new Date(event.time) <= new Date())

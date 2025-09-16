@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Heading } from 'ui-lib'
 import { Paragraph } from '@digdir/designsystemet-react'
 import { FiMapPin } from 'react-icons/fi'
-import { Event } from '../lib/sanity'
+import { Event } from './EventList'
 import './EventCard.css'
 
 interface EventCardProps {

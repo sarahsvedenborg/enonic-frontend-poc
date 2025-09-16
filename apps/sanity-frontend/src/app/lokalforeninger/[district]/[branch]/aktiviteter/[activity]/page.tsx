@@ -1,17 +1,16 @@
 
 import { Heading, Section } from 'ui-lib'
-import { Paragraph, Button } from '@digdir/designsystemet-react'
+import { Paragraph } from '@digdir/designsystemet-react'
 import Link from 'next/link'
 import { client } from '../../../../../../../lib/sanity'
 import { getBranchBySlugQuery, getActivityByTypeQuery } from '../../../../../../../lib/queries'
 import { notFound } from 'next/navigation'
-import BranchHeader from '../../../../../../../components/BranchHeader'
 import ActivityHero from '../../../../../../../components/ActivityHero'
 import { getBranchActivities, ApiBranch } from '../../../../../../../lib/api-cache'
-import { mapApiActivityTypeToSanity, getActivityTypeDisplayName } from '../../../../../../../lib/activity-mapping'
-import { Activity, LocalGroup, LocalActivityOverride } from '../../../../../../../lib/sanity'
+import { mapApiActivityTypeToSanity } from '../../../../../../../lib/activity-mapping'
+import { Activity, LocalActivityOverride } from '../../../../../../../lib/sanity'
 import PortableText from '../../../../../../../components/PortableText'
-import ActivityCallToAction from '../../../../../../../components/ActivityCallToAction'
+
 import ActivitySignupForm from '../../../../../../../components/ActivitySignupForm'
 import './page.css'
 
@@ -155,7 +154,7 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
                         </Link>
                         <span className="breadcrumb-separator">›</span>
                         <Link
-                            href={`/lokalforeninger/${district}/${branch}/aktiviteter`}
+                            href={`/lokalforeninger/${district}/${branch}#aktiviteter`}
                             className="breadcrumb-link"
                         >
                             Aktiviteter
@@ -178,17 +177,9 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
                                     <Heading level={2} data-size="lg">
                                         Om aktiviteten
                                     </Heading>
-                                    <Paragraph data-size="md" className="activity-description">
-                                        {activity.localActivityName} er en viktig del av vårt humanitære arbeid i {branchData.branchLocation?.municipality}.
-                                        Denne aktiviteten hjelper oss med å nå ut til de som trenger det mest i vårt lokalsamfunn.
-                                    </Paragraph>
 
-                                    <Heading level={2} data-size="lg">
-                                        Hvordan kan du delta?
-                                    </Heading>
                                     <Paragraph data-size="md">
-                                        Vi setter stor pris på frivillige som vil bidra til denne aktiviteten.
-                                        Kontakt oss for å få mer informasjon om hvordan du kan bli med.
+                                        Det finnes ingen informasjon om den aktuelle aktiviteten. kontakt din lokalforening for mer informasjon.
                                     </Paragraph>
                                 </>
                             )}

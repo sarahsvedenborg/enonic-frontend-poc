@@ -26,7 +26,6 @@ export default defineType({
             title: 'Lokalforening',
             type: 'reference',
             to: [{ type: 'localGroup' }],
-            validation: (Rule) => Rule.required(),
         }),
         defineField({
             name: 'title',

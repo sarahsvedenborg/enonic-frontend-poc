@@ -7,6 +7,8 @@ export * from './components/DeveloperNote/DeveloperNote';
 export * from './components/NewsletterSignUp/NewsletterSignUp';
 export * from './components/eCommerce/Ecommerce';
 export * from './components/CardList/CardList';
+export * from './components/EventList/EventList';
+export * from './components/EventHero/EventHero';
 /* export * from './components/DonationBanner/DonationBanner';
 export * from './components/DirectDonation/DirectDonation';
 export * from './components/RichTextView/RichTextView';
