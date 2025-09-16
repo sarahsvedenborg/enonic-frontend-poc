@@ -9,6 +9,7 @@ import donationForm from './donationForm'
 import argument from './argument'
 import activity from './activity'
 import event from './event'
+import mainMenu from './mainMenu'
 
 export const schemaTypes: SchemaTypeDefinition[] = [
     article,
@@ -20,6 +21,7 @@ export const schemaTypes: SchemaTypeDefinition[] = [
     argument,
     activity,
     event,
+    mainMenu,
 
     // objects
     donationForm,

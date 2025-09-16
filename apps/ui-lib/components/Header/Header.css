@@ -230,6 +230,7 @@
     transition: left 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .rk-header-menu-panel-open {
@@ -238,43 +239,54 @@
 
 .rk-header-menu-panel-content {
     flex: 1;
-    padding: var(--ds-size-8);
+    padding: 0;
     overflow-y: auto;
     position: relative;
 }
 
-.rk-header-close-button {
-    position: absolute;
-    top: var(--ds-size-4);
-    right: var(--ds-size-4);
+/* Top Actions */
+.rk-header-menu-top-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.rk-header-menu-close-button,
+.rk-header-menu-search-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: var(--ds-size-2);
-    border-radius: var(--ds-border-radius-md);
-    color: var(--ds-color-neutral-text-default);
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
     transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.rk-header-close-button:hover {
-    background-color: var(--ds-color-neutral-surface-hover);
-    color: var(--ds-color-neutral-text-strong);
+.rk-header-menu-close-button:hover,
+.rk-header-menu-search-button:hover {
+    background-color: #f5f5f5;
 }
 
+.rk-header-menu-close-button svg,
+.rk-header-menu-search-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Menu Navigation */
 .rk-header-menu-nav {
-    margin-top: var(--ds-size-12);
+    padding: 0;
 }
 
-.rk-header-menu-list {
-    list-style: none;
+.rk-header-menu-section {
     padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: var(--ds-size-4);
 }
 
 .rk-header-menu-item {
@@ -282,33 +294,88 @@
     padding: 0;
 }
 
-.rk-header-menu-card {
-    width: 100%;
+.rk-header-menu-link {
+    display: block;
+    padding: 16px 24px;
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid #f0f0f0;
     transition: all 0.2s ease;
 }
 
-.rk-header-menu-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.rk-header-menu-link:hover {
+    background-color: #f8f8f8;
+    color: #d52b1e;
 }
 
-.rk-header-menu-card-content {
-    padding: var(--ds-size-4);
+/* Dropdown Styles */
+.rk-header-menu-dropdown {
+    border-bottom: 1px solid #f0f0f0;
 }
 
-.rk-header-menu-card-title {
-    font-size: var(--ds-font-size-5);
-    font-weight: var(--ds-font-weight-semibold);
-    color: var(--ds-color-primary-brand-text-default);
-    margin: 0 0 var(--ds-size-2) 0;
-    line-height: 1.3;
+.rk-header-menu-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: left;
+    transition: all 0.2s ease;
 }
 
-.rk-header-menu-card-description {
-    font-size: var(--ds-font-size-3);
-    color: var(--ds-color-neutral-text-default);
+.rk-header-menu-dropdown-trigger:hover {
+    background-color: #f8f8f8;
+    color: #d52b1e;
+}
+
+.rk-header-menu-dropdown-trigger svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+}
+
+.rk-header-menu-dropdown-content {
+    display: none;
+    background-color: #f8f8f8;
+}
+
+.rk-header-menu-dropdown.open .rk-header-menu-dropdown-content {
+    display: block;
+}
+
+.rk-header-menu-dropdown.open .rk-header-menu-dropdown-trigger svg {
+    transform: rotate(180deg);
+}
+
+.rk-header-menu-dropdown-item {
+    display: block;
+    padding: 12px 24px 12px 48px;
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 1px solid #e8e8e8;
+    transition: all 0.2s ease;
+}
+
+.rk-header-menu-dropdown-item:hover {
+    background-color: #f0f0f0;
+    color: #d52b1e;
+}
+
+/* Divider */
+.rk-header-menu-divider {
+    height: 1px;
+    background-color: #e0e0e0;
     margin: 0;
-    line-height: 1.4;
 }
 
 .rk-header-menu-backdrop {

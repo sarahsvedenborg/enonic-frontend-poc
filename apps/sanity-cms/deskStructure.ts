@@ -1,5 +1,5 @@
 import { StructureBuilder } from 'sanity/desk'
-import { FiFileText, FiGift, FiGlobe, FiMapPin, FiSmile, FiTarget, FiCalendar } from 'react-icons/fi'
+import { FiFileText, FiGift, FiGlobe, FiMapPin, FiSmile, FiTarget, FiCalendar, FiMenu } from 'react-icons/fi'
 
 export const deskStructure = (S: StructureBuilder) =>
     S.list()
@@ -162,6 +162,14 @@ export const deskStructure = (S: StructureBuilder) =>
                                 ),
                             S.divider().title('Navigasjon (meny, footer, forside)'),
                             S.listItem()
+                                .title('Menyer')
+                                .icon(FiMenu)
+                                .child(
+                                    S.documentList()
+                                        .title('Menyer')
+                                        .filter('_type == "mainMenu" && language == "no"')
+                                ),
+                            S.listItem()
                                 .id('dsdf')
                                 .title('Giverskjema')
                                 .icon(FiGift)
@@ -299,6 +307,15 @@ export const deskStructure = (S: StructureBuilder) =>
                                         .title('Events')
                                         .filter('_type == "event" && language == "en"')
                                 ),
+                            S.divider(),
+                            S.listItem()
+                                .title('Menus')
+                                .icon(FiMenu)
+                                .child(
+                                    S.documentList()
+                                        .title('Menus')
+                                        .filter('_type == "mainMenu" && language == "en"')
+                                ),
                         ])
                 ),
 
@@ -337,6 +354,6 @@ export const deskStructure = (S: StructureBuilder) =>
     */
             // All other document types
             ...S.documentTypeListItems().filter(
-                (listItem) => !['article', 'newsArticle', 'campaign', 'permanentCampaign', 'localGroup', 'donationForm', 'argument', 'activity', 'event'].includes(listItem.getId() as string)
+                (listItem) => !['article', 'newsArticle', 'campaign', 'permanentCampaign', 'localGroup', 'donationForm', 'argument', 'activity', 'event', 'mainMenu'].includes(listItem.getId() as string)
             ),
         ])
