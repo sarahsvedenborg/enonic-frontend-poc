@@ -169,15 +169,6 @@ export const deskStructure = (S: StructureBuilder) =>
                                         .title('Menyer')
                                         .filter('_type == "mainMenu" && language == "no"')
                                 ),
-                            S.listItem()
-                                .id('dsdf')
-                                .title('Giverskjema')
-                                .icon(FiGift)
-                                .child(
-                                    S.documentList()
-                                        .title('Giverskjema')
-                                        .filter('_type == "donationForm" && language == "no"')
-                                ),
                             S.divider().title('Annet innhold'),
                             S.listItem()
                                 .title('Giverskjema')
