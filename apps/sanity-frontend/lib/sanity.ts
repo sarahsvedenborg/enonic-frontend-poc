@@ -249,6 +249,8 @@ export interface MainMenu {
     _type: 'mainMenu'
     title: string
     menuItems: MenuItem[]
+    menuItemsSecondary: MenuItem[]
+    menuItemsTertiary: MenuItem[]
     language?: string
     menuLocation: 'header' | 'footer' | 'sidebar' | 'mobile'
     isActive?: boolean

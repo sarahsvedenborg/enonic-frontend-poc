@@ -1,19 +1,40 @@
 "use client"
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { FiLogIn } from "react-icons/fi";
+import { FiLogIn, FiX, FiSearch, FiChevronDown } from "react-icons/fi";
+import { MainMenu, MenuItem } from '../../../sanity-frontend/lib/sanity'
+import { getMenuItemUrl, shouldOpenInNewTab, isVisible } from '../../../sanity-frontend/lib/menu-utils'
 
 import { Buttons, Link as Link2, Card } from 'rk-designsystem'
 
-export const Header: React.FC<{ menuItems: any[] }> = ({ menuItems }) => {
+interface HeaderProps {
+    menuData: MainMenu | null
+}
+
+export const Header: React.FC<HeaderProps> = ({ menuData }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [openDropdowns, setOpenDropdowns] = useState<Set<string>>(new Set())
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen)
+        if (isMenuOpen) {
+            setOpenDropdowns(new Set())
+        }
     }
 
     const closeMenu = () => {
         setIsMenuOpen(false)
+        setOpenDropdowns(new Set())
+    }
+
+    const toggleDropdown = (itemKey: string) => {
+        const newOpenDropdowns = new Set(openDropdowns)
+        if (newOpenDropdowns.has(itemKey)) {
+            newOpenDropdowns.delete(itemKey)
+        } else {
+            newOpenDropdowns.add(itemKey)
+        }
+        setOpenDropdowns(newOpenDropdowns)
     }
 
     return (
@@ -80,34 +101,130 @@ export const Header: React.FC<{ menuItems: any[] }> = ({ menuItems }) => {
             {/* Sliding Menu Panel */}
             <div className={`rk-header-menu-panel ${isMenuOpen ? 'rk-header-menu-panel-open' : ''}`}>
                 <div className="rk-header-menu-panel-content">
-                    {/* Close Button */}
-                    <button className="rk-header-close-button" onClick={closeMenu} aria-label="Lukk meny">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </button>
+                    {/* Top Actions */}
+                    <div className="rk-header-menu-top-actions">
+                        <button className="rk-header-menu-close-button" onClick={closeMenu} aria-label="Lukk">
+                            <FiX />
+                            <span>Lukk</span>
+                        </button>
+                        <button className="rk-header-menu-search-button" aria-label="Søk">
+                            <FiSearch />
+                            <span>Søk</span>
+                        </button>
+                    </div>
 
-                    {/* Menu Items */}
+                    {/* Menu Sections */}
                     <nav className="rk-header-menu-nav">
-                        <ul className="rk-header-menu-list">
-                            {menuItems && menuItems.map(item => <li>
-                                <Card
-                                    asChild
-                                    data-color="brand1"
-                                    variant="tinted"
-                                    className="rk-header-menu-card"
-                                >
-                                    <Link href={item.href} onClick={closeMenu}>
-                                        <div className="rk-header-menu-card-content">
-                                            <h3 className="rk-header-menu-card-title">{item.title}</h3>
-                                            <p className="rk-header-menu-card-description">
-                                                {item.description}
-                                            </p>
+                        {/* Primary Menu Items */}
+                        {menuData?.menuItems && menuData.menuItems.length > 0 && (
+                            <div className="rk-header-menu-section">
+                                {menuData.menuItems.filter(isVisible).map((item) => (
+                                    <div key={item._key} className="rk-header-menu-item">
+                                        {item.menuType === 'dropdown' && item.subItems && item.subItems.length > 0 ? (
+                                            <div className={`rk-header-menu-dropdown ${openDropdowns.has(item._key) ? 'open' : ''}`}>
+                                                <button
+                                                    className="rk-header-menu-dropdown-trigger"
+                                                    onClick={() => toggleDropdown(item._key)}
+                                                >
+                                                    <span>{item.label}</span>
+                                                    <FiChevronDown />
+                                                </button>
+                                                <div className="rk-header-menu-dropdown-content">
+                                                    {item.subItems.map((subItem) => (
+                                                        <Link
+                                                            key={subItem._key}
+                                                            href={getMenuItemUrl(subItem)}
+                                                            className="rk-header-menu-dropdown-item"
+                                                            onClick={closeMenu}
+                                                        >
+                                                            {subItem.label}
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <Link
+                                                href={getMenuItemUrl(item)}
+                                                className="rk-header-menu-link"
+                                                onClick={closeMenu}
+                                                target={shouldOpenInNewTab(item) ? '_blank' : undefined}
+                                                rel={shouldOpenInNewTab(item) ? 'noopener noreferrer' : undefined}
+                                            >
+                                                {item.label}
+                                            </Link>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+
+                        {/* Secondary Menu Items */}
+                        {menuData?.menuItemsSecondary && menuData.menuItemsSecondary.length > 0 && (
+                            <>
+                                <div className="rk-header-menu-divider"></div>
+                                <div className="rk-header-menu-section">
+                                    {menuData.menuItemsSecondary.filter(isVisible).map((item) => (
+                                        <div key={item._key} className="rk-header-menu-item">
+                                            {item.menuType === 'dropdown' && item.subItems && item.subItems.length > 0 ? (
+                                                <div className={`rk-header-menu-dropdown ${openDropdowns.has(item._key) ? 'open' : ''}`}>
+                                                    <button
+                                                        className="rk-header-menu-dropdown-trigger"
+                                                        onClick={() => toggleDropdown(item._key)}
+                                                    >
+                                                        <span>{item.label}</span>
+                                                        <FiChevronDown />
+                                                    </button>
+                                                    <div className="rk-header-menu-dropdown-content">
+                                                        {item.subItems.map((subItem) => (
+                                                            <Link
+                                                                key={subItem._key}
+                                                                href={getMenuItemUrl(subItem)}
+                                                                className="rk-header-menu-dropdown-item"
+                                                                onClick={closeMenu}
+                                                            >
+                                                                {subItem.label}
+                                                            </Link>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            ) : (
+                                                <Link
+                                                    href={getMenuItemUrl(item)}
+                                                    className="rk-header-menu-link"
+                                                    onClick={closeMenu}
+                                                    target={shouldOpenInNewTab(item) ? '_blank' : undefined}
+                                                    rel={shouldOpenInNewTab(item) ? 'noopener noreferrer' : undefined}
+                                                >
+                                                    {item.label}
+                                                </Link>
+                                            )}
                                         </div>
-                                    </Link>
-                                </Card>
-                            </li>)}
-                        </ul>
+                                    ))}
+                                </div>
+                            </>
+                        )}
+
+                        {/* Tertiary Menu Items */}
+                        {menuData?.menuItemsTertiary && menuData.menuItemsTertiary.length > 0 && (
+                            <>
+                                <div className="rk-header-menu-divider"></div>
+                                <div className="rk-header-menu-section">
+                                    {menuData.menuItemsTertiary.filter(isVisible).map((item) => (
+                                        <div key={item._key} className="rk-header-menu-item">
+                                            <Link
+                                                href={getMenuItemUrl(item)}
+                                                className="rk-header-menu-link"
+                                                onClick={closeMenu}
+                                                target={shouldOpenInNewTab(item) ? '_blank' : undefined}
+                                                rel={shouldOpenInNewTab(item) ? 'noopener noreferrer' : undefined}
+                                            >
+                                                {item.label}
+                                            </Link>
+                                        </div>
+                                    ))}
+                                </div>
+                            </>
+                        )}
                     </nav>
                 </div>
             </div>

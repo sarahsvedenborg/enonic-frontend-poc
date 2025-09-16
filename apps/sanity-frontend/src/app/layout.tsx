@@ -1,42 +1,38 @@
 import { Header, Banner } from 'ui-lib'
+import { client } from '../../lib/sanity'
+import { getMainMenuQuery } from '../../lib/queries'
+import { MainMenu } from '../../lib/sanity'
 /* import { Inter } from 'next/font/google' */
 import '../../globals.css'
 
 /* const inter = Inter({ subsets: ['latin'] }) */
 
-export default function RootLayout({
+async function getHeaderMenu(): Promise<MainMenu | null> {
+    try {
+        const menu = await client.fetch(getMainMenuQuery, {
+            location: 'header',
+            language: 'no'
+        })
+        return menu
+    } catch (error) {
+        console.error('Error fetching header menu:', error)
+        return null
+    }
+}
+
+export default async function RootLayout({
     children,
 }: {
     children: React.ReactNode
 }) {
-    const menuItems = [
-        {
-            title: 'Gi støtte - Fast giverside',
-            href: '/stott-arbeidet',
-            description: '(Innhold i sanity, noen elementer hardkodet i frontend, noe kan styres av redaktører)'
-        },
-        {
-            title: 'Kampanjer',
-            href: '/kampanjer',
-            description: '(Innhold i sanity og mulighet for redaktører å tilpasse siden med andre elementer)'
-        },
-        {
-            title: 'Aktuelt',
-            href: '/aktuelt',
-            description: '(Listeside for alle aktueltsaker)'
-        },
-        {
-            title: 'Lokalforenring',
-            href: '/lokalforeninger',
-            description: '(Listeside for lokalforeninger)'
-        }
-    ]
+    const headerMenu = await getHeaderMenu()
+
     return (
         <html lang="en">
             <body >
                 <div >
                     <Banner site="Sanity CMS" login="https://rk-poc.sanity.studio/studio/structure" />
-                    <Header menuItems={menuItems} />
+                    <Header menuData={headerMenu} />
                     <main >
                         {children}
                     </main>

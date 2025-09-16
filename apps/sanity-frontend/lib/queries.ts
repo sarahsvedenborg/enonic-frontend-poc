@@ -377,6 +377,118 @@ export const getMainMenuQuery = `
       isVisible,
       openInNewTab
     },
+    menuItemsSecondary[]{
+      _key,
+      label,
+      menuType,
+      url,
+      internalPage,
+      "campaign": campaign->{
+        _id,
+        title,
+        slug
+      },
+      "localGroup": localGroup->{
+        _id,
+        branchName,
+        slug
+      },
+      "article": article->{
+        _id,
+        title,
+        slug
+      },
+      "newsArticle": newsArticle->{
+        _id,
+        title,
+        slug
+      },
+      subItems[]{
+        _key,
+        label,
+        subMenuType,
+        url,
+        internalPage,
+        "campaign": campaign->{
+          _id,
+          title,
+          slug
+        },
+        "localGroup": localGroup->{
+          _id,
+          branchName,
+          slug
+        },
+        "article": article->{
+          _id,
+          title,
+          slug
+        },
+        "newsArticle": newsArticle->{
+          _id,
+          title,
+          slug
+        }
+      },
+      isVisible,
+      openInNewTab
+    },
+    menuItemsTertiary[]{
+      _key,
+      label,
+      menuType,
+      url,
+      internalPage,
+      "campaign": campaign->{
+        _id,
+        title,
+        slug
+      },
+      "localGroup": localGroup->{
+        _id,
+        branchName,
+        slug
+      },
+      "article": article->{
+        _id,
+        title,
+        slug
+      },
+      "newsArticle": newsArticle->{
+        _id,
+        title,
+        slug
+      },
+      subItems[]{
+        _key,
+        label,
+        subMenuType,
+        url,
+        internalPage,
+        "campaign": campaign->{
+          _id,
+          title,
+          slug
+        },
+        "localGroup": localGroup->{
+          _id,
+          branchName,
+          slug
+        },
+        "article": article->{
+          _id,
+          title,
+          slug
+        },
+        "newsArticle": newsArticle->{
+          _id,
+          title,
+          slug
+        }
+      },
+      isVisible,
+      openInNewTab
+    },
     language,
     menuLocation,
     isActive
