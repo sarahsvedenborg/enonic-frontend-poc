@@ -46,12 +46,12 @@ export default async function EventsPage({ params }: EventsPageProps) {
 
     return (
         <>
-            <BranchHeader
-                title={branchData.branchName}
+            {/*   <BranchHeader
+        
                 location={branchData.branchLocation?.municipality}
                 image={branchData.mainImage}
                 communicationChannels={branchData.communicationChannels}
-            />
+            /> */}
 
             {/* Navigation Breadcrumb */}
             <Section width="xl" padding="sm">

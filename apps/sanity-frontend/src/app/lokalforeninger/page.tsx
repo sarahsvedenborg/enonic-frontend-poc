@@ -56,7 +56,7 @@ export default async function LokalforeningerPage() {
                         Finn din lokale Røde Kors-forening og bli med i det humanitære arbeidet i ditt område.
                     </Paragraph>
                     <Paragraph data-size="lg" className="page-description">
-                        <em style={{ backgroundColor: 'peachpuff' }}> Velg Skedsmo i Akershus for å se en med "mye" innhold </em>
+                        <em style={{ backgroundColor: 'peachpuff' }}> Velg Skedsmo i Akershus for å se en med mye innhold </em>
                     </Paragraph>
                 </Section>
             </Section>
