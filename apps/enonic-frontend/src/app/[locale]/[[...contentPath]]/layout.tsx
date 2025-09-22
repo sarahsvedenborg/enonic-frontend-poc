@@ -7,7 +7,6 @@ import { ReactNode } from 'react';
 import '../../../styles/globals.css';
 
 import { PageProps } from './page';
-import SiteFooter from '../../../components/views/SiteFooter';
 import { Popup } from '../../../posthogPopup/Popup';
 import { Footer, Header } from 'ui-lib';
 
@@ -120,11 +119,10 @@ export default async function PageLayout({ params, children }: LayoutProps) {
     return (
         <LocaleContextProvider locale={params.locale}>
             <StaticContent condition={isEdit}>
-                <Header menuData={headerMenu} />
+                <Header menuData={headerMenu as any} />
                 <main>{children}</main>
                 <Popup />
-                {/*     <SiteFooter /> */}
-                <Footer menuData={footerMenu} />
+                <Footer menuData={footerMenu as any} />
             </StaticContent>
         </LocaleContextProvider>
     )

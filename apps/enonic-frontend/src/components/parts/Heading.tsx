@@ -9,7 +9,6 @@ export interface HeadingData {
     common: any;
 }
 
-console.log("HeadingView", part, common)
 
 const HeadingView = ({ part, common }: HeadingData) => (
     <h2 style={{ maxWidth: 'var(--section-md)', margin: '0 auto' }}>{part?.config?.heading || common?.get?.displayName}</h2>
