@@ -83,7 +83,6 @@ export function Popup() {
     const posthog = usePostHog()
     const activeFlags = useActiveFeatureFlags()
 
-    console.log('got here', activeFlags)
 
     useEffect(() => {
         if (!activeFlags) {
