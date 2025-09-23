@@ -2,16 +2,17 @@
 export const mapApiActivityTypeToSanity = (apiActivityType: string): string => {
     const mapping: Record<string, string> = {
         // Direct mappings
-        'Vitnestøtte': 'vitnestotte',
-        'Besøkstjeneste': 'besokstjeneste',
-        'Møteplass': 'motepass',
-        'Førstehjelp': 'forstehjelp',
-        'Katastrofehjelp': 'katastrofehjelp',
-        'Sosialt arbeid': 'sosialt-arbeid',
-        'Ungdomsarbeid': 'ungdomsarbeid',
-        'Eldreomsorg': 'eldreomsorg',
-        'Flyktninghjelp': 'flyktninghjelp',
-        'Blodgivning': 'blodgivning',
+        'Vitnestøtte': 'Vitnestøtte',
+        'Besøkstjeneste': 'Besøkstjeneste',
+        'Møteplasser': 'Møteplasser',
+        'Administrative oppgaver': 'Administrative oppgaver',
+        'Språkgruppe': 'Språkgruppe',
+        'Leksehjelp': 'Leksehjelp',
+        'Hjelpekorps': 'Hjelpekorps',
+        'Besøksvenn med hund': 'Besøksvenn med hund',
+        'Øvrige aktiviteter - Røde Kors Ungdom': 'Øvrige aktiviteter - Røde Kors Ungdom',
+        'Flyktningguide': 'flyktningguide',
+
 
         // Fallback for unknown types
         'default': 'annet'
@@ -23,17 +24,16 @@ export const mapApiActivityTypeToSanity = (apiActivityType: string): string => {
 // Get activity type display name
 export const getActivityTypeDisplayName = (activityType: string): string => {
     const displayNames: Record<string, string> = {
-        'vitnestotte': 'Vitnestøtte',
-        'besokstjeneste': 'Besøkstjeneste',
-        'motepass': 'Møteplass',
-        'forstehjelp': 'Førstehjelp',
-        'katastrofehjelp': 'Katastrofehjelp',
-        'sosialt-arbeid': 'Sosialt arbeid',
-        'ungdomsarbeid': 'Ungdomsarbeid',
-        'eldreomsorg': 'Eldreomsorg',
-        'flyktninghjelp': 'Flyktninghjelp',
-        'blodgivning': 'Blodgivning',
-        'annet': 'Annet'
+        'Vitnestøtte': 'Vitnestøtte',
+        'Besøkstjeneste': 'Besøkstjeneste',
+        'Møteplasser': 'Møteplasser',
+        'Administrative oppgaver': 'Administrative oppgaver',
+        'Språkgruppe': 'Språkgruppe',
+        'Leksehjelp': 'Leksehjelp',
+        'Hjelpekorps': 'Hjelpekorps',
+        'Besøksvenn med hund': 'Besøksvenn med hund',
+        'Øvrige aktiviteter - Røde Kors Ungdom': 'Øvrige aktiviteter - Røde Kors Ungdom',
+        'Flyktningguide': 'flyktningguide',
     }
 
     return displayNames[activityType] || 'Annet'

@@ -26,22 +26,19 @@ export default function ActivitySignupForm({
     const [showActivityDropdown, setShowActivityDropdown] = useState(false)
 
     const activityTypes = [
-        { value: 'vitnestotte', label: 'Vitnestøtte' },
-        { value: 'besokstjeneste', label: 'Besøkstjeneste' },
-        { value: 'motepass', label: 'Møteplass' },
-        { value: 'forstehjelp', label: 'Førstehjelp' },
-        { value: 'katastrofehjelp', label: 'Katastrofehjelp' },
-        { value: 'sosialt-arbeid', label: 'Sosialt arbeid' },
-        { value: 'ungdomsarbeid', label: 'Ungdomsarbeid' },
-        { value: 'eldreomsorg', label: 'Eldreomsorg' },
-        { value: 'flyktninghjelp', label: 'Flyktninghjelp' },
-        { value: 'flyktningguide', label: 'Flyktningguide' },
-        { value: 'blodgivning', label: 'Blodgivning' },
-        { value: 'annet', label: 'Annet' }
+        'Vitnestøtte',
+        'Besøkstjeneste',
+        'Møteplasser',
+        'Administrative oppgaver',
+        'Språkgruppe',
+        'Leksehjelp',
+        'Hjelpekorps',
+        'Besøksvenn med hund',
+        'Øvrige aktiviteter - Røde Kors Ungdom',
+        'Flyktningguide',
     ]
 
-
-    const selectedActivityLabel = activityTypes.find(type => type.value === selectedActivityType.toLowerCase())?.label || 'Velg aktivitetstype'
+    const selectedActivityLabel = selectedActivityType || 'Velg aktivitetstype'
 
     const handleSubmit = () => {
         console.log('Handle Activity signup')
@@ -92,15 +89,15 @@ export default function ActivitySignupForm({
                                 <div className="dropdown-menu">
                                     {activityTypes.map((type) => (
                                         <button
-                                            key={type.value}
-                                            className={`dropdown-item ${selectedActivityType === type.value ? 'selected' : ''}`}
+                                            key={type}
+                                            className={`dropdown-item ${selectedActivityType === type ? 'selected' : ''}`}
                                             onClick={() => {
-                                                setSelectedActivityType(type.value)
+                                                setSelectedActivityType(type)
                                                 setShowActivityDropdown(false)
                                             }}
                                             type="button"
                                         >
-                                            {type.label}
+                                            {type}
                                         </button>
                                     ))}
                                 </div>

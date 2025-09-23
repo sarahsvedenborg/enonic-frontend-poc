@@ -126,6 +126,8 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
 
     const activityContent = getActivityContent()
 
+    console.log("activityContent", activityContent)
+
 
     return (
         <>
