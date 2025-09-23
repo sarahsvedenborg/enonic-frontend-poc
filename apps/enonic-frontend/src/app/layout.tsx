@@ -1,8 +1,8 @@
-import {Metadata} from 'next';
-import {ReactNode} from 'react';
+import { Metadata } from 'next';
+import { ReactNode } from 'react';
 
 import '../styles/globals.css';
-import SiteFooter from '../components/views/SiteFooter';
+
 
 
 type LayoutProps = {
@@ -10,7 +10,7 @@ type LayoutProps = {
 }
 
 /* RootLayout is required by Next.js */
-export default async function RootLayout({children}: LayoutProps) {
+export default async function RootLayout({ children }: LayoutProps) {
 
     return (<>{children}</>);
 }
