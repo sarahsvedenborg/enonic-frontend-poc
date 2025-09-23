@@ -11,7 +11,7 @@ import getDonatePage from './queries/getDonatePage';
 import DonatePage from './views/DonatePage';
 import MainPage from './pages/Main';
 import DonatePagePage from './pages/DonatePage';
-import { Heading } from 'ui-lib';
+import Heading from './parts/Heading';
 import MoneyArrives from './parts/MoneyArrives';
 import TwoColumnLayout from './layouts/TwoColumnLayout';
 import MovieDetails, { getMovie } from './parts/MovieDetails';

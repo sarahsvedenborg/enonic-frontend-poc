@@ -10,8 +10,8 @@ export interface HeadingData {
 }
 
 
-const HeadingView = ({ part, common }: HeadingData) => (
-    <h2 style={{ maxWidth: 'var(--section-md)', margin: '0 auto' }}>{part?.config?.heading || common?.get?.displayName}</h2>
-);
+const HeadingView = ({ part, common }: HeadingData) => {
+    return <h2 style={{ maxWidth: 'var(--section-md)', margin: '0 auto' }}>{part?.config?.heading || common?.get?.displayName}</h2>
+};
 
 export default HeadingView;
