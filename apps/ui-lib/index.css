@@ -10,6 +10,8 @@
 @import url('./components/EventList/EventList.css');
 @import url('./components/EventList/EventCard.css');
 @import url('./components/EventHero/EventHero.css');
+@import url('./components/CampaignHero/CampaignHero.css');
+@import url('./components/Hero/Hero.css');
 
 /* Lists styling */
 .rk-list {
