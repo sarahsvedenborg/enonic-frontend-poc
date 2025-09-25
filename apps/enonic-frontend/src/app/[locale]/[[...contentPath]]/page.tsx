@@ -7,6 +7,7 @@ import "../../../components/_mappings";
 import { Metadata } from 'next';
 import { draftMode } from 'next/headers';
 import React from 'react';
+import { Section } from "ui-lib";
 
 // NB. Using this option with default value bails out static generation !!!
 // export const dynamic = 'auto'

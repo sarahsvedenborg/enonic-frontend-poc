@@ -1,10 +1,10 @@
 import { Heading, Paragraph, } from '@digdir/designsystemet-react';
-import { Section, DonationForm } from 'ui-lib';
-import { client } from '../../../../lib/sanity';
+import { Section, DonationForm, CampaignHero } from 'ui-lib';
+import { client, urlFor } from '../../../../lib/sanity';
 import { getCampaignBySlugQuery } from '../../../../lib/queries';
 import { notFound } from 'next/navigation';
 import PortableText from '../../../../components/PortableText';
-import CampaignHero from '../../../../components/CampaignHero';
+// import {CampaignHero} from '../../../../components/CampaignHero';
 import Link from 'next/link';
 
 
@@ -30,13 +30,14 @@ export default async function CampaignPage({ params }: CampaignPageProps) {
         notFound();
     }
 
+    const backgroundImageUrl = campaign.mainImage ? urlFor(campaign.mainImage).width(1600).height(600).fit('crop').url() : null
+
     return (
         <>
             <CampaignHero
                 title={campaign.title}
                 description={campaign.description}
-                image={campaign.mainImage}
-                publishedAt={campaign.publishedAt}
+                imageURL={backgroundImageUrl}
             />
             <DonationForm
                 title={campaign.title}

@@ -11,7 +11,7 @@ import getDonatePage from './queries/getDonatePage';
 import DonatePage from './views/DonatePage';
 import MainPage from './pages/Main';
 import DonatePagePage from './pages/DonatePage';
-import Heading from './parts/Heading';
+import HeroPart from './parts/Hero';
 import MoneyArrives from './parts/MoneyArrives';
 import TwoColumnLayout from './layouts/TwoColumnLayout';
 import MovieDetails, { getMovie } from './parts/MovieDetails';
@@ -76,7 +76,7 @@ ComponentRegistry.addPart(`${APP_NAME}:child-list`, {
 });
 
 ComponentRegistry.addPart(`${APP_NAME}:heading`, {
-  view: Heading
+  view: HeroPart
 });
 
 ComponentRegistry.addPart(`${APP_NAME}:money-arrives`, {

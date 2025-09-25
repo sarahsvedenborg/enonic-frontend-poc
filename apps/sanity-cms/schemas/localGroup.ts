@@ -105,16 +105,16 @@ export default defineType({
                         type: 'string',
                         options: {
                             list: [
-                                { title: 'Vitnestøtte', value: 'vitnestotte' },
-                                { title: 'Besøkstjeneste', value: 'besokstjeneste' },
-                                { title: 'Møteplass', value: 'motepass' },
-                                { title: 'Førstehjelp', value: 'forstehjelp' },
-                                { title: 'Katastrofehjelp', value: 'katastrofehjelp' },
-                                { title: 'Sosialt arbeid', value: 'sosialt-arbeid' },
-                                { title: 'Ungdomsarbeid', value: 'ungdomsarbeid' },
-                                { title: 'Eldreomsorg', value: 'eldreomsorg' },
-                                { title: 'Flyktninghjelp', value: 'flyktninghjelp' },
-                                { title: 'Blodgivning', value: 'blodgivning' },
+                                'Vitnestøtte',
+                                'Besøkstjeneste',
+                                'Møteplasser',
+                                'Administrative oppgaver',
+                                'Språkgruppe',
+                                'Leksehjelp',
+                                'Hjelpekorps',
+                                'Besøksvenn med hund',
+                                'Øvrige aktiviteter - Røde Kors Ungdom',
+                                'Flyktningguide'
                             ],
                             layout: 'dropdown',
                         },
@@ -171,20 +171,8 @@ export default defineType({
                     },
                     prepare(selection) {
                         const { title, activityType, media } = selection
-                        const activityTypeLabels: Record<string, string> = {
-                            vitnestotte: 'Vitnestøtte',
-                            besokstjeneste: 'Besøkstjeneste',
-                            motepass: 'Møteplass',
-                            forstehjelp: 'Førstehjelp',
-                            katastrofehjelp: 'Katastrofehjelp',
-                            'sosialt-arbeid': 'Sosialt arbeid',
-                            ungdomsarbeid: 'Ungdomsarbeid',
-                            eldreomsorg: 'Eldreomsorg',
-                            flyktninghjelp: 'Flyktninghjelp',
-                            blodgivning: 'Blodgivning',
-                            annet: 'Annet',
-                        }
-                        const activityTypeLabel = activityTypeLabels[activityType] || activityType
+
+                        const activityTypeLabel = activityType
 
                         return {
                             title: title || activityTypeLabel,
