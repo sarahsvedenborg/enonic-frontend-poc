@@ -1,4 +1,5 @@
-import { Heading, Section } from 'ui-lib';
+import { Heading } from '@digdir/designsystemet-react';
+import { Section } from 'ui-lib';
 import { client } from '../../../lib/sanity';
 import { getAllNewsArticlesQuery } from '../../../lib/queries';
 import { urlFor } from '../../../lib/sanity';
@@ -12,14 +13,14 @@ const getData = async () => {
 
 export default async function AktueltPage() {
     const newsArticles = await getData();
-    console.log("News Articles", newsArticles.length);
+
 
     return (
         <>
             {/* Page Header */}
             <Section width="xl">
                 <Section width="md" padding="lg">
-                    <Heading level={1}>Aktuelt</Heading>
+                    <Heading level={1} data-size="xl">Aktuelt</Heading>
                     <p className="page-description">
                         Få de siste nyhetene og oppdateringene fra Røde Kors.
                     </p>

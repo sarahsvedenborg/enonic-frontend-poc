@@ -111,6 +111,11 @@ export interface Activity {
     language?: string
     slug: {
         current: string
+    },
+    cta?: {
+        heading?: string
+        description?: string
+        information?: string
     }
 }
 

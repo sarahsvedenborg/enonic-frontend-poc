@@ -1,5 +1,5 @@
-import { Heading, Section } from 'ui-lib'
-import { Paragraph } from '@digdir/designsystemet-react'
+import { Section } from 'ui-lib'
+import { Paragraph, Heading } from '@digdir/designsystemet-react'
 import Link from 'next/link'
 import { client } from '../../../../../../lib/sanity'
 import { getBranchBySlugQuery } from '../../../../../../lib/queries'
@@ -83,7 +83,7 @@ export default async function BranchActivitiesPage({ params }: BranchActivitiesP
             {/* Page Header */}
             <Section width="xl" padding="lg">
                 <Section width="md" padding="lg">
-                    <Heading level={1} data-size="xxl">
+                    <Heading level={1} data-size="xl">
                         Våre aktiviteter og tilbud
                     </Heading>
                     <Paragraph data-size="lg" className="page-description">

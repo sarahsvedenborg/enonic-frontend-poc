@@ -56,25 +56,28 @@ const getData = async (slug: string, activitySlug: string) => {
     let localActivityOverride: LocalActivityOverride | null = null
     let sanityActivity: Activity | null = null
 
+
+
     if (activity?.globalActivityName && branchData?.aktiviteter) {
-        const sanityActivityType = mapApiActivityTypeToSanity(activity.globalActivityName)
+        /*   const sanityActivityType = mapApiActivityTypeToSanity(activity.globalActivityName) */
+        const sanityActivityType = activity.globalActivityName
+
 
         // Look for local override first
         localActivityOverride = branchData.aktiviteter.find(
             (override: LocalActivityOverride) => override.activityType === sanityActivityType
         ) || null
 
-        // If no local override, fetch global activity content
-        if (!localActivityOverride) {
-            try {
-                sanityActivity = await client.fetch(getActivityByTypeQuery, {
-                    language: 'no',
-                    activityType: sanityActivityType
-                })
-            } catch (error) {
-                console.error('Error fetching Sanity activity content:', error)
-            }
+
+        try {
+            sanityActivity = await client.fetch(getActivityByTypeQuery, {
+                language: 'no',
+                activityType: sanityActivityType
+            })
+        } catch (error) {
+            console.error('Error fetching Sanity activity content:', error)
         }
+
     }
 
     return { branchData, activity, allActivities: activities, sanityActivity, localActivityOverride }
@@ -82,51 +85,19 @@ const getData = async (slug: string, activitySlug: string) => {
 
 export default async function ActivityPage({ params }: ActivityPageProps) {
     const { district, branch, activity: activitySlug } = await params
-    const { branchData, activity, allActivities, sanityActivity, localActivityOverride } = await getData(branch, activitySlug)
+    const { branchData, activity, sanityActivity, localActivityOverride } = await getData(branch, activitySlug)
 
     if (!branchData || !activity) {
         notFound()
     }
 
-    // Helper function to get the best available content
-    const getActivityContent = () => {
 
-        if (localActivityOverride) {
-            return {
-                title: localActivityOverride.title || activity.localActivityName,
-                excerpt: localActivityOverride.excerpt || (activity.globalActivityName !== activity.localActivityName ?
-                    `Kategori: ${activity.globalActivityName}` :
-                    `En aktivitet fra ${branchData.branchName}`),
-                image: localActivityOverride.image || branchData.mainImage,
-                body: localActivityOverride.body,
-                localCtaHeading: localActivityOverride?.localCtaHeading
-            }
-        } else if (sanityActivity) {
-            return {
-                title: sanityActivity.title || activity.localActivityName,
-                excerpt: sanityActivity.excerpt || (activity.globalActivityName !== activity.localActivityName ?
-                    `Kategori: ${activity.globalActivityName}` :
-                    `En aktivitet fra ${branchData.branchName}`),
-                image: sanityActivity.mainImage || branchData.mainImage,
-                body: sanityActivity.body,
-                localCtaHeading: sanityActivity.localCtaHeading
-            }
-        } else {
-            return {
-                title: activity.localActivityName,
-                excerpt: activity.globalActivityName !== activity.localActivityName ?
-                    `Kategori: ${activity.globalActivityName}` :
-                    `En aktivitet fra ${branchData.branchName}`,
-                image: branchData.mainImage,
-                body: null,
-                localCtaHeading: null
-            }
-        }
+    const activityContent = {
+        title: sanityActivity?.title || activity.localActivityName,
+        excerpt: sanityActivity?.excerpt,
+        image: localActivityOverride?.image || sanityActivity?.mainImage,
+        body: sanityActivity?.body,
     }
-
-    const activityContent = getActivityContent()
-
-    console.log("activityContent", activityContent)
 
 
     return (
@@ -141,8 +112,8 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
             />
 
             {/* Navigation Breadcrumb */}
-            <Section width="xl" padding="sm">
-                <Section width="md" padding="sm">
+            <Section width="xl" margin="none">
+                <Section width="md" margin="none">
                     <nav className="breadcrumb">
                         <Link href="/lokalforeninger" className="breadcrumb-link">
                             Lokalforeninger
@@ -167,31 +138,29 @@ export default async function ActivityPage({ params }: ActivityPageProps) {
                 </Section>
             </Section>
 
-            {/* Activity Content */}
-            <Section width="xl" padding="lg">
-                <Section width="lg" padding="lg">
+            <Section width="lg">
+                <Section width="md" >
                     <div className="activity-content">
                         <div className="activity-main">
                             {activityContent.body ? (
-                                <PortableText content={activityContent.body} />
-                            ) : (
                                 <>
-                                    <Heading level={2} data-size="lg">
-                                        Om aktiviteten
-                                    </Heading>
-
-                                    <Paragraph data-size="md">
-                                        Det finnes ingen informasjon om den aktuelle aktiviteten. kontakt din lokalforening for mer informasjon.
-                                    </Paragraph>
+                                    <PortableText content={activityContent.body} />
+                                    <PortableText content={localActivityOverride?.body} />
                                 </>
+                            ) : (
+                                <Paragraph data-size="md">
+                                    Det finnes ingen informasjon om den aktuelle aktiviteten. kontakt din lokalforening for mer informasjon.
+                                </Paragraph>
                             )}
 
                             {/* Activity Signup Form */}
                             <ActivitySignupForm
-                                title={`${activityContent.localCtaHeading || 'Bli med i aktiviteten'}`}
-                                description="Fyll ut skjemaet nedenfor for å melde din interesse for å delta i denne aktiviteten."
+                                title={`${sanityActivity?.cta?.heading || 'Bli med i aktiviteten'}`}
+                                description={sanityActivity?.cta?.description}
+                                information={sanityActivity?.cta?.information}
                                 branchName={branchData.branchName}
                                 activityType={activity.globalActivityName}
+                                readOnly={true}
                             />
 
                             <div className="contact-section">

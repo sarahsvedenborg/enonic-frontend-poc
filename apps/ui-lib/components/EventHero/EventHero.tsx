@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
-import { Heading, Section } from 'ui-lib'
-import { Paragraph } from '@digdir/designsystemet-react'
+import { Section } from 'ui-lib'
+import { Paragraph, Heading } from '@digdir/designsystemet-react'
 import { FiCalendar, FiMapPin, FiClock, FiUsers } from 'react-icons/fi'
 import { Event } from '../EventList'
 import './EventHero.css'
@@ -46,7 +46,7 @@ export const EventHero = ({ event }: EventHeroProps) => {
                     </div>
                 </div>
 
-                <Heading level={1} className="event-hero-title">
+                <Heading level={1} data-size="xl">
                     {event.title}
                 </Heading>
 

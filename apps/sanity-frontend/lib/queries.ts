@@ -28,7 +28,7 @@ const bodyQuery = `
 
 // Get all campaigns
 export const getAllCampaignsQuery = `
-  *[_type == "campaign" && language == "no"] | order(publishedAt desc) {
+  *[_type == "campaign" && language == "no" && !(_id in path("drafts.**")) || _id in path("published.**")] | order(publishedAt desc) {
     _id,
     title,
     slug,
@@ -266,7 +266,8 @@ export const getActivityByTypeQuery = `
     body,
     publishedAt,
     language,
-    slug
+    slug,
+    cta
   }
 `
 

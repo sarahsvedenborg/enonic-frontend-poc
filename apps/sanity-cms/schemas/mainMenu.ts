@@ -8,7 +8,7 @@ const menuElementFields = [
         fields: [
             defineField({
                 name: 'label',
-                title: 'Etikett',
+                title: 'Tittel',
                 type: 'string',
                 description: 'Tekst som vises i menyen',
                 validation: (Rule) => Rule.required(),
@@ -19,13 +19,13 @@ const menuElementFields = [
                 type: 'string',
                 options: {
                     list: [
-                        { title: 'Ekstern lenke', value: 'external' },
-                        { title: 'Intern side', value: 'internal' },
-                        { title: 'Dropdown', value: 'dropdown' },
+                        { title: 'Dropdown med underpunkter', value: 'dropdown' },
                         { title: 'Kampanje', value: 'campaign' },
                         { title: 'Lokalforening', value: 'localGroup' },
-                        { title: 'Artikkel', value: 'article' },
+                        { title: 'Informasjonsside', value: 'article' },
                         { title: 'Nyhetsartikkel', value: 'newsArticle' },
+                        { title: 'Ekstern URL', value: 'external' },
+                        { title: 'Relativ URL til sider som ikke finnes i sanity', value: 'internal' },
                     ],
                     layout: 'dropdown',
                 },
@@ -40,9 +40,9 @@ const menuElementFields = [
             }),
             defineField({
                 name: 'internalPage',
-                title: 'Intern side',
+                title: 'Relativ URL',
                 type: 'string',
-                description: 'For interne sider (f.eks. /om-oss, /kontakt)',
+                description: 'For interne sider som er automatisk generert(f.eks. /aktuelt, /lokalforeninger)',
                 hidden: ({ parent }) => parent?.menuType !== 'internal',
             }),
             defineField({
@@ -85,7 +85,7 @@ const menuElementFields = [
                         fields: [
                             defineField({
                                 name: 'label',
-                                title: 'Etikett',
+                                title: 'Tittel',
                                 type: 'string',
                                 validation: (Rule) => Rule.required(),
                             }),
@@ -225,8 +225,8 @@ export default defineType({
                 list: [
                     { title: 'Hovedmeny (topp)', value: 'header' },
                     { title: 'Footer meny', value: 'footer' },
-                    { title: 'Sidebar', value: 'sidebar' },
-                    { title: 'Mobil meny', value: 'mobile' },
+                    /*   { title: 'Sidebar', value: 'sidebar' },
+                      { title: 'Mobil meny', value: 'mobile' }, */
                 ],
                 layout: 'dropdown',
             },

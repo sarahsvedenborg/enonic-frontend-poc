@@ -1,5 +1,5 @@
-import { Heading, Section } from 'ui-lib'
-import { Paragraph } from '@digdir/designsystemet-react'
+import { Section } from 'ui-lib'
+import { Paragraph, Heading } from '@digdir/designsystemet-react'
 import Link from 'next/link'
 import { client } from '../../../lib/sanity'
 import { getAllLocalGroupsQuery } from '../../../lib/queries'
@@ -49,7 +49,7 @@ export default async function LokalforeningerPage() {
         <>
             <Section width="xl" padding="lg">
                 <Section width="md" padding="lg">
-                    <Heading level={1} data-size="xxl">
+                    <Heading level={1} data-size="xl">
                         Lokalforeninger
                     </Heading>
                     <Paragraph data-size="lg" className="page-description">
@@ -78,7 +78,7 @@ export default async function LokalforeningerPage() {
                                             className="local-group-link"
                                         >
                                             <div className="local-group-content">
-                                                <Heading level={3} data-size="md" className="group-name">
+                                                <Heading level={3} data-size="sm" className="group-name">
                                                     {group.branchName || group.title} - {group.branchId}
                                                 </Heading>
 

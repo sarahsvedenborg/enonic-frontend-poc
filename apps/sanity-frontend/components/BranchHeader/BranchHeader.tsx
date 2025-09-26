@@ -66,7 +66,7 @@ export const BranchHeader = ({
                         {/* Organization type and name */}
                         <div className="branch-title-section">
                             <Paragraph className="branch-type-label">LOKALFORENING</Paragraph>
-                            <Heading level={1} className="branch-name">
+                            <Heading level={1} data-size="md" >
                                 {branchName}
                             </Heading>
                             {branchParent && (

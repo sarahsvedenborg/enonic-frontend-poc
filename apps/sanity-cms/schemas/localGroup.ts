@@ -8,15 +8,26 @@ export default defineType({
     groups: [
         {
             name: 'localGroup',
-            title: 'Lokalforening',
+            title: 'Lokalforening redaktørinnhold',
 
         },
         {
             name: 'activities',
             title: 'Aktiviteter (lokal tilpasning)',
+        },
+        {
+            name: 'api',
+            title: 'Innhold fra API',
         }
     ],
     fields: [
+        defineField({
+            name: 'branchId',
+            title: 'Branch ID',
+            type: 'string',
+            group: 'api',
+            readOnly: true,
+        }),
         defineField({
             name: 'title',
             title: 'Title',
@@ -37,6 +48,7 @@ export default defineType({
                     return county.toLowerCase().replace(/\s+/g, '-') + '/' + input.split(' ')[0].toLowerCase().replace(/\s+/g, '-');
                 },
             },
+            group: 'localGroup',
             validation: (Rule) => Rule.required(),
             /*      hidden: true, */
         }),
@@ -44,6 +56,7 @@ export default defineType({
             name: 'language',
             title: 'Language',
             type: 'string',
+            group: 'localGroup',
             options: {
                 list: [
                     { title: 'Norsk', value: 'no' },
@@ -58,6 +71,7 @@ export default defineType({
             name: 'mainImage',
             title: 'Main image',
             type: 'image',
+            group: 'localGroup',
             options: {
                 hotspot: true,
             },
@@ -66,11 +80,13 @@ export default defineType({
             name: 'description',
             title: 'Description',
             type: 'text',
+            group: 'localGroup',
         }),
         defineField({
             name: 'topArticle2',
             title: 'Fremhevet artikkel',
             type: 'object',
+            group: 'localGroup',
             fields: [
                 { name: 'image', type: 'image', title: 'Image' },
                 { name: 'article', type: 'reference', to: [{ type: 'article' }] },
@@ -80,6 +96,7 @@ export default defineType({
             name: 'body',
             title: 'Body',
             type: 'blockContent',
+            group: 'localGroup',
         }),
         defineField({
             name: 'isPublished',
@@ -93,8 +110,8 @@ export default defineType({
             name: 'aktiviteter',
             title: 'Aktiviteter (lokal tilpasning)',
             type: 'array',
-            description: 'Erstatt global aktivitetsbeskrivelse med lokal informasjon',
-            group: 'activities',
+            description: 'Utvid global aktivitetsbeskrivelse med lokal informasjon',
+            group: ['activities', 'localGroup'],
             of: [{
                 type: 'object',
                 title: 'Aktivitet',
@@ -114,31 +131,32 @@ export default defineType({
                                 'Hjelpekorps',
                                 'Besøksvenn med hund',
                                 'Øvrige aktiviteter - Røde Kors Ungdom',
-                                'Flyktningguide'
+                                'Flyktningguide',
+                                'Våketjenesten'
                             ],
                             layout: 'dropdown',
                         },
                         validation: (Rule) => Rule.required(),
                     }),
-                    defineField({
-                        name: 'localCtaHeading',
-                        title: 'Lokal CTA heading',
-                        type: 'string',
-                        description: 'Override the global activity CTA heading for this branch',
-                    }),
-                    defineField({
-                        name: 'title',
-                        title: 'Tittel',
-                        type: 'string',
-                        description: 'Override the global activity title for this branch',
-                    }),
-                    defineField({
-                        name: 'excerpt',
-                        title: 'Ingress',
-                        type: 'text',
-                        rows: 3,
-                        description: 'Override the global activity excerpt for this branch',
-                    }),
+                    /*    defineField({
+                           name: 'localCtaHeading',
+                           title: 'Lokal CTA heading',
+                           type: 'string',
+                           description: 'Override the global activity CTA heading for this branch',
+                       }),
+                       defineField({
+                           name: 'title',
+                           title: 'Tittel',
+                           type: 'string',
+                           description: 'Override the global activity title for this branch',
+                       }),
+                       defineField({
+                           name: 'excerpt',
+                           title: 'Ingress',
+                           type: 'text',
+                           rows: 3,
+                           description: 'Override the global activity excerpt for this branch',
+                       }), */
                     defineField({
                         name: 'image',
                         title: 'Bilde',
@@ -158,9 +176,9 @@ export default defineType({
                     }),
                     defineField({
                         name: 'body',
-                        title: 'Innhold',
+                        title: 'Ekstra brødtekst',
                         type: 'blockContent',
-                        description: 'Override the global activity content for this branch',
+                        description: 'Innhold i TILLEGG til global aktivitetsbeskrivelse',
                     }),
                 ],
                 preview: {
@@ -183,18 +201,28 @@ export default defineType({
                 },
             }],
         }),
+        defineField({
+            name: 'branchActivities',
+            title: 'Branch Activities',
+            description: 'Disse aktivitetene kommer fra CRM, i realiteten skal den kun være en forekomst per type aktivitet',
+            type: 'array',
+            group: ['activities', 'localGroup', 'api'],
+            readOnly: true,
+            of: [{
+                type: 'object',
+                fields: [
+                    { name: 'globalActivityName', type: 'string' },
+                    { name: 'localActivityName', type: 'string' },
+                ],
+            }],
+        }),
 
         // API Data Fields
-        defineField({
-            name: 'branchId',
-            title: 'Branch ID',
-            type: 'string',
-            readOnly: true,
-        }),
         defineField({
             name: 'branchNumber',
             title: 'Branch Number',
             type: 'string',
+            group: 'api',
             readOnly: true,
         }),
         defineField({
@@ -202,23 +230,27 @@ export default defineType({
             title: 'Organization Number',
             type: 'string',
             readOnly: true,
+            group: 'api',
         }),
         defineField({
             name: 'branchType',
             title: 'Branch Type',
             type: 'string',
             readOnly: true,
+            group: 'api',
         }),
         defineField({
             name: 'branchName',
-            title: 'Branch Name (Editable)',
+            title: 'Branch Name',
             type: 'string',
-            description: 'This field can be edited locally while other API data remains read-only',
+            group: 'api',
+            readOnly: true,
         }),
         defineField({
             name: 'branchStatus',
             title: 'Branch Status',
             type: 'object',
+            group: 'api',
             readOnly: true,
             hidden: true,
             fields: [
@@ -231,6 +263,7 @@ export default defineType({
             name: 'branchParent',
             title: 'Branch Parent',
             type: 'object',
+            group: 'api',
             readOnly: true,
             fields: [
                 { name: 'branchId', type: 'string' },
@@ -243,6 +276,7 @@ export default defineType({
             name: 'branchLocation',
             title: 'Branch Location',
             type: 'object',
+            group: 'api',
             readOnly: true,
             fields: [
                 { name: 'municipality', type: 'string' },
@@ -263,6 +297,7 @@ export default defineType({
             name: 'communicationChannels',
             title: 'Communication Channels',
             type: 'object',
+            group: 'api',
             readOnly: true,
             fields: [
                 { name: 'phone', type: 'string' },
@@ -274,6 +309,7 @@ export default defineType({
             name: 'branchContacts',
             title: 'Branch Contacts',
             type: 'array',
+            group: 'api',
             readOnly: true,
             of: [{
                 type: 'object',
@@ -284,19 +320,6 @@ export default defineType({
                     { name: 'isVolunteer', type: 'boolean' },
                     { name: 'isMember', type: 'boolean' },
                     { name: 'memberNumber', type: 'string' },
-                ],
-            }],
-        }),
-        defineField({
-            name: 'branchActivities',
-            title: 'Branch Activities',
-            type: 'array',
-            readOnly: true,
-            of: [{
-                type: 'object',
-                fields: [
-                    { name: 'globalActivityName', type: 'string' },
-                    { name: 'localActivityName', type: 'string' },
                 ],
             }],
         }),
@@ -315,8 +338,6 @@ export default defineType({
             const languageLabels: Record<string, string> = {
                 en: '🇺🇸 EN',
                 no: '🇳🇴 NO',
-                sv: '🇸🇪 SV',
-                da: '🇩🇰 DA',
             }
             const languageLabel = languageLabels[language] || language
             const displayTitle = branchName || title || `Branch ${branchId}`
