@@ -212,7 +212,7 @@ export const getBranchBySlugQuery = `
     slug,
     description,
     "topArticle": topArticle2{..., "article": article->},
-    body,
+    ${bodyQuery},
     publishedAt,
     language,
     mainImage,
