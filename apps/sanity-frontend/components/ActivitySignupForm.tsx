@@ -11,15 +11,19 @@ interface ActivitySignupFormProps {
     description?: string
     branchName?: string
     activityType?: string
+    information?: string
     onSubmit?: (data: { localGroup: string; activityType: string }) => void
+    readOnly?: boolean
 }
 
 export default function ActivitySignupForm({
     title = "Bli med i aktiviteten",
-    description = "Fyll ut skjemaet nedenfor for å melde din interesse for å delta i denne aktiviteten.",
+    description,
+    information,
     branchName,
     activityType,
     onSubmit,
+    readOnly = false,
 }: ActivitySignupFormProps) {
     const [localGroup, setLocalGroup] = useState(branchName || '')
     const [selectedActivityType, setSelectedActivityType] = useState(activityType || '')
@@ -69,6 +73,7 @@ export default function ActivitySignupForm({
                             type="text"
                             value={localGroup}
                             onChange={(e) => setLocalGroup(e.target.value)}
+                            disabled={readOnly}
                         />
                     </div>
 
@@ -80,6 +85,7 @@ export default function ActivitySignupForm({
                                 className="dropdown-button"
                                 onClick={() => setShowActivityDropdown(!showActivityDropdown)}
                                 type="button"
+                                disabled={readOnly}
                             >
                                 <span className="dropdown-text">{selectedActivityLabel}</span>
                                 <FiChevronDown className={`dropdown-icon ${showActivityDropdown ? 'rotated' : ''}`} />
@@ -108,8 +114,7 @@ export default function ActivitySignupForm({
                     {/* Impact Statement */}
 
                     <Section width="sm">
-                        <Paragraph data-size="sm">
-                            Det er ikke alltid at vi kan imøtekomme aktivitetsønsket ditt, det kan være at behovet har endret seg eller at vi blir eninge om at du passer bedre i en annen aktivitet.</Paragraph>
+                        {information ? <Paragraph data-size="sm">{information}</Paragraph> : " "}
                     </Section>
 
 

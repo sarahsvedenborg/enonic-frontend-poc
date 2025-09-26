@@ -42,7 +42,7 @@ export const EventList = ({ title = 'Arrangementer', events, branch, district }:
 
         <Section width="xl" background="tinted" padding="lg">
             <Section width="lg" padding="lg">
-                <Heading level={2} data-size="xl" style={{ marginBottom: '2rem' }}>
+                <Heading level={2} data-size="lg" style={{ marginBottom: '2rem' }}>
                     {title}
                 </Heading>
                 {events.length === 0 ? (

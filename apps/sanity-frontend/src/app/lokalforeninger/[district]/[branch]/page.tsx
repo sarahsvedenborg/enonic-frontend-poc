@@ -1,7 +1,7 @@
 
-import { Paragraph } from '@digdir/designsystemet-react';
+import { Paragraph, Heading } from '@digdir/designsystemet-react';
 import { Buttons } from 'rk-designsystem';
-import { Heading, Section, DeveloperNote } from 'ui-lib';
+import { Section, DeveloperNote } from 'ui-lib';
 import { client, urlFor } from '../../../../../lib/sanity';
 import { getBranchBySlugQuery } from '../../../../../lib/queries';
 import { notFound } from 'next/navigation';
@@ -22,7 +22,6 @@ export const revalidate = 60;
 
 const getData = async (slug: string) => {
     const id = slug.split('-').pop();
-    console.log("id", id)
     const [branchData] = await Promise.all([
         client.fetch(getBranchBySlugQuery, { id }),
     ]);
@@ -88,8 +87,8 @@ export default async function BranchPage({ params }: BranchPageProps) {
                 </nav>
             </Section >
 
-            < Section width="sm" >
-                <Heading level={2}>
+            < Section width="md" >
+                <Heading level={2} data-size="xl">
                     Velkommen til {branchData.branchName || branchData.title}!
                 </Heading>
                 <Paragraph data-size='xl' >{branchData.description}</Paragraph>
@@ -178,7 +177,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
                     <div id="aktiviteter">
                         <Section width="xl" padding="lg">
                             <Section width="md" padding="lg">
-                                <Heading level={2}>Våre aktiviteter og tilbud</Heading>
+                                <Heading level={2} data-size="lg">Våre aktiviteter og tilbud</Heading>
                                 <div className="activities-list">
                                     {apiActivities.map((activity, index) => (
                                         <div key={`${activity.localActivityName}-${index}`} className="activity-item">
@@ -232,7 +231,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
                 )
             }
             <Section width="md" background="under-development" margin="lg" padding="lg">
-                <Heading level={2}>Aktuelt</Heading>
+                <Heading level={2} data-size="lg">Aktuelt</Heading>
                 <DeveloperNote>
                     <p>Her kan man enten:</p>
                     <ul>

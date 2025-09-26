@@ -101,7 +101,7 @@ export const deskStructure = (S: StructureBuilder) =>
                                                         .icon(FiMapPin)
                                                         .child(
                                                             S.document()
-                                                                .title(`eventer som tilhører ${branchId}`)
+                                                                /*      .title(`eventer som tilhører ${branchId}`) */
                                                                 .documentId(branchId)
                                                                 .schemaType('localGroup')
 
@@ -135,7 +135,7 @@ export const deskStructure = (S: StructureBuilder) =>
 
                                 ),
                             S.listItem()
-                                .title('Aktiviteter')
+                                .title('Globale aktivitetsbeskrivelser')
                                 .icon(FiTarget)
                                 .child(
                                     S.documentList()

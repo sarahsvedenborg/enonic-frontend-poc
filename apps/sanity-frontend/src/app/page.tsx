@@ -1,12 +1,13 @@
-import { Heading, Section } from 'ui-lib';
+import { Heading, Paragraph } from '@digdir/designsystemet-react';
+import { Section } from 'ui-lib';
 
 export default function HomePage() {
     return (
         <Section width="xl" padding="lg">
-            <Heading level={1}>Forside fra sanity</Heading>
-            <p className="text-lg text-gray-600 mt-4">
+            <Heading level={1} data-size="xl">Forside fra sanity</Heading>
+            <Paragraph data-size="lg">
                 Velkommen til vår Sanity-baserte frontend. Her kan du se kampanjer og annet innhold.
-            </p>
+            </Paragraph>
         </Section>
     )
 }

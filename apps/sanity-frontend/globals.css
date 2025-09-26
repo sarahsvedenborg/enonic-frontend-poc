@@ -51,32 +51,6 @@ body {
   --rk-gray-dark: #374151;
 }
 
-/* Typography improvements */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #111827;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-h1 {
-  font-size: 2.5rem;
-}
-
-h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-}
-
-h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
 /* Button styles matching Røde Kors */
 .btn-primary {
   background-color: var(--rk-red);

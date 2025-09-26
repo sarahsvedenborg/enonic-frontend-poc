@@ -1,5 +1,5 @@
 'use client'
-import { Paragraph } from '@digdir/designsystemet-react'
+import { Heading, Paragraph } from '@digdir/designsystemet-react'
 import { PortableText as PortableTextReact } from '@portabletext/react'
 import { urlFor } from '../lib/sanity'
 import { Section } from 'ui-lib'
@@ -61,30 +61,36 @@ const components = {
     },
     block: {
         h1: ({ children }: any) => (
-            <Section width="sm">
-                <h1 className="text-3xl font-bold mb-4 mt-6">{children}</h1></Section>
+            <Section width="md" margin="none">
+                <Heading data-size="xl" level={1}>{children}</Heading>
+            </Section>
         ),
         h2: ({ children }: any) => (
-            <Section width="sm">
-                <h2 className="text-2xl font-bold mb-3 mt-5">{children}</h2></Section>
+            <Section width="md" margin="none" >
+                <Heading data-size="lg" level={2}>{children}</Heading>
+            </Section>
         ),
         h3: ({ children }: any) => (
-            <Section width="sm">
-                <h3 className="text-xl font-semibold mb-2 mt-4">{children}</h3></Section>
+            <Section width="md" margin="none">
+                <Heading data-size="md" level={3} >{children}</Heading>
+            </Section>
         ),
         h4: ({ children }: any) => (
-            <Section width="sm">
-                <h4 className="text-lg font-semibold mb-2 mt-3">{children}</h4></Section>
+            <Section width="md" margin="none">
+                <Heading data-size="sm" level={4} >{children}</Heading>
+            </Section>
         ),
         normal: ({ children }: any) => (
-            <Section width="sm">
-                <Paragraph data-size="md" className="mb-4 leading-relaxed">{children}</Paragraph></Section>
+            <Section width="md" margin="none" >
+                <Paragraph data-size="md" >{children}</Paragraph>
+            </Section>
         ),
         blockquote: ({ children }: any) => (
-            <Section width="sm">
+            <Section width="sm" margin="none">
                 <blockquote className="blockquote">
                     {children}
-                </blockquote></Section>
+                </blockquote>
+            </Section>
         ),
     },
     list: {

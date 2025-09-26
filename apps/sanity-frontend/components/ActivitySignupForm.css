@@ -34,10 +34,6 @@
     line-height: 1.4;
 }
 
-.section {
-    margin-bottom: var(--ds-size-8);
-}
-
 .label {
     display: block;
     font-size: var(--ds-font-size-4);
@@ -69,6 +65,16 @@
     align-items: center;
     justify-content: space-between;
     text-align: left;
+}
+
+.dropdown-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.dropdown-button:disabled:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 .dropdown-button::before {
