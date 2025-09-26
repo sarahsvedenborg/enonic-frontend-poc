@@ -30,6 +30,8 @@ export default async function EventsPage({ title = 'Arrangementer', district, br
         return null
     }
 
+    console.log(events)
+
     return (
         <div id="arrangementer">
             <EventList2 events={events} title={title} branch={branch} district={district} />

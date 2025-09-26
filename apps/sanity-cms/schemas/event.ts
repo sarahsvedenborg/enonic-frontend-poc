@@ -25,6 +25,7 @@ export default defineType({
             name: 'localBranch',
             title: 'Lokalforening',
             type: 'reference',
+            description: 'Som redaktør på lokalforening, må du velge din lokalforening før du kan publisere lokalt arrangement. Det er mulig å få dette automatisk utflyt, men det er ikke gjort i PoC-en.',
             to: [{ type: 'localGroup' }],
         }),
         defineField({

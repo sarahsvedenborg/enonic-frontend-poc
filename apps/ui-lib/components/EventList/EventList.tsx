@@ -37,7 +37,6 @@ export const EventList = ({ title = 'Arrangementer', events, branch, district }:
 
     const upcomingEvents = events.filter((event: Event) => new Date(event.time) > new Date())
     const pastEvents = events.filter((event: Event) => new Date(event.time) <= new Date())
-
     return (
 
         <Section width="xl" background="tinted" padding="lg">

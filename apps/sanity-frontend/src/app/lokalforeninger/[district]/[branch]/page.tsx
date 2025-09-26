@@ -141,7 +141,7 @@ export default async function BranchPage({ params }: BranchPageProps) {
                 )
             }
 
-            <EventList title="Hva skjer? (Arrangementer)" district={district} branch={branch} />
+            <EventList title="Hva skjer? (Kommende arrangementer) " district={district} branch={branch} />
 
             {/*  {
                 apiActivities && apiActivities.length > 0 && (

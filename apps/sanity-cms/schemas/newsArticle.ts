@@ -40,6 +40,7 @@ export default defineType({
         defineField({
             name: 'branchId',
             title: 'Tilhørende lokalforening',
+            description: 'Som redaktør på lokalforening, må du velge din lokalforening før du kan publisere lokale nyheter. Det er mulig å få dette automatisk utflyt, men det er ikke gjort i PoC-en.',
             type: 'reference',
             to: [{ type: 'localGroup' }],
             hidden: ({ parent }) => parent?.branchRelated === false,
@@ -83,7 +84,7 @@ export default defineType({
         }),
         defineField({
             name: 'hideNewsletterSignup',
-            title: 'Hide Newsletter Signup',
+            title: 'Skjul nyhetsbrev påmeldingsskjema',
             type: 'boolean',
             initialValue: false,
         }),
