@@ -22,6 +22,7 @@ export default defineType({
         defineField({
             name: 'activityType',
             title: 'Aktivitetstype',
+            description: 'Her kan du velge blant de aktivitetestypene som finnes i CRM',
             type: 'string',
             options: {
                 list: [

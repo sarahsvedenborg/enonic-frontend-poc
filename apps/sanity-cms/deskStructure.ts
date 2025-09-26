@@ -135,7 +135,7 @@ export const deskStructure = (S: StructureBuilder) =>
 
                                 ),
                             S.listItem()
-                                .title('Aktiviteter')
+                                .title('Globale aktivitetsbeskrivelser')
                                 .icon(FiTarget)
                                 .child(
                                     S.documentList()
