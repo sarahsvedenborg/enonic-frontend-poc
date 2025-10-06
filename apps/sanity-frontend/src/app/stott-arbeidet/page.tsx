@@ -46,10 +46,10 @@ export default async function SupportWorkPage() {
                 <Section width="xl" padding="lg">
                     <DonationForm
                         donationFormType={donationForm.donationFormType}
-                        title={donationForm.heading || "Du kan hjelpe"}
-                        description={donationForm.description || "Bidra til å hjelpe de mest sårbare i land rammet av kriser, krig og konflikt."}
-                        amounts={donationForm.amounts || [100, 300, 500]}
-                        factBox={donationForm.fact || "Din gave gjør en forskjell. For 300 kroner kan to personer få hvert sitt teppe og mat og vann i en måned."}
+                        title={donationForm.heading}
+                        description={donationForm.description}
+                        amounts={donationForm.amounts}
+                        factBox={donationForm.fact}
                         isDefault={donationForm.donationFormType === 'compact'}
                         includeDirectDonation={true}
                         negativeMargin={true}

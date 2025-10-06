@@ -45,6 +45,7 @@ export const getCampaignBySlugQuery = `
     title,
     slug,
     description,
+    donation->,
     ${bodyQuery},
     publishedAt,
     language,

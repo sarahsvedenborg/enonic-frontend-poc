@@ -39,12 +39,14 @@ export default async function CampaignPage({ params }: CampaignPageProps) {
                 description={campaign.description}
                 imageURL={backgroundImageUrl}
             />
-            <DonationForm
-                title={campaign.title}
-                description={campaign.description}
+            {campaign.donation && <DonationForm
+                title={campaign.donation?.heading}
+                description={campaign.donation?.description}
+                amounts={campaign.donation?.amounts}
+                factBox={campaign.donation?.fact}
+                donationFormType={campaign.donation?.donationFormType}
                 negativeMargin={true}
-
-            />
+            />}
             <Section width="xl" padding="lg">
                 <Section width="md" padding="lg">
                     <Heading level={2}>Du kan også</Heading>

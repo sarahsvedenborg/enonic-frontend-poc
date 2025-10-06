@@ -71,7 +71,7 @@ export default async function BranchNewsPage({ params }: BranchNewsPageProps) {
             {/* Page Header */}
             <Section width="xl" padding="lg">
                 <Section width="md" padding="lg">
-                    <Heading level={1} data-size="xxl">
+                    <Heading level={1} data-size="xl">
                         Nyheter fra {branchData.branchName}
                     </Heading>
                     <Paragraph data-size="lg" className="page-description">
