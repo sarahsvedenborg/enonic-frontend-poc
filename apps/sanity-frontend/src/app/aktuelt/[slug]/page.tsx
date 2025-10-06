@@ -14,7 +14,7 @@ const getData = async (slug: string) => {
     const news = await client.fetch(getNewsArticleBySlugQuery, { slug });
     return news;
 }
-export const revalidate = 60;
+export const revalidate = 20;
 
 export default async function NewsPage({ params }: NewsArticlePageProps) {
     const { slug } = await params;

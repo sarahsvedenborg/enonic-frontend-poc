@@ -18,7 +18,7 @@ const getData = async () => {
     return { campaign };
 }
 
-export const revalidate = 60;
+export const revalidate = 20;
 
 export default async function SupportWorkPage() {
     const { campaign } = await getData();

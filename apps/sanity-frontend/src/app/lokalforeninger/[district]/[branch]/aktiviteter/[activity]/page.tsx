@@ -22,7 +22,7 @@ interface ActivityPageProps {
     }>
 }
 
-export const revalidate = 60
+export const revalidate = 20;
 
 const getData = async (slug: string, activitySlug: string) => {
     const id = slug.split('-').pop()

@@ -11,11 +11,10 @@ interface BranchNewsPageProps {
     params: Promise<{ district: string, branch: string }>
 }
 
-export const revalidate = 60
+export const revalidate = 20;
 
 const getData = async (slug: string) => {
     const id = slug.split('-').pop()
-    console.log("Branch ID for news:", id)
 
     const [branchData, allNewsArticles] = await Promise.all([
         client.fetch(getBranchBySlugQuery, { id }),

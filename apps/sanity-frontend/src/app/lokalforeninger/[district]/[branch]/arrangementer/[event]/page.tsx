@@ -16,7 +16,7 @@ interface EventPageProps {
     }>
 }
 
-export const revalidate = 60
+export const revalidate = 20;
 
 const getData = async (eventSlug: string) => {
     const event = await client.fetch(getEventBySlugQuery, {

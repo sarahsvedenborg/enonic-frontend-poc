@@ -11,6 +11,8 @@ const getData = async () => {
     return newsArticles;
 }
 
+export const revalidate = 20;
+
 export default async function AktueltPage() {
     const newsArticles = await getData();
 
@@ -57,18 +59,8 @@ export default async function AktueltPage() {
 
                                                 {article.excerpt && (
                                                     <p className="news-article-excerpt">
-                                                        {article.excerpt}
+                                                        {article.excerpt.split(" ").slice(0, 25).join(" ")}
                                                     </p>
-                                                )}
-
-                                                {article.publishedAt && (
-                                                    <time className="news-article-date">
-                                                        {new Date(article.publishedAt).toLocaleDateString('no-NO', {
-                                                            year: 'numeric',
-                                                            month: 'long',
-                                                            day: 'numeric'
-                                                        })}
-                                                    </time>
                                                 )}
                                             </div>
                                         </Link>
