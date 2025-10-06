@@ -12,7 +12,7 @@ interface CampaignPageProps {
     params: Promise<{ slug: string }>;
 }
 
-export const revalidate = 60;
+export const revalidate = 20;
 
 const getData = async (slug: string) => {
     const campaign = await client.fetch(getCampaignBySlugQuery, { slug });

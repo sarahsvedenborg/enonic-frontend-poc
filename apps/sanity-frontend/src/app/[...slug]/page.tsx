@@ -16,7 +16,7 @@ const getData = async (slug: string) => {
     const article = await client.fetch(getArticleBySlugQuery, { slug });
     return article;
 }
-export const revalidate = 60;
+export const revalidate = 20;
 
 export default async function DynamicPage({ params }: DynamicPageProps) {
     const { slug } = await params;

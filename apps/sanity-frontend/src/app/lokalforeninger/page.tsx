@@ -27,7 +27,7 @@ const getData = async () => {
     return { localGroups }
 }
 
-export const revalidate = 60
+export const revalidate = 20;
 
 export default async function LokalforeningerPage() {
     const { localGroups } = await getData()
