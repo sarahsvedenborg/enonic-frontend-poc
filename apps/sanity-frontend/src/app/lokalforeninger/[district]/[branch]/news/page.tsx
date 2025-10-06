@@ -1,5 +1,5 @@
-import { Heading, Section } from 'ui-lib'
-import { Paragraph } from '@digdir/designsystemet-react'
+import { Section } from 'ui-lib'
+import { Paragraph, Heading } from '@digdir/designsystemet-react'
 import Link from 'next/link'
 import { client, urlFor } from '../../../../../../lib/sanity'
 import { getBranchBySlugQuery, getAllNewsPerBranchQuery } from '../../../../../../lib/queries'
@@ -86,41 +86,41 @@ export default async function BranchNewsPage({ params }: BranchNewsPageProps) {
                     {branchNewsArticles.length > 0 ? (
                         <div className="news-articles-grid">
                             {branchNewsArticles.map((article: any) => (
-                                <article key={article._id} className="news-article-card">
+                                <article key={article._id} className="branch-news-article-card">
                                     <Link
                                         href={`/aktuelt/${article.slug.current}`}
-                                        className="news-article-link"
+                                        className="branch-news-article-link"
                                     >
-                                        <div className="news-article-image">
+                                        <div className="branch-news-article-image">
                                             {article.mainImage ? (
                                                 <img
                                                     src={urlFor(article.mainImage).width(400).height(250).fit('crop').url()}
                                                     alt={article.title}
-                                                    className="article-image"
+                                                    className="branch-article-image"
                                                 />
                                             ) : (
-                                                <div className="article-image-placeholder">
+                                                <div className="branch-article-image-placeholder">
                                                     <div className="placeholder-content">
-                                                        <div className="placeholder-icon">📰</div>
-                                                        <Paragraph className="placeholder-text">Nyhet</Paragraph>
+
+                                                        <Paragraph className="placeholder-text">Nyhetsbilde</Paragraph>
                                                     </div>
                                                 </div>
                                             )}
                                         </div>
 
-                                        <div className="news-article-content">
-                                            <Heading level={3} data-size="md" className="news-article-title">
+                                        <div className="branch-news-article-content">
+                                            <Heading level={3} data-size="md">
                                                 {article.title}
                                             </Heading>
 
                                             {article.excerpt && (
-                                                <Paragraph data-size="sm" className="news-article-excerpt">
+                                                <Paragraph data-size="sm" className="branch-news-article-excerpt">
                                                     {article.excerpt}
                                                 </Paragraph>
                                             )}
 
                                             {article.publishedAt && (
-                                                <time className="news-article-date">
+                                                <time className="branch-news-article-date">
                                                     {new Date(article.publishedAt).toLocaleDateString('no-NO', {
                                                         year: 'numeric',
                                                         month: 'long',
