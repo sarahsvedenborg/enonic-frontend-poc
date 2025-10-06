@@ -1,5 +1,5 @@
-import { Paragraph } from '@digdir/designsystemet-react';
-import { DeveloperNote, Heading, NewsletterSignUp, Section } from 'ui-lib';
+import { Paragraph, Heading } from '@digdir/designsystemet-react';
+import { DeveloperNote, NewsletterSignUp, Section } from 'ui-lib';
 import { client, urlFor } from '../../../../lib/sanity';
 import { getNewsArticleBySlugQuery } from '../../../../lib/queries';
 import { notFound } from 'next/navigation';
@@ -29,19 +29,19 @@ export default async function NewsPage({ params }: NewsArticlePageProps) {
     return (
         <>
             <Section width="xl" padding="none">
-                <img src={urlFor(article.mainImage).width(1200).height(400).fit('crop').url()} alt={article.title} />
+                {article.mainImage && <img src={urlFor(article.mainImage).width(1200).height(400).fit('crop').url()} alt={article.title} />}
             </Section>
-            <Section width="sm">
-                <Heading level={1} >
+            <Section width="md">
+                <Heading level={1} data-size="2xl" >
                     {article.title}
                 </Heading>
             </Section>
-            <Section width="sm">
+            <Section width="md">
                 <Paragraph data-size='xl'>
                     {article.excerpt}
                 </Paragraph>
             </Section>
-            <Section width="sm">
+            <Section width="md">
                 {article.publishedAt && (
                     <span><span style={{ backgroundColor: 'var(--rk-red)', color: 'var(--rk-red)', height: '10px', width: '10px' }}>{'fff'}</span> <time >
                         {new Date(article.publishedAt).toLocaleDateString('no-NO')}

@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import { Heading } from '@digdir/designsystemet-react'
+import { Heading, Paragraph } from '@digdir/designsystemet-react'
 import { Section } from 'ui-lib'
 import { Buttons as Button, Buttons, Input } from 'rk-designsystem'
 import styles from './DonationForm.module.css'
@@ -31,14 +31,14 @@ const handleDonate = (amount: number, frequency: 'monthly' | 'one-time') => {
 }
 
 export const DonationForm: React.FC<DonationFormProps> = ({
-  title = "Du kan hjelpe",
+  title,
   donationFormType = 'compact',
   isDefault = false,
-  description = "Bidra til å hjelpe de mest sårbare i land rammet av kriser, krig og konflikt.",
+  description,
   amounts = [100, 300, 500],
   vippsNumber = "2272",
   accountNumber = "8200 06 10190",
-  factBox = "Din gave gjør en forskjell. For 300 kroner kan to personer få hvert sitt teppe og mat og vann i en måned.",
+  factBox,
   onDonate = (amount: number, frequency: 'monthly' | 'one-time') => { console.log(`Donating ${amount} kr ${frequency}`) },
   includeDirectDonation = false,
   negativeMargin = false,
@@ -128,27 +128,13 @@ export const DonationForm: React.FC<DonationFormProps> = ({
         <div className={styles.section}>
           <label className={styles.label}>Velg beløp</label>
           <div className={styles.buttonGroup}>
-            <button
-              className={`${styles.amountButton} ${amount === 100 && !customAmount ? styles.selected : ''}`}
-              onClick={() => handleAmountSelect(amounts[0])}
+            {amounts.map((amount, index) => <button
+              className={`${styles.amountButton} ${index === amounts.length - 2 && !customAmount ? styles.selected : ''}`}
+              onClick={() => handleAmountSelect(amount)}
               type="button"
             >
-              {amounts[0]}
-            </button>
-            <button
-              className={`${styles.amountButton} ${amount === 300 && !customAmount ? styles.selected : ''}`}
-              onClick={() => handleAmountSelect(amounts[1])}
-              type="button"
-            >
-              {amounts[1]}
-            </button>
-            <button
-              className={`${styles.amountButton} ${amount === 500 && !customAmount ? styles.selected : ''}`}
-              onClick={() => handleAmountSelect(amounts[2])}
-              type="button"
-            >
-              {amounts[2]}
-            </button>
+              {amount}
+            </button>)}
           </div>
           <button
             className={styles.customAmountLink}
