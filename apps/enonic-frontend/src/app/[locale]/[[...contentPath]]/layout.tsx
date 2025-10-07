@@ -47,6 +47,9 @@ export default async function PageLayout({ params, children }: LayoutProps) {
     }
 
 
+
+
+
     // Extract menu from site x-data
     /*   const siteXData = common?.guillotine?.getSite?.xAsJson || {};
       const xpMenu = siteXData?.menu; */
@@ -55,9 +58,24 @@ export default async function PageLayout({ params, children }: LayoutProps) {
     const xpMenu = siteXData?.['tutorial-nxp']?.menu
     const xpFooter = siteXData?.['tutorial-nxp']?.footer
 
+    /* 
+        return (
+            <LocaleContextProvider locale={params.locale} >
+                <StaticContent condition={isEdit}>
+                    <main>{children}</main>
+                    <Popup />
+                </StaticContent>
+            </LocaleContextProvider >
+        )
+     */
 
 
     const convertMenuItems = (items: any[]) => {
+
+
+        if (!items) {
+            return []
+        }
 
 
         const newItems = items.map((item: any) => ({
@@ -124,7 +142,7 @@ export default async function PageLayout({ params, children }: LayoutProps) {
             _id: 'xp-main-menu',
             _type: 'mainMenu',
             title: 'Hovedmeny',
-            menuItems: convertMenuItems([xpMenu.menuitems[0]]) as MenuItem[],
+            menuItems: convertMenuItems(xpMenu.menuitems) as MenuItem[],
             // menuItemsSecondary: convertMenuItems(xpMenu.menuitemsLevel2) as MenuItem[],
             menuItemsSecondary: hardcodedMenu as any,
             menuItemsTertiary: convertMenuItems(xpMenu.menuitemsLevel2) as MenuItem[],
