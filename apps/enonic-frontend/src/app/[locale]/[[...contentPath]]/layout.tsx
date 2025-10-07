@@ -58,6 +58,10 @@ export default async function PageLayout({ params, children }: LayoutProps) {
     const xpMenu = siteXData?.['tutorial-nxp']?.menu
     const xpFooter = siteXData?.['tutorial-nxp']?.footer
 
+
+    const xData = common?.getSite?.x?.['tutorial_nxp']?.menu
+
+
     /* 
         return (
             <LocaleContextProvider locale={params.locale} >
@@ -73,9 +77,11 @@ export default async function PageLayout({ params, children }: LayoutProps) {
     const convertMenuItems = (items: any[]) => {
 
 
+
         if (!items) {
             return []
         }
+
 
 
         const newItems = items.map((item: any) => ({
@@ -84,7 +90,7 @@ export default async function PageLayout({ params, children }: LayoutProps) {
             subItems: Array.isArray(item?.menuitems) ? item.menuitems.map((subitem: EnonicSubMenuItem) => ({
                 _type: "subMenuItem",
                 /*        internalPage: subitem.content?._path, */
-                internalPage: subitem.content,
+                internalPage: `/${subitem.content?._path.split('/').slice(2).join('/')}`,
                 label: subitem.itemtext,
                 subMenuType: subitem.url ? 'external' : 'internal',
                 url: subitem.url
@@ -201,7 +207,7 @@ export default async function PageLayout({ params, children }: LayoutProps) {
     return (
         <LocaleContextProvider locale={params.locale} >
             <StaticContent condition={isEdit}>
-                <Header menuData={mapXpMenuToMainMenu(xpMenu) || null} />
+                <Header menuData={mapXpMenuToMainMenu(xData) || null} />
                 <main>{children}</main>
                 <Popup />
                 <Footer menuData={footerMenu as any} />
