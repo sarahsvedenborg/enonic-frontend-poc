@@ -6,6 +6,7 @@ import { MainMenu, MenuItem } from '../../../sanity-frontend/lib/sanity'
 import { getMenuItemUrl, shouldOpenInNewTab, isVisible } from '../../../sanity-frontend/lib/menu-utils'
 
 import { Buttons, Link as Link2, Card } from 'rk-designsystem'
+import { Paragraph } from '@digdir/designsystemet-react';
 
 interface HeaderProps {
     menuData: MainMenu | null
@@ -126,7 +127,7 @@ export const Header: React.FC<HeaderProps> = ({ menuData }) => {
                                                     className="rk-header-menu-dropdown-trigger"
                                                     onClick={() => toggleDropdown(item._key)}
                                                 >
-                                                    <span>{item.label}</span>
+                                                    <Paragraph data-size="lg">{item.label}</Paragraph>
                                                     <FiChevronDown />
                                                 </button>
                                                 <div className="rk-header-menu-dropdown-content">
@@ -150,7 +151,7 @@ export const Header: React.FC<HeaderProps> = ({ menuData }) => {
                                                 target={shouldOpenInNewTab(item) ? '_blank' : undefined}
                                                 rel={shouldOpenInNewTab(item) ? 'noopener noreferrer' : undefined}
                                             >
-                                                {item.label}
+                                                <Paragraph data-size="lg">{item.label}</Paragraph>
                                             </Link>
                                         )}
                                     </div>
@@ -171,7 +172,7 @@ export const Header: React.FC<HeaderProps> = ({ menuData }) => {
                                                         className="rk-header-menu-dropdown-trigger"
                                                         onClick={() => toggleDropdown(item._key)}
                                                     >
-                                                        <span>{item.label}</span>
+                                                        <Paragraph data-size="md">{item.label}</Paragraph>
                                                         <FiChevronDown />
                                                     </button>
                                                     <div className="rk-header-menu-dropdown-content">
@@ -195,7 +196,7 @@ export const Header: React.FC<HeaderProps> = ({ menuData }) => {
                                                     target={shouldOpenInNewTab(item) ? '_blank' : undefined}
                                                     rel={shouldOpenInNewTab(item) ? 'noopener noreferrer' : undefined}
                                                 >
-                                                    {item.label}
+                                                    <Paragraph data-size="sm">{item.label}</Paragraph>
                                                 </Link>
                                             )}
                                         </div>
@@ -218,7 +219,7 @@ export const Header: React.FC<HeaderProps> = ({ menuData }) => {
                                                 target={shouldOpenInNewTab(item) ? '_blank' : undefined}
                                                 rel={shouldOpenInNewTab(item) ? 'noopener noreferrer' : undefined}
                                             >
-                                                {item.label}
+                                                <Paragraph data-size="xs">{item.label}</Paragraph>
                                             </Link>
                                         </div>
                                     ))}

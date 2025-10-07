@@ -9,15 +9,25 @@ import '../../../styles/globals.css';
 import { PageProps } from './page';
 import { Popup } from '../../../posthogPopup/Popup';
 import { Footer, Header } from 'ui-lib';
+// TODO defines this type here as well
+import type { MainMenu, MenuItem, SubMenuItem } from '../../../types/MenuType';
 
 type LayoutProps = {
     params: PageProps
     children: ReactNode
 }
 
+
+type EnonicSubMenuItem = SubMenuItem & {
+    content: {
+        _path: string
+    }
+    url: string,
+    itemtext: string
+}
 export default async function PageLayout({ params, children }: LayoutProps) {
 
-    const { meta } = await fetchContent(params);
+    const { meta, common } = await fetchContent(params);
 
     const isEdit = meta?.renderMode === RENDER_MODE.EDIT;
 
@@ -36,10 +46,42 @@ export default async function PageLayout({ params, children }: LayoutProps) {
         );
     }
 
-    const headerMenu = {
-        _id: 'asda',
-        menuItems: [{
-            label: "I PoC-en", menuType: 'dropdown', subItems: [
+
+    // Extract menu from site x-data
+    /*   const siteXData = common?.guillotine?.getSite?.xAsJson || {};
+      const xpMenu = siteXData?.menu; */
+
+    const siteXData = common?.getSite?.xAsJson
+    const xpMenu = siteXData?.['tutorial-nxp']?.menu
+    const xpFooter = siteXData?.['tutorial-nxp']?.footer
+
+
+
+    const convertMenuItems = (items: any[]) => {
+
+
+        const newItems = items.map((item: any) => ({
+            label: `${item.itemtext} (Interne lenker virker ikke)`,
+            menuType: item.menuitems ? 'dropdown' : 'external',
+            subItems: Array.isArray(item?.menuitems) ? item.menuitems.map((subitem: EnonicSubMenuItem) => ({
+                _type: "subMenuItem",
+                /*        internalPage: subitem.content?._path, */
+                internalPage: subitem.content,
+                label: subitem.itemtext,
+                subMenuType: subitem.url ? 'external' : 'internal',
+                url: subitem.url
+            })) : []
+        }))
+
+        return newItems
+    }
+
+    const hardcodedMenu = [
+        {
+            _key: "hardcoded-menu",
+            label: "Hardkodet meny (Lenker virker)",
+            menuType: 'dropdown',
+            subItems: [
                 {
                     _type: "subMenuItem", internalPage: '/stott-arbeidet',
                     label: 'Fast giverside',
@@ -61,12 +103,34 @@ export default async function PageLayout({ params, children }: LayoutProps) {
                     label: 'Lokalforening',
                     subMenuType: 'internal'
                 }]
-        }],
-        menuItemsSecondary: [],
-        menuItemsTertiary: [],
-        menuLocation: 'header',
-        title: 'Main Menu',
-        _type: 'mainMenu'
+        }]
+
+
+
+    // Map XP menu structure to MainMenu format
+    function mapXpMenuToMainMenu(xpMenu: any): MainMenu | null {
+        if (!xpMenu || !xpMenu.menuitems) return {
+            _id: 'xp-main-menu',
+            _type: 'mainMenu',
+            title: 'Hovedmeny',
+            menuItems: hardcodedMenu as any,
+            menuItemsSecondary: [],
+            menuItemsTertiary: [],
+            menuLocation: 'header',
+            language: 'no'
+        };;
+
+        return {
+            _id: 'xp-main-menu',
+            _type: 'mainMenu',
+            title: 'Hovedmeny',
+            menuItems: convertMenuItems([xpMenu.menuitems[0]]) as MenuItem[],
+            // menuItemsSecondary: convertMenuItems(xpMenu.menuitemsLevel2) as MenuItem[],
+            menuItemsSecondary: hardcodedMenu as any,
+            menuItemsTertiary: convertMenuItems(xpMenu.menuitemsLevel2) as MenuItem[],
+            menuLocation: 'header',
+            language: 'no'
+        };
     }
 
     const footerMenu = {
@@ -117,13 +181,13 @@ export default async function PageLayout({ params, children }: LayoutProps) {
     }
 
     return (
-        <LocaleContextProvider locale={params.locale}>
+        <LocaleContextProvider locale={params.locale} >
             <StaticContent condition={isEdit}>
-                <Header menuData={headerMenu as any} />
+                <Header menuData={mapXpMenuToMainMenu(xpMenu) || null} />
                 <main>{children}</main>
                 <Popup />
                 <Footer menuData={footerMenu as any} />
             </StaticContent>
-        </LocaleContextProvider>
+        </LocaleContextProvider >
     )
 }

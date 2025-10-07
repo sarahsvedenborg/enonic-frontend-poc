@@ -14,6 +14,7 @@ query($path:ID!){
     getSite {
       displayName
       _path
+      xAsJson
     }
   }
 }`;
