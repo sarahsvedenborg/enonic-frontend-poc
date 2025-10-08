@@ -15,6 +15,31 @@ query($path:ID!){
       displayName
       _path
       xAsJson
+      x{
+        tutorial_nxp{
+          menu{
+            menuitems{
+              itemtext
+              url
+            __typename
+                ...on XData_tutorial_nxp_menu_DataConfig_Menuitems{
+                  content {
+                   pageUrl
+                  } 
+              }
+              menuitems {
+                itemtext
+                url
+                ...on XData_tutorial_nxp_menu_DataConfig_Menuitems_2{
+                  content {
+                   _path
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }`;
