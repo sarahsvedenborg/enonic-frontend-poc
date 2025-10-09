@@ -12,6 +12,7 @@ export * from './components/EventList/EventList';
 export * from './components/EventHero/EventHero';
 export * from './components/CampaignHero/CampaignHero';
 export * from './components/Hero/Hero';
+export * from './components/ActivityHero/ActivityHero';
 /* export * from './components/DonationBanner/DonationBanner';
 export * from './components/DirectDonation/DirectDonation';
 export * from './components/RichTextView/RichTextView';

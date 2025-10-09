@@ -1,0 +1,153 @@
+/* Activity Hero Section */
+.activity-hero {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.activity-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+            rgba(220, 38, 38, 0.4) 0%,
+            rgba(185, 28, 28, 0.4) 50%,
+            rgba(0, 0, 0, 0.4) 100%);
+    z-index: 10;
+}
+
+.activity-hero-content {
+    position: relative;
+    z-index: 20;
+    text-align: center;
+    color: white;
+    padding: 0 1rem;
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+.activity-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--rk-red-dark);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 2rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.activity-icon {
+    font-size: 1rem;
+}
+
+.activity-label {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.activity-hero-title {
+    color: #fff;
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+.activity-hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.activity-hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.activity-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1.5rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .activity-hero {
+        height: 60vh;
+        min-height: 400px;
+    }
+
+    .activity-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .activity-hero-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .activity-hero-meta {
+        gap: 1rem;
+    }
+
+    .activity-meta-item {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .activity-hero-title {
+        font-size: 2rem;
+    }
+
+    .activity-hero-subtitle {
+        font-size: 1.125rem;
+    }
+
+    .activity-hero-meta {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .activity-meta-item {
+        padding: 0.5rem 0.875rem;
+        font-size: 0.75rem;
+    }
+
+    .activity-hero-badge {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+}
