@@ -8,6 +8,12 @@ import { APP_NAME } from '@enonic/nextjs-adapter';
 import getCampaign from './queries/getCampaign';
 import Campaign from './views/Campaign';
 import getDonatePage from './queries/getDonatePage';
+import getNewsArticle from './queries/getNewsArticle';
+import getInfoArticle from './queries/getInfoArticle';
+import getActivity from './queries/getActivity';
+import NewsArticle from './views/NewsArticle';
+import InfoArticle from './views/InfoArticle';
+import Activity from './views/Activity';
 import DonatePage from './views/DonatePage';
 import MainPage from './pages/Main';
 import DonatePagePage from './pages/DonatePage';
@@ -42,6 +48,21 @@ ComponentRegistry.addContentType(`${APP_NAME}:donate`, {
 ComponentRegistry.addContentType(`${APP_NAME}:localHome`, {
   query: getLocalHome,
   view: LocalHome
+});
+
+ComponentRegistry.addContentType(`${APP_NAME}:newsArticle`, {
+  query: getNewsArticle,
+  view: NewsArticle
+});
+
+ComponentRegistry.addContentType(`${APP_NAME}:infoArticle`, {
+  query: getInfoArticle,
+  view: InfoArticle
+});
+
+ComponentRegistry.addContentType(`${APP_NAME}:activity`, {
+  query: getActivity,
+  view: Activity
 });
 
 ComponentRegistry.addContentType(`${APP_NAME}:customArticle`, {
