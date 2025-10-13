@@ -76,7 +76,7 @@ export default async function PageLayout({ params, children }: LayoutProps) {
 
 
         const newItems = items.map((item: any) => ({
-            label: `${item.itemtext} (Interne lenker virker ikke)`,
+            label: item.itemtext,
             menuType: item.menuitems ? 'dropdown' : 'external',
             subItems: Array.isArray(item?.menuitems) ? item.menuitems.map((subitem: EnonicSubMenuItem) => ({
                 _type: "subMenuItem",
