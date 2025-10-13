@@ -10,7 +10,7 @@ import MoneyArrives from '../../ui/Complex/MoneyArrives/MoneyArrives';
 
 const LocalHome = (props: FetchContentResult) => {
     const { displayName, data, parent } = props.data?.get as any;
-    const { shortDescription, bio } = data;
+    const { shortDescription, body } = data;
 
 
     const meta = props.meta;
@@ -25,41 +25,13 @@ const LocalHome = (props: FetchContentResult) => {
                             {shortDescription}
                         </Paragraph>
                     )}
-                    {/* Contact Information Section */}
-                    <div className={styles.contactSection}>
-                        <div className={styles.contactContent}>
-                            <div className={styles.contactList}>
-                                <div className={styles.contactItem}>
-                                    <Paragraph data-size="sm" >Adresse:</Paragraph>
-                                    <Paragraph data-size='sm'>
-                                        Gislevollvegen 19, 2067 JESSHEIM
-                                    </Paragraph>
-                                </div>
 
-                                <div className={styles.contactItem}>
-                                    <Paragraph data-size="sm" >Telefon:</Paragraph>
-                                    <Paragraph data-size='sm'>-</Paragraph>
-                                </div>
-
-                                <div className={styles.contactItem}>
-                                    <Paragraph data-size="sm" >E-post:</Paragraph>
-                                    <Link
-                                        href="mailto:post@ullensakkerrodekors.no"
-                                        className={styles.contactLink}
-                                    >
-                                        post@ullensakkerrodekors.no
-                                    </Link>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
                 </div>
 
                 <div className={styles.richTextSection}>
                     <div className={styles.richTextSectionInner}>
-                        {bio && (
-                            <RichTextView className={styles.bio} data={bio} meta={meta} />
+                        {body && (
+                            <RichTextView className={styles.body} data={body} meta={meta} />
                         )}
                     </div>
                 </div>
