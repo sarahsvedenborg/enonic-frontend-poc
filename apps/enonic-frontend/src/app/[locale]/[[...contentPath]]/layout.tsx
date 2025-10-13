@@ -56,22 +56,13 @@ export default async function PageLayout({ params, children }: LayoutProps) {
 
     const siteXData = common?.getSite?.xAsJson
     const xpMenu = siteXData?.['tutorial-nxp']?.menu
-    const xpFooter = siteXData?.['tutorial-nxp']?.footer
+    // const xpFooter = siteXData?.['tutorial-nxp']?.footer
+
 
 
     const xData = common?.getSite?.x?.['tutorial_nxp']?.menu
+    const xpFooter = common?.getSite?.x?.['tutorial_nxp']?.footer
 
-
-    /* 
-        return (
-            <LocaleContextProvider locale={params.locale} >
-                <StaticContent condition={isEdit}>
-                    <main>{children}</main>
-                    <Popup />
-                </StaticContent>
-            </LocaleContextProvider >
-        )
-     */
 
 
     const convertMenuItems = (items: any[]) => {
@@ -158,52 +149,67 @@ export default async function PageLayout({ params, children }: LayoutProps) {
     }
 
     const footerMenu = {
-        _id: 'asda',
-        menuItems: [{
-            label: "Kontakt oss", menuType: 'dropdown', subItems: [
-                {
-                    _type: "subMenuItem", internalPage: '/stott-arbeidet',
-                    label: 'Kundeservice',
-                    subMenuType: 'external',
-                    url: 'https://www.rodekors.no/',
-
-                },
-                {
-                    _type: "subMenuItem", internalPage: '/lokalforeninger',
-                    label: 'Finn din lokalforening',
-                    subMenuType: 'internal'
-                },
-            ]
-        },
-        {
-            label: "Jobb i Røde Kors", menuType: 'dropdown', subItems: [
-                {
-                    _type: "subMenuItem",
-                    url: 'https://www.rodekors.no/',
-                    label: 'Nasjonalt',
-                    subMenuType: 'external'
-
-                },
-                {
-                    _type: "subMenuItem",
-                    url: 'https://www.rodekors.no/',
-                    label: 'Internasjonalt',
-                    subMenuType: 'external'
-                },
-            ]
-        },
-        {
-            label: "Presserom", menuType: 'external', url: 'https://www.rodekors.no/'
-
-
-        }],
-        menuItemsSecondary: [],
-        menuItemsTertiary: [],
-        menuLocation: 'footer',
-        title: 'Footer Menu',
-        _type: 'mainMenu'
+        _id: "footer-menu",
+        menuItems: Array.isArray(xpFooter?.menuitems) ? xpFooter?.menuitems?.map((item: any) => ({
+            label: item.itemtext,
+            menuType: item.menuitems ? 'dropdown' : 'external',
+            subItems: item.menuitems ? item.menuitems?.map((subitem: any) => ({
+                _type: "subMenuItem",
+                internalPage: `/${subitem.content?._path.split('/').slice(2).join('/')}`,
+                label: subitem.itemtext,
+                subMenuType: subitem.url ? 'external' : 'internal',
+                url: subitem.url
+            })) : []
+        })) : []
     }
 
+    /*    const footerMenu = {
+           _id: 'asda',
+           menuItems: [{
+               label: "Kontakt oss", menuType: 'dropdown', subItems: [
+                   {
+                       _type: "subMenuItem", internalPage: '/stott-arbeidet',
+                       label: 'Kundeservice',
+                       subMenuType: 'external',
+                       url: 'https://www.rodekors.no/',
+   
+                   },
+                   {
+                       _type: "subMenuItem", internalPage: '/lokalforeninger',
+                       label: 'Finn din lokalforening',
+                       subMenuType: 'internal'
+                   },
+               ]
+           },
+           {
+               label: "Jobb i Røde Kors", menuType: 'dropdown', subItems: [
+                   {
+                       _type: "subMenuItem",
+                       url: 'https://www.rodekors.no/',
+                       label: 'Nasjonalt',
+                       subMenuType: 'external'
+   
+                   },
+                   {
+                       _type: "subMenuItem",
+                       url: 'https://www.rodekors.no/',
+                       label: 'Internasjonalt',
+                       subMenuType: 'external'
+                   },
+               ]
+           },
+           {
+               label: "Presserom", menuType: 'external', url: 'https://www.rodekors.no/'
+   
+   
+           }],
+           menuItemsSecondary: [],
+           menuItemsTertiary: [],
+           menuLocation: 'footer',
+           title: 'Footer Menu',
+           _type: 'mainMenu'
+       }
+    */
     return (
         <LocaleContextProvider locale={params.locale} >
             <StaticContent condition={isEdit}>

@@ -38,6 +38,25 @@ query($path:ID!){
               }
             }
           }
+             footer{
+            menuitems{
+              itemtext
+              url
+              ... on XData_tutorial_nxp_footer_DataConfig_Menuitems {
+                content {
+                  pageUrl
+                }
+              }
+              menuitems{
+                itemtext
+                url... on XData_tutorial_nxp_footer_DataConfig_Menuitems_2{
+                  content{
+                    _path
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
