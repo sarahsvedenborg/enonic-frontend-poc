@@ -63,7 +63,6 @@ export default async function PageLayout({ params, children }: LayoutProps) {
     const xData = common?.getSite?.x?.['tutorial_nxp']?.menu
     const xpFooter = common?.getSite?.x?.['tutorial_nxp']?.footer
 
-    console.log("xpFooter", xpFooter)
 
 
     const convertMenuItems = (items: any[]) => {
@@ -151,10 +150,10 @@ export default async function PageLayout({ params, children }: LayoutProps) {
 
     const footerMenu = {
         _id: "footer-menu",
-        menuItems: xpFooter.menuitems.map(item => ({
+        menuItems: xpFooter?.menuitems?.map(item => ({
             label: item.itemtext,
             menuType: item.menuitems ? 'dropdown' : 'external',
-            subItems: item.menuitems ? item.menuitems.map((subitem: any) => ({
+            subItems: item.menuitems ? item.menuitems?.map((subitem: any) => ({
                 _type: "subMenuItem",
                 internalPage: `/${subitem.content?._path.split('/').slice(2).join('/')}`,
                 label: subitem.itemtext,
