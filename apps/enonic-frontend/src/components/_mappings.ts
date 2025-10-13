@@ -65,10 +65,10 @@ ComponentRegistry.addContentType(`${APP_NAME}:activity`, {
   view: Activity
 });
 
-ComponentRegistry.addContentType(`${APP_NAME}:customArticle`, {
+/* ComponentRegistry.addContentType(`${APP_NAME}:customArticle`, {
   query: getArticle,
   view: Article
-});
+}); */
 
 // Page mappings
 ComponentRegistry.addPage(`${APP_NAME}:main`, {
