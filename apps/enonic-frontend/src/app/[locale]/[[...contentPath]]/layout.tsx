@@ -150,7 +150,7 @@ export default async function PageLayout({ params, children }: LayoutProps) {
 
     const footerMenu = {
         _id: "footer-menu",
-        menuItems: xpFooter?.menuitems?.map(item => ({
+        menuItems: Array.isArray(xpFooter?.menuitems) ? xpFooter?.menuitems?.map((item: any) => ({
             label: item.itemtext,
             menuType: item.menuitems ? 'dropdown' : 'external',
             subItems: item.menuitems ? item.menuitems?.map((subitem: any) => ({
@@ -160,7 +160,7 @@ export default async function PageLayout({ params, children }: LayoutProps) {
                 subMenuType: subitem.url ? 'external' : 'internal',
                 url: subitem.url
             })) : []
-        }))
+        })) : []
     }
 
     /*    const footerMenu = {
