@@ -105,6 +105,7 @@ ComponentRegistry.addPart(`${APP_NAME}:money-arrives`, {
 });
 
 ComponentRegistry.addPart(`${APP_NAME}:donation-form`, {
+  /*  query: getDonationForm, */
   view: DonationView
 });
 

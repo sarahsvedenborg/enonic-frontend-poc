@@ -1,6 +1,10 @@
 import DonationForm from "../../ui/Complex/DonationForm/DonationForm"
 
 export const DonationView = ({ part, meta, }: any) => {
+    console.log("part", part)
+    if (!part.config) {
+        return <p>DonationView</p>
+    }
 
     return (
 
