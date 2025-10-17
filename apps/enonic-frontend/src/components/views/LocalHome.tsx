@@ -10,7 +10,14 @@ import MoneyArrives from '../../ui/Complex/MoneyArrives/MoneyArrives';
 
 const LocalHome = (props: FetchContentResult) => {
     const { displayName, data, parent } = props.data?.get as any;
-    const { shortDescription, bio } = data;
+    const { shortDescription, bio, sourceId, api_activities } = data;
+
+    /*     console.log("api_activities", api_activities) */
+
+    if (sourceId) {
+        return <h1>Lokalforening id: {sourceId}</h1>
+    }
+
 
 
     const meta = props.meta;

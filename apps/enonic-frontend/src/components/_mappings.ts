@@ -15,6 +15,7 @@ import NewsArticle from './views/NewsArticle';
 import InfoArticle from './views/InfoArticle';
 import Activity from './views/Activity';
 import DonatePage from './views/DonatePage';
+import DistrictHome from './views/DistrictHome';
 import MainPage from './pages/Main';
 import DonatePagePage from './pages/DonatePage';
 import HeroPart from './parts/Hero';
@@ -31,6 +32,8 @@ import CampaignBody from './views/CampaignBody';
 import CampaignHeader from './views/CampaignHeader';
 import getArticle from './queries/getArticle';
 import Article from './views/Article';
+import getLokalforening from './queries/getLokalforening';
+import getDistrikt from './queries/getDistrikt';
 // You can set common query for all views here
 ComponentRegistry.setCommonQuery([commonQuery, commonVariables]);
 
@@ -45,10 +48,20 @@ ComponentRegistry.addContentType(`${APP_NAME}:donate`, {
   view: DonatePage
 });
 
-ComponentRegistry.addContentType(`${APP_NAME}:localHome`, {
+/* ComponentRegistry.addContentType(`${APP_NAME}:localHome`, {
   query: getLocalHome,
   view: LocalHome
 });
+
+ComponentRegistry.addContentType(`${APP_NAME}:lokalforening`, {
+  query: getLokalforening,
+  view: LocalHome
+}); */
+
+/* ComponentRegistry.addContentType(`${APP_NAME}:distrikt`, {
+  query: getDistrikt,
+  view: DistrictHome
+}); */
 
 ComponentRegistry.addContentType(`${APP_NAME}:newsArticle`, {
   query: getNewsArticle,
