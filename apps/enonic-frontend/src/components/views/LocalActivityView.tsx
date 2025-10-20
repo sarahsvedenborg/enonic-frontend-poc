@@ -6,16 +6,31 @@ import RichTextView from '@enonic/nextjs-adapter/views/RichTextView';
 import styles from './ActivityGlobalDescription.module.css';
 import styles2 from './Campaign.module.css';
 import { Section } from 'ui-lib';
+import ActivitySignupForm from 'ui-lib/components/ActivitySignupForm/ActivitySignupForm';
 
 const LocalActivityView = (props: FetchContentResult) => {
     const { data } = props.data?.get as any;
-    const activityData = props.data?.query?.[0];
+    const allActivities = props.data?.query || [];
 
     const meta = props.meta;
 
     const { global_activity_name, body: localBody } = data
-
     const headerPhotoUrl = data?.photo?.imageUrl
+
+    // Debug: Log all activities and their activityType values
+
+    allActivities.forEach((activity: any, index: number) => {
+        console.log(`Activity ${index}:`, {
+            displayName: activity.displayName,
+            activityType: activity.data?.activityType,
+            matches: activity.data?.activityType === global_activity_name
+        })
+    })
+
+    // Find the activity where activityType matches global_activity_name
+    const matchingActivity = allActivities.find((activity: any) =>
+        activity.data?.activityType === global_activity_name
+    );
 
 
     return <>
@@ -25,48 +40,34 @@ const LocalActivityView = (props: FetchContentResult) => {
         </div>
 
         <Section width="md" >
-
-            <div>
-                <Paragraph variant="long" data-size='md'><i>Global aktivitetsbeskrivelse kommer </i></Paragraph>
-            </div>
+            {matchingActivity && (
+                <div>
+                    {matchingActivity.data?.shortDescription && (
+                        <Paragraph variant="long" data-size='md' className={styles.excerpt}>
+                            {matchingActivity.data.shortDescription}
+                        </Paragraph>
+                    )}
+                    {matchingActivity.data?.body && (
+                        <RichTextView className={styles.body} data={matchingActivity.data.body} meta={meta} />
+                    )}
+                </div>
+            )}
 
             {localBody && (
                 <RichTextView className={styles2.bio} data={localBody} meta={meta} />
             )}
 
+            <ActivitySignupForm
+                title={'Bli med i aktiviteten'}
+                description="Skal komme fra enonic description"
+                information="Skal komme fra enonic information"
+                branchName="Skedsmo"
+                activityType={global_activity_name}
+                readOnly={true}
+            />
         </Section >
     </>
 
-    /*     if (!activityData) {
-            return null;
-        }
-    
-        const { displayName, data: activityContent } = activityData;
-        const { shortDescription, body } = activityContent; */
-
-
-    /*     return (
-            <div className={styles.container}>
-                <div className={styles.contentSection}>
-                    <Heading data-size="lg" className={styles.title}>
-                        {displayName}
-                    </Heading>
-                    {shortDescription && (
-                        <Paragraph variant="long" data-size='md' className={styles.excerpt}>
-                            {shortDescription}
-                        </Paragraph>
-                    )}
-                </div>
-    
-                <div className={styles.richTextSection}>
-                    <div className={styles.richTextSectionInner}>
-                        {body && (
-                            <RichTextView className={styles.body} data={body} meta={meta} />
-                        )}
-                    </div>
-                </div>
-            </div>
-        ); */
 };
 
 export default LocalActivityView;

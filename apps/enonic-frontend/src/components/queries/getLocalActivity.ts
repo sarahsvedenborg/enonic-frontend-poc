@@ -20,18 +20,26 @@ query($path:ID!){
         }
       }
     }
-    query(
-      contentTypes: ["${APP_NAME_UNDERSCORED}_Activity"]
-      first: 1
-    ) {
-      ... on ${APP_NAME_UNDERSCORED}_Activity {
-        displayName
-        data {
-          shortDescription
-          ${richTextQuery('body')}
-        }
+     query(
+    contentTypes: ["tutorial.nxp:activity"] ){
+    _id
+    displayName
+    ...on tutorial_nxp_Activity{
+      data{
+        activityType
+        shortDescription
+        ${richTextQuery('body')}
+        photo {
+           ... on media_Image {
+              imageUrl: imageUrl(type: absolute, scale: "width(2000)")
+              attachments {
+                name
+              }
+            }
+          }
       }
     }
+  }
   }
 }`;
 
