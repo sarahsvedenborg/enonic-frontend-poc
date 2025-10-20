@@ -1,6 +1,6 @@
 import { APP_NAME_UNDERSCORED, richTextQuery } from '@enonic/nextjs-adapter';
 
-const getActivityGlobalDescription = () => `
+const getLocalActivity = () => `
 query($path:ID!){
   guillotine {
     get(key:$path) {
@@ -35,4 +35,4 @@ query($path:ID!){
   }
 }`;
 
-export default getActivityGlobalDescription;
+export default getLocalActivity;

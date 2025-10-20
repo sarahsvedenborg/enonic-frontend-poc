@@ -32,10 +32,10 @@ import CampaignBody from './views/CampaignBody';
 import CampaignHeader from './views/CampaignHeader';
 import getArticle from './queries/getArticle';
 import Article from './views/Article';
-import getLokalforening from './queries/getLokalforening';
-import getDistrikt from './queries/getDistrikt';
-import getActivityGlobalDescription from './queries/getActivityGlobalDescription';
-import ActivityGlobalDescription from './views/ActivityGlobalDescription';
+// import getLokalforening from './queries/getLokalforening';
+// import getDistrikt from './queries/getDistrikt';
+import getLocalActivity from './queries/getLocalActivity';
+import LocalActivityView from './views/LocalActivityView';
 // You can set common query for all views here
 ComponentRegistry.setCommonQuery([commonQuery, commonVariables]);
 
@@ -140,8 +140,8 @@ ComponentRegistry.addPart(`${APP_NAME}:movie-details`, {
 });
 
 ComponentRegistry.addPart(`${APP_NAME}:activityGlobalDescription`, {
-  query: getActivityGlobalDescription,
-  view: ActivityGlobalDescription
+  query: getLocalActivity,
+  view: LocalActivityView
 });
 
 

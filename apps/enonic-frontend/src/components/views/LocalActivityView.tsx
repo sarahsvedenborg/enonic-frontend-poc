@@ -7,7 +7,7 @@ import styles from './ActivityGlobalDescription.module.css';
 import styles2 from './Campaign.module.css';
 import { Section } from 'ui-lib';
 
-const ActivityGlobalDescription = (props: FetchContentResult) => {
+const LocalActivityView = (props: FetchContentResult) => {
     const { data } = props.data?.get as any;
     const activityData = props.data?.query?.[0];
 
@@ -69,4 +69,4 @@ const ActivityGlobalDescription = (props: FetchContentResult) => {
         ); */
 };
 
-export default ActivityGlobalDescription;
+export default LocalActivityView;
