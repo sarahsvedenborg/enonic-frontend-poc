@@ -19,6 +19,8 @@ const Campaign = (props: FetchContentResult) => {
 
     const { body } = data;
 
+    console.log("body", body)
+
     const meta = props.meta;
 
     const handleDonate = (amount: number, frequency: 'monthly' | 'one-time') => {

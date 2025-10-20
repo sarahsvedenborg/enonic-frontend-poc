@@ -34,6 +34,8 @@ import getArticle from './queries/getArticle';
 import Article from './views/Article';
 import getLokalforening from './queries/getLokalforening';
 import getDistrikt from './queries/getDistrikt';
+import getActivityGlobalDescription from './queries/getActivityGlobalDescription';
+import ActivityGlobalDescription from './views/ActivityGlobalDescription';
 // You can set common query for all views here
 ComponentRegistry.setCommonQuery([commonQuery, commonVariables]);
 
@@ -135,6 +137,11 @@ ComponentRegistry.addPart(`${APP_NAME}:campaignBody`, {
 ComponentRegistry.addPart(`${APP_NAME}:movie-details`, {
   query: getMovie,
   view: MovieDetails
+});
+
+ComponentRegistry.addPart(`${APP_NAME}:activityGlobalDescription`, {
+  query: getActivityGlobalDescription,
+  view: ActivityGlobalDescription
 });
 
 
