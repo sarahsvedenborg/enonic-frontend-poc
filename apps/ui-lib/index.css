@@ -13,6 +13,7 @@
 @import url('./components/CampaignHero/CampaignHero.css');
 @import url('./components/Hero/Hero.css');
 @import url('./components/ActivityHero/ActivityHero.css');
+@import url('./components/ActivitySignupForm/ActivitySignupForm.css');
 
 /* Lists styling */
 .rk-list {

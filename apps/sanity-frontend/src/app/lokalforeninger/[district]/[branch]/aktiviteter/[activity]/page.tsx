@@ -1,5 +1,4 @@
-
-import { Heading, Section } from 'ui-lib'
+import { Heading, Section, ActivitySignupForm } from 'ui-lib'
 import { Paragraph } from '@digdir/designsystemet-react'
 import Link from 'next/link'
 import { client } from '../../../../../../../lib/sanity'
@@ -11,7 +10,6 @@ import { mapApiActivityTypeToSanity } from '../../../../../../../lib/activity-ma
 import { Activity, LocalActivityOverride } from '../../../../../../../lib/sanity'
 import PortableText from '../../../../../../../components/PortableText'
 
-import ActivitySignupForm from '../../../../../../../components/ActivitySignupForm'
 import './page.css'
 
 interface ActivityPageProps {

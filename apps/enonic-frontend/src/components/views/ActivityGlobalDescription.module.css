@@ -1,0 +1,77 @@
+.container {
+    max-width: var(--section-md);
+    margin: 2em auto;
+    padding: 0 1rem;
+}
+
+.contentSection {
+    margin-bottom: 2rem;
+}
+
+.title {
+    margin-bottom: 1rem;
+    color: var(--color-text-primary);
+}
+
+.excerpt {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+}
+
+.richTextSection {
+    background: var(--color-background-subtle);
+    border-radius: var(--border-radius-md);
+    padding: 2rem;
+}
+
+.richTextSectionInner {
+    max-width: none;
+}
+
+.body {
+    color: var(--color-text-primary);
+    line-height: 1.7;
+}
+
+.body h1,
+.body h2,
+.body h3,
+.body h4,
+.body h5,
+.body h6 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-primary);
+}
+
+.body h1:first-child,
+.body h2:first-child,
+.body h3:first-child,
+.body h4:first-child,
+.body h5:first-child,
+.body h6:first-child {
+    margin-top: 0;
+}
+
+.body p {
+    margin-bottom: 1rem;
+}
+
+.body ul,
+.body ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+}
+
+.body li {
+    margin-bottom: 0.5rem;
+}
+
+.body a {
+    color: var(--color-link);
+    text-decoration: underline;
+}
+
+.body a:hover {
+    color: var(--color-link-hover);
+}
