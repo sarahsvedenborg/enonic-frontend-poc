@@ -16,7 +16,7 @@ interface ActivitySignupFormProps {
     readOnly?: boolean
 }
 
-export default function ActivitySignupForm({
+export const ActivitySignupForm = ({
     title = "Bli med i aktiviteten",
     description,
     information,
@@ -24,7 +24,7 @@ export default function ActivitySignupForm({
     activityType,
     onSubmit,
     readOnly = false,
-}: ActivitySignupFormProps) {
+}: ActivitySignupFormProps) => {
     const [localGroup, setLocalGroup] = useState(branchName || '')
     const [selectedActivityType, setSelectedActivityType] = useState(activityType || '')
     const [showActivityDropdown, setShowActivityDropdown] = useState(false)
@@ -72,7 +72,7 @@ export default function ActivitySignupForm({
                             placeholder="Skriv inn lokalforening..."
                             type="text"
                             value={localGroup}
-                            onChange={(e) => setLocalGroup(e.target.value)}
+                            onChange={(e: any) => setLocalGroup(e.target.value)}
                             disabled={readOnly}
                         />
                     </div>
@@ -135,3 +135,5 @@ export default function ActivitySignupForm({
         </Section >
     )
 }
+
+export default ActivitySignupForm;
