@@ -5,6 +5,7 @@ import { Card } from "rk-designsystem";
 import styles from '../../../components/views/SiteHeader.module.css'
 
 export const ChildLinkList = ({ links }: { links: any[] }) => {
+
     return (
         <div style={{
             marginTop: '2rem',
@@ -14,7 +15,7 @@ export const ChildLinkList = ({ links }: { links: any[] }) => {
             padding: '1rem 0'
         }}>
             {links.map((link, index) => (
-                <Link href={link._path} key={index} style={{ textDecoration: 'none' }}>
+                <Link href={`/${link._path}`} key={index} style={{ textDecoration: 'none' }}>
                     {/* <Card
                         key={index}
                         data-color="neutral"
