@@ -22,9 +22,13 @@ const LocalActivityView = (props: FetchContentResult) => {
     // Extract branch name from pathname
     // Expected path format: /[locale]/lokalforeninger/[district]/[branch]/...
     const pathSegments = pathname.split('/').filter(Boolean);
-    const branchName = pathSegments.length >= 4 && pathSegments[1] === 'lokalforeninger'
-        ? pathSegments[3]
+    const branchName = pathSegments.length >= 4 && pathSegments.includes('lokalforeninger')
+        ? pathSegments[pathSegments.findIndex(val => val === 'lokalforeninger') + 2]
         : ''; // fallback
+
+    console.log("branchName", branchName)
+    console.log("pathSegments", pathSegments)
+    console.log("pathname", pathname)
 
 
     // Debug: Log all activities and their activityType values
