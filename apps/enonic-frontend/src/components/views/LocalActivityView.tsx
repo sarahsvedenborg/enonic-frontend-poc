@@ -19,19 +19,18 @@ const LocalActivityView = (props: FetchContentResult) => {
 
     // Debug: Log all activities and their activityType values
 
-    allActivities.forEach((activity: any, index: number) => {
-        console.log(`Activity ${index}:`, {
-            displayName: activity.displayName,
-            activityType: activity.data?.activityType,
-            matches: activity.data?.activityType === global_activity_name
-        })
-    })
+    /*    allActivities.forEach((activity: any, index: number) => {
+           console.log(`Activity ${index}:`, {
+               displayName: activity.displayName,
+               activityType: activity.data?.activityType,
+               matches: activity.data?.activityType === global_activity_name
+           })
+       }) */
 
     // Find the activity where activityType matches global_activity_name
     const matchingActivity = allActivities.find((activity: any) =>
         activity.data?.activityType === global_activity_name
     );
-
 
     return <>
         <div className={styles2.heroSection} style={headerPhotoUrl ? { backgroundImage: `url(${headerPhotoUrl})` } : {}}>
@@ -58,9 +57,9 @@ const LocalActivityView = (props: FetchContentResult) => {
             )}
 
             <ActivitySignupForm
-                title={'Bli med i aktiviteten'}
-                description="Skal komme fra enonic description"
-                information="Skal komme fra enonic information"
+                title={matchingActivity?.data?.signupForm?.title || 'Bli med i aktiviteten'}
+                description={matchingActivity?.data?.signupForm?.intro || ''}
+                information={matchingActivity?.data?.signupForm?.information || ''}
                 branchName="Skedsmo"
                 activityType={global_activity_name}
                 readOnly={true}

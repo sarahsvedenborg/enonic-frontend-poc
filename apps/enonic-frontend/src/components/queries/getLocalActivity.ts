@@ -26,6 +26,11 @@ query($path:ID!){
     displayName
     ...on tutorial_nxp_Activity{
       data{
+        signupForm{
+        title
+        intro
+        information
+        }
         activityType
         shortDescription
         ${richTextQuery('body')}
