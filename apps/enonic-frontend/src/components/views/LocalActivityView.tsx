@@ -7,15 +7,25 @@ import styles from './ActivityGlobalDescription.module.css';
 import styles2 from './Campaign.module.css';
 import { Section } from 'ui-lib';
 import ActivitySignupForm from 'ui-lib/components/ActivitySignupForm/ActivitySignupForm';
+import { usePathname } from 'next/navigation';
 
 const LocalActivityView = (props: FetchContentResult) => {
     const { data } = props.data?.get as any;
     const allActivities = props.data?.query || [];
+    const pathname = usePathname();
 
     const meta = props.meta;
 
     const { global_activity_name, body: localBody } = data
     const headerPhotoUrl = data?.photo?.imageUrl
+
+    // Extract branch name from pathname
+    // Expected path format: /[locale]/lokalforeninger/[district]/[branch]/...
+    const pathSegments = pathname.split('/').filter(Boolean);
+    const branchName = pathSegments.length >= 4 && pathSegments[1] === 'lokalforeninger'
+        ? pathSegments[3]
+        : ''; // fallback
+
 
     // Debug: Log all activities and their activityType values
 
@@ -60,7 +70,7 @@ const LocalActivityView = (props: FetchContentResult) => {
                 title={matchingActivity?.data?.signupForm?.title || 'Bli med i aktiviteten'}
                 description={matchingActivity?.data?.signupForm?.intro || ''}
                 information={matchingActivity?.data?.signupForm?.information || ''}
-                branchName="Skedsmo"
+                branchName={branchName === '' ? undefined : branchName}
                 activityType={global_activity_name}
                 readOnly={true}
             />
