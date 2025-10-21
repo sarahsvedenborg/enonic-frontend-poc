@@ -12,6 +12,7 @@
   "scripts": {
     "dev": "concurrently \"yarn workspace enonic-frontend dev\" \"yarn workspace sanity-cms dev\"",
     "dev:enonic": "yarn workspace enonic-frontend dev",
+    "start:enonic": "yarn workspace enonic-frontend start",
     "dev:sf": "yarn workspace sanity-frontend dev",
     "dev:sanity": "yarn workspace sanity-cms dev",
     "build": "yarn workspace enonic-frontend build && yarn workspace sanity-cms build",

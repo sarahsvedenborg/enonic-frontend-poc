@@ -14,7 +14,7 @@ import { Section } from "ui-lib";
 
 // The revalidate option is only available when using the Node.js Runtime.
 // This means using the revalidate option with runtime = 'edge' will not work.
-export const revalidate = 3600
+export const revalidate = 10;
 
 export type PageProps = {
     locale: string,
