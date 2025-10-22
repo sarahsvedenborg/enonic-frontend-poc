@@ -13,6 +13,10 @@ import MoneyArrives from '../../ui/Complex/MoneyArrives/MoneyArrives';
 
 const Campaign = (props: FetchContentResult) => {
     const { displayName, data, parent } = props.data?.get as any;
+    let donationForm = null;
+    if (data?.donationForm) {
+        donationForm = data?.donationForm?.data;
+    }
 
     console.log("data", data)
 
@@ -50,6 +54,19 @@ const Campaign = (props: FetchContentResult) => {
                 <Heading data-size="xl" className={styles.heroTitle}>{displayName}</Heading>
 
             </div>
+            {donationForm?.data &&
+                <div className={`${styles.donationSection} ${styles.containerLarge}`}>
+                    <DonationForm
+                        title={donationForm?.data?.heading || "Du kan hjelpe"}
+                        description={donationForm?.data?.description || "Bidra til å hjelpe de mest sårbare i land rammet av kriser, krig og konflikt."}
+                        amounts={donationForm ? [donationForm.data?.amount1, donationForm.data?.amount2, donationForm.data?.amount3] : undefined}
+                        factBox={donationForm?.data?.fact}
+                        vippsNumber={donationForm?.data?.vippsNumber}
+                        accountNumber={donationForm?.data?.accountNumber}
+                        onDonate={() => { console.log("Donate") }}
+                        isDefault={true}
+                    />
+                </div>}
 
             {/* Donation Form */}
 

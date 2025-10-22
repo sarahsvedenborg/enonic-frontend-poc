@@ -53,7 +53,7 @@ export const ChildLinkList = ({ links, meta }: { links: any[], meta: any }) => {
 
                         <div >
                             <h3 >{link.displayName}</h3>
-                            <p>{getUrl(link._path, meta)}</p>
+
                             {/*  <p className={styles.menuCardDescription}>
                                     (Innhold i enonic, hardkodet design i frontend)
                                 </p> */}
