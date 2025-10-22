@@ -24,7 +24,20 @@ query($path:ID!){
           _name
           _path
           }
-   
+           donationForm{
+            ... on tutorial_nxp_Giverskjema{
+              data {
+          
+            heading
+            description
+            amount1
+            amount2
+            amount3
+            fact
+         
+              }
+            }
+          }
         }
       }
       parent {

@@ -13,7 +13,7 @@ import MoneyArrives from '../../ui/Complex/MoneyArrives/MoneyArrives';
 
 const DonatePage = (props: FetchContentResult) => {
     const { displayName, data, parent } = props.data?.get as any;
-    const { bio, info, otherWays, photos } = data;
+    const { bio, info, otherWays, photos, donationForm } = data;
 
     const meta = props.meta;
 
@@ -40,14 +40,19 @@ const DonatePage = (props: FetchContentResult) => {
             </div>
 
             {/* Donation Form */}
-            <div className={`${styles.donationSection} ${styles.containerLarge}`}>
-                <DonationForm
-                    title="Du kan hjelpe"
-                    description="Bidra til å hjelpe de mest sårbare i land rammet av kriser, krig og konflikt."
-                    onDonate={handleDonate}
-                    isDefault={true}
-                />
-            </div>
+            {donationForm?.data &&
+                <div className={`${styles.donationSection} ${styles.containerLarge}`}>
+                    <DonationForm
+                        title={donationForm?.data?.heading || "Du kan hjelpe"}
+                        description={donationForm?.data?.description || "Bidra til å hjelpe de mest sårbare i land rammet av kriser, krig og konflikt."}
+                        amounts={donationForm ? [donationForm.data?.amount1, donationForm.data?.amount2, donationForm.data?.amount3] : undefined}
+                        factBox={donationForm?.data?.fact}
+                        vippsNumber={donationForm?.data?.vippsNumber}
+                        accountNumber={donationForm?.data?.accountNumber}
+                        onDonate={handleDonate}
+                        isDefault={true}
+                    />
+                </div>}
 
             {/* Donation Efficiency Banner */}
             <div className={`${styles.bannerSection} ${styles.containerMedium}`}>
@@ -61,8 +66,8 @@ const DonatePage = (props: FetchContentResult) => {
             <div className={`${styles.directDonationSection} ${styles.containerMedium}`}>
                 <DirectDonation
                     title="Du kan også gi direkte"
-                    vippsNumber="2272"
-                    accountNumber="8200 06 10190"
+                    vippsNumber={donationForm?.vippsNumber || "2272"}
+                    accountNumber={donationForm?.accountNumber || "8200 06 10190"}
                 />
             </div>
 

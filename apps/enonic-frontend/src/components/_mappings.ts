@@ -136,10 +136,10 @@ ComponentRegistry.addPart(`${APP_NAME}:campaignBody`, {
 });
 
 
-ComponentRegistry.addPart(`${APP_NAME}:movie-details`, {
+/* ComponentRegistry.addPart(`${APP_NAME}:movie-details`, {
   query: getMovie,
   view: MovieDetails
-});
+}); */
 
 ComponentRegistry.addPart(`${APP_NAME}:activityGlobalDescription`, {
   query: getLocalActivity,
