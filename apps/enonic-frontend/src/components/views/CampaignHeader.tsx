@@ -14,6 +14,8 @@ import MoneyArrives from '../../ui/Complex/MoneyArrives/MoneyArrives';
 const Campaign = (props: FetchContentResult) => {
     const { displayName, data, parent } = props.data?.get as any;
 
+    console.log("data", data)
+
     if (!displayName) {
         <h1>{`<Kampanje overskrift>`}</h1>
     }

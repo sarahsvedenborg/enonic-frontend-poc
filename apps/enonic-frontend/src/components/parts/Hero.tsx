@@ -13,8 +13,10 @@ export interface HeroPartData {
 
 
 const HeroPart = ({ part, common }: HeroPartData) => {
-
+    console.log("part", part);
     const headerPhotoUrl = part?.config?.imageUrl
+
+
 
     return <Section width="md">
         <Hero title={part?.config?.heading || common?.get?.displayName} description={part?.config?.text} imageURL={undefined} />

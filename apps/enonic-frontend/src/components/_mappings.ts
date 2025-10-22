@@ -36,6 +36,7 @@ import Article from './views/Article';
 // import getDistrikt from './queries/getDistrikt';
 import getLocalActivity from './queries/getLocalActivity';
 import LocalActivityView from './views/LocalActivityView';
+import { getHero } from './queries/getHero';
 // You can set common query for all views here
 ComponentRegistry.setCommonQuery([commonQuery, commonVariables]);
 
@@ -112,6 +113,7 @@ ComponentRegistry.addPart(`${APP_NAME}:child-list`, {
 });
 
 ComponentRegistry.addPart(`${APP_NAME}:heading`, {
+  query: getHero,
   view: HeroPart
 });
 
