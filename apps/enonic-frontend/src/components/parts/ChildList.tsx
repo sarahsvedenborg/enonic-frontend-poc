@@ -18,13 +18,14 @@ const ChildList = (props: PartProps) => {
 
     const prefix = meta.baseUrl +
         (meta.locale && meta.locale !== meta.defaultLocale ? meta.locale + '/' : '');
+
     return (
         <main style={{
             margin: `0 auto`,
             maxWidth: 960,
             padding: `0 1.0875rem`,
         }}>
-            {children && <ChildLinkList links={children} />}
+            {children && <ChildLinkList links={children} meta={meta} />}
         </main>
     );
 };
@@ -45,6 +46,7 @@ export const getChildList = {
                       _id
                       displayName
                       type
+                      pageUrl(type: server)
                   }
                 }
               }

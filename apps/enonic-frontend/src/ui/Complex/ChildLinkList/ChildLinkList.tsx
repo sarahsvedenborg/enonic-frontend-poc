@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { Card } from "rk-designsystem";
 import styles from '../../../components/views/SiteHeader.module.css'
+import { getUrl } from "@enonic/nextjs-adapter";
 
-export const ChildLinkList = ({ links }: { links: any[] }) => {
+export const ChildLinkList = ({ links, meta }: { links: any[], meta: any }) => {
 
     return (
         <div style={{
@@ -15,7 +16,7 @@ export const ChildLinkList = ({ links }: { links: any[] }) => {
             padding: '1rem 0'
         }}>
             {links.map((link, index) => (
-                <Link href={`/${link._path}`} key={index} style={{ textDecoration: 'none' }}>
+                <Link href={`${getUrl(link._path, meta)}`} key={index} style={{ textDecoration: 'none' }}>
                     {/* <Card
                         key={index}
                         data-color="neutral"
@@ -52,6 +53,7 @@ export const ChildLinkList = ({ links }: { links: any[] }) => {
 
                         <div >
                             <h3 >{link.displayName}</h3>
+
                             {/*  <p className={styles.menuCardDescription}>
                                     (Innhold i enonic, hardkodet design i frontend)
                                 </p> */}
@@ -59,8 +61,9 @@ export const ChildLinkList = ({ links }: { links: any[] }) => {
 
                     </Card>
                 </Link>
-            ))}
-        </div>
+            ))
+            }
+        </div >
     );
 }
 
