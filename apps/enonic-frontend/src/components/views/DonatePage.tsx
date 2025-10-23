@@ -58,22 +58,22 @@ const DonatePage = (props: FetchContentResult) => {
                 </div>}
 
             {/* Donation Efficiency Banner */}
-            <div className={`${styles.bannerSection} ${styles.containerMedium}`}>
+            {/*    <div className={`${styles.bannerSection} ${styles.containerMedium}`}>
                 <DonationBanner
                     percentage={90}
                     text="av alle bidrag går til formålet"
                 />
-            </div>
+            </div> */}
 
             {/* Direct Donation Information */}
-            <div className={`${styles.directDonationSection} ${styles.containerMedium}`}>
+            {/*    <div className={`${styles.directDonationSection} ${styles.containerMedium}`}>
                 <DirectDonation
                     title="Du kan også gi direkte"
                     vippsNumber={donationForm?.vippsNumber || "2272"}
                     accountNumber={donationForm?.accountNumber || "8200 06 10190"}
                 />
             </div>
-
+ */}
 
             {/* Info Section with Links */}
             <div className={`${styles.infoSection} ${styles.containerLarge}`}>
