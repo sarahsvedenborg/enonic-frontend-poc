@@ -14,11 +14,12 @@ import MoneyArrives from '../../ui/Complex/MoneyArrives/MoneyArrives';
 const Campaign = (props: FetchContentResult) => {
     const { displayName, data, parent } = props.data?.get as any;
     let donationForm = null;
+
     if (data?.donationForm) {
-        donationForm = data?.donationForm?.data;
+        donationForm = data?.donationForm;
     }
 
-    console.log("data", data)
+
 
     if (!displayName) {
         <h1>{`<Kampanje overskrift>`}</h1>
@@ -54,6 +55,7 @@ const Campaign = (props: FetchContentResult) => {
                 <Heading data-size="xl" className={styles.heroTitle}>{displayName}</Heading>
 
             </div>
+
             {donationForm?.data &&
                 <div className={`${styles.donationSection} ${styles.containerLarge}`}>
                     <DonationForm
