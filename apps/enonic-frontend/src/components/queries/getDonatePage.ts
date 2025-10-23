@@ -38,6 +38,37 @@ query($path:ID!){
               }
             }
           }
+               arguments{
+            ... on tutorial_nxp_Argument{
+              data {
+          title
+          text
+         linkText
+           image {
+           ... on media_Image {
+              imageUrl: imageUrl(type: absolute, scale: "width(2000)")
+              attachments {
+                name
+              }
+            }
+          }
+              readMoreLink {
+           _name,
+           _path
+           pageUrl
+          }
+            image {
+           ... on media_Image {
+              imageUrl: imageUrl(type: absolute, scale: "width(2000)")
+              attachments {
+                name
+              }
+            }
+          }
+        
+              }
+            }
+          }
         }
       }
       parent {

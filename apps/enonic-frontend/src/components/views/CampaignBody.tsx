@@ -10,6 +10,7 @@ import DirectDonation from './DirectDonation'
 import { Heading, Paragraph } from '@digdir/designsystemet-react';
 import RichTextView from '@enonic/nextjs-adapter/views/RichTextView';
 import MoneyArrives from '../../ui/Complex/MoneyArrives/MoneyArrives';
+import { ArgumentsList } from './ArgumentsList';
 
 const Campaign = (props: FetchContentResult) => {
     const { displayName, data, parent } = props.data?.get as any;
@@ -61,6 +62,7 @@ const Campaign = (props: FetchContentResult) => {
                     )}
                 </div>
             </div>
+            {data.arguments && <ArgumentsList items={data.arguments} meta={meta} />}
             {/*   <MoneyArrives /> */}
 
             {/*   <div style={{ width: 'fit-content', maxWidth: 'var(--section-md)', margin: '0 auto', textAlign: 'center' }}>

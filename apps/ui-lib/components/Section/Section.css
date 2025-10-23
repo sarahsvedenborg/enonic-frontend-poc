@@ -97,6 +97,10 @@
     background-color: var(--ds-color-neutral-background-tinted, #f8f9fa);
 }
 
+.section-background-light {
+    background-color: var(--ds-color-primary-brand-background-tinted, #f8f9fa);
+}
+
 /* Margin variants */
 .section-margin-none {
     margin-top: 0;
