@@ -94,16 +94,16 @@ const MoneyArrives: React.FC<MoneyArrivesProps> = ({
         </div>
         {/* Bottom Link */}
 
-        <div className={styles.linkSection}>
+        {learnMoreUrl && <div className={styles.linkSection}>
           <Link2
-            href={learnMoreUrl}
+            href={learnMoreUrl || '/'}
             data-color="neutral"
             data-size="lg"
 
           >
             <Paragraph variant="default" data-size='md'>{learnMoreText}</Paragraph>
           </Link2>
-        </div>
+        </div>}
 
       </div >
     </Section>

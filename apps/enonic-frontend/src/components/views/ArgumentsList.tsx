@@ -3,7 +3,7 @@ import MoneyArrivesComponent from '../../ui/Complex/MoneyArrives/MoneyArrives';
 import { getUrl } from "@enonic/nextjs-adapter";
 
 export const ArgumentsList = ({ items, meta }: { items: any, meta: any }) => {
-    console.log("items", items[0].data)
+    if (!items || items.length === 0) return null;
 
     return <div>
         {items?.map((item: any) => <MoneyArrivesComponent
@@ -11,7 +11,7 @@ export const ArgumentsList = ({ items, meta }: { items: any, meta: any }) => {
             description={item.data.text}
             causeAmount={90}
             learnMoreText={item.data.linkText}
-            learnMoreUrl={getUrl(item.data.readMoreLink?.[0]._path, meta)}
+            learnMoreUrl={item.data.readMoreLink?.[0]?._path ? getUrl(item.data.readMoreLink?.[0]?._path, meta) : item.data.readMoreLink?.[0]?.pageUrl ? getUrl(item.data.readMoreLink?.[0]?.pageUrl, meta) : undefined}
             imageUrl={item.data.image?.imageUrl}
 
         />)}
