@@ -1,7 +1,7 @@
 'use client'
 import React from 'react'
 
-import { Heading, Link as Link2 } from '@digdir/designsystemet-react';
+import { Heading, Link as Link2, Paragraph } from '@digdir/designsystemet-react';
 import styles from './MoneyArrives.module.css'
 import Text from '../../Basic/Text/Text'
 
@@ -11,14 +11,16 @@ interface MoneyArrivesProps {
   learnMoreText?: string
   learnMoreUrl?: string;
   causeAmount?: number;
+  imageUrl?: string;
 }
 
 const MoneyArrives: React.FC<MoneyArrivesProps> = ({
-  title = "Pengene kommer frem",
-  description = "Av donasjoner fra faddere, medlemmer, givere og næringslivspartnere går 90 prosent til å gjennomføre hjelpearbeidet som det gis til. Seks prosent går til å skaffe nye midler og fire prosent går til administrasjon.",
+  title,
+  description,
   causeAmount = 90,
-  learnMoreText = "Lær mer om hvordan vi bruker pengene",
-  learnMoreUrl = "#"
+  learnMoreText,
+  learnMoreUrl,
+  imageUrl
 }) => {
   const percentage = causeAmount || 90;
 
@@ -95,7 +97,7 @@ const MoneyArrives: React.FC<MoneyArrivesProps> = ({
               </div>
             </div>
           </div>
-
+          <p>image: {imageUrl}</p>
           {/* Bottom Link */}
           <div className={styles.linkSection}>
             <Link2
@@ -104,8 +106,8 @@ const MoneyArrives: React.FC<MoneyArrivesProps> = ({
               data-size="lg"
 
             >
-              <p>{learnMoreText}</p>
-              {/*   <Text variant="body-short-lg">{learnMoreText}</Text> */}
+              {/*   <p>{learnMoreText}</p> */}
+              <Paragraph variant="default" data-size='md'>{learnMoreText}</Paragraph>
             </Link2>
           </div>
         </div>

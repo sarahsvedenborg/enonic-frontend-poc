@@ -9,11 +9,14 @@ import DonationForm from '../../ui/Complex/DonationForm/DonationForm'
 import DonationBanner from './DonationBanner'
 import DirectDonation from './DirectDonation'
 import { FaAngleRight, FaArrowRightLong } from 'react-icons/fa6';
-import MoneyArrives from '../../ui/Complex/MoneyArrives/MoneyArrives';
+import MoneyArrivesComponent from '../../ui/Complex/MoneyArrives/MoneyArrives';
+import { ArgumentsList } from './ArgumentsList';
 
 const DonatePage = (props: FetchContentResult) => {
     const { displayName, data, parent } = props.data?.get as any;
     const { bio, info, otherWays, photos, donationForm } = data;
+
+    console.log("data", data)
 
     const meta = props.meta;
 
@@ -178,9 +181,9 @@ const DonatePage = (props: FetchContentResult) => {
                     )}
                 </div>
             </div>
-            <MoneyArrives />
+            {/*    <MoneyArrives /> */}
 
-
+            {data.arguments && <ArgumentsList items={data.arguments} meta={meta} />}
 
             {/* <p><Link href={getUrl(`/${parent._path}`, meta)}>{I18n.localize('back')}</Link></p> */}
         </>
