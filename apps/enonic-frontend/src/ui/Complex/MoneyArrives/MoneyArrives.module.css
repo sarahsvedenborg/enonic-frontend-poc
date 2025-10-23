@@ -1,7 +1,6 @@
 .container {
   background-color: #ffffff;
   padding: var(--ds-size-8) 0;
-
   max-width: 800px;
   margin: 0 auto;
 }
@@ -12,31 +11,42 @@
   padding: 0 var(--ds-size-6);
 }
 
+/* ArticleCard-like styling */
+.moneyArrivesSection {
+  margin: qrem 0;
+  overflow: hidden;
+  padding: var(--ds-size-8);
+}
+
 .titleSection {
   text-align: left;
   margin-bottom: var(--ds-size-8);
 }
 
 .title {
-
-  font-size: var(--ds-font-size-7) !important;
-  font-weight: bold !important;
-  color: #000 !important;
-  margin: 0 !important;
-  line-height: 1.3 !important;
+  color: #dc2626;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
 }
 
 .mainContent {
   display: flex;
+
   gap: var(--ds-size-8);
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--ds-size-8);
+
 }
 
 .textColumn {
   flex: 1;
   min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .description {
@@ -48,10 +58,11 @@
 }
 
 .chartColumn {
-  flex: 0 0 auto;
+  flex: 0 0 40%;
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .chartContainer {
@@ -78,7 +89,7 @@
 
 .percentageLabel {
   text-align: center;
-   padding: var(--ds-size-3) var(--ds-size-4);
+  padding: var(--ds-size-3) var(--ds-size-4);
 
   position: absolute;
   top: 0;
@@ -93,20 +104,42 @@
   line-height: 1.3 !important;
 }
 
+/* Image styling */
+.imageContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.moneyArrivesImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
 .linkSection {
   text-align: left;
+  margin-bottom: var(--ds-size-8);
+  margin-top: var(--ds-size-4);
 }
 
 .learnMoreLink {
-
-  font-size: var(--ds-font-size-3) !important;
-  color: #000 !important;
-  text-decoration: underline !important;
-  transition: color 0.2s ease !important;
+  color: #374151;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  border-bottom: 2px solid #dc2626;
+  padding-bottom: 2px;
+  transition: color 0.2s ease;
+  align-self: flex-start;
+  margin-top: 1.5rem;
 }
 
 .learnMoreLink:hover {
-  color: #d52b1e !important;
+  color: #dc2626;
 }
 
 /* Responsive Design */
@@ -114,46 +147,80 @@
   .content {
     padding: 0 var(--ds-size-4);
   }
-  
+
   .mainContent {
     flex-direction: column;
+    min-height: auto;
     gap: var(--ds-size-6);
     align-items: center;
   }
-  
+
   .textColumn {
     order: 2;
+    padding: 1.5rem;
   }
-  
+
   .chartColumn {
     order: 1;
+    flex: none;
+    padding: 1.5rem;
+    min-height: 200px;
   }
-  
+
   .title {
-    font-size: var(--ds-font-size-6) !important;
+    font-size: 1.5rem;
   }
-  
+
   .description {
-    font-size: var(--ds-font-size-3) !important;
+    font-size: 0.9rem;
   }
-  
+
   .percentageText {
     font-size: var(--ds-font-size-3) !important;
   }
-  
+
   .donutChart {
     width: 150px;
     height: 150px;
   }
+
+  .linkSection {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+
+  }
 }
 
 @media (max-width: 480px) {
+  .textColumn {
+    padding: 1rem;
+  }
+
+  .chartColumn {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
+  }
+
   .donutChart {
     width: 120px;
     height: 120px;
   }
-  
+
   .percentageLabel {
     padding: var(--ds-size-2) var(--ds-size-3);
+  }
+
+  .linkSection {
+    padding: 0 1rem 1rem 1rem;
+  }
+
+  .learnMoreLink {
+    font-size: 0.9rem;
   }
 }
