@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { FiLogIn, FiX, FiSearch, FiChevronDown } from "react-icons/fi";
+import { FiLogIn, FiX, FiSearch, FiChevronDown, FiUser, FiLogOut } from "react-icons/fi";
 import { MainMenu, MenuItem } from '../../../sanity-frontend/lib/sanity'
 import { getMenuItemUrl, shouldOpenInNewTab, isVisible } from '../../../sanity-frontend/lib/menu-utils'
 
@@ -10,9 +10,14 @@ import { Paragraph } from '@digdir/designsystemet-react';
 
 interface HeaderProps {
     menuData: MainMenu | null
+    handleSignIn: () => void
+    handleSignOut: () => void
+    status: 'loading' | 'authenticated' | 'unauthenticated'
+    session: { user: { name: string, email: string } } | null
 }
 
-export const Header: React.FC<HeaderProps> = ({ menuData }) => {
+export const Header: React.FC<HeaderProps> = ({ menuData, status, session, handleSignIn, handleSignOut }) => {
+
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [openDropdowns, setOpenDropdowns] = useState<Set<string>>(new Set())
 
@@ -89,12 +94,27 @@ export const Header: React.FC<HeaderProps> = ({ menuData }) => {
                         <Buttons variant="primary">
                             Gi nå
                         </Buttons>
-                        <Buttons variant="tertiary">
-                            <FiLogIn />
-                            Min side
-                        </Buttons>
-
-
+                        {status === 'loading' ? (
+                            <Buttons variant="tertiary" disabled>
+                                <FiUser />
+                                Laster...
+                            </Buttons>
+                        ) : session ? (
+                            <div className="rk-header-user-menu">
+                                <Buttons variant="tertiary" onClick={handleSignOut}>
+                                    <FiLogOut />
+                                    Logg ut
+                                </Buttons>
+                                <span className="rk-header-user-name">
+                                    {session.user?.name || session.user?.email}
+                                </span>
+                            </div>
+                        ) : (
+                            <Buttons variant="tertiary" onClick={handleSignIn}>
+                                <FiLogIn />
+                                Min side
+                            </Buttons>
+                        )}
                     </div>
                 </div>
             </header>

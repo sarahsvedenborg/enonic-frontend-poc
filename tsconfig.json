@@ -34,7 +34,8 @@
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "apps/sanity-frontend/src/app/kampanjer/[slug]"
+        "apps/sanity-frontend/src/app/kampanjer/[slug]",
+        "apps/sanity-frontend/src/app/api/auth/[...nextAuth]"
     ],
     "exclude": [
         "node_modules"

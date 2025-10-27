@@ -9,23 +9,24 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@portabletext/react": "^3.0.0",
+        "@sanity/client": "^6.10.0",
+        "@sanity/image-url": "^1.0.2",
         "next": "14.2.30",
+        "next-auth": "4.24.11",
+        "next-sanity": "^7.0.0",
         "react": "^18",
         "react-dom": "^18",
-        "ui-lib": "*",
-        "next-sanity": "^7.0.0",
-        "@sanity/client": "^6.10.0",
-        "@portabletext/react": "^3.0.0",
-        "@sanity/image-url": "^1.0.2"
+        "ui-lib": "*"
     },
     "devDependencies": {
-        "typescript": "^5",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
+        "autoprefixer": "^10.0.1",
         "eslint": "^8",
         "eslint-config-next": "14.2.30",
         "postcss": "^8",
-        "autoprefixer": "^10.0.1"
+        "typescript": "^5"
     }
 }
