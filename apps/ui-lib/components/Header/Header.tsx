@@ -11,15 +11,16 @@ import { Paragraph } from '@digdir/designsystemet-react';
 
 interface HeaderProps {
     menuData: MainMenu | null
-    session: Session | null
-    status: 'loading' | 'authenticated' | 'unauthenticated'
-    signIn: () => void
-    signOut: () => void
-    isAuthenticated: boolean
-    isLoading: boolean
+    frontend: string;
+    session?: { user: { name: string, email: string } } | null
+    status?: 'loading' | 'authenticated' | 'unauthenticated'
+    signIn?: () => void
+    signOut?: () => void
+    isAuthenticated?: boolean
+    isLoading?: boolean
 }
 
-export const Header: React.FC<HeaderProps> = ({ menuData, session, status, signIn, signOut, isAuthenticated, isLoading }) => {
+export const Header: React.FC<HeaderProps> = ({ menuData, frontend, session, status, signIn, signOut, isAuthenticated, isLoading }) => {
 
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [openDropdowns, setOpenDropdowns] = useState<Set<string>>(new Set())
@@ -97,7 +98,7 @@ export const Header: React.FC<HeaderProps> = ({ menuData, session, status, signI
                         <Buttons variant="primary">
                             Gi nå
                         </Buttons>
-                        {isLoading ? (
+                        {isLoading && frontend === 'sanity' ? (
                             <Buttons variant="tertiary" disabled>
                                 <FiUser />
                                 Laster...

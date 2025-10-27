@@ -7,7 +7,7 @@ export const FrontendHeader = ({ menuData }) => {
 
     const { session, status, signIn, signOut, isAuthenticated, isLoading } = useAuth()
 
-    return <Header menuData={menuData} session={session} status={status} signIn={signIn} signOut={signOut} isAuthenticated={isAuthenticated} isLoading={isLoading} />
+    return <Header menuData={menuData} frontend="sanity" session={session as { user: { name: string, email: string } } | null} status={status} signIn={signIn} signOut={signOut} isAuthenticated={isAuthenticated} isLoading={isLoading} />
 
 }
 
