@@ -2,8 +2,10 @@ import { Header, Footer, Banner } from 'ui-lib'
 import { client } from '../../lib/sanity'
 import { getMainMenuQuery } from '../../lib/queries'
 import { MainMenu } from '../../lib/sanity'
+import { Providers } from './providers'
 /* import { Inter } from 'next/font/google' */
 import '../../globals.css'
+import { FrontendHeader } from '../../components/FrontendHeader'
 
 /* const inter = Inter({ subsets: ['latin'] }) */
 
@@ -46,14 +48,16 @@ export default async function RootLayout({
     return (
         <html lang="en">
             <body>
-                <div className="layout-container">
-                    <Banner site="Sanity CMS" login="https://rk-poc.sanity.studio/studio/structure" />
-                    <Header menuData={headerMenu} />
-                    <main className="main-content">
-                        {children}
-                    </main>
-                    <Footer menuData={footerMenu} />
-                </div>
+                <Providers>
+                    <div className="layout-container">
+                        <Banner site="Sanity CMS" login="https://rk-poc.sanity.studio/studio/structure" />
+                        <FrontendHeader menuData={headerMenu} />
+                        <main className="main-content">
+                            {children}
+                        </main>
+                        <Footer menuData={footerMenu} />
+                    </div>
+                </Providers>
             </body>
         </html>
     )
