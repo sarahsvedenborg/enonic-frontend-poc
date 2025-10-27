@@ -213,7 +213,7 @@ export default async function PageLayout({ params, children }: LayoutProps) {
     return (
         <LocaleContextProvider locale={params.locale} >
             <StaticContent condition={isEdit}>
-                <Header menuData={mapXpMenuToMainMenu(xData) || null} />
+                <Header frontend="enonic" menuData={mapXpMenuToMainMenu(xData) || null} />
                 <main>{children}</main>
                 <Popup />
                 <Footer menuData={footerMenu as any} />
