@@ -6,7 +6,7 @@ import { ReactNode } from 'react';
 
 import '../../../styles/globals.css';
 
-import { PageProps } from './page';
+import { PageProps } from '../[[...contentPath]]/page';
 import { Popup } from '../../../posthogPopup/Popup';
 import { Footer, Header } from 'ui-lib';
 // TODO defines this type here as well
