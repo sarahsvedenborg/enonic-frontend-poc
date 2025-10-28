@@ -1,7 +1,7 @@
 import { I18n, PORTAL_COMPONENT_ATTRIBUTE } from '@enonic/nextjs-adapter';
 import { Metadata } from 'next';
 import { ReactNode } from 'react';
-import { PostHogProvider } from '../providers'
+import { PostHogProvider, NextAuthProvider } from '../providers'
 import '../../styles/globals.css';
 
 import { PageProps } from './[[...contentPath]]/page';
@@ -24,7 +24,9 @@ export default async function LocaleLayout({ params, children }: LayoutProps) {
     return (<html lang="en">
         <body {...bodyAttrs}>
             <PostHogProvider>
-                {children}
+                <NextAuthProvider>
+                    {children}
+                </NextAuthProvider>
             </PostHogProvider>
         </body>
     </html>
