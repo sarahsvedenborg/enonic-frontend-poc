@@ -55,13 +55,13 @@ export default function MinSidePage() {
                 </div>
             </div>
 
-            <div style={{ marginTop: '2rem' }}>
+            {/* <div style={{ marginTop: '2rem' }}>
                 <Heading level={2}>Mine donasjoner</Heading>
                 <Paragraph>Oversikt over dine donasjoner til Røde Kors.</Paragraph>
                 <div style={{ background: '#f8f9fa', padding: '1.5rem', borderRadius: '8px', marginTop: '1rem' }}>
                     <Paragraph>Ingen donasjoner registrert ennå.</Paragraph>
                 </div>
-            </div>
+            </div> */}
         </Section>
     )
 }

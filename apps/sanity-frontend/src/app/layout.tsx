@@ -45,6 +45,8 @@ export default async function RootLayout({
         getFooterMenu()
     ])
 
+    console.log('____SECRET____', process.env.OKTA_CLIENT_SECRET,);
+
     return (
         <html lang="en">
             <body>

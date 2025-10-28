@@ -7,7 +7,7 @@ export function useAuth() {
     console.log('session', session)
 
     const handleSignIn = () => {
-        console.log('handleSignIn')
+        console.log('handleSignIn');
         signIn('okta', { callbackUrl: '/min-side' })
     }
 
