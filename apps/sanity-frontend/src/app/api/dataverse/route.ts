@@ -1,6 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '../auth/[...nextauth]/route'
 import { decode } from 'next-auth/jwt'
 
 export async function GET(request: NextRequest) {
