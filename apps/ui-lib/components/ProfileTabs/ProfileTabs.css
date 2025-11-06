@@ -1,0 +1,19 @@
+.rk-profile-details-tab-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-size-8);
+}
+
+.rk-profile-details-tab-agreements {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ds-size-4);
+}
+
+.rk-profile-details-tab-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: var(--ds-size-2);
+    justify-content: space-between;
+    margin-top: var(--ds-size-4);
+}

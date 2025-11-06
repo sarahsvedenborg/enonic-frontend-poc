@@ -3,8 +3,10 @@
 import { useAuth } from '../../hooks/useAuth'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
-import { Heading, Section } from 'ui-lib'
-import { Button, Paragraph } from '@digdir/designsystemet-react'
+import { Section, ProfileTabs } from 'ui-lib'
+import { Button, Heading, Paragraph } from '@digdir/designsystemet-react'
+import { Card, Tabs } from 'rk-designsystem'
+import { FiPhone, FiAtSign, FiMapPin } from "react-icons/fi";
 
 export default function MinSidePage() {
     const { session, status, isAuthenticated, isLoading } = useAuth()
@@ -53,37 +55,51 @@ export default function MinSidePage() {
         return null
     }
 
+    const profile = {
+        fullname: session?.user?.name || session?.user?.email,
+        rodekorsNumber: '0000000',
+        rodekorsEmail: session?.user?.email || 'Ikke oppgitt',
+        phone: 'Ikke oppgitt',
+        email: session?.user?.email || 'Ikke oppgitt',
+        address: 'Ikke oppgitt'
+    }
+
+    const activities = { activities: [], roles: [], memberships: [] }
+
+    const knowledge = []
+
     return (
         <Section width="md" padding="lg">
-            <Heading level={1}>Min side</Heading>
-            <Paragraph data-size="lg">
+            <Heading level={1} data-size="lg">Min side</Heading>
+            <ProfileTabs profile={profile} activities={activities} knowledge={knowledge} />
+            {/*  <Paragraph data-size="lg">
                 Velkommen, {session?.user?.name || session?.user?.email}!
-            </Paragraph>
+            </Paragraph> */}
 
-            <div style={{ marginTop: '2rem' }}>
+            {/*  <div style={{ marginTop: '2rem' }}>
                 <Heading level={2}>Din profil</Heading>
                 <div style={{ background: '#f8f9fa', padding: '1.5rem', borderRadius: '8px', marginTop: '1rem' }}>
                     <Paragraph><strong>Navn:</strong> {session?.user?.name || 'Ikke oppgitt'}</Paragraph>
                     <Paragraph><strong>E-post:</strong> {session?.user?.email || 'Ikke oppgitt'}</Paragraph>
                     <Paragraph><strong>Bilde:</strong> {session?.user?.image ? '✓' : 'Ikke oppgitt'}</Paragraph>
                 </div>
-            </div>
+            </div> */}
             {/*   <Button onClick={() => fetchDataFromDataverse()}>Hent data fra Dataverse</Button> */}
-            <div style={{ marginTop: '2rem' }}>
+            {/*       <div style={{ marginTop: '2rem' }}>
                 <Heading level={2}>Mine aktiviteter</Heading>
                 <Paragraph>Her kan du se dine registrerte aktiviteter og tilbud.</Paragraph>
                 <div style={{ background: '#f8f9fa', padding: '1.5rem', borderRadius: '8px', marginTop: '1rem' }}>
                     <Paragraph>Ingen aktiviteter registrert ennå.</Paragraph>
                 </div>
-            </div>
+            </div> */}
 
-            <div style={{ marginTop: '2rem' }}>
+            {/*    <div style={{ marginTop: '2rem' }}>
                 <Heading level={2}>Mine donasjoner</Heading>
                 <Paragraph>Oversikt over dine donasjoner til Røde Kors.</Paragraph>
                 <div style={{ background: '#f8f9fa', padding: '1.5rem', borderRadius: '8px', marginTop: '1rem' }}>
                     <Paragraph>Ingen donasjoner registrert ennå.</Paragraph>
                 </div>
-            </div>
+            </div> */}
         </Section>
     )
 }

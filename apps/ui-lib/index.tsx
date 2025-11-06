@@ -15,6 +15,7 @@ export * from './components/Hero/Hero';
 export * from './components/ActivityHero/ActivityHero';
 export * from './components/ActivitySignupForm/ActivitySignupForm';
 export * from './components/ArgumentCard/ArgumentCard';
+export * from './components/ProfileTabs/ProfileTabs';
 /* export * from './components/DonationBanner/DonationBanner';
 export * from './components/DirectDonation/DirectDonation';
 export * from './components/RichTextView/RichTextView';
