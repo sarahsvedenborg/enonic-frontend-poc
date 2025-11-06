@@ -18,4 +18,8 @@ export default async function RootLayout({ children }: LayoutProps) {
 export const metadata: Metadata = {
     title: 'Next.XP',
     description: 'The React Framework for Enonic XP',
+    robots: {
+        index: false,
+        follow: false,
+    },
 }
