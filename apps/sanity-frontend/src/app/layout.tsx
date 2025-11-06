@@ -3,11 +3,19 @@ import { client } from '../../lib/sanity'
 import { getMainMenuQuery } from '../../lib/queries'
 import { MainMenu } from '../../lib/sanity'
 import { Providers } from './providers'
+import { Metadata } from 'next'
 /* import { Inter } from 'next/font/google' */
 import '../../globals.css'
 import { FrontendHeader } from '../../components/FrontendHeader'
 
 /* const inter = Inter({ subsets: ['latin'] }) */
+
+export const metadata: Metadata = {
+    robots: {
+        index: false,
+        follow: false,
+    },
+}
 
 async function getHeaderMenu(): Promise<MainMenu | null> {
     try {
