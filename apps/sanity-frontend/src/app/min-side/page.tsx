@@ -68,7 +68,7 @@ export default function MinSidePage() {
                     <Paragraph><strong>Bilde:</strong> {session?.user?.image ? '✓' : 'Ikke oppgitt'}</Paragraph>
                 </div>
             </div>
-            <Button onClick={() => fetchDataFromDataverse()}>Hent data fra Dataverse</Button>
+            {/*   <Button onClick={() => fetchDataFromDataverse()}>Hent data fra Dataverse</Button> */}
             <div style={{ marginTop: '2rem' }}>
                 <Heading level={2}>Mine aktiviteter</Heading>
                 <Paragraph>Her kan du se dine registrerte aktiviteter og tilbud.</Paragraph>
