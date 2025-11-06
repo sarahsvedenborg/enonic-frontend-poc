@@ -4,7 +4,7 @@ import { useAuth } from '../../hooks/useAuth'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import { Heading, Section } from 'ui-lib'
-import { Paragraph } from '@digdir/designsystemet-react'
+import { Button, Paragraph } from '@digdir/designsystemet-react'
 
 export default function MinSidePage() {
     const { session, status, isAuthenticated, isLoading } = useAuth()
@@ -15,6 +15,28 @@ export default function MinSidePage() {
             router.push('/')
         }
     }, [status, router])
+
+    const fetchDataFromDataverse = async () => {
+        // Use email as userid, or fall back to 'unknown' if not available
+        const userid = session?.user?.email || 'unknown'
+
+        try {
+            const response = await fetch(`/api/dataverse?userid=${encodeURIComponent(userid)}`)
+
+            if (!response.ok) {
+                throw new Error(`Failed to fetch data: ${response.statusText}`)
+            }
+
+            const data = await response.json()
+            console.log('Dataverse data:', data)
+            // You can add state management here to display the data
+        } catch (error) {
+            console.error('Error fetching data from Dataverse:', error)
+            // You can add error handling/display here
+        }
+    }
+
+
 
     if (isLoading) {
         return (
@@ -46,7 +68,7 @@ export default function MinSidePage() {
                     <Paragraph><strong>Bilde:</strong> {session?.user?.image ? '✓' : 'Ikke oppgitt'}</Paragraph>
                 </div>
             </div>
-
+            {/*   <Button onClick={() => fetchDataFromDataverse()}>Hent data fra Dataverse</Button> */}
             <div style={{ marginTop: '2rem' }}>
                 <Heading level={2}>Mine aktiviteter</Heading>
                 <Paragraph>Her kan du se dine registrerte aktiviteter og tilbud.</Paragraph>
