@@ -4,9 +4,10 @@ import { Card, Buttons, Tag } from "rk-designsystem"
 
 interface ProfileDetailsTabProps {
     profile: { fullname: string, rodekorsNumber: string, rodekorsEmail: string, phone: string, email: string, address: string }
+    source: 'okta' | 'dataverse'
 }
 
-export const ProfileDetailsTab = ({ profile }: ProfileDetailsTabProps) => {
+export const ProfileDetailsTab = ({ profile, source }: ProfileDetailsTabProps) => {
     const { fullname, rodekorsNumber, rodekorsEmail, phone, email, address } = profile
 
 
@@ -19,25 +20,25 @@ export const ProfileDetailsTab = ({ profile }: ProfileDetailsTabProps) => {
         >
             <Card.Block>
                 <h3>
-                    {fullname} (fra OKTA)
+                    {fullname} (fra {source})
                 </h3>
                 <p>
                     Røde Kors nr.: {rodekorsNumber}
                 </p>
                 <p>
-                    {rodekorsEmail} <strong>(fra OKTA)</strong>
+                    {rodekorsEmail} <strong>(fra {source})</strong>
                 </p>
             </Card.Block>
             <Card.Block>
                 <small>
                     <FiPhone />
-                    {phone} <strong>(fra OKTA)</strong>
+                    {phone} <strong>(fra {source})</strong>
                 </small>
             </Card.Block>
             <Card.Block>
                 <small>
                     <FiAtSign />
-                    {email} <strong>(fra OKTA)</strong>
+                    {email} <strong>(fra {source})</strong>
                 </small>
             </Card.Block>
             <Card.Block>
@@ -123,7 +124,7 @@ export const ProfileDetailsTab = ({ profile }: ProfileDetailsTabProps) => {
                     </p>
                     <small>
                         <FiAtSign />
-                        {email}
+                        leder@rodekors.no
                     </small>
                 </Card.Block>
 
@@ -131,10 +132,10 @@ export const ProfileDetailsTab = ({ profile }: ProfileDetailsTabProps) => {
             </Card>
         </div>
         <div className="rk-profile-details-tab-buttons">
-            <Buttons type="button" variant="primary">
+            <Buttons onClick={() => { console.log("endre") }}>
                 <FiEdit3 />ENDRE
             </Buttons>
-            <Buttons type="button" variant="secondary">
+            <Buttons type="button" variant="secondary" onClick={() => { console.log("endre") }}>
                 LOGG UT
             </Buttons>
         </div>

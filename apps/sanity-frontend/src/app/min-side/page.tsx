@@ -2,15 +2,35 @@
 
 import { useAuth } from '../../hooks/useAuth'
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Section, ProfileTabs } from 'ui-lib'
-import { Button, Heading, Paragraph } from '@digdir/designsystemet-react'
-import { Card, Tabs } from 'rk-designsystem'
-import { FiPhone, FiAtSign, FiMapPin } from "react-icons/fi";
+import { Heading, Paragraph } from '@digdir/designsystemet-react'
+import { Buttons } from 'rk-designsystem'
+
+type RemoteUserResponse = {
+    profile?: {
+        fullname?: string
+        rodekorsNumber?: string
+        rodekorsEmail?: string
+        phone?: string
+        email?: string
+        address?: string
+    }
+    activities?: {
+        activities?: unknown[]
+        roles?: unknown[]
+        memberships?: unknown[]
+    }
+    knowledge?: unknown[]
+    [key: string]: unknown
+}
 
 export default function MinSidePage() {
     const { session, status, isAuthenticated, isLoading } = useAuth()
     const router = useRouter()
+    const [userData, setUserData] = useState<RemoteUserResponse | null>(null)
+    const [isFetchingUserData, setIsFetchingUserData] = useState(false)
+    const [userDataError, setUserDataError] = useState<string | null>(null)
 
     useEffect(() => {
         if (status === 'unauthenticated') {
@@ -18,27 +38,104 @@ export default function MinSidePage() {
         }
     }, [status, router])
 
-    const fetchDataFromDataverse = async () => {
-        // Use email as userid, or fall back to 'unknown' if not available
-        const userid = session?.user?.email || 'unknown'
+    const userId = useMemo(() => {
+        if (!session?.user) {
+            return null
+        }
 
+        const sessionUser = session.user as Record<string, unknown> & { email?: string | null }
+
+        if (typeof sessionUser.id === 'string' && sessionUser.id.length > 0) {
+            return sessionUser.id
+        }
+
+        if (typeof sessionUser.sub === 'string' && sessionUser.sub.length > 0) {
+            return sessionUser.sub
+        }
+
+        if (typeof sessionUser.email === 'string' && sessionUser.email.length > 0) {
+            return sessionUser.email
+        }
+
+        return null
+    }, [session?.user])
+
+    const fetchUserData = async (controller) => {
         try {
-            const response = await fetch(`/api/dataverse?userid=${encodeURIComponent(userid)}`)
+            setIsFetchingUserData(true)
+            setUserDataError(null)
+
+            const response = await fetch(`/api/min-side/user?userId=${encodeURIComponent(String(userId))}`, {
+                headers: {
+                    Accept: 'application/json'
+                },
+                credentials: 'include',
+                signal: controller.signal
+            })
 
             if (!response.ok) {
-                throw new Error(`Failed to fetch data: ${response.statusText}`)
+                throw new Error(`Failed to fetch user data: ${response.status} ${response.statusText}`)
             }
 
             const data = await response.json()
-            console.log('Dataverse data:', data)
-            // You can add state management here to display the data
+            setUserData(data)
         } catch (error) {
-            console.error('Error fetching data from Dataverse:', error)
-            // You can add error handling/display here
+            if (controller.signal.aborted) {
+                return
+            }
+
+            const message = error instanceof Error ? error.message : 'Ukjent feil ved henting av brukerdata'
+            console.error('Error fetching user data for Min side:', error)
+            setUserDataError(message)
+        } finally {
+            if (!controller.signal.aborted) {
+                setIsFetchingUserData(false)
+            }
         }
     }
 
+    const controller = new AbortController()
 
+    useEffect(() => {
+        if (!isAuthenticated || !userId) {
+            return
+        }
+        fetchUserData(controller)
+
+        return () => controller.abort()
+    }, [isAuthenticated, userId])
+
+    const profile = useMemo(() => {
+        const remoteProfile = userData?.profile ?? {}
+
+        return {
+            fullname: (remoteProfile.fullname as string | undefined)
+                ?? session?.user?.name
+                ?? session?.user?.email
+                ?? 'Ikke oppgitt',
+            rodekorsNumber: (remoteProfile.rodekorsNumber as string | undefined) ?? 'Ikke oppgitt',
+            rodekorsEmail: (remoteProfile.rodekorsEmail as string | undefined)
+                ?? session?.user?.email
+                ?? 'Ikke oppgitt',
+            phone: (remoteProfile.phone as string | undefined) ?? 'Ikke oppgitt',
+            email: (remoteProfile.email as string | undefined)
+                ?? session?.user?.email
+                ?? 'Ikke oppgitt',
+            address: (remoteProfile.address as string | undefined) ?? 'Ikke oppgitt'
+        }
+    }, [session?.user?.email, session?.user?.name, userData?.profile])
+
+    const activities = useMemo(() => {
+        return {
+            activities: Array.isArray(userData?.activities?.activities) ? userData?.activities?.activities : [],
+            roles: Array.isArray(userData?.activities?.roles) ? userData?.activities?.roles : [],
+            memberships: Array.isArray(userData?.activities?.memberships) ? userData?.activities?.memberships : []
+        }
+    }, [userData?.activities])
+
+    const knowledge = useMemo(() => {
+        return Array.isArray(userData?.knowledge) ? userData?.knowledge : []
+    }, [userData?.knowledge])
 
     if (isLoading) {
         return (
@@ -55,51 +152,29 @@ export default function MinSidePage() {
         return null
     }
 
-    const profile = {
-        fullname: session?.user?.name || session?.user?.email,
-        rodekorsNumber: '0000000',
-        rodekorsEmail: session?.user?.email || 'Ikke oppgitt',
-        phone: 'Ikke oppgitt',
-        email: session?.user?.email || 'Ikke oppgitt',
-        address: 'Ikke oppgitt'
-    }
-
-    const activities = { activities: [], roles: [], memberships: [] }
-
-    const knowledge = []
 
     return (
-        <Section width="md" padding="lg">
-            <Heading level={1} data-size="lg">Min side</Heading>
-            <ProfileTabs profile={profile} activities={activities} knowledge={knowledge} />
-            {/*  <Paragraph data-size="lg">
-                Velkommen, {session?.user?.name || session?.user?.email}!
-            </Paragraph> */}
-
-            {/*  <div style={{ marginTop: '2rem' }}>
-                <Heading level={2}>Din profil</Heading>
-                <div style={{ background: '#f8f9fa', padding: '1.5rem', borderRadius: '8px', marginTop: '1rem' }}>
-                    <Paragraph><strong>Navn:</strong> {session?.user?.name || 'Ikke oppgitt'}</Paragraph>
-                    <Paragraph><strong>E-post:</strong> {session?.user?.email || 'Ikke oppgitt'}</Paragraph>
-                    <Paragraph><strong>Bilde:</strong> {session?.user?.image ? '✓' : 'Ikke oppgitt'}</Paragraph>
-                </div>
-            </div> */}
-            {/*   <Button onClick={() => fetchDataFromDataverse()}>Hent data fra Dataverse</Button> */}
-            {/*       <div style={{ marginTop: '2rem' }}>
-                <Heading level={2}>Mine aktiviteter</Heading>
-                <Paragraph>Her kan du se dine registrerte aktiviteter og tilbud.</Paragraph>
-                <div style={{ background: '#f8f9fa', padding: '1.5rem', borderRadius: '8px', marginTop: '1rem' }}>
-                    <Paragraph>Ingen aktiviteter registrert ennå.</Paragraph>
-                </div>
-            </div> */}
-
-            {/*    <div style={{ marginTop: '2rem' }}>
-                <Heading level={2}>Mine donasjoner</Heading>
-                <Paragraph>Oversikt over dine donasjoner til Røde Kors.</Paragraph>
-                <div style={{ background: '#f8f9fa', padding: '1.5rem', borderRadius: '8px', marginTop: '1rem' }}>
-                    <Paragraph>Ingen donasjoner registrert ennå.</Paragraph>
-                </div>
-            </div> */}
-        </Section>
+        <>
+            <Section width="md" padding="lg" margin="md">
+                <Heading level={1} data-size="lg">Min side</Heading>
+            </Section>
+            <Section width="md" padding="lg" margin="md">
+                <Paragraph><mark>NB! Siden dataverse bare henter fra testbrukere får man ikke se sine egne data på nåværende tidspunkt. Man får derfor se data fra testbrukeren ved navn <strong>Aagje Grong</strong></mark></Paragraph>
+            </Section>
+            <Section width="md" padding="lg" margin="md">
+                {/*             <Buttons onClick={() => fetchUserData(controller)}>Hent brukerdata</Buttons> */}
+                {userDataError && (
+                    <Paragraph data-size="md" data-color="danger">
+                        Klarte ikke å hente brukerdata: {userDataError}
+                    </Paragraph>
+                )}
+                {!userDataError && isFetchingUserData && (
+                    <Paragraph data-size="md">
+                        Henter brukerdata...
+                    </Paragraph>
+                )}
+                <ProfileTabs profile={profile} activities={activities} knowledge={knowledge} userData={userData} />
+            </Section>
+        </>
     )
 }
