@@ -1,6 +1,6 @@
 # Røde Kors PoC monorepo
 
-***Dette er en PoC og koden er på ingen måte produksjonsklar. Den er ikke kvalitetssikret og gjennomarbeidet. Det er mye som er kommentert ut ettersom man har testet noe frem og tilbake i PoC-en. AI (i form av Cursor) har også blitt brukt mye. Så lenge funksjonaliteten i PoC har vært god nok, har man ikke brukt tid på å refaktorere nevneverdig i koden. Kun når det kommer til UI har kodestruktur vært påtenkt da mye UI har vørt gjenbrukt mellom Enonic og Sanity frontendene og trente derfor å struktureres.***
+***Dette er en PoC og koden er på ingen måte produksjonsklar. Den er ikke kvalitetssikret og gjennomarbeidet. Det er mye som er kommentert ut ettersom man har testet noe frem og tilbake i PoC-en. AI (i form av Cursor) har også blitt brukt mye. Så lenge funksjonaliteten i PoC har vært god nok, har man ikke brukt tid på å refaktorere nevneverdig i koden. Kun når det kommer til UI har kodestruktur vært påtenkt da mye UI har vært gjenbrukt mellom Enonic og Sanity frontendene og trengte derfor å struktureres.***
 
 ## Prosjekter
 
