@@ -11,6 +11,9 @@ import { usePathname } from 'next/navigation';
 
 const LocalActivityView = (props: FetchContentResult) => {
     const { data } = props.data?.get as any;
+    if (!data) {
+        return <Section>Ingen visning for dette innholdet (Local aktivitetesvisning) på denne siden.</Section>;
+    }
     const allActivities = props.data?.query || [];
     const pathname = usePathname();
 

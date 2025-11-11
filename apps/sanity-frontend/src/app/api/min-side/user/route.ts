@@ -16,19 +16,16 @@ export async function GET(request: NextRequest) {
     }
 
     try {
-        const token = await getToken({
-            req: request,
-            secret: process.env.NEXTAUTH_SECRET
-        })
+        const sessionToken = request.cookies.get('next-auth.session-token')?.value
 
         const headers: HeadersInit = {
             Accept: 'application/json',
             'Ocp-Apim-Subscription-Key': process.env.MIN_SIDE_SUBSCRIPTION_KEY ?? ''
         }
-
-        if (token && typeof token.accessToken === 'string') {
-            headers.Authorization = `Bearer ${token.accessToken}`
-        }
+        /* 
+                if (token && typeof token.accessToken === 'string') {
+                    headers.Authorization = `Bearer ${token.accessToken}`
+                } */
 
         const response = await fetch(`${RED_CROSS_USER_ENDPOINT}/${encodeURIComponent(userid)}`, {
             headers
