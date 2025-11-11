@@ -9,9 +9,19 @@ interface ProfileTabsProps {
     profile: { fullname: string, rodekorsNumber: string, rodekorsEmail: string, phone: string, email: string, address: string }
     activities: any
     knowledge: any
+    userData: any
 }
 
-export const ProfileTabs = ({ profile, activities, knowledge }: ProfileTabsProps) => {
+export const ProfileTabs = ({ profile, activities, knowledge, userData }: ProfileTabsProps) => {
+
+    const profileFromUserData = {
+        fullname: userData?.fullname,
+        rodekorsNumber: userData?.contactid,
+        rodekorsEmail: userData?.emailaddress1,
+        phone: userData?.mobilephone,
+        email: userData?.emailaddress1,
+        address: userData?.address1_city
+    }
 
     return (
         <Tabs
@@ -32,7 +42,7 @@ export const ProfileTabs = ({ profile, activities, knowledge }: ProfileTabsProps
                 </Tabs.Tab>
             </Tabs.List>
             <Tabs.Panel value="profile">
-                <ProfileDetailsTab profile={profile} />
+                <ProfileDetailsTab profile={profileFromUserData} source="dataverse" />
             </Tabs.Panel>
             <Tabs.Panel value="activity">
                 <ProfileActivityTab activities={activities} />

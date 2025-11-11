@@ -4,7 +4,6 @@ import { useSession, signIn, signOut } from 'next-auth/react'
 
 export function useAuth() {
     const { data: session, status } = useSession()
-    console.log('session', session)
 
     const handleSignIn = () => {
         console.log('handleSignIn')
