@@ -1,18 +1,20 @@
-# Redd Cross PoC monorepo
+# Røde Kors PoC monorepo
 
-## Features
+***Dette er en PoC og koden er på ingen måte produksjonsklar. Den er ikke kvalitetssikret og gjennomarbeidet. Det er mye som er kommentert ut ettersom man har testet noe frem og tilbake i PoC-en. AI (i form av Cursor) har også blitt brukt mye. Så lenge funksjonaliteten i PoC har vært god nok, har man ikke brukt tid på å refaktorere nevneverdig i koden. Kun når det kommer til UI har kodestruktur vært påtenkt da mye UI har vørt gjenbrukt mellom Enonic og Sanity frontendene og trente derfor å struktureres.***
 
-- **Frontend for Enonic content**
-- **Frontend for Sanity content**
+## Prosjekter
+
+- **Frontend for Enonic innhold**
+- **Frontend for Sanity innhold**
 - **Sanity studio**
 
 ### Frontends
 
-- **Next.js 14**: Latest version with App Router
+- **Next.js 14**: Med APP router
 - **PostCSS**: Custom CSS with PostCSS processing
 
 ### Sanity studio
-- hosted on https://rk-poc.sanity.studio/
+- hosted på https://rk-poc.sanity.studio/
 
 ## Getting Started
 
